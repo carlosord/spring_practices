@@ -58,7 +58,7 @@ public class Persona extends BaseEntity{
 		this.age = age;
 	}
 
-	public Gender isGender() {
+	public Gender getGender() {
 		return gender;
 	}
 
