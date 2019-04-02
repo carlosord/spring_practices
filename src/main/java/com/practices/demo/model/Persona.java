@@ -55,7 +55,8 @@ public class Persona extends BaseEntity {
 		return true;
 	}
 
-
+	
+	
 	@Override
 	public String toString() {
 		return "Persona [dni=" + dni + ", name=" + name + ", lastname=" + lastname + ", age=" + age + ", gender="
@@ -103,7 +104,7 @@ public class Persona extends BaseEntity {
 	}
 
 
-	public Gender isGender() {
+	public Gender getGender() {
 		return gender;
 	}
 
