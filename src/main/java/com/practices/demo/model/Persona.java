@@ -16,6 +16,7 @@ public class Persona extends BaseEntity {
 	private boolean hascar;
 	
 	
+	
 	public Persona (String dni, String name, String lastname, int age, Gender gender, boolean hascar) {
 		
 		this.dni=dni;
