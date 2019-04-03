@@ -14,25 +14,25 @@
 		<div class="form-group">
 			<label for="dni">DNI</label>
 			<input type="text" class="form-control" th:field="*{dni}" id="dni"
-				placeholder="12345678A">
+				placeholder="Introduce your DNI. Ej: 12345678A">
 		</div>
 
 		<div class="form-group">
 			<label for="name">Name</label>
 			<input type="text" class="form-control" th:field="*{name}" id="name"
-				placeholder="Name">
+				placeholder="Introduce your Name. Ej: Tom">
 		</div>
 
 		<div class="form-group">
 			<label for="lastname">Lastname</label>
 			<input type="text" class="form-control" th:field="*{lastname}" id="lastname"
-				placeholder="lastname">
+				placeholder="Introduce your Lastname. Ej: Smith">
 		</div>
 
 		<div class="form-group">
 			<label for="age">Age</label>
 			<input type="number" class="form-control" th:field="*{age}" id="age"
-				placeholder="18">
+				placeholder="Introduce your age. Ej: 18">
 		</div>
 
 		<div class="form-group">
@@ -48,7 +48,7 @@
 			<label for="hascar">Has a car</label>
 		</div>
 
-		<button type="submit" class="btn btn-primary">Create Person</button>
+		<button type="submit" class="btn btn-primary"><span th:text="@{(${action})}"></span> Person</button>
 		<a href="/home" class="btn btn-danger">Cancel</a>
 		
 	</form>

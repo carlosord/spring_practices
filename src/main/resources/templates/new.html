@@ -6,7 +6,7 @@
 <body>
 	<div layout:fragment="content">
 
-		<div th:include="forms/person :: person_form" th:with="call='/new'"></div>
+		<div th:include="forms/person :: person_form" th:with="call='/new',action='Create'"></div>
 
 	</div>
 </body>
