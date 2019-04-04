@@ -56,12 +56,12 @@ public class SimpleController{
 				.orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));  
 		
 		model.addAttribute("persona", p);       
-		return "/registerupdate";    
+		return "/update";    
 		
 	}       
 	
 	@PostMapping("/update/{id}")  
-    public String updatePerson(@PathVariable ("id") long id, Persona updateperson, Model model) {
+    public String updatePerson(Persona updateperson, Model model) {
 		
 		
 		
@@ -80,5 +80,7 @@ public class SimpleController{
 		return"redirect:/home";
 		
 	}
+	
+
 	
 }
