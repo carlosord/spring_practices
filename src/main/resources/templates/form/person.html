@@ -1,63 +1,67 @@
-<!DOCTYPE html>
-<html>
+<html layout:decorate="~{layouts/layout}">
 <head>
 </head>
 <body>
 
-<div class="pt-5 container" th:fragment="person">
+	<div class="container">
+		<div class="pt-5 input-text-center">
 
-		<div class="input-text-center">
+			<div th:fragment="person">
+				<!-- /*Formulario*/ -->
+				<form action="#" th:action="@{(${call})}" th:object="${persona}"
+					method="post">
+					<!-- /*Hace que se esté la id pero no se ve*/ -->
+					<input type="hidden" th:field="*{id}">
+					<!-- /*DNI*/ -->
+					<div class="form-group">
+						<label for="dni">DNI</label> <input type="text"
+							class="form-control" th:field="*{dni}" id="dni"
+							placeholder="Introduce your DNI. Ej: 12345678A"
+							th:readonly="${#strings.equals(action,'Update')}">
+					</div>
+					<!-- /*Nombre*/ -->
+					<div class="form-group">
+						<label for="name">Name</label> <input type="text"
+							class="form-control" th:field="*{name}" id="name"
+							placeholder="Introduce your Name. Ej: Tom">
+					</div>
+					<!-- /*Apellido*/ -->
+					<div class="form-group">
+						<label for="lastname">Lastname</label> <input type="text"
+							class="form-control" th:field="*{lastname}" id="lastname"
+							placeholder="Introduce your Lastname. Ej: Smith">
+					</div>
+					<!-- /*Edad*/ -->
+					<div class="form-group">
+						<label for="age">Age</label> <input type="number"
+							class="form-control" th:field="*{age}" id="age"
+							placeholder="Introduce your age. Ej: 18">
+					</div>
+					<!-- /*Genero*/ -->
+					<div class="form-group">
+						<label for="gender">Gender</label> <select class="form-control"
+							th:field="*{gender}" id="gender">
+							<option value="MALE">Male</option>
+							<option value="FEMALE">Female</option>
+						</select>
+					</div>
+					<!-- /*Si tiene o no coche*/ -->
+					<div class="form-group">
+						<input type="checkbox" th:field="*{hascar}" id="hascar"> <label
+							for="hascar">Has a car</label>
+					</div>
+					<!-- /*Botón cancelar (Vuelve a home) y añadir/modificar campos*/ -->
+					<button type="submit" class="btn btn-primary">
+						<span th:text="@{(${action})}"></span> Person
+					</button>
+					<a href="/home" class="btn btn-danger">Cancel</a>
 
-				<!-- /* DNI */ -->
-				<div class="form-group">
-					<label for="dni">DNI</label> <input type="text"
-						class="form-control" id="dni" name="dni"
-						placeholder="Introduce DNI.Ej: 12345678A">
-				</div>
+				</form>
 
-				<!-- /* Nombre */ -->
-				<div class="form-group">
-					<label for="name">Name</label> <input type="text"
-						class="form-control" id="name" name="name"
-						placeholder="Introduce name.Ej: Lucas">
-				</div>
-
-				<!-- /* Apellido */ -->
-				<div class="form-group">
-					<label for="lastname">LastName</label> <input type="text"
-						class="form-control" id="lastname" name="lastname"
-						placeholder="Introduce lastname.Ej: Smith">
-				</div>
-
-				<!-- /* Edad */ -->
-				<div class="form-group">
-					<label for="age">Age</label> <input type="number"
-						class="form-control" id="age" name="age"
-						placeholder="Introduce age.Ej: 25">
-				</div>
-
-				<!-- /* Genero */ -->
-				<div class="form-group">
-					<label for="gender">Gender</label> <select class="form-control"
-						id="gender" name="gender">
-						<option value="MALE">Male</option>
-						<option value="FEMALE">Female</option>
-					</select>
-				</div>
-
-				<!-- /* Si tiene o no coche */ -->
-				<div class="form-group">
-					<input type="checkbox" id="hascar" name="hascar"> Has a car
-				</div>
-
-				<!-- /* Botones crear una nueva persona y cancelar */ -->
-				<div class="form-group">
-					<button type="submit" class="btn btn-lg btn-primary">Create
-						Person</button>
-					<a href="/home" class="btn btn-lg btn-danger">Cancel</a>
-				</div>
+			</div>
 		</div>
 	</div>
+
 
 </body>
 </html>
