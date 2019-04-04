@@ -32,7 +32,7 @@ public class SimpleController{
 	public String registerPage(Model model) {
 		
 		
-		model.addAttribute("create", new Persona());
+		model.addAttribute("persona", new Persona());
 		return "register";
 	}
 	
@@ -60,7 +60,7 @@ public class SimpleController{
 		
 	}       
 	
-	@PostMapping("/update/{id}")  
+	@PostMapping("/update")  
     public String updatePerson(Persona updateperson, Model model) {
 		
 		

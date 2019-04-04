@@ -1,78 +1,15 @@
-
+<html layout:decorate="~{layouts/layout}">
 <head>
 
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-	crossorigin="anonymous">
 
 </head>
 
 <body>
 
-	<div class="pt-5 container">
+	<div layout:fragment="content">
+	<div th:with="action='/update', action2='update'"
+		th:include="form/person :: person"></div>
 
-		<div class="input-text-center">
-
-			<!-- /* Formulario con accion, objeto sobre el que actuamos y metodo que usamos */ -->
-			<form action="#" th:action="@{/update/{id}(id=${persona.id})}"
-				th:object="${persona}" method="post"
-				class="form-inlin justify-content-center">
-
-				<!-- /*Etiqueta dni, type y th:field que nos devuelve los datos de ese usuario */ -->
-				<div class="form-group">
-					<label for="dni">DNI</label> <input type="text"
-						class="form-control" id="dni" th:field="*{dni}" readonly>
-				</div>
-
-				   <!-- /*Etiqueta nombre y th:field que nos devuelve los datos almacenados de ese usuario */ -->
-				<div class="form-group">
-					<label for="name">Name</label> <input type="text"
-						class="form-control" id="name" th:field="*{name}">
-				</div>
-
-				<!-- /*Etiqueta apellido, type y th:field que nos devuelve los datos almacenados de ese usuario */ -->
-				<div class="form-group">
-					<label for="lastname">LastName</label> <input type="text"
-						class="form-control" id="lastname" th:field="*{lastname}">
-				</div>
-
-				<!-- /*Etiqueta edad, type y th:field que nos devuelve los datos almacenados de ese usuario */ -->
-				<div class="form-group">
-					<label for="age">Age</label> <input type="number"
-						class="form-control" id="age" th:field="*{age}">
-				</div>
-
-				<!-- /*Etiqueta genero y th:field que nos devuelve los datos almacenados de ese usuario */ -->
-				<div class="form-group">
-					<label for="gender">Gender</label> <select class="form-control"
-						id="gender" th:field="*{gender}">
-
-						<!-- /*Valores enum existentes y opciones a elegir*/ -->
-						<option value="MALE">Male</option>
-						<option value="FEMALE">Female</option>
-					</select>
-				</div>
-
-				<!-- /* Checkbox para saber si el usuario tiene o no tiene coche y th:field que nos 
-                devuelve los datos del usuario para poder editarlos */ -->
-				<div class="form-group">
-					<input type="checkbox" id="hascar" th:field="*{hascar}">
-					Has a car
-				</div>
-
-				<!-- /* Botones actualizar usuario y cancelar */ -->
-				<div class="form-group">
-					<button type="submit" class="btn btn-lg btn-primary">Update
-						Person</button>
-					<a href="/home" class="btn btn-lg btn-danger">Cancel</a>
-				</div>
-
-
-			</form>
-
-		</div>
 	</div>
-
 </body>
 </html>
