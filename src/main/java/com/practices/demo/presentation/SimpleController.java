@@ -29,7 +29,7 @@ public class SimpleController{
     
     @GetMapping("/register")
     public String registerPage(Model model) {
-    	model.addAttribute("create", new Persona());
+    	model.addAttribute("persona", new Persona());
         return "register";
     }
     
@@ -53,7 +53,7 @@ public class SimpleController{
         return "/update";
     }
     
-    @PostMapping("/update/{id}")
+    @PostMapping("/update")
     public String updatePerson(Persona updatePerson, Model model) {
              
         repo.save(updatePerson);
