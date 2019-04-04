@@ -1,14 +1,12 @@
 package com.practices.demo.presentation;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -46,12 +44,28 @@ public class SimpleController{
         return "redirect:/home";
     }
     
-    @PostMapping("/delete")
-    public String delete(Persona deletePerson, ModelMap model) {
+    @GetMapping("/edit/{id}")
+    public String showUpdateForm(@PathVariable("id") long id, Model model) {
+        Persona p = repo.findById(id)
+          .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+         
+        model.addAttribute("persona", p);
+        return "/update";
+    }
+    
+    @PostMapping("/update/{id}")
+    public String updatePerson(@PathVariable("id") long id, Persona updatePerson, Model model) {
+             
+        repo.save(updatePerson);
+        return "redirect:/home";
+    }
+         
+    
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public String delete(@PathVariable long id, ModelMap model) {   
+    	repo.deleteById(id);
     	
-    	repo.delete(deletePerson);
-    	
-    	return "home";
+    	return "redirect:/home";
     }
 }
     
