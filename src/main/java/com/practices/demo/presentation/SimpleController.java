@@ -54,7 +54,7 @@ public class SimpleController{
     }
     
     @PostMapping("/update/{id}")
-    public String updatePerson(@PathVariable("id") long id, Persona updatePerson, Model model) {
+    public String updatePerson(Persona updatePerson, Model model) {
              
         repo.save(updatePerson);
         return "redirect:/home";

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+<div class="pt-5 container" th:fragment="person">
+
+		<div class="input-text-center">
+
+				<!-- /* DNI */ -->
+				<div class="form-group">
+					<label for="dni">DNI</label> <input type="text"
+						class="form-control" id="dni" name="dni"
+						placeholder="Introduce DNI.Ej: 12345678A">
+				</div>
+
+				<!-- /* Nombre */ -->
+				<div class="form-group">
+					<label for="name">Name</label> <input type="text"
+						class="form-control" id="name" name="name"
+						placeholder="Introduce name.Ej: Lucas">
+				</div>
+
+				<!-- /* Apellido */ -->
+				<div class="form-group">
+					<label for="lastname">LastName</label> <input type="text"
+						class="form-control" id="lastname" name="lastname"
+						placeholder="Introduce lastname.Ej: Smith">
+				</div>
+
+				<!-- /* Edad */ -->
+				<div class="form-group">
+					<label for="age">Age</label> <input type="number"
+						class="form-control" id="age" name="age"
+						placeholder="Introduce age.Ej: 25">
+				</div>
+
+				<!-- /* Genero */ -->
+				<div class="form-group">
+					<label for="gender">Gender</label> <select class="form-control"
+						id="gender" name="gender">
+						<option value="MALE">Male</option>
+						<option value="FEMALE">Female</option>
+					</select>
+				</div>
+
+				<!-- /* Si tiene o no coche */ -->
+				<div class="form-group">
+					<input type="checkbox" id="hascar" name="hascar"> Has a car
+				</div>
+
+				<!-- /* Botones crear una nueva persona y cancelar */ -->
+				<div class="form-group">
+					<button type="submit" class="btn btn-lg btn-primary">Create
+						Person</button>
+					<a href="/home" class="btn btn-lg btn-danger">Cancel</a>
+				</div>
+		</div>
+	</div>
+
+</body>
+</html>
