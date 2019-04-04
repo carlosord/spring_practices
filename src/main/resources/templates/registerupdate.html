@@ -9,32 +9,32 @@
 <body>
 
 
-<form action="#" th:action="@{/create}" th:object="${create}" method="post">
+<form action="#" th:action="@{/update/{id}(id=${persona.id})}" th:object="${persona}" method="post">
 
 <div class="form-group">
     <label for="dni">DNI</label>
-    <input type="text" class="form-control" id="dni" name="dni" >
+    <input type="text" class="form-control" id="dni" name="dni" th:field=*{dni} >
  </div>
   
   <div class="form-group">
     <label for="name">Nombre</label>
-    <input type="text" class="form-control" id="name" name="name">
+    <input type="text" class="form-control" id="name" name="name" th:field=*{name} >
   </div>
   
   
  <div class="form-group">
     <label for="lastname">Apellido</label>
-    <input type="text" class="form-control" id="lastname" name="lastname">
+    <input type="text" class="form-control" id="lastname" name="lastname" th:field=*{lastname} >
   </div>
   
   <div class="form-group">
     <label for="age">Edad</label>
-    <input type="number" class="form-control" id="age" name="age">
+    <input type="number" class="form-control" id="age" name="age" th:field=*{age} >
   </div>
   
  <div class="form-group">
     <label for="gender">Genero</label>
-    <select class="form-control" id="gender" name="gender">
+    <select class="form-control" id="gender" name="gender" th:field=*{gender} >
   <option value="MALE">Male</option>
   <option value="FEMALE">Female</option>
   
@@ -43,7 +43,7 @@
   
   
   
-  <div><input type="checkbox" aria-label="Checkbox for following text input" id="hascar" name="hascar">Has a car</div>
+  <div><input type="checkbox" aria-label="Checkbox for following text input" id="hascar" name="hascar" th:field=*{hascar} >Has a car</div>
   
   
  

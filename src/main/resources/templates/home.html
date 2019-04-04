@@ -13,7 +13,6 @@
 <body>
 
 
-
 <center><h1> WELCOME! </h1></center>
 
 <table class="table">
@@ -64,9 +63,9 @@
       
   <td>
     	<p>
-       		 <a href="#">
-          	 <span class="fas fa-edit" style="color:4D86F8"></span>
-        	</a>
+       		 <a th:href="@{/edit/{id}(id=${persona.id})}"> <span class="fas fa-edit" style="color:4D86F8"></span></a>
+          	
+ 
    	    </p>  
      </td>  
   
@@ -76,16 +75,9 @@
   
       <td>
     	
-    	
-    	
-       		 <button type="submit" class="btn btn-default btn-sm">
-          	 <span class="fas fa-trash" style="color:565151"></span>
-        	</button>
-        	
-    	
-        	
-   	     
-   	    
+       <a th:href="@{/delete/{id}(id=${persona.id})}"> <span class="fas fa-trash" style="color:565151"></span></a>
+       
+   	  
      </td>  
     
     
@@ -99,9 +91,7 @@
 
 
 	<a href="/register" class="btn btn-success btn-rounded">Create New Person</a>
-	
 
- 
 
 </body>
 </html>
