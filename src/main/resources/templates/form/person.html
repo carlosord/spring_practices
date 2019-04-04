@@ -1,0 +1,85 @@
+<html layout:decorate="~{layouts/layout}">
+<html>
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+
+
+	<div class="pt-5 container" th:fragment="person">
+
+		<div class="input-text-center">
+
+			<!-- /* Formulario con accion, objeto sobre el que actuamos y metodo que usamos */ -->
+
+			<form action="#" th:action="@{(${action})}"
+				th:object="${persona}" method="post"
+				class="form-inlin justify-content-center">
+
+
+			<!-- /* Pasa la id de la persona de forma oculta en el formulario de forma que obtenemos
+			se obtiene la id a la hora de editar pero no lo vemos al estar oculta */ -->
+			<input type="hidden" th:field="*{id}"> 
+			
+				<!-- /*Etiqueta dni, type y texto orientativo para el usuario-->
+				<div class="form-group">
+					<label for="dni">DNI</label> <input type="text"
+						class="form-control" id="dni" name="dni"
+						placeholder="Introduce DNI.Ej: 12345678A" th:field="*{dni}"
+						th:readonly="${#strings.equals(action2,'update')}">
+				</div>
+
+				<!-- /*Etiqueta nombre, type y texto orientativo para el usuario-->
+				<div class="form-group">
+					<label for="name">Name</label> <input type="text"
+						class="form-control" id="name" name="name"
+						placeholder="Introduce name.Ej: Charles" th:field="*{name}">
+				</div>
+
+				<!-- /*Etiqueta lastname, type y texto orientativo para el usuario-->
+				<div class="form-group">
+					<label for="lastname">LastName</label> <input type="text"
+						class="form-control" id="lastname" name="lastname"
+						placeholder="Introduce lastname.Ej: Jones" th:field="*{lastname}">
+				</div>
+
+				<!-- /*Etiqueta edad, type y texto orientativo para el usuario-->
+				<div class="form-group">
+					<label for="age">Age</label> <input type="number"
+						class="form-control" id="age" name="age"
+						placeholder="Introduce age.Ej: 25" th:field="*{age}">
+				</div>
+
+				<!-- /*Etiqueta genero, type y opciones que podemos elegir -->
+				<div class="form-group">
+					<label for="gender">Gender</label> <select class="form-control"
+						id="gender" name="gender" th:field="*{gender}">
+						<option value="MALE">Male</option>
+						<option value="FEMALE">Female</option>
+					</select>
+				</div>
+
+				<!-- /*Checkbox para saber si el usuario tiene o no coche-->
+				<div class="form-group">
+					<input type="checkbox" id="hascar" name="hascar"
+						th:field="*{hascar}"> Has a car
+				</div>
+
+				<!-- /* Botones crear una nueva persona y cancelar */ -->
+				<div class="form-group">
+					<button type="submit" class="btn btn-lg btn-primary">Create
+						Person</button>
+					<a href="/home" class="btn btn-lg btn-danger">Cancel</a>
+				</div>
+
+			</form>
+
+		</div>
+	</div>
+
+
+
+
+
+</body>
+</html>
