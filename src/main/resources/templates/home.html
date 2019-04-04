@@ -49,15 +49,11 @@
     
     <td> 
       <p>
-        <button type="button" class="btn btn-primary btn-sm">
-          <span class="fas fa-user-edit"></span>
-        </button>
+        <a th:href="@{/edit/{id}(id=${persona.id})}" class="btn btn-primary btn-sm"><span class="fas fa-user-edit"></span></a>
       </p>
       </td>
       <td>
-      <button type="reset" class="btn btn-danger btn-sm">
-          <span class="far fa-trash-alt"></span>
-        </button>
+        <a th:href="@{/delete/{id}(id=${persona.id})}" class="btn btn-danger"><span class="far fa-trash-alt"></span></a>
       </td>
     
 </tr>
