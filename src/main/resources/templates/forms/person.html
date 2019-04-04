@@ -14,40 +14,40 @@
 		<input type="hidden" th:field="*{id}"> 
 
 		<div class="form-group">
-			<label for="dni">DNI</label>
+			<label for="dni" th:text="#{person.dni}"></label>
 			<input type="text" class="form-control" th:field="*{dni}" id="dni"
-				placeholder="Introduce your DNI. Ej: 12345678A" th:readonly="${#strings.equals(action,'Update')}">
+				th:placeholder="#{person.dni.placeholder}" th:readonly="${#strings.equals(action,'Update')}">
 		</div>
 
 		<div class="form-group">
-			<label for="name">Name</label>
+			<label for="name" th:text="#{person.name}"></label>
 			<input type="text" class="form-control" th:field="*{name}" id="name"
-				placeholder="Introduce your Name. Ej: Tom">
+				th:placeholder="#{person.name.placeholder}">
 		</div>
 
 		<div class="form-group">
-			<label for="lastname">Lastname</label>
+			<label for="lastname" th:text="#{person.lastname}"></label>
 			<input type="text" class="form-control" th:field="*{lastname}" id="lastname"
-				placeholder="Introduce your Lastname. Ej: Smith">
+				th:placeholder="#{person.lastname.placeholder}">
 		</div>
 
 		<div class="form-group">
-			<label for="age">Age</label>
+			<label for="age" th:text="#{person.age}"></label>
 			<input type="number" class="form-control" th:field="*{age}" id="age"
-				placeholder="Introduce your age. Ej: 18">
+				th:placeholder="#{person.age.placeholder}">
 		</div>
 
 		<div class="form-group">
-			<label for="gender">Gender</label>
+			<label for="gender" th:text="#{person.gender}"></label>
 			<select class="form-control" th:field="*{gender}" id="gender">
-				<option value="MALE">Male</option>
-				<option value="FEMALE">Female</option>
+				<option value="MALE" th:text="#{person.gender.male}"></option>
+				<option value="FEMALE" th:text="#{person.gender.female}"></option>
 			</select>
 		</div>
 
 		<div class="form-group">
 			<input type="checkbox" th:field="*{hascar}" id="hascar">
-			<label for="hascar">Has a car</label>
+			<label for="hascar" th:text="#{person.hascar}"></label>
 		</div>
 
 		<button type="submit" class="btn btn-primary"><span th:text="@{(${action})}"></span> Person</button>
