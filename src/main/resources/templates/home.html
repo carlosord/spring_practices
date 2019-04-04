@@ -33,10 +33,10 @@
 						<span class="fas" th:classappend="${p.hascar} ? fa-check : fa-times"></span>
 					</td>
 					<td>
-						<a href="#" class="fas fa-edit"></a>
+						<a th:href="@{/edit/{id}(id=${p.id})}" class="fas fa-edit"></a>
 					</td>
 					<td>
-						<a href="#" class="far fa-trash-alt"></a>
+						<a th:href="@{/delete/{id}(id=${p.id})}" class="far fa-trash-alt"></a>
 					</td>
 				</tr>
 			</tbody>

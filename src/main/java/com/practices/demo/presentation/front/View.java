@@ -11,11 +11,14 @@ public class View {
 	/** The Constant HOME_VIEW. */
 	public static final String HOME_VIEW = "home";
 
-	/** The Constant NEW_HOME. */
+	/** The Constant NEW_PERSON_VIEW. */
 	public static final String NEW_PERSON_VIEW = "new";
 	
+	/** The Constant EDIT_PERSON_VIEW. */
+	public static final String EDIT_PERSON_VIEW = "edit";
+	
 	/**
-	 * Instantiates a new view.
+	 * Private constructor.
 	 */
 	private View() {}
 	
