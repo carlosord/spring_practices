@@ -5,27 +5,31 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "PEOPLE", uniqueConstraints = @UniqueConstraint(columnNames = { "dni" }))
-public class Persona extends BaseEntity{
-	
+public class Persona extends BaseEntity {
+
 	private String dni;
 	private String name;
 	private String lastname;
 	private int age;
 	private Gender gender;
 	private boolean hascar;
-	
-	public Persona() {};
-	
-	public Persona(String dni,String name,String lastname,int age,Gender gender,boolean car) {
-		this.dni=dni;
-		this.name=name;
-		this.lastname=lastname;
-		this.age=age;
-		this.gender=gender;
-		this.hascar=car;
+
+	public Persona() {
+	};
+
+	public Persona(String dni, String name, String lastname, int age, Gender gender, boolean car) {
+		this.dni = dni;
+		this.name = name;
+		this.lastname = lastname;
+		this.age = age;
+		this.gender = gender;
+		this.hascar = car;
 	}
 
 	public String getDni() {
@@ -47,7 +51,7 @@ public class Persona extends BaseEntity{
 	public String getLastname() {
 		return lastname;
 	}
-	
+
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
@@ -100,12 +104,11 @@ public class Persona extends BaseEntity{
 	public void setHascar(boolean car) {
 		this.hascar = car;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Persona dni= " + dni + ", name=" + name + ", lastname=" + lastname + ", age=" + age + ", gender="
 				+ gender + ", car=" + hascar;
 	}
-	
 
 }

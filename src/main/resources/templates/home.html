@@ -1,67 +1,92 @@
-<html>
+<html layout:decorate="~{layouts/layout}">
 <head>
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+	crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+	integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+	integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+	crossorigin="anonymous"></script>
 
 
 <title>Home Page</title>
-
 </head>
 <body>
-<center><h1>WELCOME!</h1></center>
 
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">DNI</th>
-      <th scope="col">Name</th>
-      <th scope="col">Lastname</th>
-      <th scope="col">Age</th>
-      <th scope="col">Gender</th>
-      <th scope="col">Has car</th>
-      <th scope="col"> </th>
-      <th scope="col"> </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <tr th:each="persona: ${personas}">
-    <th th:text="${persona.dni}" /> 
-    <td th:text="${persona.name}" />
-    <td th:text="${persona.lastname}" />
-    <td th:text="${persona.age}" />
-    
-    <td>
-    <span th:if="${persona.gender == T(com.practices.demo.model.Gender).FEMALE}">
-    	<i class="fas fa-female" style="color:F944C2"></i></span>
-    <span th:unless="${persona.gender == T(com.practices.demo.model.Gender).FEMALE}">
-    	<i class="fas fa-male" style="color:2362FF"></i></span>
-    </td>
+	<div class="container">
+		<div class="py-5 input-text-center">
+			<!-- /* Tabla */ -->
+			<table class="table table-striped text-center">
+				<!-- /* Tema de la columna */ -->
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">DNI</th>
+						<th scope="col">Name</th>
+						<th scope="col">Lastname</th>
+						<th scope="col">Age</th>
+						<th scope="col">Gender</th>
+						<th scope="col">Has car</th>
+						<th scope="col"></th>
+						<th scope="col"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<!-- /* Muestra los datos */ -->
+					<tr th:each="persona: ${personas}">
+						<th th:text="${persona.dni}" />
+						<td th:text="${persona.name}" />
+						<td th:text="${persona.lastname}" />
+						<td th:text="${persona.age}" />
 
-    <td>
-    <span th:if="${persona.hascar == true}"><i class="fas fa-check" style="color:23F90D"></i></span>
-    <span th:unless="${persona.hascar == true}"><i class="fas fa-times" style="color:FF0801"></i></span>
-    </td>
-    
-    <td> 
-      <p>
-        <a th:href="@{/edit/{id}(id=${persona.id})}" class="btn btn-primary btn-sm"><span class="fas fa-user-edit"></span></a>
-      </p>
-      </td>
-      <td>
-        <a th:href="@{/delete/{id}(id=${persona.id})}" class="btn btn-danger"><span class="far fa-trash-alt"></span></a>
-      </td>
-    
-</tr>
+						<!-- /* Selecciona le genero */ -->
+						<td><span
+							th:if="${persona.gender == T(com.practices.demo.model.Gender).FEMALE}">
+								<i class="fas fa-female"></i>
+						</span> <span
+							th:unless="${persona.gender == T(com.practices.demo.model.Gender).FEMALE}">
+								<i class="fas fa-male"></i>
+						</span></td>
 
-  </tbody>
-</table>
+						<!-- /* Seleciona si tiene o no coche */ -->
+						<td><span th:if="${persona.hascar == true}"><i
+								class="fas fa-check"></i></span> <span
+							th:unless="${persona.hascar == true}"><i
+								class="fas fa-times"></i></span></td>
 
-<a href="/register" class="btn btn-success btn-rounded">Create New Person</a>
+						<!-- /* Botones editas y eliminar */ -->
+						<td>
+							<p>
+								<a th:href="@{/edit/{id}(id=${persona.id})}"><span
+									class="fas fa-user-edit"></span></a>
+							</p>
+						</td>
+						<td><a th:href="@{/delete/{id}(id=${persona.id})}"><span
+								class="far fa-trash-alt"></span></a></td>
 
+					</tr>
+
+				</tbody>
+			</table>
+			<!-- /* Boton centrado para añadir una nueva persona */ -->
+			<div class="row justify-content-md-center">
+				<a href="/register" class="btn btn-lg btn-success">Create New
+					Person</a>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
