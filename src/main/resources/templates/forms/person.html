@@ -1,0 +1,58 @@
+<!--form action="#" th:action="@{/update/{id}(id=${user.id})}" th:object="${user}" method="post">
+    <label for="name">Name</label>
+    <input type="text" th:field="*{name}" id="name" placeholder="Name">
+    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+    <label for="email">Email</label>
+    <input type="text" th:field="*{email}" id="email" placeholder="Email">
+    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+    <input type="submit" value="Update User">   
+</form-->
+<div th:fragment="person_form">
+
+	<form action="#" th:action="@{(${call})}" th:object="${person}" method="post">
+	
+		<input type="hidden" th:field="*{id}"> 
+
+		<div class="form-group">
+			<label for="dni">DNI</label>
+			<input type="text" class="form-control" th:field="*{dni}" id="dni"
+				placeholder="Introduce your DNI. Ej: 12345678A" th:readonly="${#strings.equals(action,'Update')}">
+		</div>
+
+		<div class="form-group">
+			<label for="name">Name</label>
+			<input type="text" class="form-control" th:field="*{name}" id="name"
+				placeholder="Introduce your Name. Ej: Tom">
+		</div>
+
+		<div class="form-group">
+			<label for="lastname">Lastname</label>
+			<input type="text" class="form-control" th:field="*{lastname}" id="lastname"
+				placeholder="Introduce your Lastname. Ej: Smith">
+		</div>
+
+		<div class="form-group">
+			<label for="age">Age</label>
+			<input type="number" class="form-control" th:field="*{age}" id="age"
+				placeholder="Introduce your age. Ej: 18">
+		</div>
+
+		<div class="form-group">
+			<label for="gender">Gender</label>
+			<select class="form-control" th:field="*{gender}" id="gender">
+				<option value="MALE">Male</option>
+				<option value="FEMALE">Female</option>
+			</select>
+		</div>
+
+		<div class="form-group">
+			<input type="checkbox" th:field="*{hascar}" id="hascar">
+			<label for="hascar">Has a car</label>
+		</div>
+
+		<button type="submit" class="btn btn-primary"><span th:text="@{(${action})}"></span> Person</button>
+		<a href="/home" class="btn btn-danger">Cancel</a>
+		
+	</form>
+	
+</div>

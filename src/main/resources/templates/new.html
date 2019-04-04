@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layouts/layout}">
+<head>
+<title>New Person</title>
+</head>
+<body>
+	<div layout:fragment="content">
+
+		<div th:include="forms/person :: person_form" th:with="call='/new',action='Create'"></div>
+
+	</div>
+</body>
+</html>
