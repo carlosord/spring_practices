@@ -1,12 +1,3 @@
-<!--form action="#" th:action="@{/update/{id}(id=${user.id})}" th:object="${user}" method="post">
-    <label for="name">Name</label>
-    <input type="text" th:field="*{name}" id="name" placeholder="Name">
-    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
-    <label for="email">Email</label>
-    <input type="text" th:field="*{email}" id="email" placeholder="Email">
-    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
-    <input type="submit" value="Update User">   
-</form-->
 <div th:fragment="person_form">
 
 	<form action="#" th:action="@{(${call})}" th:object="${person}" method="post">
@@ -50,8 +41,8 @@
 			<label for="hascar" th:text="#{person.hascar}"></label>
 		</div>
 
-		<button type="submit" class="btn btn-primary"><span th:text="@{(${action})}"></span> Person</button>
-		<a href="/home" class="btn btn-danger">Cancel</a>
+		<button type="submit" class="btn btn-primary" th:text="#{@{(${btn})}}"></button>
+		<a th:href="${T(com.practices.demo.presentation.front.Url).HOME_URL}" class="btn btn-danger" th:text="#{btn.cancel}"></a>
 		
 	</form>
 	

@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html layout:decorate="~{layouts/layout}">
 <head>
-<title>New Person</title>
+<title th:text="#{title.page.new}"></title>
 </head>
 <body>
 	<div layout:fragment="content">
 
-		<div th:include="forms/person :: person_form" th:with="call='/new',action='Create'"></div>
+		<div th:include="forms/person :: person_form" 
+				th:with="call='${T(com.practices.demo.presentation.front.Url).NEW_PERSON_URL',
+				action='create',btn='form.person.create'"></div>
 
 	</div>
 </body>
