@@ -19,21 +19,32 @@
 
 			<!-- /* Pasa la id de la persona de forma oculta en el formulario de forma que obtenemos
 			se obtiene la id a la hora de editar pero no lo vemos al estar oculta */ -->
-			<input type="hidden" th:field="*{id}"> 
-			
+			<input type="hidden" th:field="*{id}">
+
 				<!-- /*Etiqueta dni, type y texto orientativo para el usuario-->
 				<div class="form-group">
 					<label for="dni" th:text="#{DNI}"></label> <input type="text"
 						class="form-control" id="dni" name="dni"
 						th:attr="placeholder=#{DNIP}" th:field="*{dni}"
 						th:readonly="${#strings.equals(action2,'update')}">
+
+
+				<!-- /*Span con condicion asignada en clase persona sobre el campo dni y salida de mensaje de error-->
+				<span th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></span>
+
+
 				</div>
 
-				<!-- /*Etiqueta nombre, type y texto orientativo para el usuario-->
+				<!-- /*Etiqueta nombre, type y texto orientativo para el usuario*/-->
 				<div class="form-group">
 					<label for="name" th:text="#{Name}"></label> <input type="text"
 						class="form-control" id="name" name="name"
 						th:attr="placeholder=#{Namep}" th:field="*{name}">
+
+				<!-- /*Span con condicion asignada en clase persona sobre el campo name y salida de mensaje de error-->
+					<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+
+
 				</div>
 
 				<!-- /*Etiqueta lastname, type y texto orientativo para el usuario-->
@@ -41,6 +52,10 @@
 					<label for="lastname" th:text="#{Lastname}"></label> <input type="text"
 						class="form-control" id="lastname" name="lastname"
 						th:attr="placeholder=#{Lastnamep}" th:field="*{lastname}">
+
+				<!-- /*Span con condicion asignada en clase persona sobre el campo lastname y salida de mensaje de error-->
+				 <span th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></span>
+
 				</div>
 
 				<!-- /*Etiqueta edad, type y texto orientativo para el usuario-->
@@ -48,6 +63,9 @@
 					<label for="age" th:text="#{Age}"></label> <input type="number"
 						class="form-control" id="age" name="age"
 						placeholder="Introduce age.Ej: 25" th:field="*{age}">
+
+				<span th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
+
 				</div>
 
 				<!-- /*Etiqueta genero, type y opciones que podemos elegir -->

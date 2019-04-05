@@ -3,17 +3,31 @@ package com.practices.demo.model;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity(name = "PEOPLE")
 @Table(name = "PEOPLE", uniqueConstraints = @UniqueConstraint(columnNames = { "dni" }))
 public class Persona extends BaseEntity {
 
-	
-	
+
+	@NotNull
+	@Size(min=9, max=9, message = "Error in the length of the DNI")
 	private String dni;
+
+	@NotNull
+	@Size(min=2, max=30, message = "Error in the length of the Name")
 	private String name;
+
+	@NotNull
+	@Size(min=2, max=30, message = "Error in the length of the Lastname")
 	private String lastname;
+
+	@NotNull
+	@Min(18)
 	private int age;
+
 	private Gender gender;
 	private boolean hascar;
 
