@@ -1,13 +1,14 @@
-<html layout:decorate="~{layouts/layout}">
+<html layout:decorate="~{layouts/layout}" lang="${#locale.languaje}">
 <head>
-<title>Create Person</title>
+<title th:text="#{homecreateperson}"></title>
 </head>
+
 <body>
 	<!-- /*Llama al contenedor layout.html*/ -->
 	<div layout:fragment="content">
 		<!-- /*Conecta y adapta el cuestionario person.html*/ -->
 		<div th:include="form/person :: person"
-			th:with="call='/create',action='Create'"></div>
+			th:with="call='/create',action='Create',btn='btn.create'"></div>
 
 	</div>
 </body>

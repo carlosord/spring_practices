@@ -1,23 +1,24 @@
-<html layout:decorate="~{layouts/layout}" >
+<html layout:decorate="~{layouts/layout}" lang=”${#locale.language}”>
 <head>
-<title>Home Page</title>
+<title th:text="#{homepage}"></title>
 </head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <body>
 
-	<!-- /*Llama al contenedor layout.html*/ -->
-	<div layout:fragment="content">
+		<!-- /*Llama al contenedor layout.html*/ -->
+		<div layout:fragment="content">
 			<div class="pt-5 input-text-center">
 				<!-- /* Tabla */ -->
 				<table class="table table-striped text-center">
 					<!-- /* Tema de la columna */ -->
 					<thead class="thead-dark">
 						<tr>
-							<th scope="col">DNI</th>
-							<th scope="col">Name</th>
-							<th scope="col">Lastname</th>
-							<th scope="col">Age</th>
-							<th scope="col">Gender</th>
-							<th scope="col">Has car</th>
+							<th scope="col" th:text="#{dni}"></th>
+							<th scope="col" th:text="#{name}"></th>
+							<th scope="col" th:text="#{lastname}"></th>
+							<th scope="col" th:text="#{age}"></th>
+							<th scope="col" th:text="#{gender}"></th>
+							<th scope="col" th:text="#{hascar}"></th>
 							<th scope="col"></th>
 							<th scope="col"></th>
 						</tr>
@@ -60,10 +61,9 @@
 
 					</tbody>
 				</table>
-				<!-- /* Boton centrado para a�adir una nueva persona */ -->
+				<!-- /* Boton centrado para añadir una nueva persona */ -->
 				<div class="row justify-content-md-center">
-					<a href="/register" class="btn btn-lg btn-success">Create New
-						Person</a>
+					<a href="/register" class="btn btn-lg btn-success" th:text="#{createperson}"></a>
 				</div>
 			</div>
 		</div>
