@@ -1,6 +1,7 @@
-<html layout:decorate="~{layouts/layout}">
+<html layout:decorate="~{layouts/layout}" lang="${#locale.languaje}">
 <head>
 </head>
+
 <body>
 
 	<div class="container">
@@ -14,47 +15,47 @@
 					<input type="hidden" th:field="*{id}">
 					<!-- /*DNI*/ -->
 					<div class="form-group">
-						<label for="dni">DNI</label> <input type="text"
+						<label for="dni" th:text="#{dni}"></label> <input type="text"
 							class="form-control" th:field="*{dni}" id="dni"
-							placeholder="Introduce your DNI. Ej: 12345678A"
+							th:attr="placeholder=#{dnip}"
 							th:readonly="${#strings.equals(action,'Update')}">
 					</div>
 					<!-- /*Nombre*/ -->
 					<div class="form-group">
-						<label for="name">Name</label> <input type="text"
+						<label for="name" th:text="#{name}"></label> <input type="text"
 							class="form-control" th:field="*{name}" id="name"
-							placeholder="Introduce your Name. Ej: Tom">
+							th:attr="placeholder=#{namep}">
 					</div>
 					<!-- /*Apellido*/ -->
 					<div class="form-group">
-						<label for="lastname">Lastname</label> <input type="text"
+						<label for="lastname" th:text="#{lastname}"></label> <input type="text"
 							class="form-control" th:field="*{lastname}" id="lastname"
-							placeholder="Introduce your Lastname. Ej: Smith">
+							th:attr="placeholder=#{lastnamep}">
 					</div>
 					<!-- /*Edad*/ -->
 					<div class="form-group">
-						<label for="age">Age</label> <input type="number"
+						<label for="age" th:text="#{age}"></label> <input type="number"
 							class="form-control" th:field="*{age}" id="age"
-							placeholder="Introduce your age. Ej: 18">
+							th:attr="placeholder=#{agep}">
 					</div>
 					<!-- /*Genero*/ -->
 					<div class="form-group">
-						<label for="gender">Gender</label> <select class="form-control"
+						<label for="gender" th:text="#{gender}"></label> <select class="form-control"
 							th:field="*{gender}" id="gender">
-							<option value="MALE">Male</option>
-							<option value="FEMALE">Female</option>
+							<option value="MALE" th:text="#{male}"></option>
+							<option value="FEMALE" th:text="#{female}"></option>
 						</select>
 					</div>
 					<!-- /*Si tiene o no coche*/ -->
 					<div class="form-group">
 						<input type="checkbox" th:field="*{hascar}" id="hascar"> <label
-							for="hascar">Has a car</label>
+							for="hascar" th:text="#{hascar}"></label>
 					</div>
 					<!-- /*Botón cancelar (Vuelve a home) y añadir/modificar campos*/ -->
 					<button type="submit" class="btn btn-primary">
-						<span th:text="@{(${action})}"></span> Person
+						<span th:text="@{(${action})}"></span>
 					</button>
-					<a href="/home" class="btn btn-danger">Cancel</a>
+					<a href="/home" class="btn btn-danger" th:text="#{cancel}"></a>
 
 				</form>
 
