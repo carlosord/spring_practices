@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html layout:decorate="~{layouts/layout}">
 <head>
-<title>Edit Person</title>
+<title th:text="#{title.page.edit}"></title>
 </head>
 <body>
 	<div layout:fragment="content">
 
-		<div th:include="forms/person :: person_form" th:with="call='/edit',action='Update'"></div>
+		<div th:include="forms/person :: person_form" 
+				th:with="call='${T(com.practices.demo.presentation.front.Url).EDIT_PERSON_URL',
+				action='update',btn='form.person.update'"></div>
 
 	</div>
 </body>

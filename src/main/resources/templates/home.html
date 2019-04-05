@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html layout:decorate="~{layouts/layout}">
 <head>
-<title>People List</title>
+<title th:text="#{title.page.home}"></title>
 </head>
 <body>
 	<div layout:fragment="content">
@@ -9,12 +9,12 @@
 		<table class="table table-striped text-center">
 			<thead class="thead-dark">
 				<tr>
-					<th scope="col">DNI</th>
-					<th scope="col">Name</th>
-					<th scope="col">Lastname</th>
-					<th scope="col">Age</th>
-					<th scope="col">Gender</th>
-					<th scope="col">Has car</th>
+					<th scope="col" th:text="#{person.dni}"></th>
+					<th scope="col" th:text="#{person.name}"></th>
+					<th scope="col" th:text="#{person.lastname}"></th>
+					<th scope="col" th:text="#{person.age}"></th>
+					<th scope="col" th:text="#{person.gender}"></th>
+					<th scope="col" th:text="#{person.hascar}"></th>
 					<th scope="col"></th>
 					<th scope="col"></th>
 				</tr>
@@ -44,7 +44,7 @@
 
 		<div class="row justify-content-md-center">
 			<a th:href="${T(com.practices.demo.presentation.front.Url).NEW_PERSON_URL}" 
-				class="btn btn-lg btn-success">Create a person</a>
+				class="btn btn-lg btn-success" th:text=#{form.person.create}></a>
 		</div>
 
 	</div>
