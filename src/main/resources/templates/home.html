@@ -1,8 +1,8 @@
-<html layout:decorate="~{layouts/layout}">
+<html layout:decorate="~{layouts/layout}" th:lang="${#locale.language}">
 <head>
 
 
-<title>Home Page</title>
+<title th:text="#{Homepage}"></title>
 
 </head>
 <body>
@@ -12,19 +12,19 @@
 	<!-- /* Tabla */ -->
 	<div class="container">
 		<div class="py-5 input-text-center">
-
+	
 			<table class="table table-striped text-center">
 
 				<thead class="thead-dark">
 					<tr>
 
 						<!-- /* Columnas y etiqueta para cada una */ -->
-						<th scope="col">DNI</th>
-						<th scope="col">Name</th>
-						<th scope="col">Lastname</th>
-						<th scope="col">Age</th>
-						<th scope="col">Gender</th>
-						<th scope="col">Has car</th>
+						<th scope="col" th:text="#{DNI}"></th>
+						<th scope="col" th:text="#{Name}"></th>
+						<th scope="col" th:text="#{Lastname}"></th>
+						<th scope="col" th:text="#{Age}"></th>
+						<th scope="col" th:text="#{Gender}"></th>
+						<th scope="col" th:text="#{Hascar}"></th>
 						<th scope="col"></th>
 						<th scope="col"></th>
 					</tr>
@@ -71,8 +71,10 @@
 
 			<!-- /* Boton centrado para añadir una nueva persona */ -->
 			<div class="row justify-content-md-center">
-				<a href="/register" class="btn btn-lg btn-success">Create New Person</a>
+				<a href="/register" class="btn btn-lg btn-success" th:text="#{Createnewperson}"></a>
 			</div>
+			
+			
 		</div>
 	</div>
 	
