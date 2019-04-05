@@ -1,7 +1,7 @@
-<html layout:decorate="~{layouts/layout}">
+<html layout:decorate="~{layouts/layout}" th:lang="${#locale.language}">
 <html>
 <head>
-<title>Insert title here</title>
+
 </head>
 <body>
 
@@ -23,53 +23,54 @@
 			
 				<!-- /*Etiqueta dni, type y texto orientativo para el usuario-->
 				<div class="form-group">
-					<label for="dni">DNI</label> <input type="text"
+					<label for="dni" th:text="#{DNI}"></label> <input type="text"
 						class="form-control" id="dni" name="dni"
-						placeholder="Introduce DNI.Ej: 12345678A" th:field="*{dni}"
+						th:attr="placeholder=#{DNIP}" th:field="*{dni}"
 						th:readonly="${#strings.equals(action2,'update')}">
 				</div>
 
 				<!-- /*Etiqueta nombre, type y texto orientativo para el usuario-->
 				<div class="form-group">
-					<label for="name">Name</label> <input type="text"
+					<label for="name" th:text="#{Name}"></label> <input type="text"
 						class="form-control" id="name" name="name"
-						placeholder="Introduce name.Ej: Charles" th:field="*{name}">
+						th:attr="placeholder=#{Namep}" th:field="*{name}">
 				</div>
 
 				<!-- /*Etiqueta lastname, type y texto orientativo para el usuario-->
 				<div class="form-group">
-					<label for="lastname">LastName</label> <input type="text"
+					<label for="lastname" th:text="#{Lastname}"></label> <input type="text"
 						class="form-control" id="lastname" name="lastname"
-						placeholder="Introduce lastname.Ej: Jones" th:field="*{lastname}">
+						th:attr="placeholder=#{Lastnamep}" th:field="*{lastname}">
 				</div>
 
 				<!-- /*Etiqueta edad, type y texto orientativo para el usuario-->
 				<div class="form-group">
-					<label for="age">Age</label> <input type="number"
+					<label for="age" th:text="#{Age}"></label> <input type="number"
 						class="form-control" id="age" name="age"
 						placeholder="Introduce age.Ej: 25" th:field="*{age}">
 				</div>
 
 				<!-- /*Etiqueta genero, type y opciones que podemos elegir -->
 				<div class="form-group">
-					<label for="gender">Gender</label> <select class="form-control"
+					<label for="gender" th:text="#{Gender}"></label> <select class="form-control"
 						id="gender" name="gender" th:field="*{gender}">
-						<option value="MALE">Male</option>
-						<option value="FEMALE">Female</option>
+						<option value="MALE" th:text="#{Male}"></option>
+						<option value="FEMALE" th:text="#{Female}"></option>
 					</select>
 				</div>
 
 				<!-- /*Checkbox para saber si el usuario tiene o no coche-->
 				<div class="form-group">
 					<input type="checkbox" id="hascar" name="hascar"
-						th:field="*{hascar}"> Has a car
+						th:field="*{hascar}" th:text="#{Hascar}">
 				</div>
 
 				<!-- /* Botones crear una nueva persona y cancelar */ -->
 				<div class="form-group">
-					<button type="submit" class="btn btn-lg btn-primary">Create
-						Person</button>
-					<a href="/home" class="btn btn-lg btn-danger">Cancel</a>
+					<button type="submit" class="btn btn-lg btn-primary">
+					   <span th:text="#{@{(${btn})}}"></span>
+					</button>
+					<a href="/home" class="btn btn-lg btn-danger" th:text="#{Cancel}"></a>
 				</div>
 
 			</form>

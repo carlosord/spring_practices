@@ -1,13 +1,14 @@
-<html layout:decorate="~{layouts/layout}">
+<html layout:decorate="~{layouts/layout}" th:lang="${#locale.language}">
 <head>
 
+<title th:text="#{Updateperson}"></title>
 
 </head>
 
 <body>
 
 	<div layout:fragment="content">
-	<div th:with="action='/update', action2='update'"
+	<div th:with="action='/update', action2='update', btn='btn.update'"
 		th:include="form/person :: person"></div>
 
 	</div>

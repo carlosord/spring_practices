@@ -1,13 +1,14 @@
-<html layout:decorate="~{layouts/layout}">
+<html layout:decorate="~{layouts/layout}" th:lang="${#locale.language}">
 <head>
 
+<title th:text="#{Registerperson}"></title>
 
 </head>
 <body>
 
 
 	<div layout:fragment="content">
-	<div th:with="action='@{/create}', action='create'"
+	<div th:with="action='@{/create}', action2='create', btn='btn.create'"
 		th:include="form/person :: person"></div>
 	</div>
 </body>
