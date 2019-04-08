@@ -3,7 +3,9 @@ package com.practices.demo.model;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -13,19 +15,20 @@ public class Persona extends BaseEntity {
 
 
 	@NotNull
-	@Size(min=9, max=9, message = "Error in the length of the DNI")
+	@NotEmpty
 	private String dni;
 
 	@NotNull
-	@Size(min=2, max=30, message = "Error in the length of the Name")
+	@Size(min=2, max=30, message = "{name.notvalid}")
 	private String name;
 
 	@NotNull
-	@Size(min=2, max=30, message = "Error in the length of the Lastname")
+	@Size(min=3, max=15, message = "{lastname.notvalid}")
 	private String lastname;
 
 	@NotNull
-	@Min(18)
+	@Min(value=15, message = "{age.error}")
+	@Max(value=65, message = "{age.error}")
 	private int age;
 
 	private Gender gender;

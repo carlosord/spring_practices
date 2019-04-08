@@ -1,102 +1,101 @@
 <html layout:decorate="~{layouts/layout}" th:lang="${#locale.language}">
-<html>
 <head>
 
 </head>
 <body>
 
+	<div class="container">
 
-	<div class="pt-5 container" th:fragment="person">
+		<div class="pt-5 input-text-center">
 
-		<div class="input-text-center">
+			<div th:fragment="person">
 
-			<!-- /* Formulario con accion, objeto sobre el que actuamos y metodo que usamos */ -->
+				<!-- /* Formulario con accion, objeto sobre el que actuamos y metodo que usamos */ -->
 
-			<form action="#" th:action="@{(${action})}"
-				th:object="${persona}" method="post"
-				class="form-inlin justify-content-center">
+				<form action="#" th:action="@{(${action})}" th:object="${persona}"
+					method="post" class="form-inlin justify-content-center">
 
 
-			<!-- /* Pasa la id de la persona de forma oculta en el formulario de forma que obtenemos
+					<!-- /* Pasa la id de la persona de forma oculta en el formulario de forma que obtenemos
 			se obtiene la id a la hora de editar pero no lo vemos al estar oculta */ -->
-			<input type="hidden" th:field="*{id}">
+					<input type="hidden" th:field="*{id}">
 
-				<!-- /*Etiqueta dni, type y texto orientativo para el usuario-->
-				<div class="form-group">
-					<label for="dni" th:text="#{DNI}"></label> <input type="text"
-						class="form-control" id="dni" name="dni"
-						th:attr="placeholder=#{DNIP}" th:field="*{dni}"
-						th:readonly="${#strings.equals(action2,'update')}">
-
-
-				<!-- /*Span con condicion asignada en clase persona sobre el campo dni y salida de mensaje de error-->
-				<span th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></span>
+					<!-- /*Etiqueta dni, type y texto orientativo para el usuario-->
+					<div class="form-group">
+						<label for="dni" th:text="#{DNI}"></label> <input type="text"
+							class="form-control" id="dni" name="dni"
+							th:attr="placeholder=#{DNIP}" th:field="*{dni}"
+							th:readonly="${#strings.equals(action2,'update')}" length=9
+							required pattern="[0-9]{8}[A-Z]">
 
 
-				</div>
-
-				<!-- /*Etiqueta nombre, type y texto orientativo para el usuario*/-->
-				<div class="form-group">
-					<label for="name" th:text="#{Name}"></label> <input type="text"
-						class="form-control" id="name" name="name"
-						th:attr="placeholder=#{Namep}" th:field="*{name}">
-
-				<!-- /*Span con condicion asignada en clase persona sobre el campo name y salida de mensaje de error-->
-					<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+						<!-- /*Span con condicion asignada en clase persona sobre el campo dni y salida de mensaje de error-->
+						<span th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></span>
 
 
-				</div>
+					</div>
 
-				<!-- /*Etiqueta lastname, type y texto orientativo para el usuario-->
-				<div class="form-group">
-					<label for="lastname" th:text="#{Lastname}"></label> <input type="text"
-						class="form-control" id="lastname" name="lastname"
-						th:attr="placeholder=#{Lastnamep}" th:field="*{lastname}">
+					<!-- /*Etiqueta nombre, type y texto orientativo para el usuario*/-->
+					<div class="form-group">
+						<label for="name" th:text="#{Name}"></label> <input type="text"
+							class="form-control" id="name" name="name"
+							th:attr="placeholder=#{Namep}" th:field="*{name}" required>
 
-				<!-- /*Span con condicion asignada en clase persona sobre el campo lastname y salida de mensaje de error-->
-				 <span th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></span>
+						<!-- /*Span con condicion asignada en clase persona sobre el campo name y salida de mensaje de error-->
+						<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
 
-				</div>
 
-				<!-- /*Etiqueta edad, type y texto orientativo para el usuario-->
-				<div class="form-group">
-					<label for="age" th:text="#{Age}"></label> <input type="number"
-						class="form-control" id="age" name="age"
-						placeholder="Introduce age.Ej: 25" th:field="*{age}">
+					</div>
 
-				<span th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
+					<!-- /*Etiqueta lastname, type y texto orientativo para el usuario-->
+					<div class="form-group">
+						<label for="lastname" th:text="#{Lastname}"></label> <input
+							type="text" class="form-control" id="lastname" name="lastname"
+							th:attr="placeholder=#{Lastnamep}" th:field="*{lastname}" required>
 
-				</div>
+						<!-- /*Span con condicion asignada en clase persona sobre el campo lastname y salida de mensaje de error-->
+						<span th:if="${#fields.hasErrors('lastname')}"
+							th:errors="*{lastname}"></span>
 
-				<!-- /*Etiqueta genero, type y opciones que podemos elegir -->
-				<div class="form-group">
-					<label for="gender" th:text="#{Gender}"></label> <select class="form-control"
-						id="gender" name="gender" th:field="*{gender}">
-						<option value="MALE" th:text="#{Male}"></option>
-						<option value="FEMALE" th:text="#{Female}"></option>
-					</select>
-				</div>
+					</div>
 
-				<!-- /*Checkbox para saber si el usuario tiene o no coche-->
-				<div class="form-group">
-					<input type="checkbox" id="hascar" name="hascar"
-						th:field="*{hascar}" th:text="#{Hascar}">
-				</div>
+					<!-- /*Etiqueta edad, type y texto orientativo para el usuario-->
+					<div class="form-group">
+						<label for="age" th:text="#{Age}"></label> <input type="number"
+							class="form-control" id="age" name="age"
+							placeholder="Introduce age.Ej: 25" th:field="*{age}"> <span
+							th:if="${#fields.hasErrors('age')}" th:errors="*{age}" required></span>
 
-				<!-- /* Botones crear una nueva persona y cancelar */ -->
-				<div class="form-group">
-					<button type="submit" class="btn btn-lg btn-primary">
-					   <span th:text="#{@{(${btn})}}"></span>
-					</button>
-					<a href="/home" class="btn btn-lg btn-danger" th:text="#{Cancel}"></a>
-				</div>
+					</div>
 
-			</form>
+					<!-- /*Etiqueta genero, type y opciones que podemos elegir -->
+					<div class="form-group">
+						<label for="gender" th:text="#{Gender}"></label> <select
+							class="form-control" id="gender" name="gender"
+							th:field="*{gender}" required>
+							<option value="MALE" th:text="#{Male}"></option>
+							<option value="FEMALE" th:text="#{Female}"></option>
+						</select>
+					</div>
 
+					<!-- /*Checkbox para saber si el usuario tiene o no coche-->
+					<div class="form-group">
+						<input type="checkbox" id="hascar" name="hascar"
+							th:field="*{hascar}" th:text="#{Hascar}">
+					</div>
+
+					<!-- /* Botones crear una nueva persona y cancelar */ -->
+						<button type="submit" class="btn btn-lg btn-primary">
+							<span th:text="#{@{(${btn})}}"></span>
+						</button>
+						<a href="/home" class="btn btn-lg btn-danger" th:text="#{Cancel}"></a>
+
+				</form>
+
+			</div>
 		</div>
+
 	</div>
-
-
 
 
 
