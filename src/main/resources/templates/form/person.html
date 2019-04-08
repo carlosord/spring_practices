@@ -19,7 +19,7 @@
 							class="form-control" th:field="*{dni}" id="dni"
 							th:attr="placeholder=#{dnip}"
 							th:readonly="${#strings.equals(action,'Update')}"
-							minlength="9" maxlength=9 required pattern="[0-9]{8}[^A-Z]">
+							length=9 required pattern="[0-9]{8}[A-Z]">
 
 						<span th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></span>
 					</div>
@@ -28,7 +28,7 @@
 					<div class="form-group">
 						<label for="name" th:text="#{name}"></label> <input type="text"
 							class="form-control" th:field="*{name}" id="name"
-							th:attr="placeholder=#{namep}">
+							th:attr="placeholder=#{namep}" required>
 
 						<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
 					</div>
@@ -36,7 +36,7 @@
 					<div class="form-group">
 						<label for="lastname" th:text="#{lastname}"></label> <input
 							type="text" class="form-control" th:field="*{lastname}"
-							id="lastname" th:attr="placeholder=#{lastnamep}">
+							id="lastname" th:attr="placeholder=#{lastnamep}" required>
 
 						<span th:if="${#fields.hasErrors('lastname')}"
 							th:errors="*{lastname}"></span>
@@ -45,14 +45,14 @@
 					<div class="form-group">
 						<label for="age" th:text="#{age}"></label> <input type="number"
 							class="form-control" th:field="*{age}" id="age"
-							th:attr="placeholder=#{agep}">
+							th:attr="placeholder=#{agep}" required>
 
 						<span th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
 					</div>
 					<!-- /*Genero*/ -->
 					<div class="form-group">
 						<label for="gender" th:text="#{gender}"></label> <select
-							class="form-control" th:field="*{gender}" id="gender">
+							class="form-control" th:field="*{gender}" id="gender" required>
 							<option value="MALE" th:text="#{male}"></option>
 							<option value="FEMALE" th:text="#{female}"></option>
 						</select>
@@ -62,6 +62,7 @@
 						<input type="checkbox" th:field="*{hascar}" id="hascar"> <label
 							for="hascar" th:text="#{hascar}"></label>
 					</div>
+
 					<!-- /*Bot�n cancelar (Vuelve a home) y a�adir/modificar campos*/ -->
 					<button type="submit" class="btn btn-primary">
 						<span th:text="@{(${action})}"></span>

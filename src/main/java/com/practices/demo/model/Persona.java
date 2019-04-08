@@ -1,12 +1,7 @@
 package com.practices.demo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.persistence.*;
+import javax.validation.constraints.*;
 
 
 @Entity
@@ -17,16 +12,16 @@ public class Persona extends BaseEntity {
 	private String dni;
 
 	@NotNull
-	@Size(min=3, max=15, message = "Error de tamaño")
+	@Size(min=3, max=15, message = "{name.error}")
 	private String name;
 
 	@NotNull
-	@Size(min=3, max=15, message = "Error de tamaño")
+	@Size(min=3, max=15, message = "{lastname.error}")
 	private String lastname;
 
 	@NotNull
-	@Min(15)
-	@Max(65)
+	@Min(value= 15, message = "{age.error}")
+	@Max(value= 65, message = "{age.error}" )
 	private int age;
 
 	@NotNull
