@@ -28,7 +28,7 @@ public class PersonValidation implements Validator {
 			errors.rejectValue("dni", "person.dni.error.invalid");
 		}
 
-		if (dniIsDuplicate(personForm.getDni())) {
+		if (personForm.getId()==null && dniIsDuplicate(personForm.getDni())) {
 			errors.rejectValue("dni", "person.dni.error.duplicate");
 		}
 	}

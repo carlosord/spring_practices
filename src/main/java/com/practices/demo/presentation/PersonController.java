@@ -102,9 +102,11 @@ public class PersonController {
 		
 		// Get the person
 		Person person = personRepository.findById(id).orElseThrow(NoSuchElementException::new);
+		PersonForm personForm = new PersonForm();
+		personForm.getPersonForm(person);
 		
 		// Add new person to model
-		model.addAttribute("person", person);
+		model.addAttribute("personForm", personForm);
 		
 		// Return new person view
 		return View.EDIT_PERSON_VIEW;
@@ -119,8 +121,14 @@ public class PersonController {
 	 * @return the string
 	 */
 	@PostMapping(Url.EDIT_PERSON_URL)
-	public String updatePerson(ModelMap model, PersonForm personForm) {
+	public String updatePerson(ModelMap model, @Valid PersonForm personForm, BindingResult bindingResult) {
+
+		personValidator.validate(personForm, bindingResult);
 		
+		if(bindingResult.hasErrors()) {						
+			return View.NEW_PERSON_VIEW;
+		}
+
 		// Add new person to db
 		personRepository.save(personForm.toPerson());
 		
