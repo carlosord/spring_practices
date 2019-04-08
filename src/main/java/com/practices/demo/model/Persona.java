@@ -19,7 +19,7 @@ public class Persona extends BaseEntity {
 	private String dni;
 
 	@NotNull
-	@Size(min=2, max=30, message = "{name.notvalid}")
+	@Size(min=3, max=15, message = "{name.notvalid}")
 	private String name;
 
 	@NotNull
@@ -27,7 +27,7 @@ public class Persona extends BaseEntity {
 	private String lastname;
 
 	@NotNull
-	@Min(value=15, message = "{age.error}")
+	@Min(value=18, message = "{age.error}")
 	@Max(value=65, message = "{age.error}")
 	private int age;
 
