@@ -9,23 +9,28 @@ import javax.validation.constraints.*;
 public class Persona extends BaseEntity {
 
 	@NotNull
+	@Column(name = "DNI")
 	private String dni;
 
 	@NotNull
-	@Size(min=3, max=15, message = "{name.error}")
+	@Size(min=0,max=255)
+	@Column(name = "NAME")
 	private String name;
 
 	@NotNull
-	@Size(min=3, max=15, message = "{lastname.error}")
+	@Size(min=0,max=255)
+	@Column(name = "LASTNAME")
 	private String lastname;
 
 	@NotNull
-	@Min(value= 18, message = "{age.error}")
-	@Max(value= 65, message = "{age.error}" )
+	@Column(name = "AGE")
 	private int age;
 
 	@NotNull
+	@Column(name = "GENDER")
 	private Gender gender;
+
+	@Column(name = "HASCAR")
 	private boolean hascar;
 
 	public Persona() {
