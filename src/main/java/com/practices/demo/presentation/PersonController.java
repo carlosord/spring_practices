@@ -16,7 +16,7 @@ import com.practices.demo.model.Person;
 import com.practices.demo.presentation.form.PersonForm;
 import com.practices.demo.presentation.front.Url;
 import com.practices.demo.presentation.front.View;
-import com.practices.demo.presentation.validation.PersonValidation;
+import com.practices.demo.presentation.validation.PersonValidator;
 import com.practices.demo.repositories.PersonRepository;
 
 /**
@@ -29,8 +29,9 @@ public class PersonController {
 	@Autowired
 	private PersonRepository personRepository;
 	
+	/** The person validator. */
 	@Autowired
-	private PersonValidation personValidator;
+	private PersonValidator personValidator;
 	
 	/**
 	 * Show all.
@@ -70,7 +71,8 @@ public class PersonController {
 	 * Adds the new person.
 	 *
 	 * @param model the model
-	 * @param person the person
+	 * @param personForm the person form
+	 * @param bindingResult the binding result
 	 * @return the string
 	 */
 	@PostMapping(Url.NEW_PERSON_URL)
@@ -102,6 +104,7 @@ public class PersonController {
 		
 		// Get the person
 		Person person = personRepository.findById(id).orElseThrow(NoSuchElementException::new);
+		
 		PersonForm personForm = new PersonForm();
 		personForm.getPersonForm(person);
 		
@@ -117,7 +120,8 @@ public class PersonController {
 	 * Update person.
 	 *
 	 * @param model the model
-	 * @param person the person
+	 * @param personForm the person form
+	 * @param bindingResult the binding result
 	 * @return the string
 	 */
 	@PostMapping(Url.EDIT_PERSON_URL)

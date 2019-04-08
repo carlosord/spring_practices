@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import com.practices.demo.model.types.Gender;
 
@@ -18,6 +19,7 @@ public class Person extends BaseEntity {
 	/** The dni. */
 	@NotEmpty
 	@Column(name = "dni", nullable = false)
+	@Size(min = 9, max = 9)
 	private String dni;
 
 	/** The name. */
