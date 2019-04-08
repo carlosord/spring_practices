@@ -1,9 +1,16 @@
 package com.practices.demo.presentation;
 
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,71 +23,78 @@ import com.practices.demo.persistence.PersonaRepository;
 
 @Controller
 public class SimpleController{
-	
+
 	@Autowired
 	private PersonaRepository repo;
-	
+
 	@GetMapping("/home")
 	public String homePage(Model model) {
-		
-		
+
+
 		model.addAttribute("personas", repo.findAll());
 		return "home";
 	}
-	
+
 	@GetMapping("/register")
 	public String registerPage(Model model) {
-		
-		
+
+
 		model.addAttribute("persona", new Persona());
 		return "register";
 	}
-	
+
 	@PostMapping("/create")
-	public String registerUser( Persona createperson, Model model) {
-		
-		
+	public String registerUser(@Valid Persona createperson, BindingResult bindingResult, Model model) {
+
+
+		 if (bindingResult.hasErrors()) {
+	            return "register";
+	        }
+
 		System.err.println("Person:" + createperson);
-		
+
 		repo.save(createperson);
 //		model.addAttribute("personas", repo.findAll());
 		return "redirect:/home";
-		
+
 	}
-	
-	
-	@GetMapping("/edit/{id}")     
-	public String edituser(@PathVariable("id") String id, Model model) {  
-		
-		Persona p = repo.findById(Long.valueOf(id))      
-				.orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));  
-		
-		model.addAttribute("persona", p);       
-		return "/update";    
-		
-	}       
-	
-	@PostMapping("/update")  
+
+
+	@GetMapping("/edit/{id}")
+	public String edituser(@PathVariable("id") String id, Model model) {
+
+		Persona p = repo.findById(Long.valueOf(id))
+				.orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+
+		model.addAttribute("persona", p);
+		return "/update";
+
+	}
+
+	@PostMapping("/update")
     public String updatePerson(Persona updateperson, Model model) {
-		
-		
-		
-		repo.save(updateperson); 
-	
+
+
+
+		repo.save(updateperson);
+
 		return "redirect:/home";     }
-	
-	
-	
+
+
+
 	@RequestMapping(value= "/delete/{id}", method=RequestMethod.GET)
 	public String deleteUser(@PathVariable long id, Model model) {
-		
-		
+
+
 		repo.deleteById(id);
 
 		return"redirect:/home";
-		
-	}
-	
 
-	
+	}
+
+
+
+
+
+
 }
