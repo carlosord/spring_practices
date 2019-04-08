@@ -1,22 +1,30 @@
 package com.practices.demo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.persistence.*;
+import javax.validation.constraints.*;
+
 
 @Entity
 @Table(name = "PEOPLE", uniqueConstraints = @UniqueConstraint(columnNames = { "dni" }))
 public class Persona extends BaseEntity {
 
+	@NotNull
 	private String dni;
+
+	@NotNull
+	@Size(min=3, max=15, message = "{name.error}")
 	private String name;
+
+	@NotNull
+	@Size(min=3, max=15, message = "{lastname.error}")
 	private String lastname;
+
+	@NotNull
+	@Min(value= 15, message = "{age.error}")
+	@Max(value= 65, message = "{age.error}" )
 	private int age;
+
+	@NotNull
 	private Gender gender;
 	private boolean hascar;
 

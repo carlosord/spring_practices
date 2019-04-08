@@ -4,11 +4,9 @@
 </head>
 
 <body>
-	<!-- /*Llama al contenedor layout.html*/ -->
 	<div layout:fragment="content">
-		<!-- /*Conecta y adapta el cuestionario person.html*/ -->
 		<div th:include="form/person :: person"
-			th:with="call='/create',action='Create',btn='btn.create'"></div>
+			th:with="call='/create', action='Create', btn='btn.create'"></div>
 
 	</div>
 </body>
