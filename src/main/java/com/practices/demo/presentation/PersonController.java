@@ -1,7 +1,5 @@
 package com.practices.demo.presentation;
 
-import java.util.NoSuchElementException;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.practices.demo.model.Person;
+import com.practices.demo.dto.PersonDto;
 import com.practices.demo.presentation.form.PersonForm;
 import com.practices.demo.presentation.front.Url;
 import com.practices.demo.presentation.front.View;
 import com.practices.demo.presentation.validation.PersonValidator;
-import com.practices.demo.repositories.PersonRepository;
+import com.practices.demo.service.PersonService;
 
 /**
  * The Class PersonController.
@@ -27,7 +25,7 @@ public class PersonController {
 		
 	/** The person repository. */
 	@Autowired
-	private PersonRepository personRepository;
+	private PersonService personService;
 	
 	/** The person validator. */
 	@Autowired
@@ -43,7 +41,7 @@ public class PersonController {
 	public String showAll(ModelMap model) {
 		
 		// Add all people to model
-		model.addAttribute("people", personRepository.findAll());
+		model.addAttribute("people", personService.findAll());
 		
 		// Return home view
 		return View.HOME_VIEW;
@@ -85,7 +83,7 @@ public class PersonController {
 		}
 		
 		// Add new person to db
-		personRepository.save(personForm.toPerson());
+		personService.addNewPerson(personForm.toPerson());
 		
 		// Return new person view
 		return View.redirect(View.HOME_VIEW);
@@ -103,7 +101,7 @@ public class PersonController {
 	public String showEditPersonForm(@PathVariable("id") Long id, ModelMap model) {
 		
 		// Get the person
-		Person person = personRepository.findById(id).orElseThrow(NoSuchElementException::new);
+		PersonDto person = personService.findPersonById(id);
 		
 		PersonForm personForm = new PersonForm();
 		personForm.getPersonForm(person);
@@ -134,7 +132,7 @@ public class PersonController {
 		}
 
 		// Add new person to db
-		personRepository.save(personForm.toPerson());
+		personService.updatePerson(personForm.toPerson());
 		
 		// Return home view
 		return View.redirect(View.HOME_VIEW);
@@ -152,7 +150,7 @@ public class PersonController {
 	public String deletePersonForm(@PathVariable("id") Long id, ModelMap model) {
 
 		// Delete the person
-		personRepository.deleteById(id);
+		personService.deletePersonForm(id);
 		
 		// Return home view
 		return View.redirect(View.HOME_VIEW);
