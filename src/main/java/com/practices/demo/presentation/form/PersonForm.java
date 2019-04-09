@@ -9,7 +9,6 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Length;
 
 import com.practices.demo.dto.PersonDto;
-import com.practices.demo.model.Person;
 import com.practices.demo.model.types.Gender;
 
 /**

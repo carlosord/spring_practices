@@ -16,6 +16,7 @@ import com.practices.demo.presentation.front.Url;
 import com.practices.demo.presentation.front.View;
 import com.practices.demo.presentation.validation.PersonValidator;
 import com.practices.demo.service.PersonService;
+import com.practices.demo.service.exception.BusinessException;
 
 /**
  * The Class PersonController.
@@ -83,11 +84,21 @@ public class PersonController {
 			return View.NEW_PERSON_VIEW;
 		}
 		
-		// Add new person to db
-		personService.addNewPerson(personForm.toPerson());
-		
-		// Return new person view
-		return View.redirect(View.HOME_VIEW);
+		try {
+			
+			// Add new person to db
+			personService.addNewPerson(personForm.toPerson());
+			
+			// Return new person view
+			return View.redirect(View.HOME_VIEW);
+			
+		} catch (BusinessException b) {
+			
+			bindingResult.rejectValue(b.getField(), b.getMessage());
+			
+			// Go back form
+			return View.NEW_PERSON_VIEW;
+		}
 		
 	}
 	
