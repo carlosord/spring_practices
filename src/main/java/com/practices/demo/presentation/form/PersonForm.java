@@ -8,6 +8,7 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.practices.demo.dto.PersonDto;
 import com.practices.demo.model.Person;
 import com.practices.demo.model.types.Gender;
 
@@ -52,9 +53,9 @@ public class PersonForm {
 	 *
 	 * @return the person
 	 */
-	public Person toPerson() {
+	public PersonDto toPerson() {
 		
-		Person p = new Person();
+		PersonDto p = new PersonDto();
 		
 		p.setId(id);
 		p.setDni(dni);
@@ -74,7 +75,7 @@ public class PersonForm {
 	 * @param person the person
 	 * @return the person form
 	 */
-	public void getPersonForm(Person person) {
+	public void getPersonForm(PersonDto person) {
 		
 		this.setId(person.getId());
 		this.setDni(person.getDni());
