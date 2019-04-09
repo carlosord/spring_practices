@@ -9,7 +9,7 @@ public class BusinessException extends Exception {
 	private static final long serialVersionUID = -8294390050869924558L;
 	
 	/** The field. */
-	private String field;
+	private final String field;
 
 	/**
 	 * Instantiates a new business exception.
@@ -29,15 +29,6 @@ public class BusinessException extends Exception {
 	 */
 	public String getField() {
 		return field;
-	}
-
-	/**
-	 * Sets the field.
-	 *
-	 * @param field the new field
-	 */
-	public void setField(String field) {
-		this.field = field;
 	}
 	
 }
