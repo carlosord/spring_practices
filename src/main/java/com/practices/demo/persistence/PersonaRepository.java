@@ -8,6 +8,6 @@ import com.practices.demo.model.Persona;
 @Repository
 public interface PersonaRepository extends JpaRepository <Persona, Long> {
 
-	
-	
+	Persona findByDni(String dni);
+
 }
