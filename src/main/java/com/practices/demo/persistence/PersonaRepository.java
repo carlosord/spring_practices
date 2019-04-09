@@ -9,7 +9,7 @@ import com.practices.demo.model.Persona;
 
 @Repository
 public interface PersonaRepository  extends JpaRepository<Persona, Long>{
-	
-	
+	//Consulta para buscar por dni
+	Persona findByDni(String dni);
 
 }
