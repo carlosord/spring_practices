@@ -76,6 +76,7 @@ public class PersonController {
 	@PostMapping(Url.NEW_PERSON_URL)
 	public String addNewPerson(ModelMap model, @Valid PersonForm personForm, BindingResult bindingResult) {
 		
+		// Validate person form
 		personValidator.validate(personForm, bindingResult);
 		
 		if(bindingResult.hasErrors()) {						
@@ -103,6 +104,7 @@ public class PersonController {
 		// Get the person
 		PersonDto person = personService.findPersonById(id);
 		
+		// Put data from dto to form
 		PersonForm personForm = new PersonForm();
 		personForm.getPersonForm(person);
 		
@@ -125,6 +127,7 @@ public class PersonController {
 	@PostMapping(Url.EDIT_PERSON_URL)
 	public String updatePerson(ModelMap model, @Valid PersonForm personForm, BindingResult bindingResult) {
 
+		// Validate person form
 		personValidator.validate(personForm, bindingResult);
 		
 		if(bindingResult.hasErrors()) {						

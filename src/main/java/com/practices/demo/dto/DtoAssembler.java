@@ -4,7 +4,7 @@ import com.practices.demo.model.Person;
 
 public class DtoAssembler {
 
-	public static Person toPerson(PersonDto dto) {
+	public static Person toEntity(PersonDto dto) {
 		Person entity = new Person();
 		entity.setId(dto.getId());
 		entity.setDni(dto.getDni());
@@ -16,7 +16,7 @@ public class DtoAssembler {
 		return entity;
 	}
 
-	public static PersonDto fromPerson(Person entity) {
+	public static PersonDto fromEntity(Person entity) {
 		PersonDto dto = new PersonDto();
 		dto.setId(entity.getId());
 		dto.setDni(entity.getDni());
