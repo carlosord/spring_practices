@@ -5,12 +5,14 @@ import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.practices.demo.dto.DtoAssembler;
 import com.practices.demo.dto.PersonDto;
 import com.practices.demo.repositories.PersonRepository;
 import com.practices.demo.service.PersonService;
+import com.practices.demo.service.exception.BusinessException;
 
 /**
  * The Class PersonServiceImpl.
@@ -61,11 +63,26 @@ public class PersonServiceImpl implements PersonService {
 	 * com.practices.demo.service.PersonService#addNewPerson(com.practices.demo.dto.
 	 * PersonDto)
 	 */
-	public PersonDto addNewPerson(PersonDto person) {
+	public PersonDto addNewPerson(PersonDto person) throws BusinessException {
 
+		try {
+			// Add new person to db
+			return DtoAssembler.fromEntity(
+					personRepository.save(DtoAssembler.toEntity(person)));
+		} catch (DataIntegrityViolationException e) {
+			throw new BusinessException("person.dni.error.duplicate", "dni");
+		}
+		
+		/** Other impl
+		// Check if dni already exist
+		if (findPersonByDni(person.getDni()) != null)
+			throw new BusinessException("person.dni.error.duplicate", "dni");
+		
 		// Add new person to db
 		return DtoAssembler.fromEntity(
 				personRepository.save(DtoAssembler.toEntity(person)));
+		**/
+			
 	}
 
 	/*

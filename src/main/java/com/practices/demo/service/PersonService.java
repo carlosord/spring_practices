@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.practices.demo.dto.PersonDto;
+import com.practices.demo.service.exception.BusinessException;
 
 /**
  * The Class PersonService.
@@ -40,8 +41,9 @@ public interface PersonService {
 	 *
 	 * @param person the person
 	 * @return the person dto
+	 * @throws BusinessException 
 	 */
-	public PersonDto addNewPerson(PersonDto person);
+	public PersonDto addNewPerson(PersonDto person) throws BusinessException;
 	
 	/**
 	 * Update person.

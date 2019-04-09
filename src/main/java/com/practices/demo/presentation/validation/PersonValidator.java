@@ -1,12 +1,10 @@
 package com.practices.demo.presentation.validation;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import com.practices.demo.presentation.form.PersonForm;
-import com.practices.demo.service.PersonService;
 
 /**
  * The Class PersonValidation.
@@ -16,10 +14,6 @@ public class PersonValidator implements Validator {
 	
 	/** The Constant LETTERS. */
 	private static final String LETTERS = "TRWAGMYFPDXBNJZSQVHLCKE";
-
-	/** The person repository. */
-	@Autowired
-	private PersonService personService;
 
 	/* (non-Javadoc)
 	 * @see org.springframework.validation.Validator#supports(java.lang.Class)
@@ -41,10 +35,6 @@ public class PersonValidator implements Validator {
 			errors.rejectValue("dni", "person.dni.error.invalid");
 		}
 
-		if (personForm.getId() == null && dniIsDuplicate(personForm.getDni())) {
-			errors.rejectValue("dni", "person.dni.error.duplicate");
-		}
-		
 	}
 
 	/**
@@ -71,16 +61,6 @@ public class PersonValidator implements Validator {
 		}
 		return check;
 		
-	}
-
-	/**
-	 * Dni is duplicate.
-	 *
-	 * @param dni the dni
-	 * @return true, if successful
-	 */
-	private boolean dniIsDuplicate(String dni) {
-		return personService.findPersonByDni(dni) != null;
 	}
 	
 }
