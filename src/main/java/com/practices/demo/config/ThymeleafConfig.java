@@ -9,7 +9,7 @@ import nz.net.ultraq.thymeleaf.LayoutDialect;
  * The Class Config.
  */
 @Configuration
-public class Config {
+public class ThymeleafConfig {
 	
 	/**
 	 * Layout dialect.
