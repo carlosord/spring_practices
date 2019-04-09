@@ -6,7 +6,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import com.practices.demo.presentation.form.PersonForm;
-import com.practices.demo.repositories.PersonRepository;
+import com.practices.demo.service.PersonService;
 
 /**
  * The Class PersonValidation.
@@ -19,7 +19,7 @@ public class PersonValidator implements Validator {
 
 	/** The person repository. */
 	@Autowired
-	private PersonRepository personRepository;
+	private PersonService personService;
 
 	/* (non-Javadoc)
 	 * @see org.springframework.validation.Validator#supports(java.lang.Class)
@@ -80,7 +80,7 @@ public class PersonValidator implements Validator {
 	 * @return true, if successful
 	 */
 	private boolean dniIsDuplicate(String dni) {
-		return personRepository.findByDni(dni) != null;
+		return personService.findPersonByDni(dni) != null;
 	}
 	
 }
