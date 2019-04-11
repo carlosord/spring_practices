@@ -1,48 +1,32 @@
 package com.practices.demo.model;
 
-import javax.persistence.*;
-import javax.validation.constraints.*;
+import java.util.Date;
 
+import javax.persistence.*;
 
 @Entity
 @Table(name = "PEOPLE", uniqueConstraints = @UniqueConstraint(columnNames = { "dni" }))
 public class Persona extends BaseEntity {
 
-	@NotNull
-	@Column(name = "DNI")
 	private String dni;
-
-	@NotNull
-	@Size(min=0,max=255)
-	@Column(name = "NAME")
 	private String name;
-
-	@NotNull
-	@Size(min=0,max=255)
-	@Column(name = "LASTNAME")
 	private String lastname;
-
-	@NotNull
-	@Column(name = "AGE")
 	private int age;
-
-	@NotNull
-	@Column(name = "GENDER")
+	private Date fecha;
 	private Gender gender;
-
-	@Column(name = "HASCAR")
 	private boolean hascar;
 
 	public Persona() {
 	};
 
-	public Persona(String dni, String name, String lastname, int age, Gender gender, boolean car) {
+	public Persona(String dni, String name, String lastname,int age, Gender gender, boolean car,Date fecha) {
 		this.dni = dni;
 		this.name = name;
 		this.lastname = lastname;
-		this.age = age;
+		this.age=age;
 		this.gender = gender;
 		this.hascar = car;
+		this.fecha=fecha;
 	}
 
 	public String getDni() {
@@ -69,12 +53,24 @@ public class Persona extends BaseEntity {
 		this.lastname = lastname;
 	}
 
+	public String getFullname() {
+		return this.name + " " + this.lastname;
+	}
+
 	public int getAge() {
 		return age;
 	}
 
 	public void setAge(int age) {
 		this.age = age;
+	}
+
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
 	}
 
 	public Gender getGender() {

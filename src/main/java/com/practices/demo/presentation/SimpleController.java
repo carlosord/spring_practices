@@ -14,60 +14,83 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.practices.demo.business.PersonServices;
-import com.practices.demo.model.Persona;
-
-
+import com.practices.demo.dto.PersonDto;
+import com.practices.demo.presentation.form.PersonForm;
+import com.practices.demo.validations.ValidacionDate;
+import com.practices.demo.validations.ValidacionDni;
 
 @Controller
-public class SimpleController{
+public class SimpleController {
 
 	@Autowired
 	private PersonServices serv;
 
-    @GetMapping("/home")
-    public String homePage(Model model) {
-    model.addAttribute("personas",serv.findAll());
-        return "home";
-    }
+	@Autowired
+	private ValidacionDni validator;
 
-    @GetMapping("/register")
-    public String registerPage(Model model) {
-    	model.addAttribute("persona", new Persona());
-        return "register";
-    }
+	@Autowired
+	private ValidacionDate validaFecha;
 
-    @PostMapping("/create")
-    public String submit(@Valid Persona createPerson, BindingResult bindingResult,  ModelMap model) {
+	@GetMapping("/home")
+	public String homePage(Model model) {
+		model.addAttribute("personas", serv.findAll());
+		return "home";
+	}
 
-    	if (bindingResult.hasErrors()) {
+	@GetMapping("/register")
+	public String registerPage(Model model) {
+		model.addAttribute("personForm", new PersonForm());
+		return "register";
+	}
+
+	@PostMapping("/create")
+	public String submit(@Valid PersonForm personForm, BindingResult bindingResult, ModelMap model) {
+
+		validator.validate(personForm, bindingResult);
+		validaFecha.validate(personForm, bindingResult);
+
+		if (bindingResult.hasErrors()) {
 			return "register";
 		}
 
-    	 serv.create(createPerson, bindingResult);
+		try {
+			serv.create(personForm.toPerson());
+			return "redirect:/home";
 
-    	 return "redirect:/home";
-    }
+		} catch (Exception e) {
+			bindingResult.rejectValue("dni", "error.dni.duplicated");
+			return "register";
+		}
+	}
 
-    @GetMapping("/edit/{id}")
-    public String showUpdateForm(@PathVariable("id") long id, Model model) {
+	@GetMapping("/edit/{id}")
+	public String showUpdateForm(@PathVariable("id") long id, Model model) {
 
-    	Persona p = serv.findById(id);
-    	model.addAttribute("persona", p);
-    	return "/update";
-    }
+		PersonDto p = serv.findById(id);
 
-    @PostMapping("/update")
-    public String updatePerson(Persona updatePerson, Model model) {
-    	serv.updatePerson(updatePerson);
-    	return "redirect:/home";
-    }
+		PersonForm personForm = new PersonForm();
+		personForm.getPersonForm(p);
+		model.addAttribute("personForm", personForm);
+		return "/update";
+	}
 
+	@PostMapping("/update")
+	public String updatePerson(@Valid PersonForm personForm, Model model, BindingResult bindingResult) {
+		validator.validate(personForm, bindingResult);
+		validaFecha.validate(personForm, bindingResult);
 
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-    public String delete(@PathVariable long id, ModelMap model) {
-    	serv.delete(id);
-    	return "redirect:/home";
-    }
+		if(bindingResult.hasErrors()) {
+			return "update";
+		}
+
+		serv.updatePerson(personForm.toPerson());
+		return "redirect:/home";
+	}
+
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	public String delete(@PathVariable long id, ModelMap model) {
+		serv.delete(id);
+		return "redirect:/home";
+	}
 
 }
-
