@@ -4,14 +4,18 @@ import java.util.List;
 
 import org.springframework.validation.BindingResult;
 
-import com.practices.demo.model.Persona;
+import com.practices.demo.dto.PersonaDTO;
 
 public interface PersonService {
 
-	public Persona registerUser(Persona p, BindingResult bindingResult);
-	public Persona edituser(String id);
-	public Persona updatePerson(Persona p);
-	public List<Persona> findAll();
+	public PersonaDTO registerUser(PersonaDTO p) throws Exception;
+
+	public PersonaDTO edituser(String id);
+
+	public PersonaDTO updatePerson(PersonaDTO p);
+
+	public List<PersonaDTO> findAll();
+
 	public void deleteUser(long id);
 
 }

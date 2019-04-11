@@ -12,7 +12,7 @@
 
 				<!-- /* Formulario con accion, objeto sobre el que actuamos y metodo que usamos */ -->
 
-				<form action="#" th:action="@{(${action})}" th:object="${persona}"
+				<form action="#" th:action="@{(${action})}" th:object="${personForm}"
 					method="post" class="form-inlin justify-content-center">
 
 
@@ -31,6 +31,17 @@
 
 						<!-- /*Span con condicion asignada en clase persona sobre el campo dni y salida de mensaje de error-->
 						<span th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></span>
+
+
+					</div>
+
+
+					<div class="form-group">
+
+
+					<label for="fullname" th:text="#{Fullname}"></label> <input type="text"
+							class="form-control" id="fullname"  th:field="*{fullname}"
+							readonly>
 
 
 					</div>
@@ -56,8 +67,21 @@
 						<!-- /*Span con condicion asignada en clase persona sobre el campo lastname y salida de mensaje de error-->
 						<span th:if="${#fields.hasErrors('lastname')}"
 							th:errors="*{lastname}"></span>
+							</div>
+
+
+					<div class="form-group">
+						<label for="fechanac" th:text="#{Fechanac}"></label> <input type="text"
+							class="form-control" id="fechanac" name="fechanac"
+							th:attr="placeholder=#{Fechanacp}" th:field="*{fechanac}"
+							required pattern="^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$">
+
+						<!-- /*Span con condicion asignada en clase persona sobre el campo name y salida de mensaje de error-->
+						<span th:if="${#fields.hasErrors('fechanac')}" th:errors="*{fechanac}"></span>
+
 
 					</div>
+
 
 					<!-- /*Etiqueta edad, type y texto orientativo para el usuario-->
 					<div class="form-group">
