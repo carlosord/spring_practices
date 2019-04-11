@@ -8,8 +8,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import com.practices.demo.model.Persona;
+import com.practices.demo.dto.PersonaDTO;
 import com.practices.demo.persistence.PersonaRepository;
+import com.practices.demo.validations.forms.PersonForm;
 
 @Component
 public class ValidateDni implements Validator {
@@ -20,19 +21,18 @@ public class ValidateDni implements Validator {
 	@Override
 	public boolean supports(Class<?> clazz) {
 
-		return Persona.class.isAssignableFrom(clazz);
+		return clazz.equals(PersonForm.class);
+
+		//return PersonaDTO.class.isAssignableFrom(clazz);
 	}
 
 	@Override
 	public void validate(Object target, Errors errors) {
 
-		Persona p = (Persona) target;
+		PersonForm p = (PersonForm) target;
 
 		if (!validarDni(p.getDni()))
 			errors.rejectValue("dni", "error.dni.invalid");
-
-		if (dniDuplicado(p.getDni()))
-			errors.rejectValue("dni", "error.dni.duplicated");
 
 	}
 
@@ -57,7 +57,6 @@ public class ValidateDni implements Validator {
 		}
 		return correcto;
 	}
-
 
 	public boolean dniDuplicado(String dni) {
 

@@ -1,39 +1,22 @@
-package com.practices.demo.model;
+package com.practices.demo.dto;
 
 import java.io.Serializable;
+import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import com.practices.demo.model.Gender;
 
-@MappedSuperclass
-public class BaseEntity implements Serializable{
+public class PersonaDTO implements Serializable{
 
+	private long id;;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-
-
-	@Column(length=255, nullable=false)
+	private String fullname;
 	private String dni;
-
-	@Column(length=255, nullable=false)
 	private String name;
-
-	@Column(length=255, nullable=false)
 	private String lastname;
-
-	@Column(length=255, nullable=false)
 	private int age;
-
-	@Column(length=255, nullable=false)
 	private Gender gender;
-
-
-	public BaseEntity() {};
+	private boolean hascar;
+	private Date fechanac;
 
 	public long getId() {
 		return id;
@@ -81,6 +64,30 @@ public class BaseEntity implements Serializable{
 
 	public void setGender(Gender gender) {
 		this.gender = gender;
+	}
+
+	public boolean isHascar() {
+		return hascar;
+	}
+
+	public void setHascar(boolean hascar) {
+		this.hascar = hascar;
+	}
+
+	public String getFullname() {
+		return fullname;
+	}
+
+	public void setFullname(String fullname) {
+		this.fullname = fullname;
+	}
+
+	public Date getFechanac() {
+		return fechanac;
+	}
+
+	public void setFechanac(Date fechanac) {
+		this.fechanac = fechanac;
 	}
 
 

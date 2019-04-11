@@ -12,14 +12,24 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.practices.demo.model.Persona;
+import com.practices.demo.validations.ValidarFecha;
+import com.practices.demo.validations.ValidateDni;
+import com.practices.demo.validations.forms.PersonForm;
 import com.practices.demo.bussines.PersonServiceIpl;
+import com.practices.demo.dto.PersonaDTO;
 
 @Controller
 public class SimpleController {
 
 	@Autowired
 	private PersonServiceIpl serv;
+
+	@Autowired
+	ValidateDni validator;
+
+	@Autowired
+	ValidarFecha validatordate;
+
 
 	@GetMapping("/home")
 	public String homePage(Model model) {
@@ -31,37 +41,66 @@ public class SimpleController {
 	@GetMapping("/register")
 	public String registerPage(Model model) {
 
-		model.addAttribute("persona", new Persona());
+		model.addAttribute("personForm", new PersonForm());
 		return "register";
 	}
 
 	@PostMapping("/create")
-	public String registerUser(@Valid Persona createperson, BindingResult bindingResult, Model model) {
+	public String registerUser(@Valid PersonForm personForm, BindingResult bindingResult, Model model)
+			throws Exception {
+		/**
+		 * personForm lo transformas en un PersonDTO PersonDTO es el que pasas al
+		 * servicio
+		 */
+
+		validator.validate(personForm, bindingResult);
+		validatordate.validate(personForm, bindingResult);
 
 
 		if (bindingResult.hasErrors()) {
+			// model.addAttribute("persona", createperson);
 			return "register";
 		}
 
-		serv.registerUser(createperson, bindingResult);
+		try {
+			serv.registerUser(personForm.toPerson());
+			return "redirect:/home";
 
-		return "redirect:/home";
+		} catch (Exception e) {
+			bindingResult.rejectValue("dni", "error.dni.duplicated");
+			// model.addAttribute("persona", createperson);
+			return "register";
+		}
+
+
 
 	}
 
 	@GetMapping("/edit/{id}")
 	public String edituser(@PathVariable("id") String id, Model model) {
 
-		Persona p = serv.edituser(id);
-		model.addAttribute("persona", p);
+		PersonaDTO p = serv.edituser(id);
+
+		PersonForm personForm = new PersonForm();
+		personForm.getPersonForm(p);
+
+		model.addAttribute("personForm", personForm);
 		return "/update";
 
 	}
 
 	@PostMapping("/update")
-	public String updatePerson(Persona updateperson, Model model) {
+	public String updatePerson(@Valid PersonForm personForm, BindingResult bindingResult, Model model) {
 
-		serv.updatePerson(updateperson);
+		validator.validate(personForm, bindingResult);
+		validatordate.validate(personForm, bindingResult);
+
+		if (bindingResult.hasErrors()) {
+			// model.addAttribute("persona", createperson);
+			return "update";
+		}
+		serv.updatePerson(personForm.toPerson());
+
 		return "redirect:/home";
 	}
 

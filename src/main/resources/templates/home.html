@@ -20,6 +20,7 @@
 
 						<!-- /* Columnas y etiqueta para cada una */ -->
 						<th scope="col" th:text="#{DNI}"></th>
+						<th scope="col" th:text="#{Fullname}"></th>
 						<th scope="col" th:text="#{Name}"></th>
 						<th scope="col" th:text="#{Lastname}"></th>
 						<th scope="col" th:text="#{Age}"></th>
@@ -34,6 +35,7 @@
 						<!-- /* Muestra los datos */ -->
 					<tr th:each="persona: ${personas}">
 						<th th:text="${persona.dni}" />
+						<td th:text="${persona.fullname}" />
 						<td th:text="${persona.name}" />
 						<td th:text="${persona.lastname}" />
 						<td th:text="${persona.age}" />

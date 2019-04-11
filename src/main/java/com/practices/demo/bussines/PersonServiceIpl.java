@@ -1,22 +1,16 @@
 package com.practices.demo.bussines;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.practices.demo.dto.PersonaDTO;
 import com.practices.demo.model.Persona;
 import com.practices.demo.persistence.PersonaRepository;
-import com.practices.demo.validations.ValidateDni;
+import com.practices.demo.utils.PersonUtils;
 
 @Component
 public class PersonServiceIpl implements PersonService {
@@ -24,38 +18,47 @@ public class PersonServiceIpl implements PersonService {
 	@Autowired
 	private PersonaRepository repo;
 
-	@Autowired
-	ValidateDni validator;
+	public List<PersonaDTO> findAll() {
 
-	public List<Persona> findAll() {
+		List<PersonaDTO> listdto = new ArrayList<PersonaDTO>();
 
-		return  repo.findAll();
+		List<Persona> personlist = repo.findAll();
 
-	}
+		for (int i = 0; i < personlist.size(); i++) {
 
-	public Persona registerUser(Persona createperson, BindingResult bindingResult) {
+			listdto.add(PersonUtils._toConvertPersonEntity(personlist.get(i)));
 
-		validator.validate(createperson, bindingResult);
+		}
 
-		Persona p=repo.save(createperson);
-
-		return p;
+		return listdto;
 
 	}
 
-	public Persona edituser(String id) {
+	public PersonaDTO registerUser(PersonaDTO createperson) throws Exception {
+
+		if (repo.findByDni(createperson.getDni()) != null)
+			throw new Exception("error.dni.duplicated");
+
+		Persona p = repo.save(PersonUtils._toConvertPersonDTO(createperson));
+
+		return PersonUtils._toConvertPersonEntity(p);
+
+	}
+
+	public PersonaDTO edituser(String id) {
 
 		Persona p = repo.findById(Long.valueOf(id))
 				.orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
 
-		return p;
+		return PersonUtils._toConvertPersonEntity(p);
 
 	}
 
-	public Persona updatePerson(Persona updateperson) {
+	public PersonaDTO updatePerson(PersonaDTO updateperson) {
 
-		Persona p=repo.save(updateperson);
-		return p;
+		Persona p = repo.save(PersonUtils._toConvertPersonDTO(updateperson));
+
+		return PersonUtils._toConvertPersonEntity(p);
 
 	}
 
@@ -64,6 +67,5 @@ public class PersonServiceIpl implements PersonService {
 		repo.deleteById(id);
 
 	}
-
 
 }
