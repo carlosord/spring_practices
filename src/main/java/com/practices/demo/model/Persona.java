@@ -1,52 +1,42 @@
 package com.practices.demo.model;
 
+
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Entity(name = "PEOPLE")
 @Table(name = "PEOPLE", uniqueConstraints = @UniqueConstraint(columnNames = { "dni" }))
 public class Persona extends BaseEntity {
 
-
-	@NotNull
 	@NotEmpty
 	private String dni;
 
-	@NotNull
-	@Size(min=3, max=15, message = "{name.notvalid}")
 	private String name;
-
-	@NotNull
-	@Size(min=3, max=15, message = "{lastname.notvalid}")
 	private String lastname;
-
-	@NotNull
-	@Min(value=18, message = "{age.error}")
-	@Max(value=65, message = "{age.error}")
 	private int age;
-
 	private Gender gender;
 	private boolean hascar;
+	private Date fechanac;
+
 
 	public Persona() {
 	};
 
-	public Persona(String dni, String name, String lastname, int age, Gender gender, boolean hascar) {
+	public Persona(String dni, String name, String lastname, int age, Gender gender, boolean hascar, Date fechanac) {
 
 		this.dni = dni;
 		this.name = name;
 		this.lastname = lastname;
 		this.age = age;
 		this.gender = gender;
-		this.hascar = hascar;
+		this.fechanac= fechanac;
 
 	}
+
 
 	@Override
 	public int hashCode() {
@@ -126,5 +116,19 @@ public class Persona extends BaseEntity {
 	public void setHascar(boolean car) {
 		this.hascar = car;
 	}
+
+	public String getFullname() {
+		return this.name + " " + this.lastname;
+	}
+
+	public Date getFechanac() {
+		return fechanac;
+	}
+
+	public void setFechanac(Date fechanac) {
+		this.fechanac = fechanac;
+	}
+
+
 
 }
