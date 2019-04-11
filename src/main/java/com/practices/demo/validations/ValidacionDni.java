@@ -9,8 +9,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import com.practices.demo.dto.PersonDto;
 import com.practices.demo.model.Persona;
 import com.practices.demo.persistence.PersonaRepository;
+import com.practices.demo.presentation.form.PersonForm;
 
 @Component
 public class ValidacionDni implements Validator{
@@ -19,22 +21,17 @@ public class ValidacionDni implements Validator{
 	private PersonaRepository repo;
 
 	public boolean supports(Class clazz) {
-		return Persona.class.isAssignableFrom(clazz);
+		return clazz.equals(PersonForm.class);
 	}
 
-	@Override
 	public void validate(Object target, Errors errors) {
 
-		Persona p = (Persona) target;
-//		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "dni", "error.dni","dni is required");
+		PersonForm p = (PersonForm) target;
 
 		if (!validarDni(p.getDni()))
 			errors.rejectValue("dni", "error.dni.invalid");
-
-		if (dniDuplicado(p.getDni()))
-			errors.rejectValue("dni", "error.dni.duplicated");
-
 	}
+
 
 	public boolean validarDni(String dni){
         boolean correcto=false;
@@ -62,5 +59,4 @@ public class ValidacionDni implements Validator{
 		return repo.findByDni(dni) != null;
 
 	}
-
 }
