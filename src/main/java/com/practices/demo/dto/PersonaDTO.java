@@ -5,6 +5,12 @@ import java.util.Date;
 
 import com.practices.demo.model.Gender;
 
+/**
+ * Esta clase es la "intermediaria" que intercambia los datos con Persona y los pasa a PersonForm
+ * @author Jairo.Rodriguez
+ *
+ */
+
 public class PersonaDTO implements Serializable{
 
 	private long id;;

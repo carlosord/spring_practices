@@ -8,6 +8,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
+/**
+ * En esta clase se le asigna un id a cada Persona
+ * @author Jairo.Rodriguez
+ *
+ */
+
 @MappedSuperclass
 public class BaseEntity implements Serializable{
 
