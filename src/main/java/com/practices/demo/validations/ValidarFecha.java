@@ -2,6 +2,7 @@ package com.practices.demo.validations;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -24,26 +25,29 @@ public class ValidarFecha implements Validator {
 
 		PersonForm p = (PersonForm) target;
 
-		if (!validarFecha(p.getFechanac()))
-			errors.rejectValue("fechanac", "error.fecha.invalid");
-
+		if (!validarFecha(p.getDay() + "/" + p.getMonth() + "/" + p.getYear())) {
+			errors.rejectValue("day", "error.fecha.invalid");
+			errors.rejectValue("month", "error.fecha.invalid");
+			errors.rejectValue("year", "error.fecha.invalid");
+		}
 	}
 
 	public boolean validarFecha(String fechanac) {
 
 		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
+		Date today = new Date();
+
 		try {
 
 			format.setLenient(false);
 			format.parse(fechanac);
+			return today.after(format.parse(fechanac));
 		} catch (ParseException e) {
 			return false;
-		}catch(IllegalArgumentException e) {
+		} catch (IllegalArgumentException e) {
 			return false;
 		}
-
-		return true;
 
 	}
 

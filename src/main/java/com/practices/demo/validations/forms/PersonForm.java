@@ -1,12 +1,11 @@
 package com.practices.demo.validations.forms;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -39,15 +38,28 @@ public class PersonForm {
 	private Gender gender;
 	private boolean hascar;
 
-	private String fechanac;
 
+	@NotNull
+	@Min(value = 1)
+	@Max(value = 31)
+	private String day;
 
+	@NotNull
+	@Min(value = 1)
+	@Max(value = 12)
+	private String month;
+
+	@NotNull
+	@Min(value = 1900)
+	private String year;
 
 	SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
 	public PersonaDTO toPerson() {
 
 		PersonaDTO p = new PersonaDTO();
+
+		//String fechanac = this.day + '/' + this.month + '/' + this.year;
 
 		p.setId(id);
 		p.setDni(dni);
@@ -57,12 +69,15 @@ public class PersonForm {
 		p.setGender(gender);
 		p.setHascar(hascar);
 		p.setFullname(fullname);
+		// p.setDay(day)+'/'+setMonth(month)+'/'+setYear(year);
+		p.setFechanac(day + '/' + month + '/' + year);
 
-		try {
-			p.setFechanac(format.parse(fechanac));
-		} catch (ParseException e) {
-			p.setFechanac(null);
-		}
+//
+//		try {
+//			p.setFechanac(format.parse(fechanac));
+//		} catch (ParseException e) {
+//			p.setFechanac(null);
+//		}
 
 		return p;
 
@@ -78,7 +93,14 @@ public class PersonForm {
 		this.setGender(pe.getGender());
 		this.setHascar(pe.isHascar());
 		this.setFullname(pe.getFullname());
-		this.setFechanac(format.format(pe.getFechanac()));
+		// this.setFechanac(format.format(pe.getFechanac()));
+
+		String[] camposFecha = pe.getFechanac().split("/");
+		this.setDay(camposFecha[0]);
+		this.setMonth(camposFecha[1]);
+		this.setYear(camposFecha[2]);
+
+
 
 	}
 
@@ -146,12 +168,32 @@ public class PersonForm {
 		this.fullname = fullname;
 	}
 
-	public String getFechanac() {
-		return fechanac;
+	public String getDay() {
+		return day;
 	}
 
-	public void setFechanac(String fechanac) {
-		this.fechanac = fechanac;
+	public void setDay(String day) {
+		this.day = day;
 	}
+
+	public String getMonth() {
+		return month;
+	}
+
+	public void setMonth(String month) {
+		this.month = month;
+	}
+
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+
+
+
 
 }
