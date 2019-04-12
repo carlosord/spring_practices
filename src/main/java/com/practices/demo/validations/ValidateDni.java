@@ -12,6 +12,12 @@ import com.practices.demo.dto.PersonaDTO;
 import com.practices.demo.persistence.PersonaRepository;
 import com.practices.demo.validations.forms.PersonForm;
 
+/**
+ * Esta clase sirv para validar el dni
+ * @author Jairo.Rodriguez
+ *
+ */
+
 @Component
 public class ValidateDni implements Validator {
 
@@ -26,6 +32,11 @@ public class ValidateDni implements Validator {
 		//return PersonaDTO.class.isAssignableFrom(clazz);
 	}
 
+
+	/**
+	 * Se encarga de comprobar que el DNI sea valido y sino muestra un mensaje de error
+	 */
+
 	@Override
 	public void validate(Object target, Errors errors) {
 
@@ -35,6 +46,15 @@ public class ValidateDni implements Validator {
 			errors.rejectValue("dni", "error.dni.invalid");
 
 	}
+
+
+	/**
+	 * Este metodo se encarga de validar el DNI y comprobar que sea correcto coincidiendo los numeros con la letra
+	 * @param dni
+	 * 			variable dni d etipo cadena que se pasa el dni
+	 *
+	 * @return	retorna true si la validadcion es correcta y false si no lo es
+	 */
 
 	public boolean validarDni(String dni) {
 
@@ -58,6 +78,14 @@ public class ValidateDni implements Validator {
 		return correcto;
 	}
 
+
+	/**
+	 * SE encarga de comprobar que el dni introducido no esta duplicado
+	 * @param dni
+	 * 			variable dni d etipo cadena que se pasa el dni
+	 *
+	 * @return	Si retorna distinto de null el DNI no esta duplicado, si retorna null el DNI estaria duplicado y no lo insertaria
+	 */
 	public boolean dniDuplicado(String dni) {
 
 		return repo.findByDni(dni) != null;

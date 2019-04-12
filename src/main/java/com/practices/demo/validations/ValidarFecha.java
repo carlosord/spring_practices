@@ -10,6 +10,12 @@ import org.springframework.validation.Validator;
 
 import com.practices.demo.validations.forms.PersonForm;
 
+/**
+ * Esta clase se encarga de validar la fecha
+ * @author Jairo.Rodriguez
+ *
+ */
+
 @Component
 public class ValidarFecha implements Validator {
 
@@ -18,6 +24,10 @@ public class ValidarFecha implements Validator {
 		// TODO Auto-generated method stub
 		return clazz.equals(PersonForm.class);
 	}
+
+	/**
+	 * Se encarga de comprobar que la fecha sea valida y sino muestra un mensaje de error
+	 */
 
 	@Override
 	public void validate(Object target, Errors errors) {
@@ -32,6 +42,15 @@ public class ValidarFecha implements Validator {
 		}
 	}
 
+
+
+	/**
+	 * Este metodo se encarga de validar la fceha y su formato
+	 * @param fechanac
+	 *
+	 *
+	 * @return	retorna true si la validadcion es correcta y false si no lo es
+	 */
 	public boolean validarFecha(String fechanac) {
 
 		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");

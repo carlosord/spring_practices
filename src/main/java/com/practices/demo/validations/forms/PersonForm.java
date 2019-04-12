@@ -12,6 +12,12 @@ import org.hibernate.validator.constraints.Length;
 import com.practices.demo.dto.PersonaDTO;
 import com.practices.demo.model.Gender;
 
+
+/**
+ * Esta  clase se encarga de mostrar en el formulario toda la informacion
+ * @author Jairo.Rodriguez
+ *
+ */
 public class PersonForm {
 
 	private long id;
@@ -31,8 +37,8 @@ public class PersonForm {
 	private String lastname;
 
 	@NotNull
-	@Min(value = 18, message = "{age.error}")
-	@Max(value = 65, message = "{age.error}")
+//	@Min(value = 18, message = "{age.error}")
+//	@Max(value = 65, message = "{age.error}")
 	private int age;
 
 	private Gender gender;
@@ -55,6 +61,11 @@ public class PersonForm {
 
 	SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
+
+	/**
+	 * Este metodo se encarga de enviar la informacion de PersonForm a PersonaDTO
+	 * @return retorna un objeto PersonaDTO
+	 */
 	public PersonaDTO toPerson() {
 
 		PersonaDTO p = new PersonaDTO();
@@ -82,6 +93,11 @@ public class PersonForm {
 		return p;
 
 	}
+
+	/**
+	 * Este metodo se encarga de enviar la informacion de PersonaDTO a PersonForm
+	 * @return retorna un objeto PersonForm
+	 */
 
 	public void getPersonForm(PersonaDTO pe) {
 

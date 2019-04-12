@@ -8,6 +8,14 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotEmpty;
 
+/**
+ * Esta clase es la clase que conectamos con la base de datos
+ * @author Jairo.Rodriguez
+ *
+ */
+
+
+
 @Entity(name = "PEOPLE")
 @Table(name = "PEOPLE", uniqueConstraints = @UniqueConstraint(columnNames = { "dni" }))
 public class Persona extends BaseEntity {
@@ -25,6 +33,19 @@ public class Persona extends BaseEntity {
 
 	public Persona() {
 	};
+
+
+
+	/**
+	 *
+	 * @param dni DNI del usuario
+	 * @param name Nombre del usuario
+	 * @param lastname Apellido del usuario
+	 * @param age Edad del usuario
+	 * @param gender Genero del usuario
+	 * @param hascar Si el usuario tiene o no tiene coche
+	 * @param fechanac	Fecha de nacimiento del usuario
+	 */
 
 	public Persona(String dni, String name, String lastname, int age, Gender gender, boolean hascar, Date fechanac) {
 
