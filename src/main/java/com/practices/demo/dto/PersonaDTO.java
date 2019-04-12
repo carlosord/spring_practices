@@ -16,7 +16,7 @@ public class PersonaDTO implements Serializable{
 	private int age;
 	private Gender gender;
 	private boolean hascar;
-	private Date fechanac;
+	private String  fechanac;
 
 	public long getId() {
 		return id;
@@ -82,11 +82,11 @@ public class PersonaDTO implements Serializable{
 		this.fullname = fullname;
 	}
 
-	public Date getFechanac() {
+	public String getFechanac() {
 		return fechanac;
 	}
 
-	public void setFechanac(Date fechanac) {
+	public void setFechanac(String fechanac) {
 		this.fechanac = fechanac;
 	}
 
