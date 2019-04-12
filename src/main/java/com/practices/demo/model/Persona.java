@@ -4,6 +4,15 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+
+/**
+ *	Esta clase es la principal, la que se conecta con la base de datos.
+ *
+ * @author Daniel.perez
+ *
+ * @see BaseEntity
+ */
+
 @Entity
 @Table(name = "PEOPLE", uniqueConstraints = @UniqueConstraint(columnNames = { "dni" }))
 public class Persona extends BaseEntity {
@@ -11,7 +20,6 @@ public class Persona extends BaseEntity {
 	private String dni;
 	private String name;
 	private String lastname;
-	private int age;
 	private Date fecha;
 	private Gender gender;
 	private boolean hascar;
@@ -19,11 +27,22 @@ public class Persona extends BaseEntity {
 	public Persona() {
 	};
 
-	public Persona(String dni, String name, String lastname,int age, Gender gender, boolean car,Date fecha) {
+	/**
+	 * Es el constructor.
+	 *
+	 * @param dni DNI del usuario
+	 * @param name Nombre del usuario
+	 * @param lastname Apellido del usuario
+	 * @param gender Genero del usuario
+	 * @param car Indica si tiene coche o no
+	 * @param fecha Indica la fecha de cumpleaños del usuario
+	 *
+	 *
+	 */
+	public Persona(String dni, String name, String lastname, Gender gender, boolean car,Date fecha) {
 		this.dni = dni;
 		this.name = name;
 		this.lastname = lastname;
-		this.age=age;
 		this.gender = gender;
 		this.hascar = car;
 		this.fecha=fecha;
@@ -55,14 +74,6 @@ public class Persona extends BaseEntity {
 
 	public String getFullname() {
 		return this.name + " " + this.lastname;
-	}
-
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
 	}
 
 	public Date getFecha() {
@@ -116,7 +127,7 @@ public class Persona extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "Persona dni= " + dni + ", name=" + name + ", lastname=" + lastname + ", age=" + age + ", gender="
+		return "Persona dni= " + dni + ", name=" + name + ", lastname=" + lastname + ", gender="
 				+ gender + ", car=" + hascar;
 	}
 

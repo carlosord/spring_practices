@@ -19,8 +19,8 @@
 							class="form-control" th:field="*{dni}" id="dni"
 							th:attr="placeholder=#{dnip}"
 							th:readonly="${#strings.equals(action,'Update')}"
-							length=9 required >
-							<!-- pattern="[0-9]{8}[A-Z]" -->
+							length=9 required pattern="[0-9]{8}[A-Z]">
+
 
 						<span th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></span>
 					</div>
@@ -53,20 +53,31 @@
 
 					<!-- /*Fecha*/ -->
 					<div class="form-group">
-						<label for="fecha" th:text="#{fecha}"></label> <input type="text"
-							class="form-control" th:field="*{fecha}" id="fecha"
-							th:attr="placeholder=#{fechap}" required
-							>
-							<!-- pattern="^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$" -->
+						<label for="day" th:text="#{day}"></label>
+							<span th:if="${#fields.hasErrors('day')}"
+							th:errors="*{day}"></span>
+							<input type="text"
+							class="form-control" th:field="*{day}" id="day"
+							th:attr="placeholder=#{dayp}" required>
+						<label for="month" th:text="#{month}"></label>
+							<span th:if="${#fields.hasErrors('month')}"
+							th:errors="*{month}"></span>
+							<input type="text"
+							class="form-control" th:field="*{month}" id="month"
+							th:attr="placeholder=#{monthp}" required>
+						<label for="year" th:text="#{year}"></label>
+							<span th:if="${#fields.hasErrors('year')}"
+							th:errors="*{year}"></span>
+							<input type="text"
+							class="form-control" th:field="*{year}" id="year"
+							th:attr="placeholder=#{yearp}" required>
 
-						<span th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}"></span>
 					</div>
 
 					<!-- /*Edad*/ -->
 					<div class="form-group">
 						<label for="age" th:text="#{age}"></label> <input type="number"
-							class="form-control" th:field="*{age}" id="age"
-							th:attr="placeholder=#{agep}" required>
+							class="form-control" th:field="*{age}" id="age" readonly>
 
 						<span th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
 					</div>

@@ -1,8 +1,5 @@
 package com.practices.demo.presentation.form;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.validation.constraints.*;
 
@@ -11,6 +8,11 @@ import org.hibernate.validator.constraints.Length;
 import com.practices.demo.dto.PersonDto;
 import com.practices.demo.model.Gender;
 
+/**
+ * Esta clase se encarga de mostrar en el formulario toda la información.
+ * @author Daniel.perez
+ *
+ */
 public class PersonForm {
 
 	private long id;
@@ -30,18 +32,32 @@ public class PersonForm {
 	private String lastname;
 
 	@NotNull(message="{age.error.required}")
-	@Min(value=18, message="{age.error.outofrange}")
-	@Max(value=65, message="{age.error.outofrange}")
+//	@Min(value=18, message="{age.error.outofrange}")
+//	@Max(value=65, message="{age.error.outofrange}")
 	private int age;
-	@Pattern(regexp="^([0-2][0-9]|(3)[0-1])(\\/)(((0)[0-9])|((1)[0-2]))(\\/)\\d{4}$", message="{error.date.formatinvalid}")
-	private String fecha;
 
 	@NotNull(message="{gender.error.required}")
 	private Gender gender;
 	private boolean hascar;
 
-	SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+	@NotBlank(message="{day.error.required}")
+	@Min(value=1)
+	@Max(value=31)
+	private String day;
 
+	@NotBlank(message="{month.error.required}")
+	@Min(value=1)
+	@Max(value=12)
+	private String month;
+
+	@NotBlank(message="{year.error.required}")
+	@Min(value=1900)
+	private String year;
+
+	/**
+	 * Este método se encarga de enviar la información de {@code PersonForm} a {@code PersonDto}
+	 * @return Retorna un objeto {@code PersonDto}
+	 */
 	public PersonDto toPerson() {
 		PersonDto p = new PersonDto();
 
@@ -51,18 +67,24 @@ public class PersonForm {
 		p.setLastname(lastname);
 		p.setFullname(fullname);
 		p.setAge(age);
-		try {
-			p.setFecha(format.parse(fecha));
-		} catch (ParseException e) {
-			p.setFecha(null);
-		}
+		p.setFecha(day+'/'+month+'/'+year);
 		p.setGender(gender);
 		p.setHascar(hascar);
 
 		return p;
 	}
 
+	/**
+	 * Este metodo se encarga de enviar la información de {@code PersonDto} a {@code PersonForm}
+	 * @param Retorna un objeto {@code PersonForm}
+	 */
 	public void getPersonForm(PersonDto pe) {
+
+		String[] camposFecha = pe.getFecha().split("/");
+		this.setDay(camposFecha[0]);
+		this.setMonth(camposFecha[1]);
+		this.setYear(camposFecha[2]);
+
 
 		this.setId(pe.getId());
 		this.setDni(pe.getDni());
@@ -70,9 +92,10 @@ public class PersonForm {
 		this.setLastname(pe.getLastname());
 		this.setFullname(pe.getFullname());
 		this.setAge(pe.getAge());
-		this.setFecha(format.format(pe.getFecha()));
 		this.setGender(pe.getGender());
 		this.setHascar(pe.isHascar());
+
+
 	}
 
 	public long getId() {
@@ -123,12 +146,28 @@ public class PersonForm {
 		this.age = age;
 	}
 
-	public String getFecha() {
-		return fecha;
+	public String getDay() {
+		return day;
 	}
 
-	public void setFecha(String fecha) {
-		this.fecha = fecha;
+	public void setDay(String day) {
+		this.day = day;
+	}
+
+	public String getMonth() {
+		return month;
+	}
+
+	public void setMonth(String month) {
+		this.month = month;
+	}
+
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
 	}
 
 	public Gender getGender() {

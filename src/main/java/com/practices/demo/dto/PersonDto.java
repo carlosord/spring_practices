@@ -1,9 +1,13 @@
 package com.practices.demo.dto;
 
-import java.util.Date;
 
 import com.practices.demo.model.Gender;
 
+/**
+ * Esta clase es como la "intermediaria" que intercambia los datos con {@code Persona} y pasandolos a {@code PersonForm}.
+ * @author Daniel.perez
+ *
+ */
 public class PersonDto{
 
 	private long id;
@@ -12,7 +16,7 @@ public class PersonDto{
 	private String lastname;
 	private String fullname;
 	private int age;
-	private Date fecha;
+	private String fecha;
 	private Gender gender;
 	private boolean hascar;
 
@@ -63,11 +67,11 @@ public class PersonDto{
 		return age;
 	}
 
-	public Date getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(Date fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 
