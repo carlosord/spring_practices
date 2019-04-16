@@ -1,5 +1,7 @@
 package com.practices.demo.presentation.validation;
 
+import java.time.LocalDate;
+
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -35,6 +37,9 @@ public class PersonValidator implements Validator {
 			errors.rejectValue("dni", "person.dni.error.invalid");
 		}
 
+		if (!birthdayIsValid(personForm.getBirthdayday(), personForm.getBirthdaymonth(), personForm.getBirthdayyear())) {
+			errors.rejectValue("birthdayday", "person.birthday.error.invalid");
+		}
 	}
 
 	/**
@@ -62,5 +67,21 @@ public class PersonValidator implements Validator {
 		return check;
 		
 	}
-	
+
+	/**
+	 * Date is valid
+	 * @param birthdayday
+	 * @param birthdaymonth
+	 * @param birthdayyear
+	 * @return true id the date is correct
+	 */
+	private boolean birthdayIsValid(String birthdayday, String birthdaymonth, String birthdayyear) {
+		try {
+			LocalDate.of(Integer.parseInt(birthdayyear), Integer.parseInt(birthdaymonth), Integer.parseInt(birthdayday));
+		}catch(Exception e) {
+			return false;
+		}
+		return true;
+	}
+
 }

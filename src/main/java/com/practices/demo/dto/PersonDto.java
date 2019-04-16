@@ -8,6 +8,7 @@ public class PersonDto {
 	private String dni;
 	private String name;
 	private String lastname;
+	private String birthday;
 	private Integer age;
 	private Gender gender;
 	private Boolean hascar;
@@ -60,4 +61,11 @@ public class PersonDto {
 	public void setHascar(Boolean hascar) {
 		this.hascar = hascar;
 	}
+	public String getBirthday() {
+		return birthday;
+	}
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
+	
 }

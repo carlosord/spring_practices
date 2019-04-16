@@ -1,5 +1,8 @@
 package com.practices.demo.model;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -31,8 +34,8 @@ public class Person extends BaseEntity {
 	private String lastname;
 
 	/** The age. */
-	@Column(name = "age", nullable = true)
-	private Integer age;
+	@Column(name = "birthday", nullable = true)
+	private Date birthday;
 
 	/** The gender. */
 	@Column(name = "gender", nullable = true)
@@ -115,23 +118,13 @@ public class Person extends BaseEntity {
 		this.lastname = lastname;
 	}
 
-	/**
-	 * Gets the age.
-	 *
-	 * @return the age
-	 */
-	public Integer getAge() {
-		return age;
+
+	public Date getBirthday() {
+		return birthday;
 	}
 
-	/**
-	 * Sets the age.
-	 *
-	 * @param age
-	 *            the new age
-	 */
-	public void setAge(Integer age) {
-		this.age = age;
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
 	}
 
 	/**
@@ -214,7 +207,7 @@ public class Person extends BaseEntity {
 	 */
 	@Override
 	public String toString() {
-		return "Person [dni=" + dni + ", name=" + name + ", lastname=" + lastname + ", age=" + age + ", gender="
+		return "Person [dni=" + dni + ", name=" + name + ", lastname=" + lastname + ", birthday=" + birthday + ", gender="
 				+ gender + ", hascar=" + hascar + "]";
 	}
 

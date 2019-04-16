@@ -1,7 +1,7 @@
 package com.practices.demo.presentation.form;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+import java.time.LocalDate;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -34,10 +34,16 @@ public class PersonForm {
 	@Length(min=3, max=15, message="{person.lastname.error.notlength}")
 	private String lastname;
 
+	private String fullname;
+
+	@NotBlank(message="{person.birthday.error.required}")
+	private String birthdayday;
+	@NotBlank(message="{person.birthday.error.required}")
+	private String birthdaymonth;
+	@NotBlank(message="{person.birthday.error.required}")
+	private String birthdayyear;
+
 	/** The age. */
-	@NotNull(message="{person.age.error.required}")
-	@Min(value=18, message="{person.age.error.outofrange}")
-	@Max(value=65, message="{person.age.error.outofrange}")
 	private Integer age;
 
 	/** The gender. */
@@ -60,7 +66,7 @@ public class PersonForm {
 		p.setDni(dni);
 		p.setName(name);
 		p.setLastname(lastname);
-		p.setAge(age);
+		p.setBirthday(String.join("/", birthdayday, birthdaymonth, birthdayyear));
 		p.setGender(gender);
 		p.setHascar(hascar);
 		
@@ -80,6 +86,15 @@ public class PersonForm {
 		this.setDni(person.getDni());
 		this.setName(person.getName());
 		this.setLastname(person.getLastname());
+		this.setFullname(String.join(" ", person.getName(), person.getLastname()));
+		if(person.getBirthday() != null) {
+			String[] dateSplit = person.getBirthday().split("/");
+			if(dateSplit.length == 3) {
+				this.setBirthdayday(dateSplit[0]);
+				this.setBirthdaymonth(dateSplit[1]);
+				this.setBirthdayyear(dateSplit[2]);
+			}
+		}
 		this.setAge(person.getAge());
 		this.setGender(person.getGender());
 		this.setHascar(person.getHascar());
@@ -210,6 +225,38 @@ public class PersonForm {
 	 */
 	public void setHascar(Boolean hascar) {
 		this.hascar = hascar;
+	}
+
+	public String getBirthdayday() {
+		return birthdayday;
+	}
+
+	public void setBirthdayday(String birthdayday) {
+		this.birthdayday = birthdayday;
+	}
+
+	public String getBirthdaymonth() {
+		return birthdaymonth;
+	}
+
+	public void setBirthdaymonth(String birthdaymonth) {
+		this.birthdaymonth = birthdaymonth;
+	}
+
+	public String getBirthdayyear() {
+		return birthdayyear;
+	}
+
+	public void setBirthdayyear(String birthdayyear) {
+		this.birthdayyear = birthdayyear;
+	}
+
+	public String getFullname() {
+		return fullname;
+	}
+
+	public void setFullname(String fullname) {
+		this.fullname = fullname;
 	}
 
 	
