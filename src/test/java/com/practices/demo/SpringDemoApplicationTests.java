@@ -1,10 +1,12 @@
 package com.practices.demo;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.DataBinder;
@@ -17,6 +19,7 @@ import com.practices.demo.presentation.validation.PersonValidator;
 public class SpringDemoApplicationTests {
 
 	@Test
+	@Rollback
 	public void positiveDniValidation() {
 		
 		PersonValidator v = new PersonValidator();
@@ -28,10 +31,12 @@ public class SpringDemoApplicationTests {
 		
 		v.validate(personForm, errors);
 		
-		assertFalse("Dni error", errors.hasFieldErrors("dni"));		
+		assertFalse("Dni error", errors.hasFieldErrors("dni"));
+		
 	}
 	
 	@Test
+	@Rollback
 	public void negativeDniValidation() {
 		
 		PersonValidator v = new PersonValidator();
@@ -42,7 +47,8 @@ public class SpringDemoApplicationTests {
 		BindingResult errors = new DataBinder(personForm).getBindingResult();
 		
 		v.validate(personForm, errors);
-		assertTrue("Dni error", errors.hasFieldErrors("dni"));		
+		assertTrue("Dni error", errors.hasFieldErrors("dni"));
+		
 	}
 
 }

@@ -2,6 +2,8 @@ package com.practices.demo.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Service;
 
 import com.practices.demo.dto.PersonDto;
@@ -11,6 +13,7 @@ import com.practices.demo.service.exception.BusinessException;
  * The Class PersonService.
  */
 @Service
+@Transactional
 public interface PersonService {
 		
 	/**
