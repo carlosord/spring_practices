@@ -26,7 +26,7 @@ public interface PersonService {
 	 *
 	 * @return the list
 	 */
-	public List<PersonDto> findAll() ;
+	public List<PersonDto> findAll();
 
 	/**
 	 * Find person by dni.
