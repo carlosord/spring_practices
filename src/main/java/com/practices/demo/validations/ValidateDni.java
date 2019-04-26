@@ -21,8 +21,6 @@ import com.practices.demo.validations.forms.PersonForm;
 @Component
 public class ValidateDni implements Validator {
 
-	@Autowired
-	private PersonaRepository repo;
 
 	@Override
 	public boolean supports(Class<?> clazz) {
@@ -78,18 +76,5 @@ public class ValidateDni implements Validator {
 		return correcto;
 	}
 
-
-	/**
-	 * SE encarga de comprobar que el dni introducido no esta duplicado
-	 * @param dni
-	 * 			variable dni d etipo cadena que se pasa el dni
-	 *
-	 * @return	Si retorna distinto de null el DNI no esta duplicado, si retorna null el DNI estaria duplicado y no lo insertaria
-	 */
-	public boolean dniDuplicado(String dni) {
-
-		return repo.findByDni(dni) != null;
-
-	}
 
 }

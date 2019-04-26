@@ -1,4 +1,4 @@
-package model;
+package com.practices.demo.model;
 
 import org.junit.Assert;
 import org.junit.Test;

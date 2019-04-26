@@ -1,7 +1,4 @@
 <html layout:decorate="~{layouts/layout}" th:lang="${#locale.language}">
-<head>
-
-</head>
 <body>
 
 	<div class="container">
@@ -152,7 +149,22 @@
 
 	</div>
 
+<script type="text/javascript">
+$(document).ready(function(){
+	alert("javascript activo");
 
+	 $("#name").change( function(){
+		    $('#fullname').val( $('#name').val()+" "+ $('#lastname').val());
+		  });
+
+	 $("#lastname").change( function(){
+		    $('#fullname').val( $('#name').val()+" "+ $('#lastname').val());
+		  });
+
+}
+</script>
 
 </body>
+
+
 </html>
