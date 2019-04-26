@@ -25,7 +25,7 @@ public class SpringDemoApplicationTests {
 		PersonValidator v = new PersonValidator();
 		
 		PersonForm personForm = new PersonForm();
-		personForm.setDni("53520672V");
+		personForm.setDni("11111111H");
 		
 		BindingResult errors = new DataBinder(personForm).getBindingResult();
 		
@@ -42,7 +42,7 @@ public class SpringDemoApplicationTests {
 		PersonValidator v = new PersonValidator();
 		
 		PersonForm personForm = new PersonForm();
-		personForm.setDni("53520672F");
+		personForm.setDni("11111111Z");
 		
 		BindingResult errors = new DataBinder(personForm).getBindingResult();
 		
