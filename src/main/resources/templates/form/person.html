@@ -1,5 +1,6 @@
 <html layout:decorate="~{layouts/layout}" lang="${#locale.languaje}">
 <head>
+<script src="./js/person.js"></script>
 </head>
 
 <body>
@@ -28,8 +29,7 @@
 					<!-- /*Fullname*/ -->
 					<div class="form-group">
 						<label for="fullname" th:text="#{fullname}"></label> <input type="text"
-							class="form-control" th:field="*{fullname}" id="fullname"
-							readonly>
+							class="form-control" th:field="*{fullname}" id="fullname" readonly>
 
 					</div>
 
