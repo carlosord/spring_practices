@@ -12,7 +12,7 @@ import javax.validation.constraints.NotEmpty;
  */
 @Entity
 @Table(name = "HOTEL", uniqueConstraints = @UniqueConstraint(columnNames = { "code" }))
-public class Hotel {
+public class Hotel extends BaseEntity{
 
 	/** The code. */
 	@NotEmpty
@@ -132,6 +132,40 @@ public class Hotel {
 	 */
 	public void setOccupiedBedrooms(int occupiedBedrooms) {
 		this.occupiedBedrooms = occupiedBedrooms;
+	}
+
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + code;
+		return result;
+	}
+
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Hotel other = (Hotel) obj;
+		if (code != other.code)
+			return false;
+		return true;
 	}
 
 
