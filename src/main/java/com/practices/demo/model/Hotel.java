@@ -2,6 +2,7 @@ package com.practices.demo.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotEmpty;
@@ -12,12 +13,16 @@ import javax.validation.constraints.NotEmpty;
  */
 @Entity
 @Table(name = "HOTEL", uniqueConstraints = @UniqueConstraint(columnNames = { "code" }))
-public class Hotel extends BaseEntity{
+public class Hotel extends BaseEntity {
 
 	/** The code. */
 	@NotEmpty
 	@Column(name = "code", nullable = false)
 	private int code;
+
+	/** The foreign key. */
+	@ManyToOne
+	private Person person;
 
 	/** The location. */
 	@Column(name = "location", nullable = false)
@@ -31,7 +36,6 @@ public class Hotel extends BaseEntity{
 	@Column(name = "occupiedBedrooms")
 	private int occupiedBedrooms;
 
-
 	/**
 	 * Instantiates a new hotel.
 	 */
@@ -39,17 +43,14 @@ public class Hotel extends BaseEntity{
 
 	}
 
-
 	/**
 	 * Instantiates a new hotel.
 	 *
-	 * @param code
-	 *            the code
+	 * @param code the code
 	 */
 	public Hotel(int code) {
-		this.code=code;
+		this.code = code;
 	}
-
 
 	/**
 	 * Gets the code.
@@ -60,17 +61,14 @@ public class Hotel extends BaseEntity{
 		return code;
 	}
 
-
 	/**
 	 * Sets the code.
 	 *
-	 * @param code
-	 *            the new code
+	 * @param code the new code
 	 */
 	public void setCode(int code) {
 		this.code = code;
 	}
-
 
 	/**
 	 * Gets the location.
@@ -81,17 +79,14 @@ public class Hotel extends BaseEntity{
 		return location;
 	}
 
-
 	/**
 	 * Sets the location.
 	 *
-	 * @param hascar
-	 *            the new location
+	 * @param hascar the new location
 	 */
 	public void setLocation(String location) {
 		this.location = location;
 	}
-
 
 	/**
 	 * Gets the total bedrooms.
@@ -102,17 +97,14 @@ public class Hotel extends BaseEntity{
 		return totalBedrooms;
 	}
 
-
 	/**
 	 * Sets the total bedrooms.
 	 *
-	 * @param hascar
-	 *            the new totalBedrooms
+	 * @param hascar the new totalBedrooms
 	 */
 	public void setTotalBedrooms(int totalBedrooms) {
 		this.totalBedrooms = totalBedrooms;
 	}
-
 
 	/**
 	 * Gets the occupied bedrooms.
@@ -123,17 +115,14 @@ public class Hotel extends BaseEntity{
 		return occupiedBedrooms;
 	}
 
-
 	/**
 	 * Sets the occupied bedrooms.
 	 *
-	 * @param hascar
-	 *            the new ocuppiedBedrooms
+	 * @param hascar the new ocuppiedBedrooms
 	 */
 	public void setOccupiedBedrooms(int occupiedBedrooms) {
 		this.occupiedBedrooms = occupiedBedrooms;
 	}
-
 
 	/*
 	 * (non-Javadoc)
@@ -147,7 +136,6 @@ public class Hotel extends BaseEntity{
 		result = prime * result + code;
 		return result;
 	}
-
 
 	/*
 	 * (non-Javadoc)
@@ -168,7 +156,6 @@ public class Hotel extends BaseEntity{
 		return true;
 	}
 
-
 	/*
 	 * (non-Javadoc)
 	 *
@@ -180,8 +167,23 @@ public class Hotel extends BaseEntity{
 				+ ", occupiedBedrooms=" + occupiedBedrooms + "]";
 	};
 
+	/**
+	 * Gets the person.
+	 *
+	 * @param person
+	 * @return the person
+	 */
+	public Person getPerson() {
+		return person;
+	}
 
-
-
+	/**
+	 * Sets the person.
+	 *
+	 * @param person the new person
+	 */
+	public void setPerson(Person p) {
+		this.person = p;
+	}
 
 }

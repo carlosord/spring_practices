@@ -1,9 +1,12 @@
 package com.practices.demo.model;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotEmpty;
@@ -17,6 +20,10 @@ import com.practices.demo.model.types.Gender;
 @Entity
 @Table(name = "PEOPLE", uniqueConstraints = @UniqueConstraint(columnNames = { "dni" }))
 public class Person extends BaseEntity {
+
+	/** The hotel. */
+	@OneToMany(mappedBy = "person")
+	private Set<Hotel> hotel = new HashSet<>();
 
 	/** The dni. */
 	@NotEmpty
@@ -53,8 +60,7 @@ public class Person extends BaseEntity {
 	/**
 	 * Instantiates a new person.
 	 *
-	 * @param dni
-	 *            the dni
+	 * @param dni the dni
 	 */
 	public Person(String dni) {
 		this.dni = dni;
@@ -72,8 +78,7 @@ public class Person extends BaseEntity {
 	/**
 	 * Sets the dni.
 	 *
-	 * @param dni
-	 *            the new dni
+	 * @param dni the new dni
 	 */
 	public void setDni(String dni) {
 		this.dni = dni;
@@ -91,8 +96,7 @@ public class Person extends BaseEntity {
 	/**
 	 * Sets the name.
 	 *
-	 * @param name
-	 *            the new name
+	 * @param name the new name
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -110,13 +114,11 @@ public class Person extends BaseEntity {
 	/**
 	 * Sets the lastname.
 	 *
-	 * @param lastname
-	 *            the new lastname
+	 * @param lastname the new lastname
 	 */
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
-
 
 	public Date getBirthday() {
 		return birthday;
@@ -138,8 +140,7 @@ public class Person extends BaseEntity {
 	/**
 	 * Sets the gender.
 	 *
-	 * @param gender
-	 *            the new gender
+	 * @param gender the new gender
 	 */
 	public void setGender(Gender gender) {
 		this.gender = gender;
@@ -157,8 +158,7 @@ public class Person extends BaseEntity {
 	/**
 	 * Sets the hascar.
 	 *
-	 * @param hascar
-	 *            the new hascar
+	 * @param hascar the new hascar
 	 */
 	public void setHascar(Boolean hascar) {
 		this.hascar = hascar;
@@ -166,7 +166,7 @@ public class Person extends BaseEntity {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -179,7 +179,7 @@ public class Person extends BaseEntity {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -201,13 +201,53 @@ public class Person extends BaseEntity {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Person [dni=" + dni + ", name=" + name + ", lastname=" + lastname + ", birthday=" + birthday + ", gender="
-				+ gender + ", hascar=" + hascar + "]";
+		return "Person [dni=" + dni + ", name=" + name + ", lastname=" + lastname + ", birthday=" + birthday
+				+ ", gender=" + gender + ", hascar=" + hascar + "]";
+	}
+
+	/**
+	 * Gets the hotel.
+	 *
+	 * @return the hotel
+	 */
+	public Set<Hotel> getHotel() {
+		return new HashSet<>(this.hotel);
+	}
+
+	/**
+	 * Sets the hotel.
+	 *
+	 * @param hotel the new hotel
+	 */
+	public void setHotel(Set<Hotel> hotel) {
+		this.hotel = hotel;
+	}
+
+	/**
+	 * Add new hotel.
+	 *
+	 * @param hotel the new hotel
+	 */
+	public void linkHotel(Hotel h) {
+		// Assign Person to Hotel
+		h.setPerson(this);
+		this.hotel.add(h);
+	}
+
+	/**
+	 * Removes hotel.
+	 *
+	 * @param hotel the hotel
+	 */
+	public void unlinkHotel(Hotel h) {
+		this.hotel.remove(h);
+		// Unassigns Person to Hotel
+		h.setPerson(null);
 	}
 
 }
