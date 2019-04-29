@@ -92,7 +92,7 @@ public class Car {
 	 *
 	 * @param numberOfCarDoors the new number of car doors
 	 */
-	public void setNumberOfCarDoors(int numberOfCarDoors) {-
+	public void setNumberOfCarDoors(int numberOfCarDoors) {
 		this.numberOfCarDoors = numberOfCarDoors;
 	}
 
