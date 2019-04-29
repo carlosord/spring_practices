@@ -12,7 +12,7 @@ import javax.validation.constraints.NotEmpty;
 @Entity
 @Table(name = "CAR", uniqueConstraints = @UniqueConstraint(columnNames = { "license" }))
 
-public class Car {
+public class Car extends BaseEntity {
 
 	/** The car license. */
 	@NotEmpty
