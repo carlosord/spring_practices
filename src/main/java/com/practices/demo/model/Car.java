@@ -88,16 +88,16 @@ public class Car extends BaseEntity {
 	 *
 	 * @return the number of car doors
 	 */
-	public Integer getNumberOfCarDoors() {
+	public Integer getNumberofcardoors() {
 		return numberofcardoors;
 	}
 
 	/**
 	 * Sets the number of car doors.
 	 *
-	 * @param numberOfCarDoors the new number of car doors
+	 * @param numberofcardoors the new number of car doors
 	 */
-	public void setNumberOfCarDoors(Integer numberofcardoors) {
+	public void setNumberofcardoors(Integer numberofcardoors) {
 		this.numberofcardoors = numberofcardoors;
 	}
 
