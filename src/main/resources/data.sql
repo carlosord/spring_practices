@@ -7,3 +7,13 @@ INSERT INTO people(dni, name, lastname, birthday, gender, hascar) VALUES ('91952
 INSERT INTO people(dni, name, lastname, birthday, gender, hascar) VALUES ('64741767X','User7', 'User7', TO_DATE('30/12/1968', 'DD/MM/YYYY'), 0, false);
 INSERT INTO people(dni, name, lastname, birthday, gender, hascar) VALUES ('98279927F','User8', 'User8', TO_DATE('22/06/1974', 'DD/MM/YYYY'), 1, false);
 INSERT INTO people(dni, name, lastname, birthday, gender, hascar) VALUES ('19655166X','User9', 'User9', TO_DATE('28/02/1988', 'DD/MM/YYYY'), 0, false);
+
+INSERT INTO car(license, colour, numberofcardoors) VALUES ('8675BZR','White', 5);
+INSERT INTO car(license, colour, numberofcardoors) VALUES ('3865WRS','Red', 3);
+INSERT INTO car(license, colour, numberofcardoors) VALUES ('0173NDS','Black', 5);
+INSERT INTO car(license, colour, numberofcardoors) VALUES ('8502PYB','Grey', 5);
+INSERT INTO car(license, colour, numberofcardoors) VALUES ('7341QNT','Blue', 3);
+INSERT INTO car(license, colour, numberofcardoors) VALUES ('7651TSD','Black', 3);
+INSERT INTO car(license, colour, numberofcardoors) VALUES ('9626MSG','Yellow', 5);
+INSERT INTO car(license, colour, numberofcardoors) VALUES ('0706JLS','Green', 3);
+INSERT INTO car(license, colour, numberofcardoors) VALUES ('8942JDP','Blue', 5);

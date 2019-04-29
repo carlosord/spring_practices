@@ -29,8 +29,8 @@ public class Car extends BaseEntity {
 	private String colour;
 
 	/** The number of car doors. */
-	@Column(name = "numberOfCarDoors", nullable = true)
-	private int numberOfCarDoors;
+	@Column(name = "numberofcardoors", nullable = true)
+	private Integer numberofcardoors;
 
 	/**
 	 * Instantiates a new car.
@@ -88,22 +88,22 @@ public class Car extends BaseEntity {
 	 *
 	 * @return the number of car doors
 	 */
-	public int getNumberOfCarDoors() {
-		return numberOfCarDoors;
+	public Integer getNumberofcardoors() {
+		return numberofcardoors;
 	}
 
 	/**
 	 * Sets the number of car doors.
 	 *
-	 * @param numberOfCarDoors the new number of car doors
+	 * @param numberofcardoors the new number of car doors
 	 */
-	public void setNumberOfCarDoors(int numberOfCarDoors) {
-		this.numberOfCarDoors = numberOfCarDoors;
+	public void setNumberofcardoors(Integer numberofcardoors) {
+		this.numberofcardoors = numberofcardoors;
 	}
 
 	@Override
 	public String toString() {
-		return "Car [license=" + license + ", colour=" + colour + ", numberOfCarDoors=" + numberOfCarDoors + "]";
+		return "Car [license=" + license + ", colour=" + colour + ", numberOfCarDoors=" + numberofcardoors + "]";
 	}
 
 	/*
