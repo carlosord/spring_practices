@@ -21,6 +21,10 @@ import com.practices.demo.model.types.Gender;
 @Table(name = "PEOPLE", uniqueConstraints = @UniqueConstraint(columnNames = { "dni" }))
 public class Person extends BaseEntity {
 
+	/** The car */
+	@OneToMany(mappedBy = "person")
+	private Set<Car> car = new HashSet<>();
+	
 	/** The hotel. */
 	@OneToMany(mappedBy = "person")
 	private Set<Hotel> hotel = new HashSet<>();
@@ -248,6 +252,47 @@ public class Person extends BaseEntity {
 		this.hotel.remove(h);
 		// Unassigns Person to Hotel
 		h.setPerson(null);
+	}
+
+	/**
+	 * Gets the Car.
+	 *
+	 * @return the new car
+	 */
+	public Set<Car> getCar() {
+		return new HashSet<>(this.car);
+	}
+
+	/**
+	 * Sets the Car.
+	 *
+	 * @param car the new car
+	 */
+	public void setCar(Set<Car> car) {
+		this.car = car;
+	}
+
+	/**
+	 * Add the Car.
+	 *
+	 * @param car the new car
+	 */
+	public void linkCar(Car c) {
+		// Asign person to car
+		c.setPerson(this);
+		this.car.add(c);
+	}
+
+	/**
+	 * Remove the Car.
+	 *
+	 * @param car the new car
+	 */
+	public void unlinkCar(Car c) {
+		// Unassigns person to hotel
+		this.car.remove(c);
+		c.setPerson(this);
+
 	}
 
 }

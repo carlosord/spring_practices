@@ -2,6 +2,7 @@ package com.practices.demo.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotEmpty;
@@ -13,6 +14,10 @@ import javax.validation.constraints.NotEmpty;
 @Table(name = "CAR", uniqueConstraints = @UniqueConstraint(columnNames = { "license" }))
 
 public class Car extends BaseEntity {
+
+	/** The person */
+	@ManyToOne
+	private Person person;
 
 	/** The car license. */
 	@NotEmpty
@@ -134,6 +139,24 @@ public class Car extends BaseEntity {
 		} else if (!license.equals(other.license))
 			return false;
 		return true;
+	}
+
+	/**
+	 * Gets the person.
+	 *
+	 * @return the new person
+	 */
+	public Person getPerson() {
+		return person;
+	}
+
+	/**
+	 * Sets the person.
+	 *
+	 * @param person the new person
+	 */
+	public void setPerson(Person person) {
+		this.person = person;
 	}
 
 }
