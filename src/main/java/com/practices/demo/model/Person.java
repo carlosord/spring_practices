@@ -24,6 +24,10 @@ public class Person extends BaseEntity {
 	/** The car */
 	@OneToMany(mappedBy = "person")
 	private Set<Car> car = new HashSet<>();
+	
+	/** The hotel. */
+	@OneToMany(mappedBy = "person")
+	private Set<Hotel> hotel = new HashSet<>();
 
 	/** The dni. */
 	@NotEmpty
@@ -208,6 +212,46 @@ public class Person extends BaseEntity {
 	public String toString() {
 		return "Person [dni=" + dni + ", name=" + name + ", lastname=" + lastname + ", birthday=" + birthday
 				+ ", gender=" + gender + ", hascar=" + hascar + "]";
+	}
+
+	/**
+	 * Gets the hotel.
+	 *
+	 * @return the hotel
+	 */
+	public Set<Hotel> getHotel() {
+		return new HashSet<>(this.hotel);
+	}
+
+	/**
+	 * Sets the hotel.
+	 *
+	 * @param hotel the new hotel
+	 */
+	public void setHotel(Set<Hotel> hotel) {
+		this.hotel = hotel;
+	}
+
+	/**
+	 * Add new hotel.
+	 *
+	 * @param hotel the new hotel
+	 */
+	public void linkHotel(Hotel h) {
+		// Assign Person to Hotel
+		h.setPerson(this);
+		this.hotel.add(h);
+	}
+
+	/**
+	 * Removes hotel.
+	 *
+	 * @param hotel the hotel
+	 */
+	public void unlinkHotel(Hotel h) {
+		this.hotel.remove(h);
+		// Unassigns Person to Hotel
+		h.setPerson(null);
 	}
 
 	/**
