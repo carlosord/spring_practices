@@ -92,13 +92,48 @@ public class Car {
 	 *
 	 * @param numberOfCarDoors the new number of car doors
 	 */
-	public void setNumberOfCarDoors(int numberOfCarDoors) {
+	public void setNumberOfCarDoors(int numberOfCarDoors) {-
 		this.numberOfCarDoors = numberOfCarDoors;
 	}
 
 	@Override
 	public String toString() {
 		return "Car [license=" + license + ", colour=" + colour + ", numberOfCarDoors=" + numberOfCarDoors + "]";
+	}
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((license == null) ? 0 : license.hashCode());
+		return result;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Car other = (Car) obj;
+		if (license == null) {
+			if (other.license != null)
+				return false;
+		} else if (!license.equals(other.license))
+			return false;
+		return true;
 	}
 
 }
