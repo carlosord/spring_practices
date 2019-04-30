@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.practices.demo.dto.DtoAssembler;
 import com.practices.demo.dto.PersonDto;
@@ -18,6 +19,7 @@ import com.practices.demo.service.exception.BusinessException;
  * The Class PersonServiceImpl.
  */
 @Service
+@Transactional
 public class PersonServiceImpl implements PersonService {
 
 	/** The person repository. */
