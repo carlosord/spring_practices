@@ -18,12 +18,12 @@ INSERT INTO car(license, colour, numberofcardoors) VALUES ('9626MSG','Yellow', 5
 INSERT INTO car(license, colour, numberofcardoors) VALUES ('0706JLS','Green', 3);
 INSERT INTO car(license, colour, numberofcardoors) VALUES ('8942JDP','Blue', 5);
 
-INSERT INTO hotel(code, location, totalbedrooms, occupiedbedrooms) VALUES ('HO-001','Burgos',100,30);
-INSERT INTO hotel(code, location, totalbedrooms, occupiedbedrooms) VALUES ('HO-002','León',300,289);
-INSERT INTO hotel(code, location, totalbedrooms, occupiedbedrooms) VALUES ('HO-003','Oviedo',250,88);
-INSERT INTO hotel(code, location, totalbedrooms, occupiedbedrooms) VALUES ('HO-004','Madrid',247,200);
-INSERT INTO hotel(code, location, totalbedrooms, occupiedbedrooms) VALUES ('HO-005','Valencia',150,110);
-INSERT INTO hotel(code, location, totalbedrooms, occupiedbedrooms) VALUES ('HO-006','Barcelona',350,15);
-INSERT INTO hotel(code, location, totalbedrooms, occupiedbedrooms) VALUES ('HO-007','Estocolmo',400,390);
-INSERT INTO hotel(code, location, totalbedrooms, occupiedbedrooms) VALUES ('HO-008','Sevilla',200,199);
-INSERT INTO hotel(code, location, totalbedrooms, occupiedbedrooms) VALUES ('HO-009','Loroño',100,1);
+INSERT INTO hotel(code, name, location, totalbedrooms, occupiedbedrooms) VALUES ('HO-001','Hotel Abadía','Burgos',100,30);
+INSERT INTO hotel(code, name, location, totalbedrooms, occupiedbedrooms) VALUES ('HO-002','Hotel Orfila','León',300,289);
+INSERT INTO hotel(code, name, location, totalbedrooms, occupiedbedrooms) VALUES ('HO-003','Hotel Primero','Oviedo',250,88);
+INSERT INTO hotel(code, name, location, totalbedrooms, occupiedbedrooms) VALUES ('HO-004','Hotel Astoria','Madrid',247,200);
+INSERT INTO hotel(code, name, location, totalbedrooms, occupiedbedrooms) VALUES ('HO-005','Hotel Las Madrigueras','Valencia',150,110);
+INSERT INTO hotel(code, name, location, totalbedrooms, occupiedbedrooms) VALUES ('HO-006','Sanc Francesc Hotel','Barcelona',350,15);
+INSERT INTO hotel(code, name, location, totalbedrooms, occupiedbedrooms) VALUES ('HO-007','Catalonia Square','Estocolmo',400,390);
+INSERT INTO hotel(code, name, location, totalbedrooms, occupiedbedrooms) VALUES ('HO-008','Sixtytwo Hotel','Sevilla',200,199);
+INSERT INTO hotel(code, name, location, totalbedrooms, occupiedbedrooms) VALUES ('HO-009','Palace Hotel','Logroño',100,1);

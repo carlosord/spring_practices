@@ -24,6 +24,10 @@ public class Hotel extends BaseEntity {
 	@ManyToOne
 	private Person person;
 
+	/** The name of hotel. */
+	@Column(name = "name", nullable = false)
+	private String name;
+
 	/** The location. */
 	@Column(name = "location", nullable = false)
 	private String location;
@@ -68,6 +72,24 @@ public class Hotel extends BaseEntity {
 	 */
 	public void setCode(String code) {
 		this.code = code;
+	}
+
+	/**
+	 * Gets the name of the hotel.
+	 *
+	 * @return the name of the hotel
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * Sets the name of the hotel.
+	 *
+	 * @param code the new name
+	 */
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	/**
@@ -166,9 +188,9 @@ public class Hotel extends BaseEntity {
 	 */
 	@Override
 	public String toString() {
-		return "Hotel [code=" + code + ", location=" + location + ", totalbedrooms=" + totalbedrooms
-				+ ", occupiedbedrooms=" + occupiedbedrooms + "]";
-	};
+		return "Hotel [code=" + code + ", person=" + person + ", name=" + name + ", location=" + location
+				+ ", totalbedrooms=" + totalbedrooms + ", occupiedbedrooms=" + occupiedbedrooms + "]";
+	}
 
 	/**
 	 * Gets the person.
