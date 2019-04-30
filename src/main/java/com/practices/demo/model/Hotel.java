@@ -29,12 +29,12 @@ public class Hotel extends BaseEntity {
 	private String location;
 
 	/** The total bedrooms. */
-	@Column(name = "totalBedrooms", nullable = false)
-	private int totalBedrooms;
+	@Column(name = "totalbedrooms", nullable = false)
+	private int totalbedrooms;
 
 	/** The occupied bedrooms. */
-	@Column(name = "occupiedBedrooms")
-	private int occupiedBedrooms;
+	@Column(name = "occupiedbedrooms")
+	private int occupiedbedrooms;
 
 	/**
 	 * Instantiates a new hotel.
@@ -93,8 +93,8 @@ public class Hotel extends BaseEntity {
 	 *
 	 * @return the totalBedrooms
 	 */
-	public int getTotalBedrooms() {
-		return totalBedrooms;
+	public int getTotalbedrooms() {
+		return totalbedrooms;
 	}
 
 	/**
@@ -102,8 +102,8 @@ public class Hotel extends BaseEntity {
 	 *
 	 * @param hascar the new totalBedrooms
 	 */
-	public void setTotalBedrooms(int totalBedrooms) {
-		this.totalBedrooms = totalBedrooms;
+	public void setTotalbedrooms(int totalbedrooms) {
+		this.totalbedrooms = totalbedrooms;
 	}
 
 	/**
@@ -111,8 +111,8 @@ public class Hotel extends BaseEntity {
 	 *
 	 * @return the name occupiedBedrooms
 	 */
-	public int getOccupiedBedrooms() {
-		return occupiedBedrooms;
+	public int getOccupiedbedrooms() {
+		return occupiedbedrooms;
 	}
 
 	/**
@@ -120,8 +120,8 @@ public class Hotel extends BaseEntity {
 	 *
 	 * @param hascar the new ocuppiedBedrooms
 	 */
-	public void setOccupiedBedrooms(int occupiedBedrooms) {
-		this.occupiedBedrooms = occupiedBedrooms;
+	public void setOccupiedbedrooms(int occupiedbedrooms) {
+		this.occupiedbedrooms = occupiedbedrooms;
 	}
 
 	/*
@@ -163,8 +163,8 @@ public class Hotel extends BaseEntity {
 	 */
 	@Override
 	public String toString() {
-		return "Hotel [code=" + code + ", location=" + location + ", totalBedrooms=" + totalBedrooms
-				+ ", occupiedBedrooms=" + occupiedBedrooms + "]";
+		return "Hotel [code=" + code + ", location=" + location + ", totalbedrooms=" + totalbedrooms
+				+ ", occupiedbedrooms=" + occupiedbedrooms + "]";
 	};
 
 	/**
