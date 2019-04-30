@@ -1,5 +1,12 @@
 package com.practices.demo.presentation;
 
-public class HotelController {
+import org.springframework.stereotype.Controller;
 
+/**
+ * The Class HotelController.
+ */
+
+@Controller
+public class HotelController {
+ int hola;
 }
