@@ -7,11 +7,12 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 
+import com.practices.demo.model.Car;
 import com.practices.demo.model.Person;
 
 public class DtoAssembler {
 	private static SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-	
+
 	public static Person toEntity(PersonDto dto) {
 		Person entity = new Person();
 		entity.setId(dto.getId());
@@ -40,6 +41,24 @@ public class DtoAssembler {
 		}
 		dto.setGender(entity.getGender());
 		dto.setHascar(entity.getHascar());
+		return dto;
+	}
+
+	public static Car toEntity(CarDto dto) {
+		Car entity = new Car();
+		entity.setId(dto.getId());
+		entity.setLicense(dto.getLicense());
+		entity.setColour(dto.getColour());
+		entity.setNumberofcardoors(dto.getNumberofcardoors());
+		return entity;
+	}
+
+	public static CarDto fromEntity(Car entity) {
+		CarDto dto = new CarDto();
+		dto.setId(entity.getId());
+		dto.setLicense(entity.getLicense());
+		dto.setColour(entity.getColour());
+		dto.setNumberofcardoors(entity.getNumberofcardoors());
 		return dto;
 	}
 }

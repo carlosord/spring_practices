@@ -17,6 +17,7 @@
 					<th scope="col" th:text="#{person.hascar}"></th>
 					<th scope="col"></th>
 					<th scope="col"></th>
+					<th scope="col"></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -38,12 +39,15 @@
 					<td>
 						<a th:href="@{/delete/{id}(id=${p.id})}" class="far fa-trash-alt"></a>
 					</td>
+					<td>
+						<!-- Añadir aqui el botón de coche -->
+					</td>
 				</tr>
 			</tbody>
 		</table>
 
 		<div class="row justify-content-md-center">
-			<a th:href="${T(com.practices.demo.presentation.front.Url).NEW_PERSON_URL}" 
+			<a th:href="${T(com.practices.demo.presentation.front.Url).NEW_PERSON_URL}"
 				class="btn btn-lg btn-success" th:text=#{form.person.create}></a>
 		</div>
 
