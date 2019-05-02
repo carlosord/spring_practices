@@ -1,8 +1,13 @@
 package com.practices.demo.model;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotEmpty;
@@ -21,8 +26,9 @@ public class Hotel extends BaseEntity {
 	private String code;
 
 	/** The foreign key. */
-	@ManyToOne
-	private Person person;
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "person_hotel", joinColumns = @JoinColumn(name = "hotel_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "person_id", referencedColumnName = "id"))
+	private Set<Person> person;
 
 	/** The name of hotel. */
 	@Column(name = "name", nullable = false)
@@ -195,10 +201,18 @@ public class Hotel extends BaseEntity {
 	/**
 	 * Gets the person.
 	 *
-	 * @param person
 	 * @return the person
 	 */
-	public Person getPerson() {
+	public Set<Person> getPerson() {
+		return person;
+	}
+
+	/**
+	 * Gets the person.
+	 *
+	 * @return the person
+	 */
+	Set<Person> _getPerson() {
 		return person;
 	}
 
@@ -207,7 +221,7 @@ public class Hotel extends BaseEntity {
 	 *
 	 * @param person the new person
 	 */
-	public void setPerson(Person p) {
+	public void setPerson(Set<Person> p) {
 		this.person = p;
 	}
 
