@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -24,9 +25,9 @@ public class Person extends BaseEntity {
 	/** The car */
 	@OneToMany(mappedBy = "person")
 	private Set<Car> car = new HashSet<>();
-	
+
 	/** The hotel. */
-	@OneToMany(mappedBy = "person")
+	@ManyToMany(mappedBy = "person")
 	private Set<Hotel> hotel = new HashSet<>();
 
 	/** The dni. */
@@ -224,34 +225,21 @@ public class Person extends BaseEntity {
 	}
 
 	/**
+	 * Gets the hotel.
+	 *
+	 * @return the hotel
+	 */
+	Set<Hotel> _getHotel() {
+		return this.hotel;
+	}
+
+	/**
 	 * Sets the hotel.
 	 *
 	 * @param hotel the new hotel
 	 */
 	public void setHotel(Set<Hotel> hotel) {
 		this.hotel = hotel;
-	}
-
-	/**
-	 * Add new hotel.
-	 *
-	 * @param hotel the new hotel
-	 */
-	public void linkHotel(Hotel h) {
-		// Assign Person to Hotel
-		h.setPerson(this);
-		this.hotel.add(h);
-	}
-
-	/**
-	 * Removes hotel.
-	 *
-	 * @param hotel the hotel
-	 */
-	public void unlinkHotel(Hotel h) {
-		this.hotel.remove(h);
-		// Unassigns Person to Hotel
-		h.setPerson(null);
 	}
 
 	/**
