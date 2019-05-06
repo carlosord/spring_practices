@@ -52,10 +52,6 @@ public class Person extends BaseEntity {
 	@Column(name = "gender", nullable = true)
 	private Gender gender;
 
-	/** The hasCar. */
-	@Column(name = "hascar", nullable = true)
-	private Boolean hascar;
-
 	/**
 	 * Instantiates a new person.
 	 */
@@ -150,25 +146,6 @@ public class Person extends BaseEntity {
 	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
-
-	/**
-	 * Gets the hascar.
-	 *
-	 * @return the hascar
-	 */
-	public Boolean getHascar() {
-		return hascar;
-	}
-
-	/**
-	 * Sets the hascar.
-	 *
-	 * @param hascar the new hascar
-	 */
-	public void setHascar(Boolean hascar) {
-		this.hascar = hascar;
-	}
-
 	/*
 	 * (non-Javadoc)
 	 *
@@ -212,7 +189,7 @@ public class Person extends BaseEntity {
 	@Override
 	public String toString() {
 		return "Person [dni=" + dni + ", name=" + name + ", lastname=" + lastname + ", birthday=" + birthday
-				+ ", gender=" + gender + ", hascar=" + hascar + "]";
+				+ ", gender=" + gender + ", hascar=" + "]";
 	}
 
 	/**
