@@ -60,6 +60,15 @@ public class DtoAssembler {
 		}
 		dto.setGender(entity.getGender());
 		dto.setHascar(hasCar(entity));
+
+		if (entity.getHotel() == null || entity.getHotel().size() == 0) {
+
+			dto.setHashotel(false);
+			;
+		} else {
+			dto.setHashotel(true);
+		}
+
 		return dto;
 	}
 

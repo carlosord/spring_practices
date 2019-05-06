@@ -22,7 +22,7 @@ import com.practices.demo.model.types.Gender;
 @Table(name = "PEOPLE", uniqueConstraints = @UniqueConstraint(columnNames = { "dni" }))
 public class Person extends BaseEntity {
 
-	/** The car */
+	/** The car. */
 	@OneToMany(mappedBy = "person")
 	private Set<Car> car = new HashSet<>();
 
