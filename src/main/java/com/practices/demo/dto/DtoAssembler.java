@@ -8,6 +8,7 @@ import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 
 import com.practices.demo.model.Hotel;
+import com.practices.demo.model.Car;
 import com.practices.demo.model.Person;
 
 // TODO: Auto-generated Javadoc
@@ -104,4 +105,32 @@ public class DtoAssembler {
 		return dto;
 	}
 
+	/**
+	 * To entity.
+	 *
+	 * @param dto the dto
+	 * @return the car
+	 */
+	public static Car toEntity(CarDto dto) {
+		Car entity = new Car();
+		entity.setLicense(dto.getLicense());
+		entity.setColour(dto.getColour());
+		entity.setNumberofcardoors(dto.getNumberofcadoors());
+
+		return entity;
+	}
+
+	/**
+	 * From entity.
+	 *
+	 * @param entity the entity
+	 * @return the car dto
+	 */
+	public static CarDto fromEntity(Car entity) {
+		CarDto dto = new CarDto();
+		dto.setLicense(entity.getLicense());
+		dto.setColour(entity.getColour());
+		dto.setNumberofcadoors(entity.getNumberofcardoors());
+		return dto;
+	}
 }

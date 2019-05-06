@@ -21,6 +21,9 @@ public class View {
 	public static final String HOTEL_VIEW = "hotel";
 
 
+	/** The Constant NEW_CAR_VIEW. */
+	public static final String CAR_VIEW = "car";
+
 
 	/**
 	 * Private constructor.

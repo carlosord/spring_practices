@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.practices.demo.dto.PersonDto;
 import com.practices.demo.presentation.form.HotelForm;
+import com.practices.demo.presentation.form.CarForm;
 import com.practices.demo.presentation.form.PersonForm;
 import com.practices.demo.presentation.front.Url;
 import com.practices.demo.presentation.front.View;
 import com.practices.demo.presentation.validation.PersonValidator;
 import com.practices.demo.service.HotelService;
+import com.practices.demo.service.CarService;
 import com.practices.demo.service.PersonService;
 import com.practices.demo.service.exception.BusinessException;
 
@@ -37,6 +39,10 @@ public class PersonController {
 	/** The person validator. */
 	@Autowired
 	private PersonValidator personValidator;
+
+	/** The person repository. */
+	@Autowired
+	private CarService carService;
 
 	/**
 	 * Show all.
@@ -203,6 +209,36 @@ public class PersonController {
 			return View.HOTEL_VIEW;
 		}
 
+	}
+
+	/**
+	 * Adds the car.
+	 *
+	 * @param model         the model
+	 * @param carForm       the car form
+	 * @param bindingResult the binding result
+	 * @return the string
+	 */
+	@PostMapping(Url.CAR_URL)
+	public String addCar(ModelMap model, @Valid CarForm carForm, BindingResult bindingResult) {
+
+		if (bindingResult.hasErrors()) {
+			return View.CAR_VIEW;
+		}
+
+		try {
+			personService.addCar(carForm.toCar());
+
+			return View.redirect(View.HOME_VIEW);
+
+		} catch (BusinessException b) {
+
+			model.addAttribute("allCars", carService.findAll());
+			bindingResult.rejectValue(b.getField(), b.getMessage());
+
+			return View.CAR_VIEW;
+
+		}
 	}
 
 }

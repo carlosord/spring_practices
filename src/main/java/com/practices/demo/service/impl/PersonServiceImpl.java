@@ -9,13 +9,16 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.practices.demo.dto.CarReserveDto;
 import com.practices.demo.dto.DtoAssembler;
 import com.practices.demo.dto.PersonDto;
 import com.practices.demo.dto.ReserveHotelDto;
 import com.practices.demo.model.Associations;
 import com.practices.demo.model.Hotel;
+import com.practices.demo.model.Car;
 import com.practices.demo.model.Person;
 import com.practices.demo.repositories.HotelRepository;
+import com.practices.demo.repositories.CarRepository;
 import com.practices.demo.repositories.PersonRepository;
 import com.practices.demo.service.PersonService;
 import com.practices.demo.service.exception.BusinessException;
@@ -34,6 +37,10 @@ public class PersonServiceImpl implements PersonService {
 	/** The hotel repository. */
 	@Autowired
 	private HotelRepository hotelRepository;
+
+	/** The person repository. */
+	@Autowired
+	private CarRepository carRepository;
 
 	/*
 	 * (non-Javadoc)
@@ -130,6 +137,32 @@ public class PersonServiceImpl implements PersonService {
 
 		personRepository.save(p);
 		hotelRepository.save(h);
+
+		return true;
+
+	}
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see
+	 * com.practices.demo.service.PersonService#addNewPerson(com.practices.demo.dto.
+	 * PersonDto)
+	 */
+	@Override
+	public boolean addCar(CarReserveDto car) throws BusinessException {
+
+		Car c = carRepository.findByLicense(car.getLicense());
+		Person p = personRepository.findByDni(car.getDni());
+
+		if (c.getPerson() != null) {
+			throw new BusinessException("car.license.asigned", "license");
+		}
+
+		Associations.ReserveCar.link(p, c);
+
+		carRepository.save(c);
+		personRepository.save(p);
 
 		return true;
 

@@ -20,6 +20,10 @@ public class Url {
 	/** The Constant HOME_URL. */
 	public static final String HOTEL_URL = "/hotel";
 
+
+	/** The Constant CAR_URL.  */
+	public static final String CAR_URL = "/car";
+
 	/**
 	 * Private constructor.
 	 */
