@@ -15,7 +15,6 @@ import javax.validation.constraints.Size;
 
 import com.practices.demo.model.types.Gender;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Person.
  */

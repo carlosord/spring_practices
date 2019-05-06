@@ -2,7 +2,6 @@ package com.practices.demo.dto;
 
 import com.practices.demo.model.types.Gender;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class PersonDto.
  */
