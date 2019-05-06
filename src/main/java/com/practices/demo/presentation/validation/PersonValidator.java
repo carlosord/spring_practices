@@ -19,7 +19,7 @@ public class PersonValidator implements Validator {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.springframework.validation.Validator#supports(java.lang.Class)
 	 */
 	@Override
@@ -29,7 +29,7 @@ public class PersonValidator implements Validator {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.springframework.validation.Validator#validate(java.lang.Object,
 	 * org.springframework.validation.Errors)
 	 */
@@ -77,21 +77,21 @@ public class PersonValidator implements Validator {
 
 	/**
 	 * Date is valid
-	 * 
+	 *
 	 * @param birthdayday
 	 * @param birthdaymonth
 	 * @param birthdayyear
 	 * @return true id the date is correct
 	 */
 	private boolean birthdayIsValid(String birthdayday, String birthdaymonth, String birthdayyear) {
-		
+
 		try {
 			return LocalDate.of(Integer.parseInt(birthdayyear), Integer.parseInt(birthdaymonth),
 					Integer.parseInt(birthdayday)) != null;
 		} catch (Exception e) {
 			return false;
 		}
-		
+
 	}
 
 }

@@ -18,34 +18,34 @@ public class PersonForm {
 	private Long id;
 
 	/** The dni. */
-	@NotBlank(message="{person.dni.error.required}")
-	@Pattern(regexp="[0-9]{8}([a-z]|[A-Z]){1}", message="{person.dni.error.invalid}")
+	@NotBlank(message = "{person.dni.error.required}")
+	@Pattern(regexp = "[0-9]{8}([a-z]|[A-Z]){1}", message = "{person.dni.error.invalid}")
 	private String dni;
 
 	/** The name. */
-	@NotBlank(message="{person.name.error.required}")
-	@Length(min=3, max=15, message="{person.name.error.notlength}")
+	@NotBlank(message = "{person.name.error.required}")
+	@Length(min = 3, max = 15, message = "{person.name.error.notlength}")
 	private String name;
 
 	/** The lastname. */
-	@NotBlank(message="{person.lastname.error.required}")
-	@Length(min=3, max=15, message="{person.lastname.error.notlength}")
+	@NotBlank(message = "{person.lastname.error.required}")
+	@Length(min = 3, max = 15, message = "{person.lastname.error.notlength}")
 	private String lastname;
 
 	private String fullname;
 
-	@NotBlank(message="{person.birthday.error.required}")
+	@NotBlank(message = "{person.birthday.error.required}")
 	private String birthdayday;
-	@NotBlank(message="{person.birthday.error.required}")
+	@NotBlank(message = "{person.birthday.error.required}")
 	private String birthdaymonth;
-	@NotBlank(message="{person.birthday.error.required}")
+	@NotBlank(message = "{person.birthday.error.required}")
 	private String birthdayyear;
 
 	/** The age. */
 	private Integer age;
 
 	/** The gender. */
-	@NotNull(message="{person.gender.error.required}")
+	@NotNull(message = "{person.gender.error.required}")
 	private Gender gender;
 
 	/** The hascar. */
@@ -85,9 +85,9 @@ public class PersonForm {
 		this.setName(person.getName());
 		this.setLastname(person.getLastname());
 		this.setFullname(String.join(" ", person.getName(), person.getLastname()));
-		if(person.getBirthday() != null) {
+		if (person.getBirthday() != null) {
 			String[] dateSplit = person.getBirthday().split("/");
-			if(dateSplit.length == 3) {
+			if (dateSplit.length == 3) {
 				this.setBirthdayday(dateSplit[0]);
 				this.setBirthdaymonth(dateSplit[1]);
 				this.setBirthdayyear(dateSplit[2]);
@@ -256,6 +256,5 @@ public class PersonForm {
 	public void setFullname(String fullname) {
 		this.fullname = fullname;
 	}
-
 
 }

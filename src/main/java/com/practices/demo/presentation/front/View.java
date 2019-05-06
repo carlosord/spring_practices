@@ -17,6 +17,10 @@ public class View {
 	/** The Constant EDIT_PERSON_VIEW. */
 	public static final String EDIT_PERSON_VIEW = "edit";
 
+	/** The Constant NEW_PERSON_VIEW. */
+	public static final String HOTEL_VIEW = "hotel";
+
+
 	/** The Constant NEW_CAR_VIEW. */
 	public static final String CAR_VIEW = "car";
 
@@ -24,7 +28,8 @@ public class View {
 	/**
 	 * Private constructor.
 	 */
-	private View() {}
+	private View() {
+	}
 
 	/**
 	 * Redirect.

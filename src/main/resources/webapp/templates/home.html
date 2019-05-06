@@ -18,6 +18,7 @@
 					<th scope="col"></th>
 					<th scope="col"></th>
 					<th scope="col"></th>
+					<th scope="col"></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -38,6 +39,9 @@
 					</td>
 					<td>
 						<a th:href="@{/delete/{id}(id=${p.id})}" class="far fa-trash-alt"></a>
+					</td>
+					<td>
+						<a th:href="@{/hotel/{dni}(dni=${p.dni})}" class="fas fa-hotel"></a>
 					</td>
 					<td>
 						<a th:href="@{/car/{dni}(dni=${p.dni})}" class="fas fa-car"></a>

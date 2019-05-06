@@ -6,9 +6,11 @@ import org.springframework.stereotype.Repository;
 import com.practices.demo.model.Hotel;
 
 /**
- *  The repository of Hotel
+ * The repository of Hotel
  */
 @Repository
-public interface HotelRepository extends JpaRepository<Hotel,Long>{
+public interface HotelRepository extends JpaRepository<Hotel, Long> {
+
+	Hotel findByCode(String code);
 
 }

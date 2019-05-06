@@ -11,11 +11,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.practices.demo.dto.PersonDto;
+import com.practices.demo.presentation.form.HotelForm;
 import com.practices.demo.presentation.form.CarForm;
 import com.practices.demo.presentation.form.PersonForm;
 import com.practices.demo.presentation.front.Url;
 import com.practices.demo.presentation.front.View;
 import com.practices.demo.presentation.validation.PersonValidator;
+import com.practices.demo.service.HotelService;
 import com.practices.demo.service.CarService;
 import com.practices.demo.service.PersonService;
 import com.practices.demo.service.exception.BusinessException;
@@ -29,6 +31,10 @@ public class PersonController {
 	/** The person repository. */
 	@Autowired
 	private PersonService personService;
+
+	/** The hotel repository. */
+	@Autowired
+	private HotelService hotelService;
 
 	/** The person validator. */
 	@Autowired
@@ -177,12 +183,39 @@ public class PersonController {
 
 	}
 
+	@PostMapping(Url.HOTEL_URL)
+	public String addNewReserve(ModelMap model, @Valid HotelForm hotelForm, BindingResult bindingResult) {
+
+		if (bindingResult.hasErrors()) {
+			return View.HOTEL_VIEW;
+		}
+
+		try {
+
+			// Add new reserve to db
+			personService.addNewReserve(hotelForm.toHotel());
+
+			// Return new reserve view
+			return View.redirect(View.HOME_VIEW);
+
+		} catch (BusinessException b) {
+
+			// TODO: Revisar
+			model.addAttribute("allHotels", hotelService.findAll());
+			bindingResult.rejectValue(b.getField(), b.getMessage());
+
+			// Go back form
+			// return View.redirect(View.HOTEL_VIEW + "/" + hotelForm.getDni());
+			return View.HOTEL_VIEW;
+		}
+
+	}
 
 	/**
 	 * Adds the car.
 	 *
-	 * @param model the model
-	 * @param carForm the car form
+	 * @param model         the model
+	 * @param carForm       the car form
 	 * @param bindingResult the binding result
 	 * @return the string
 	 */

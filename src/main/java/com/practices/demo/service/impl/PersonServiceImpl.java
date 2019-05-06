@@ -12,9 +12,12 @@ import org.springframework.transaction.annotation.Transactional;
 import com.practices.demo.dto.CarReserveDto;
 import com.practices.demo.dto.DtoAssembler;
 import com.practices.demo.dto.PersonDto;
+import com.practices.demo.dto.ReserveHotelDto;
 import com.practices.demo.model.Associations;
+import com.practices.demo.model.Hotel;
 import com.practices.demo.model.Car;
 import com.practices.demo.model.Person;
+import com.practices.demo.repositories.HotelRepository;
 import com.practices.demo.repositories.CarRepository;
 import com.practices.demo.repositories.PersonRepository;
 import com.practices.demo.service.PersonService;
@@ -30,6 +33,10 @@ public class PersonServiceImpl implements PersonService {
 	/** The person repository. */
 	@Autowired
 	private PersonRepository personRepository;
+
+	/** The hotel repository. */
+	@Autowired
+	private HotelRepository hotelRepository;
 
 	/** The person repository. */
 	@Autowired
@@ -114,6 +121,25 @@ public class PersonServiceImpl implements PersonService {
 
 		// Delete the person
 		personRepository.deleteById(id);
+	}
+
+	public boolean addNewReserve(ReserveHotelDto reservehotel) throws BusinessException {
+
+		Person p = personRepository.findByDni(reservehotel.getDni());
+		Hotel h = hotelRepository.findByCode(reservehotel.getCode());
+
+		if (h.getOccupiedbedrooms() == h.getTotalbedrooms())
+			throw new BusinessException("hotel.code.error", "code");
+
+		h.setOccupiedbedrooms(h.getOccupiedbedrooms() + 1);
+
+		Associations.ReserveHotel.link(p, h);
+
+		personRepository.save(p);
+		hotelRepository.save(h);
+
+		return true;
+
 	}
 
 	/*

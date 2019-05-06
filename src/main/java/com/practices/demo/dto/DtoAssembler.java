@@ -7,9 +7,9 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 
+import com.practices.demo.model.Hotel;
 import com.practices.demo.model.Car;
 import com.practices.demo.model.Person;
-
 
 /**
  * The Class DtoAssembler.
@@ -53,12 +53,54 @@ public class DtoAssembler {
 		dto.setDni(entity.getDni());
 		dto.setName(entity.getName());
 		dto.setLastname(entity.getLastname());
-		if(entity.getBirthday() != null) {
+		if (entity.getBirthday() != null) {
 			dto.setBirthday(format.format(entity.getBirthday()));
-			dto.setAge((int) ChronoUnit.YEARS.between(Instant.ofEpochMilli(entity.getBirthday().getTime()).atZone(ZoneId.systemDefault()).toLocalDate() , LocalDate.now()));
+			dto.setAge((int) ChronoUnit.YEARS.between(
+					Instant.ofEpochMilli(entity.getBirthday().getTime()).atZone(ZoneId.systemDefault()).toLocalDate(),
+					LocalDate.now()));
 		}
 		dto.setGender(entity.getGender());
 		dto.setHascar(entity.getHascar());
+		return dto;
+	}
+
+	/**
+	 * To entity.
+	 *
+	 * @param dto the dto
+	 * @return the hotel
+	 */
+	public static Hotel toEntity(HotelDto dto) {
+
+		Hotel entity = new Hotel();
+
+		entity.setId(dto.getId());
+		entity.setCode(dto.getCode());
+		entity.setName(dto.getName());
+		entity.setLocation(dto.getLocation());
+		entity.setTotalbedrooms(dto.getTotalbedrooms());
+		entity.setOccupiedbedrooms(dto.getOccupiedbedrooms());
+
+		return entity;
+	}
+
+	/**
+	 * From entity.
+	 *
+	 * @param entity the entity
+	 * @return the hotel dto
+	 */
+	public static HotelDto fromEntity(Hotel entity) {
+
+		HotelDto dto = new HotelDto();
+
+		dto.setId(entity.getId());
+		dto.setCode(entity.getCode());
+		dto.setName(entity.getName());
+		dto.setLocation(entity.getLocation());
+		dto.setTotalbedrooms(entity.getTotalbedrooms());
+		dto.setOccupiedbedrooms(entity.getOccupiedbedrooms());
+
 		return dto;
 	}
 

@@ -17,18 +17,23 @@ public class Url {
 	/** The Constant DELETE_PERSON_URL. */
 	public static final String DELETE_PERSON_URL = "/delete";
 
+	/** The Constant HOME_URL. */
+	public static final String HOTEL_URL = "/hotel";
+
+
 	/** The Constant CAR_URL.  */
 	public static final String CAR_URL = "/car";
 
 	/**
 	 * Private constructor.
 	 */
-	private Url() {}
+	private Url() {
+	}
 
 	/**
 	 * Adds the parmameters.
 	 *
-	 * @param view the view
+	 * @param view   the view
 	 * @param params the params
 	 * @return the string
 	 */
