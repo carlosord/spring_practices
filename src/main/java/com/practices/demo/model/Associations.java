@@ -2,7 +2,7 @@ package com.practices.demo.model;
 
 public class Associations {
 
-	public static class Book { //Cambiar link de coche
+	public static class Book {
 
 		/*
 		 * Method link person and hotel
@@ -33,6 +33,9 @@ public class Associations {
 			hotel._getPerson().remove(person);
 		}
 
+	}
+
+	public static class ReserveCar {
 
 		/*
 		 * Method link person and car
@@ -42,7 +45,7 @@ public class Associations {
 		 * @param car
 		 *
 		 */
-		public static void linkCar (Person person, Car car) {
+		public static void linkCar(Person person, Car car) {
 
 			car.setPerson(person);
 			person._getCar().add(car);
@@ -62,9 +65,6 @@ public class Associations {
 			person._getCar().remove(car);
 			car.setPerson(null);
 		}
-
-
-
 	}
 
 }
