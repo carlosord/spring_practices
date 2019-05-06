@@ -15,6 +15,7 @@
 					<th scope="col" th:text="#{person.age}"></th>
 					<th scope="col" th:text="#{person.gender}"></th>
 					<th scope="col" th:text="#{person.hascar}"></th>
+					<th scope="col" th:text="#{person.hashotel}"></th>
 					<th scope="col"></th>
 					<th scope="col"></th>
 					<th scope="col"></th>
@@ -35,6 +36,9 @@
 						<span class="fas" th:classappend="${p.hascar} ? fa-check : fa-times"></span>
 					</td>
 					<td>
+						<span class="fas" th:classappend="${p.hashotel} ? fa-check : fa-times"></span>
+					</td>
+					<td>
 						<a th:href="@{/edit/{id}(id=${p.id})}" class="fas fa-edit"></a>
 					</td>
 					<td>
@@ -46,6 +50,9 @@
 					<td>
 						<a th:href="@{/car/{dni}(dni=${p.dni})}" class="fas fa-car"></a>
 					</td>
+					
+					
+					
 				</tr>
 			</tbody>
 		</table>
