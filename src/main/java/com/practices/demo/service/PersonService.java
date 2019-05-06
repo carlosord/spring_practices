@@ -2,6 +2,7 @@ package com.practices.demo.service;
 
 import java.util.List;
 
+import com.practices.demo.dto.CarReserveDto;
 import com.practices.demo.dto.PersonDto;
 import com.practices.demo.service.exception.BusinessException;
 
@@ -9,7 +10,7 @@ import com.practices.demo.service.exception.BusinessException;
  * The Class PersonService.
  */
 public interface PersonService {
-		
+
 	/**
 	 * Find person by id.
 	 *
@@ -32,16 +33,16 @@ public interface PersonService {
 	 * @return the person dto
 	 */
 	public PersonDto findPersonByDni(String dni);
-	
+
 	/**
 	 * Adds the new person.
 	 *
 	 * @param person the person
 	 * @return the person dto
-	 * @throws BusinessException 
+	 * @throws BusinessException
 	 */
 	public PersonDto addNewPerson(PersonDto person) throws BusinessException;
-	
+
 	/**
 	 * Update person.
 	 *
@@ -49,11 +50,18 @@ public interface PersonService {
 	 * @return the person dto
 	 */
 	public PersonDto updatePerson(PersonDto person);
-	
+
 	/**
 	 * Delete person form.
 	 *
 	 * @param id the id
 	 */
-	public void deletePersonForm(Long id);		
+	public void deletePersonForm(Long id);
+
+	/**
+	 * Add car to Person.
+	 *
+	 * @param id the id
+	 */
+	public boolean addCar(CarReserveDto car) throws BusinessException;
 }

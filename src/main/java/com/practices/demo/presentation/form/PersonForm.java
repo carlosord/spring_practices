@@ -57,9 +57,9 @@ public class PersonForm {
 	 * @return the person
 	 */
 	public PersonDto toPerson() {
-		
+
 		PersonDto p = new PersonDto();
-		
+
 		p.setId(id);
 		p.setDni(dni);
 		p.setName(name);
@@ -67,11 +67,11 @@ public class PersonForm {
 		p.setBirthday(String.join("/", birthdayday, birthdaymonth, birthdayyear));
 		p.setGender(gender);
 		p.setHascar(hascar);
-		
+
 		return p;
-		
+
 	}
-	
+
 	/**
 	 * Gets the person form.
 	 *
@@ -79,7 +79,7 @@ public class PersonForm {
 	 * @return the person form
 	 */
 	public void getPersonForm(PersonDto person) {
-		
+
 		this.setId(person.getId());
 		this.setDni(person.getDni());
 		this.setName(person.getName());
@@ -96,9 +96,9 @@ public class PersonForm {
 		this.setAge(person.getAge());
 		this.setGender(person.getGender());
 		this.setHascar(person.getHascar());
-		
+
 	}
-	
+
 	/**
 	 * Gets the id.
 	 *
@@ -257,5 +257,5 @@ public class PersonForm {
 		this.fullname = fullname;
 	}
 
-	
+
 }
