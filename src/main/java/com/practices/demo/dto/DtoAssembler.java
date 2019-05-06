@@ -10,9 +10,21 @@ import java.time.temporal.ChronoUnit;
 import com.practices.demo.model.Car;
 import com.practices.demo.model.Person;
 
+
+/**
+ * The Class DtoAssembler.
+ */
 public class DtoAssembler {
+
+	/** The format. */
 	private static SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
+	/**
+	 * To entity.
+	 *
+	 * @param dto the dto
+	 * @return the person
+	 */
 	public static Person toEntity(PersonDto dto) {
 		Person entity = new Person();
 		entity.setId(dto.getId());
@@ -29,6 +41,12 @@ public class DtoAssembler {
 		return entity;
 	}
 
+	/**
+	 * From entity.
+	 *
+	 * @param entity the entity
+	 * @return the person dto
+	 */
 	public static PersonDto fromEntity(Person entity) {
 		PersonDto dto = new PersonDto();
 		dto.setId(entity.getId());
@@ -44,6 +62,12 @@ public class DtoAssembler {
 		return dto;
 	}
 
+	/**
+	 * To entity.
+	 *
+	 * @param dto the dto
+	 * @return the car
+	 */
 	public static Car toEntity(CarDto dto) {
 		Car entity = new Car();
 		entity.setLicense(dto.getLicense());
@@ -53,6 +77,12 @@ public class DtoAssembler {
 		return entity;
 	}
 
+	/**
+	 * From entity.
+	 *
+	 * @param entity the entity
+	 * @return the car dto
+	 */
 	public static CarDto fromEntity(Car entity) {
 		CarDto dto = new CarDto();
 		dto.setLicense(entity.getLicense());
