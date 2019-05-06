@@ -11,7 +11,6 @@ import com.practices.demo.model.Hotel;
 import com.practices.demo.model.Car;
 import com.practices.demo.model.Person;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class DtoAssembler.
  */

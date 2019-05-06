@@ -1,6 +1,5 @@
 package com.practices.demo.dto;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ReserveHotelDto.
  */

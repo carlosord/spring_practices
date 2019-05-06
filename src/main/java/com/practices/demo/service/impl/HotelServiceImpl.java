@@ -12,6 +12,9 @@ import com.practices.demo.dto.HotelDto;
 import com.practices.demo.repositories.HotelRepository;
 import com.practices.demo.service.HotelService;
 
+/**
+ * The Class HotelServiceImpl.
+ */
 @Service
 public class HotelServiceImpl implements HotelService {
 
@@ -19,6 +22,12 @@ public class HotelServiceImpl implements HotelService {
 	@Autowired
 	private HotelRepository hotelRepository;
 
+	/**
+	 * Find hotel by id.
+	 *
+	 * @param id the id
+	 * @return the hotel dto
+	 */
 	/*
 	 * (non-Javadoc)
 	 *
@@ -28,6 +37,11 @@ public class HotelServiceImpl implements HotelService {
 		return DtoAssembler.fromEntity(hotelRepository.findById(id).orElseThrow(NoSuchElementException::new));
 	}
 
+	/**
+	 * Find all.
+	 *
+	 * @return the list
+	 */
 	/*
 	 * (non-Javadoc)
 	 *
@@ -37,6 +51,12 @@ public class HotelServiceImpl implements HotelService {
 		return hotelRepository.findAll().stream().map(DtoAssembler::fromEntity).collect(Collectors.toList());
 	}
 
+	/**
+	 * Find hotel by code.
+	 *
+	 * @param code the code
+	 * @return the hotel dto
+	 */
 	/*
 	 * (non-Javadoc)
 	 *
