@@ -37,7 +37,6 @@ public class DtoAssembler {
 			e.printStackTrace();
 		}
 		entity.setGender(dto.getGender());
-		entity.setHascar(dto.getHascar());
 		return entity;
 	}
 
@@ -60,7 +59,7 @@ public class DtoAssembler {
 					LocalDate.now()));
 		}
 		dto.setGender(entity.getGender());
-		dto.setHascar(entity.getHascar());
+		dto.setHascar(hasCar(entity));
 
 		if (entity.getHotel() == null || entity.getHotel().size() == 0) {
 
@@ -141,4 +140,20 @@ public class DtoAssembler {
 		dto.setNumberofcadoors(entity.getNumberofcardoors());
 		return dto;
 	}
+
+	/**
+	 * Checks for car.
+	 *
+	 * @param entity the entity
+	 * @return true, if successful
+	 */
+	public static boolean hasCar(Person entity) {
+
+		if (entity.getCar() == null || entity.getCar().size() == 0) {
+			return false;
+		}else {
+			return true;
+		}
+	}
+
 }
