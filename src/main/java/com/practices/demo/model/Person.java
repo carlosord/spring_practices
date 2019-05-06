@@ -121,10 +121,20 @@ public class Person extends BaseEntity {
 		this.lastname = lastname;
 	}
 
+	/**
+	 * Gets the birthday.
+	 *
+	 * @return the birthday
+	 */
 	public Date getBirthday() {
 		return birthday;
 	}
 
+	/**
+	 * Sets the birthday.
+	 *
+	 * @param birthday the new birthday
+	 */
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
@@ -146,6 +156,12 @@ public class Person extends BaseEntity {
 	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
+
+	/**
+	 * Hash code.
+	 *
+	 * @return the int
+	 */
 	/*
 	 * (non-Javadoc)
 	 *
@@ -159,6 +175,12 @@ public class Person extends BaseEntity {
 		return result;
 	}
 
+	/**
+	 * Equals.
+	 *
+	 * @param obj the obj
+	 * @return true, if successful
+	 */
 	/*
 	 * (non-Javadoc)
 	 *
@@ -181,6 +203,11 @@ public class Person extends BaseEntity {
 		return true;
 	}
 
+	/**
+	 * To string.
+	 *
+	 * @return the string
+	 */
 	/*
 	 * (non-Javadoc)
 	 *
