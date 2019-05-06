@@ -252,35 +252,21 @@ public class Person extends BaseEntity {
 	}
 
 	/**
+	 * Gets the car.
+	 *
+	 * @return the car
+	 */
+	Set<Car> _getCar(){
+		return this.car;
+	}
+
+	/**
 	 * Sets the Car.
 	 *
 	 * @param car the new car
 	 */
 	public void setCar(Set<Car> car) {
 		this.car = car;
-	}
-
-	/**
-	 * Add the Car.
-	 *
-	 * @param car the new car
-	 */
-	public void linkCar(Car c) {
-		// Asign person to car
-		c.setPerson(this);
-		this.car.add(c);
-	}
-
-	/**
-	 * Remove the Car.
-	 *
-	 * @param car the new car
-	 */
-	public void unlinkCar(Car c) {
-		// Unassigns person to hotel
-		this.car.remove(c);
-		c.setPerson(this);
-
 	}
 
 }

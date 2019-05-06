@@ -3,7 +3,6 @@ package com.practices.demo.service;
 import java.util.List;
 
 import com.practices.demo.dto.CarDto;
-import com.practices.demo.service.exception.BusinessException;
 
 /**
  * The Class PersonService.
@@ -32,14 +31,5 @@ public interface CarService {
 	 * @return the car dto
 	 */
 	public CarDto findByLicense(String license);
-
-	/**
-	 * Adds the new car.
-	 *
-	 * @param car the car
-	 * @return the car dto
-	 * @throws BusinessException
-	 */
-	public CarDto addNewCar (CarDto car) throws BusinessException;
 
 }

@@ -46,19 +46,18 @@ public class DtoAssembler {
 
 	public static Car toEntity(CarDto dto) {
 		Car entity = new Car();
-		entity.setId(dto.getId());
 		entity.setLicense(dto.getLicense());
 		entity.setColour(dto.getColour());
-		entity.setNumberofcardoors(dto.getNumberofcardoors());
+		entity.setNumberofcardoors(dto.getNumberofcadoors());
+
 		return entity;
 	}
 
 	public static CarDto fromEntity(Car entity) {
 		CarDto dto = new CarDto();
-		dto.setId(entity.getId());
 		dto.setLicense(entity.getLicense());
 		dto.setColour(entity.getColour());
-		dto.setNumberofcardoors(entity.getNumberofcardoors());
+		dto.setNumberofcadoors(entity.getNumberofcardoors());
 		return dto;
 	}
 }

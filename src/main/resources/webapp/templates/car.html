@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layouts/layout}">
+<head>
+<title th:text="#{title.page.car}"></title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<form action="#" th:action="@{${T(com.practices.demo.presentation.front.Url).CAR_URL}}" th:object="${carForm}" method="post">
+
+			<div class ="form-group">
+				<label for="dni" th:text="#{person.dni}"></label>
+				<input type="text" class="form-control" th:field="*{dni}" id="dni"
+				th:placeholder="#{person.dni.placeholder}" required="required" pattern="[0-9]{8}([a-z]|[A-Z]){1}"
+				readonly>
+			</div>
+
+			<div class="form-group">
+				<label for="select" th:text="#{car.select}"></label>
+				<select class="form-control" th:field="*{license}" id="select" required="required">
+					<option value="" th:text="#{car.select.empty}" selected="selected"></option>
+					<option th:each="car : ${allCars}"
+		                            th:value="${car.license}"
+		                            th:text="${car.license + '-' + car.colour}"/>
+				</select>
+					<span class="text-danger" th:if="${#fields.hasErrors('license')}" th:errors="*{license}"></span>
+			</div>
+
+			<button type="submit" class="btn btn-primary" th:text="#{btn.confirm}"></button>
+				<a th:href="${T(com.practices.demo.presentation.front.Url).HOME_URL}" class="btn btn-danger" th:text="#{btn.cancel}"></a>
+
+		</form>
+	</div>
+</body>
+</html>

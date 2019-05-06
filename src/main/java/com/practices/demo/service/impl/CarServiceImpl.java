@@ -5,19 +5,25 @@ import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.practices.demo.dto.CarDto;
 import com.practices.demo.dto.DtoAssembler;
 import com.practices.demo.repositories.CarRepository;
 import com.practices.demo.service.CarService;
-import com.practices.demo.service.exception.BusinessException;
 
+/**
+ * The Class CarServiceImpl.
+ */
+@Service
+@Transactional
 public class CarServiceImpl implements CarService{
 
 	/** The person repository. */
 	@Autowired
 	private CarRepository carRepository;
+
 
 	/*
 	 * (non-Javadoc)
@@ -48,25 +54,6 @@ public class CarServiceImpl implements CarService{
 	@Override
 	public CarDto findByLicense(String license) {
 		return DtoAssembler.fromEntity(carRepository.findByLicense(license));
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * com.practices.demo.service.CarService#addNewCar(com.practices.demo.dto.
-	 * CarDto)
-	 */
-	@Override
-	public CarDto addNewCar(CarDto car) throws BusinessException {
-
-		try {
-			//Add new car to db
-			return DtoAssembler.fromEntity(carRepository.save(DtoAssembler.toEntity(car)));
-		}catch(DataIntegrityViolationException e) {
-			throw new BusinessException("car.license.error.duplicate", "license");
-		}
-
 	}
 
 }

@@ -144,7 +144,7 @@ public class Car extends BaseEntity {
 	/**
 	 * Gets the person.
 	 *
-	 * @return the new person
+	 * @return the person
 	 */
 	public Person getPerson() {
 		return person;
@@ -155,8 +155,8 @@ public class Car extends BaseEntity {
 	 *
 	 * @param person the new person
 	 */
-	public void setPerson(Person person) {
-		this.person = person;
+	public void setPerson(Person p) {
+		this.person = p;
 	}
 
 }

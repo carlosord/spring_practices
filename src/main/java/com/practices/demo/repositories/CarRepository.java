@@ -12,5 +12,5 @@ import com.practices.demo.model.Car;
 @Repository
 public interface CarRepository extends JpaRepository<Car, Long> {
 
-	Car findByLicense (String license);
+	Car findByLicense(String license);
 }

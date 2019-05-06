@@ -17,8 +17,9 @@ public class View {
 	/** The Constant EDIT_PERSON_VIEW. */
 	public static final String EDIT_PERSON_VIEW = "edit";
 
-	/** The Consant NEW_CAR_VIEW. */
-	public static final String NEW_CAR_VIEW = "car";
+	/** The Constant NEW_CAR_VIEW. */
+	public static final String CAR_VIEW = "car";
+
 
 	/**
 	 * Private constructor.
