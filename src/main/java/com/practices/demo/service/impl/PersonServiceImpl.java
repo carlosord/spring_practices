@@ -11,6 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.practices.demo.dto.DtoAssembler;
 import com.practices.demo.dto.PersonDto;
+import com.practices.demo.dto.ReserveHotelDto;
+import com.practices.demo.model.Associations;
+import com.practices.demo.model.Hotel;
+import com.practices.demo.model.Person;
+import com.practices.demo.repositories.HotelRepository;
 import com.practices.demo.repositories.PersonRepository;
 import com.practices.demo.service.PersonService;
 import com.practices.demo.service.exception.BusinessException;
@@ -26,29 +31,31 @@ public class PersonServiceImpl implements PersonService {
 	@Autowired
 	private PersonRepository personRepository;
 
+	/** The hotel repository. */
+	@Autowired
+	private HotelRepository hotelRepository;
+
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see com.practices.demo.service.PersonService#findPersonById(java.lang.Long)
 	 */
 	public PersonDto findPersonById(Long id) {
-		return DtoAssembler.fromEntity(
-				personRepository.findById(id).orElseThrow(NoSuchElementException::new));
+		return DtoAssembler.fromEntity(personRepository.findById(id).orElseThrow(NoSuchElementException::new));
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see com.practices.demo.service.PersonService#findAll()
 	 */
 	public List<PersonDto> findAll() {
-		return personRepository.findAll().stream().map(
-				DtoAssembler::fromEntity).collect(Collectors.toList());
+		return personRepository.findAll().stream().map(DtoAssembler::fromEntity).collect(Collectors.toList());
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * com.practices.demo.service.PersonService#findPersonByDni(java.lang.String)
 	 */
@@ -60,7 +67,7 @@ public class PersonServiceImpl implements PersonService {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * com.practices.demo.service.PersonService#addNewPerson(com.practices.demo.dto.
 	 * PersonDto)
@@ -69,27 +76,24 @@ public class PersonServiceImpl implements PersonService {
 
 		try {
 			// Add new person to db
-			return DtoAssembler.fromEntity(
-					personRepository.save(DtoAssembler.toEntity(person)));
+			return DtoAssembler.fromEntity(personRepository.save(DtoAssembler.toEntity(person)));
 		} catch (DataIntegrityViolationException e) {
 			throw new BusinessException("person.dni.error.duplicate", "dni");
 		}
-		
-		/** Other impl
-		// Check if dni already exist
-		if (findPersonByDni(person.getDni()) != null)
-			throw new BusinessException("person.dni.error.duplicate", "dni");
-		
-		// Add new person to db
-		return DtoAssembler.fromEntity(
-				personRepository.save(DtoAssembler.toEntity(person)));
-		**/
-			
+
+		/**
+		 * Other impl // Check if dni already exist if (findPersonByDni(person.getDni())
+		 * != null) throw new BusinessException("person.dni.error.duplicate", "dni");
+		 *
+		 * // Add new person to db return DtoAssembler.fromEntity(
+		 * personRepository.save(DtoAssembler.toEntity(person)));
+		 **/
+
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * com.practices.demo.service.PersonService#updatePerson(com.practices.demo.dto.
 	 * PersonDto)
@@ -97,13 +101,12 @@ public class PersonServiceImpl implements PersonService {
 	public PersonDto updatePerson(PersonDto person) {
 
 		// Update person
-		return DtoAssembler.fromEntity(
-				personRepository.save(DtoAssembler.toEntity(person)));
+		return DtoAssembler.fromEntity(personRepository.save(DtoAssembler.toEntity(person)));
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * com.practices.demo.service.PersonService#deletePersonForm(java.lang.Long)
 	 */
@@ -111,6 +114,25 @@ public class PersonServiceImpl implements PersonService {
 
 		// Delete the person
 		personRepository.deleteById(id);
+	}
+
+	public boolean addNewReserve(ReserveHotelDto reservehotel) throws BusinessException {
+
+		Person p = personRepository.findByDni(reservehotel.getDni());
+		Hotel h = hotelRepository.findByCode(reservehotel.getCode());
+
+		if (h.getOccupiedbedrooms() == h.getTotalbedrooms())
+			throw new BusinessException("hotel.code.error", "code");
+
+		h.setOccupiedbedrooms(h.getOccupiedbedrooms() + 1);
+
+		Associations.ReserveHotel.link(p, h);
+
+		personRepository.save(p);
+		hotelRepository.save(h);
+
+		return true;
+
 	}
 
 }

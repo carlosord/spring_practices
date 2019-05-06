@@ -4,24 +4,30 @@ package com.practices.demo.presentation.front;
  * The Class View.
  */
 public class View {
-	
+
 	/** The Constant REDIRECT_PREFIX. */
 	public static final String REDIRECT_PREFIX = "redirect:";
-	
+
 	/** The Constant HOME_VIEW. */
 	public static final String HOME_VIEW = "home";
 
 	/** The Constant NEW_PERSON_VIEW. */
 	public static final String NEW_PERSON_VIEW = "new";
-	
+
 	/** The Constant EDIT_PERSON_VIEW. */
 	public static final String EDIT_PERSON_VIEW = "edit";
-	
+
+	/** The Constant NEW_PERSON_VIEW. */
+	public static final String HOTEL_VIEW = "hotel";
+
+
+
 	/**
 	 * Private constructor.
 	 */
-	private View() {}
-	
+	private View() {
+	}
+
 	/**
 	 * Redirect.
 	 *

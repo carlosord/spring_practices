@@ -18,7 +18,7 @@ INSERT INTO car(license, colour, numberofcardoors) VALUES ('9626MSG','Yellow', 5
 INSERT INTO car(license, colour, numberofcardoors) VALUES ('0706JLS','Green', 3);
 INSERT INTO car(license, colour, numberofcardoors) VALUES ('8942JDP','Blue', 5);
 
-INSERT INTO hotel(code, name, location, totalbedrooms, occupiedbedrooms) VALUES ('HO-001','Hotel Abadía','Burgos',100,30);
+INSERT INTO hotel(code, name, location, totalbedrooms, occupiedbedrooms) VALUES ('HO-001','Hotel Abadía','Burgos',100,99);
 INSERT INTO hotel(code, name, location, totalbedrooms, occupiedbedrooms) VALUES ('HO-002','Hotel Orfila','León',300,289);
 INSERT INTO hotel(code, name, location, totalbedrooms, occupiedbedrooms) VALUES ('HO-003','Hotel Primero','Oviedo',250,88);
 INSERT INTO hotel(code, name, location, totalbedrooms, occupiedbedrooms) VALUES ('HO-004','Hotel Astoria','Madrid',247,200);

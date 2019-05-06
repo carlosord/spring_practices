@@ -2,7 +2,7 @@ package com.practices.demo.model;
 
 public class Associations {
 
-	public static class Book {
+	public static class ReserveHotel {
 
 		/*
 		 * Method link person and hotel
