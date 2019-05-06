@@ -9,27 +9,30 @@ public class PersonDto {
 
 	/** The id. */
 	private Long id;
-	
+
 	/** The dni. */
 	private String dni;
-	
+
 	/** The name. */
 	private String name;
-	
+
 	/** The lastname. */
 	private String lastname;
-	
+
 	/** The birthday. */
 	private String birthday;
-	
+
 	/** The age. */
 	private Integer age;
-	
+
 	/** The gender. */
 	private Gender gender;
-	
+
 	/** The hascar. */
 	private Boolean hascar;
+
+	/** The hashotel. */
+	private Boolean hashotel;
 
 	/**
 	 * Gets the id.
@@ -155,6 +158,24 @@ public class PersonDto {
 	 */
 	public void setHascar(Boolean hascar) {
 		this.hascar = hascar;
+	}
+
+	/**
+	 * Gets the hashotel.
+	 *
+	 * @return the hashotel
+	 */
+	public Boolean getHashotel() {
+		return hashotel;
+	}
+
+	/**
+	 * Sets the hashotel.
+	 *
+	 * @param hashotel the new hashotel
+	 */
+	public void setHashotel(Boolean hashotel) {
+		this.hashotel = hashotel;
 	}
 
 	/**
