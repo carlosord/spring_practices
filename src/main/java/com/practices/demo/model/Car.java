@@ -1,11 +1,19 @@
 package com.practices.demo.model;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotEmpty;
+
+import com.practices.demo.model.compositekey.ReserveCarDate;
 
 /**
  * The Class Person.
@@ -15,9 +23,14 @@ import javax.validation.constraints.NotEmpty;
 
 public class Car extends BaseEntity {
 
-	/** The person */
-	@ManyToOne
-	private Person person;
+	/** The foreign key. */
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "person_car", joinColumns = @JoinColumn(name = "car_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "person_id", referencedColumnName = "id"))
+	private Set<Person> person;
+
+	/** The dates. */
+	@OneToMany(mappedBy = "car")
+	Set<ReserveCarDate> dates;
 
 	/** The car license. */
 	@NotEmpty
@@ -101,11 +114,21 @@ public class Car extends BaseEntity {
 		this.numberofcardoors = numberofcardoors;
 	}
 
+	/**
+	 * To string.
+	 *
+	 * @return the string
+	 */
 	@Override
 	public String toString() {
 		return "Car [license=" + license + ", colour=" + colour + ", numberOfCarDoors=" + numberofcardoors + "]";
 	}
 
+	/**
+	 * Hash code.
+	 *
+	 * @return the int
+	 */
 	/*
 	 * (non-Javadoc)
 	 *
@@ -119,6 +142,12 @@ public class Car extends BaseEntity {
 		return result;
 	}
 
+	/**
+	 * Equals.
+	 *
+	 * @param obj the obj
+	 * @return true, if successful
+	 */
 	/*
 	 * (non-Javadoc)
 	 *
@@ -146,16 +175,25 @@ public class Car extends BaseEntity {
 	 *
 	 * @return the person
 	 */
-	public Person getPerson() {
+	public Set<Person> getPerson() {
+		return person;
+	}
+
+	/**
+	 * Gets the person.
+	 *
+	 * @return the person
+	 */
+	Set<Person> _getPerson() {
 		return person;
 	}
 
 	/**
 	 * Sets the person.
 	 *
-	 * @param person the new person
+	 * @param p the new person
 	 */
-	public void setPerson(Person p) {
+	public void setPerson(Set<Person> p) {
 		this.person = p;
 	}
 

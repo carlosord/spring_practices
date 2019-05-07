@@ -64,7 +64,7 @@ public class DtoAssembler {
 		if (entity.getHotel() == null || entity.getHotel().size() == 0) {
 
 			dto.setHashotel(false);
-			;
+
 		} else {
 			dto.setHashotel(true);
 		}
@@ -151,7 +151,7 @@ public class DtoAssembler {
 
 		if (entity.getCar() == null || entity.getCar().size() == 0) {
 			return false;
-		}else {
+		} else {
 			return true;
 		}
 	}
