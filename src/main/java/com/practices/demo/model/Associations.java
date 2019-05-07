@@ -47,7 +47,7 @@ public class Associations {
 		 */
 		public static void link(Person person, Car car) {
 
-			car.setPerson(person);
+			car._getPerson().add(person);
 			person._getCar().add(car);
 
 		}
@@ -63,7 +63,7 @@ public class Associations {
 		public static void unlink(Person person, Car car) {
 
 			person._getCar().remove(car);
-			car.setPerson(null);
+			car._getPerson().remove(person);
 		}
 	}
 
