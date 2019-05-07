@@ -13,6 +13,7 @@ import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import com.practices.demo.model.compositekey.ReserveHotelDay;
 import com.practices.demo.model.types.Gender;
 
 /**
@@ -29,6 +30,10 @@ public class Person extends BaseEntity {
 	/** The hotel. */
 	@ManyToMany(mappedBy = "person")
 	private Set<Hotel> hotel = new HashSet<>();
+
+	/** The reserve hotel day. */
+	@OneToMany(mappedBy = "person")
+	private Set<ReserveHotelDay> reserveHotelDay;
 
 	/** The dni. */
 	@NotEmpty
@@ -216,7 +221,7 @@ public class Person extends BaseEntity {
 	@Override
 	public String toString() {
 		return "Person [dni=" + dni + ", name=" + name + ", lastname=" + lastname + ", birthday=" + birthday
-				+ ", gender=" + gender + ", hascar=" + "]";
+				+ ", gender=" + gender + "]";
 	}
 
 	/**
@@ -272,5 +277,34 @@ public class Person extends BaseEntity {
 	public void setCar(Set<Car> car) {
 		this.car = car;
 	}
+
+	/**
+	 * Gets the reserve hotel day.
+	 *
+	 * @return the reserve hotel day
+	 */
+	public Set<ReserveHotelDay> getReserveHotelDay() {
+		return reserveHotelDay;
+	}
+
+	/**
+	 * Gets the reserve hotel day.
+	 *
+	 * @return the reserve hotel day
+	 */
+	Set<ReserveHotelDay> _getReserveHotelDay(){
+		return this.reserveHotelDay;
+	}
+
+	/**
+	 * Sets the reserve hotel day.
+	 *
+	 * @param reserveHotelDay the new reserve hotel day
+	 */
+	public void setReserveHotelDay(Set<ReserveHotelDay> reserveHotelDay) {
+		this.reserveHotelDay = reserveHotelDay;
+	}
+
+
 
 }

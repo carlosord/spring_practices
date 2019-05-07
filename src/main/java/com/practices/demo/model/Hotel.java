@@ -8,9 +8,12 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotEmpty;
+
+import com.practices.demo.model.compositekey.ReserveHotelDay;
 
 /**
  * The class Hotel.
@@ -25,10 +28,14 @@ public class Hotel extends BaseEntity {
 	@Column(name = "code", nullable = false)
 	private String code;
 
-	/** The foreign key. */
+	/** The person key. */
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "person_hotel", joinColumns = @JoinColumn(name = "hotel_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "person_id", referencedColumnName = "id"))
 	private Set<Person> person;
+
+	/** The reserve hotel day. */
+	@OneToMany(mappedBy = "hotel")
+	private Set<ReserveHotelDay> reserveHotelDay;
 
 	/** The name of hotel. */
 	@Column(name = "name", nullable = false)
@@ -92,7 +99,7 @@ public class Hotel extends BaseEntity {
 	/**
 	 * Sets the name of the hotel.
 	 *
-	 * @param code the new name
+	 * @param name the new name
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -110,7 +117,7 @@ public class Hotel extends BaseEntity {
 	/**
 	 * Sets the location.
 	 *
-	 * @param hascar the new location
+	 * @param location the new location
 	 */
 	public void setLocation(String location) {
 		this.location = location;
@@ -128,7 +135,7 @@ public class Hotel extends BaseEntity {
 	/**
 	 * Sets the total bedrooms.
 	 *
-	 * @param hascar the new totalBedrooms
+	 * @param totalbedrooms the new totalbedrooms
 	 */
 	public void setTotalbedrooms(int totalbedrooms) {
 		this.totalbedrooms = totalbedrooms;
@@ -146,12 +153,17 @@ public class Hotel extends BaseEntity {
 	/**
 	 * Sets the occupied bedrooms.
 	 *
-	 * @param hascar the new ocuppiedBedrooms
+	 * @param occupiedbedrooms the new occupiedbedrooms
 	 */
 	public void setOccupiedbedrooms(int occupiedbedrooms) {
 		this.occupiedbedrooms = occupiedbedrooms;
 	}
 
+	/**
+	 * Hash code.
+	 *
+	 * @return the int
+	 */
 	/*
 	 * (non-Javadoc)
 	 *
@@ -165,6 +177,12 @@ public class Hotel extends BaseEntity {
 		return result;
 	}
 
+	/**
+	 * Equals.
+	 *
+	 * @param obj the obj
+	 * @return true, if successful
+	 */
 	/*
 	 * (non-Javadoc)
 	 *
@@ -187,6 +205,11 @@ public class Hotel extends BaseEntity {
 		return true;
 	}
 
+	/**
+	 * To string.
+	 *
+	 * @return the string
+	 */
 	/*
 	 * (non-Javadoc)
 	 *
@@ -219,10 +242,37 @@ public class Hotel extends BaseEntity {
 	/**
 	 * Sets the person.
 	 *
-	 * @param person the new person
+	 * @param p the new person
 	 */
 	public void setPerson(Set<Person> p) {
 		this.person = p;
+	}
+
+	/**
+	 * Gets the reserve hotel day.
+	 *
+	 * @return the reserve hotel day
+	 */
+	public Set<ReserveHotelDay> getReserveHotelDay() {
+		return reserveHotelDay;
+	}
+
+	/**
+	 * Gets the reserve hotel day.
+	 *
+	 * @return the sets the
+	 */
+	Set<ReserveHotelDay> _getReserveHotelDay(){
+		return reserveHotelDay;
+	}
+
+	/**
+	 * Sets the reserve hotel day.
+	 *
+	 * @param reserveHotelDay the new reserve hotel day
+	 */
+	public void setReserveHotelDay(Set<ReserveHotelDay> reserveHotelDay) {
+		this.reserveHotelDay = reserveHotelDay;
 	}
 
 }
