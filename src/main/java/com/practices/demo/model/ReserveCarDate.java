@@ -39,6 +39,12 @@ public class ReserveCarDate {
 	private Date finaldatereserve;
 
 	/**
+	 * Instantiates a new reserve car date.
+	 */
+	public ReserveCarDate() {
+	}
+
+	/**
 	 * Gets the reserveid.
 	 *
 	 * @return the reserveid

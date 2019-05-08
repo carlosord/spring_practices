@@ -19,7 +19,7 @@ public class Car extends BaseEntity {
 
 	/** The dates. */
 	@OneToMany(mappedBy = "car")
-	Set<ReserveCarDate> dates;
+	Set<ReserveCarDate> reserveCarDates;
 
 	/** The car license. */
 	@NotEmpty
@@ -160,32 +160,17 @@ public class Car extends BaseEntity {
 	}
 
 	/**
-	 * @return the dates
+	 * @return the reserveCarDates
 	 */
-	public Set<ReserveCarDate> getDates() {
-		return dates;
+	public Set<ReserveCarDate> getReserveCarDates() {
+		return reserveCarDates;
 	}
 
 	/**
-	 * @param dates the dates to set
+	 * @param reserveCarDates the reserveCarDates to set
 	 */
-	public void setDates(Set<ReserveCarDate> dates) {
-		this.dates = dates;
-	}
-
-	/**
-	 * Checks for hotel.
-	 *
-	 * @param p the p
-	 * @return true, if successful
-	 */
-	public boolean hasHotel(Person p) {
-
-		if (p.getDates() == null || p.getDates().size() == 0) {
-			return false;
-		} else {
-			return true;
-		}
+	public void setReserveCarDates(Set<ReserveCarDate> reserveCarDates) {
+		this.reserveCarDates = reserveCarDates;
 	}
 
 }

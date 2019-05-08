@@ -6,26 +6,26 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 /**
- * The Class ReserveCarKey.
+ * The Class ReserveHotelKey.
  */
 @Embeddable
-public class ReserveCarDateKey implements Serializable {
+public class ReserveHotelKey implements Serializable {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
 	/** The personId */
 	@Column(name = "person_id")
-	Long personId;
+	private Long personId;
 
-	/** The carId */
-	@Column(name = "car_id")
-	Long carId;
+	/** The hotelId */
+	@Column(name = "hotel_id")
+	private Long hotelId;
 
 	/**
 	 * Gets the person id.
 	 *
-	 * @return the personId
+	 * @return the person id
 	 */
 	public Long getPersonId() {
 		return personId;
@@ -34,28 +34,28 @@ public class ReserveCarDateKey implements Serializable {
 	/**
 	 * Sets the person id.
 	 *
-	 * @param personId the personId to set
+	 * @param personId the new person id
 	 */
 	public void setPersonId(Long personId) {
 		this.personId = personId;
 	}
 
 	/**
-	 * Gets the car id.
+	 * Gets the hotel id.
 	 *
-	 * @return the carId
+	 * @return the hotel id
 	 */
-	public Long getCarId() {
-		return carId;
+	public Long getHotelId() {
+		return hotelId;
 	}
 
 	/**
-	 * Sets the car id.
+	 * Sets the hotel id.
 	 *
-	 * @param carId the carId to set
+	 * @param hotelId the new hotel id
 	 */
-	public void setCarId(Long carId) {
-		this.carId = carId;
+	public void setHotelId(Long hotelId) {
+		this.hotelId = hotelId;
 	}
 
 	/**
@@ -67,7 +67,7 @@ public class ReserveCarDateKey implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((carId == null) ? 0 : carId.hashCode());
+		result = prime * result + ((hotelId == null) ? 0 : hotelId.hashCode());
 		result = prime * result + ((personId == null) ? 0 : personId.hashCode());
 		return result;
 	}
@@ -86,11 +86,11 @@ public class ReserveCarDateKey implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ReserveCarDateKey other = (ReserveCarDateKey) obj;
-		if (carId == null) {
-			if (other.carId != null)
+		ReserveHotelKey other = (ReserveHotelKey) obj;
+		if (hotelId == null) {
+			if (other.hotelId != null)
 				return false;
-		} else if (!carId.equals(other.carId))
+		} else if (!hotelId.equals(other.hotelId))
 			return false;
 		if (personId == null) {
 			if (other.personId != null)

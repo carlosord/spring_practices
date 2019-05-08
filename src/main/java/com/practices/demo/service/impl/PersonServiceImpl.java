@@ -133,7 +133,8 @@ public class PersonServiceImpl implements PersonService {
 
 		h.setOccupiedbedrooms(h.getOccupiedbedrooms() + 1);
 
-		Associations.ReserveHotel.link(p, h);
+//		REVISAR: Para que este método funcione hay que crear el repositorio y la tarea asignada no manda crearlo
+//		Associations.ReserveHotel.link(p, h);
 
 		personRepository.save(p);
 		hotelRepository.save(h);
