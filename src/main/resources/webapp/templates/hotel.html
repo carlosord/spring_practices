@@ -25,6 +25,44 @@
                 <span class="text-danger" th:if="${#fields.hasErrors('code')}" th:errors="*{code}"></span>
             </div>
 
+            <div class="form-group">
+            	<label for="starthotel" th:text="#{hotel.start.reserve}"></label>
+            	<div class="form-row">
+            		<div class="col-1">
+            			<input type="number" class="form-control" th:field="*{starthotelday}" id="starthotelday"
+            			th:placeholder="#{hotel.day.placeholder}" required="required"min="1" max="31">
+            		</div>
+            		<div class="col-1">
+						<input type="number" class="form-control" th:field="*{starthotelmonth}" id="starthotelmonth"
+						th:placeholder="#{hotel.month.placeholder}" required="required" min="1" max="12" >
+				</div>
+					<div class="col-2">
+						<input type="number" class="form-control" th:field="*{starthotelyear}" id="starthotelyear"
+						th:placeholder="#{hotel.month.placeholder}" required="required" min="1900" max="3000">
+					</div>
+            	</div>
+            <!-- Aqui va el span -->
+            </div>
+
+            <div class="form-group">
+            	<label for="finishotel" th:text="#{hotel.finish.reserve}"></label>
+            	<div class="form-row">
+            		<div class="col-1">
+            			<input type="number" class="form-control" th:field="*{finishhotelday}" id="endhotelday"
+            			th:placeholder="#{hotel.day.placeholder}" required="required"min="1" max="31">
+            		</div>
+            		<div class="col-1">
+						<input type="number" class="form-control" th:field="*{finishhotelmonth}" id="endhotelmonth"
+						th:placeholder="#{hotel.month.placeholder}" required="required" min="1" max="12" >
+				</div>
+					<div class="col-2">
+						<input type="number" class="form-control" th:field="*{finishhotelyear}" id="endhotelyear"
+						th:placeholder="#{hotel.month.placeholder}" required="required" min="1900" max="3000">
+					</div>
+            	</div>
+            <!-- Aqui va el span -->
+            </div>
+
             <button type="submit" class="btn btn-primary" th:text="#{btn.confirm}"></button>
                 <a th:href="${T(com.practices.demo.presentation.front.Url).HOME_URL}" class="btn btn-danger" th:text="#{btn.cancel}"></a>
 
