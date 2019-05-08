@@ -2,18 +2,13 @@ package com.practices.demo.model;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotEmpty;
 
-import com.practices.demo.model.compositekey.ReserveHotelDay;
 
 /**
  * The class Hotel.
@@ -23,19 +18,14 @@ import com.practices.demo.model.compositekey.ReserveHotelDay;
 @Table(name = "HOTEL", uniqueConstraints = @UniqueConstraint(columnNames = { "code" }))
 public class Hotel extends BaseEntity {
 
+	/** The reserve hotel. */
+	@OneToMany(mappedBy = "hotel")
+	Set<ReserveHotelDate> reserveHotel;
+
 	/** The code. */
 	@NotEmpty
 	@Column(name = "code", nullable = false)
 	private String code;
-
-	/** The person key. */
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "person_hotel", joinColumns = @JoinColumn(name = "hotel_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "person_id", referencedColumnName = "id"))
-	private Set<Person> person;
-
-	/** The reserve hotel day. */
-	@OneToMany(mappedBy = "hotel")
-	private Set<ReserveHotelDay> reserveHotelDay;
 
 	/** The name of hotel. */
 	@Column(name = "name", nullable = false)
@@ -217,62 +207,31 @@ public class Hotel extends BaseEntity {
 	 */
 	@Override
 	public String toString() {
-		return "Hotel [code=" + code + ", person=" + person + ", name=" + name + ", location=" + location
+		return "Hotel [code=" + code + ", name=" + name + ", location=" + location
 				+ ", totalbedrooms=" + totalbedrooms + ", occupiedbedrooms=" + occupiedbedrooms + "]";
 	}
 
+
 	/**
-	 * Gets the person.
+	 * Gets the reserve hotel.
 	 *
-	 * @return the person
+	 * @return the reserve hotel
 	 */
-	public Set<Person> getPerson() {
-		return person;
+	public Set<ReserveHotelDate> getReserveHotel() {
+		return reserveHotel;
 	}
 
 	/**
-	 * Gets the person.
+	 * Sets the reserve hotel.
 	 *
-	 * @return the person
+	 * @param reserveHotel the new reserve hotel
 	 */
-	Set<Person> _getPerson() {
-		return person;
+	public void setReserveHotel(Set<ReserveHotelDate> reserveHotel) {
+		this.reserveHotel = reserveHotel;
 	}
 
-	/**
-	 * Sets the person.
-	 *
-	 * @param p the new person
-	 */
-	public void setPerson(Set<Person> p) {
-		this.person = p;
-	}
 
-	/**
-	 * Gets the reserve hotel day.
-	 *
-	 * @return the reserve hotel day
-	 */
-	public Set<ReserveHotelDay> getReserveHotelDay() {
-		return reserveHotelDay;
-	}
 
-	/**
-	 * Gets the reserve hotel day.
-	 *
-	 * @return the sets the
-	 */
-	Set<ReserveHotelDay> _getReserveHotelDay(){
-		return reserveHotelDay;
-	}
 
-	/**
-	 * Sets the reserve hotel day.
-	 *
-	 * @param reserveHotelDay the new reserve hotel day
-	 */
-	public void setReserveHotelDay(Set<ReserveHotelDay> reserveHotelDay) {
-		this.reserveHotelDay = reserveHotelDay;
-	}
 
 }

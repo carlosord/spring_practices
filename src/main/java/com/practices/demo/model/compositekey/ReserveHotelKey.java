@@ -16,51 +16,46 @@ public class ReserveHotelKey implements Serializable{
 
 	/** The dni. */
 	@Column(name= "person_id")
-	private String dni;
+	private Long personId;
 
 	/** The code. */
 	@Column(name= "hotel_id")
-	private String code;
+	private Long hotelId;
 
 	/**
-	 * Instantiates a new reserve hotel key.
-	 */
-	public ReserveHotelKey(){}
-
-	/**
-	 * Gets the dni.
+	 * Gets the person id.
 	 *
-	 * @return the dni
+	 * @return the person id
 	 */
-	public String getDni() {
-		return dni;
+	public Long getPersonId() {
+		return personId;
 	}
 
 	/**
-	 * Sets the dni.
+	 * Sets the person id.
 	 *
-	 * @param dni the new dni
+	 * @param personId the new person id
 	 */
-	public void setDni(String dni) {
-		this.dni = dni;
+	public void setPersonId(Long personId) {
+		this.personId = personId;
 	}
 
 	/**
-	 * Gets the code.
+	 * Gets the hotel id.
 	 *
-	 * @return the code
+	 * @return the hotel id
 	 */
-	public String getCode() {
-		return code;
+	public Long getHotelId() {
+		return hotelId;
 	}
 
 	/**
-	 * Sets the code.
+	 * Sets the hotel id.
 	 *
-	 * @param code the new code
+	 * @param hotelId the new hotel id
 	 */
-	public void setCode(String code) {
-		this.code = code;
+	public void setHotelId(Long hotelId) {
+		this.hotelId = hotelId;
 	}
 
 	/**
@@ -72,8 +67,8 @@ public class ReserveHotelKey implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((code == null) ? 0 : code.hashCode());
-		result = prime * result + ((dni == null) ? 0 : dni.hashCode());
+		result = prime * result + ((hotelId == null) ? 0 : hotelId.hashCode());
+		result = prime * result + ((personId == null) ? 0 : personId.hashCode());
 		return result;
 	}
 
@@ -92,17 +87,19 @@ public class ReserveHotelKey implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		ReserveHotelKey other = (ReserveHotelKey) obj;
-		if (code == null) {
-			if (other.code != null)
+		if (hotelId == null) {
+			if (other.hotelId != null)
 				return false;
-		} else if (!code.equals(other.code))
+		} else if (!hotelId.equals(other.hotelId))
 			return false;
-		if (dni == null) {
-			if (other.dni != null)
+		if (personId == null) {
+			if (other.personId != null)
 				return false;
-		} else if (!dni.equals(other.dni))
+		} else if (!personId.equals(other.personId))
 			return false;
 		return true;
 	}
+
+
 
 }

@@ -1,4 +1,4 @@
-package com.practices.demo.model.compositekey;
+package com.practices.demo.model;
 
 import java.util.Date;
 
@@ -8,14 +8,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 
-import com.practices.demo.model.Hotel;
-import com.practices.demo.model.Person;
+import com.practices.demo.model.compositekey.ReserveHotelKey;
 
 /**
  * The Class ReserveHotelDay.
  */
 @Entity
-public class ReserveHotelDay {
+public class ReserveHotelDate {
 
 	/** The reserve. */
 	@EmbeddedId
@@ -43,7 +42,7 @@ public class ReserveHotelDay {
 	/**
 	 * Instantiates a new reserve hotel day.
 	 */
-	public ReserveHotelDay() {}
+	public ReserveHotelDate() {}
 
 	/**
 	 * Gets the reserve.
@@ -134,5 +133,4 @@ public class ReserveHotelDay {
 	public void setFinishReserve(Date finishReserve) {
 		this.finishReserve = finishReserve;
 	}
-
 }
