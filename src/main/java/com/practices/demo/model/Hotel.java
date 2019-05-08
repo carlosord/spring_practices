@@ -2,15 +2,13 @@ package com.practices.demo.model;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotEmpty;
+
 
 /**
  * The class Hotel.
@@ -20,15 +18,14 @@ import javax.validation.constraints.NotEmpty;
 @Table(name = "HOTEL", uniqueConstraints = @UniqueConstraint(columnNames = { "code" }))
 public class Hotel extends BaseEntity {
 
+	/** The reserve hotel. */
+	@OneToMany(mappedBy = "hotel")
+	Set<ReserveHotelDate> reserveHotel;
+
 	/** The code. */
 	@NotEmpty
 	@Column(name = "code", nullable = false)
 	private String code;
-
-	/** The foreign key. */
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "person_hotel", joinColumns = @JoinColumn(name = "hotel_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "person_id", referencedColumnName = "id"))
-	private Set<Person> person;
 
 	/** The name of hotel. */
 	@Column(name = "name", nullable = false)
@@ -92,7 +89,7 @@ public class Hotel extends BaseEntity {
 	/**
 	 * Sets the name of the hotel.
 	 *
-	 * @param code the new name
+	 * @param name the new name
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -110,7 +107,7 @@ public class Hotel extends BaseEntity {
 	/**
 	 * Sets the location.
 	 *
-	 * @param hascar the new location
+	 * @param location the new location
 	 */
 	public void setLocation(String location) {
 		this.location = location;
@@ -128,7 +125,7 @@ public class Hotel extends BaseEntity {
 	/**
 	 * Sets the total bedrooms.
 	 *
-	 * @param hascar the new totalBedrooms
+	 * @param totalbedrooms the new totalbedrooms
 	 */
 	public void setTotalbedrooms(int totalbedrooms) {
 		this.totalbedrooms = totalbedrooms;
@@ -146,12 +143,17 @@ public class Hotel extends BaseEntity {
 	/**
 	 * Sets the occupied bedrooms.
 	 *
-	 * @param hascar the new ocuppiedBedrooms
+	 * @param occupiedbedrooms the new occupiedbedrooms
 	 */
 	public void setOccupiedbedrooms(int occupiedbedrooms) {
 		this.occupiedbedrooms = occupiedbedrooms;
 	}
 
+	/**
+	 * Hash code.
+	 *
+	 * @return the int
+	 */
 	/*
 	 * (non-Javadoc)
 	 *
@@ -165,6 +167,12 @@ public class Hotel extends BaseEntity {
 		return result;
 	}
 
+	/**
+	 * Equals.
+	 *
+	 * @param obj the obj
+	 * @return true, if successful
+	 */
 	/*
 	 * (non-Javadoc)
 	 *
@@ -187,6 +195,11 @@ public class Hotel extends BaseEntity {
 		return true;
 	}
 
+	/**
+	 * To string.
+	 *
+	 * @return the string
+	 */
 	/*
 	 * (non-Javadoc)
 	 *
@@ -194,35 +207,31 @@ public class Hotel extends BaseEntity {
 	 */
 	@Override
 	public String toString() {
-		return "Hotel [code=" + code + ", person=" + person + ", name=" + name + ", location=" + location
+		return "Hotel [code=" + code + ", name=" + name + ", location=" + location
 				+ ", totalbedrooms=" + totalbedrooms + ", occupiedbedrooms=" + occupiedbedrooms + "]";
 	}
 
+
 	/**
-	 * Gets the person.
+	 * Gets the reserve hotel.
 	 *
-	 * @return the person
+	 * @return the reserve hotel
 	 */
-	public Set<Person> getPerson() {
-		return person;
+	public Set<ReserveHotelDate> getReserveHotel() {
+		return reserveHotel;
 	}
 
 	/**
-	 * Gets the person.
+	 * Sets the reserve hotel.
 	 *
-	 * @return the person
+	 * @param reserveHotel the new reserve hotel
 	 */
-	Set<Person> _getPerson() {
-		return person;
+	public void setReserveHotel(Set<ReserveHotelDate> reserveHotel) {
+		this.reserveHotel = reserveHotel;
 	}
 
-	/**
-	 * Sets the person.
-	 *
-	 * @param person the new person
-	 */
-	public void setPerson(Set<Person> p) {
-		this.person = p;
-	}
+
+
+
 
 }

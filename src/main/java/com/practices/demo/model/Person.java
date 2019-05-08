@@ -6,7 +6,6 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -22,13 +21,14 @@ import com.practices.demo.model.types.Gender;
 @Table(name = "PEOPLE", uniqueConstraints = @UniqueConstraint(columnNames = { "dni" }))
 public class Person extends BaseEntity {
 
+
+	/** The reserve hotel. */
+	@OneToMany(mappedBy = "person")
+	Set<ReserveHotelDate> reserveHotel;
+
 	/** The car. */
 	@OneToMany(mappedBy = "person")
 	private Set<Car> car = new HashSet<>();
-
-	/** The hotel. */
-	@ManyToMany(mappedBy = "person")
-	private Set<Hotel> hotel = new HashSet<>();
 
 	/** The dni. */
 	@NotEmpty
@@ -216,35 +216,9 @@ public class Person extends BaseEntity {
 	@Override
 	public String toString() {
 		return "Person [dni=" + dni + ", name=" + name + ", lastname=" + lastname + ", birthday=" + birthday
-				+ ", gender=" + gender + ", hascar=" + "]";
+				+ ", gender=" + gender + "]";
 	}
 
-	/**
-	 * Gets the hotel.
-	 *
-	 * @return the hotel
-	 */
-	public Set<Hotel> getHotel() {
-		return new HashSet<>(this.hotel);
-	}
-
-	/**
-	 * Gets the hotel.
-	 *
-	 * @return the hotel
-	 */
-	Set<Hotel> _getHotel() {
-		return this.hotel;
-	}
-
-	/**
-	 * Sets the hotel.
-	 *
-	 * @param hotel the new hotel
-	 */
-	public void setHotel(Set<Hotel> hotel) {
-		this.hotel = hotel;
-	}
 
 	/**
 	 * Gets the Car.
@@ -271,6 +245,40 @@ public class Person extends BaseEntity {
 	 */
 	public void setCar(Set<Car> car) {
 		this.car = car;
+	}
+
+	/**
+	 * Gets the reserve hotel.
+	 *
+	 * @return the reserve hotel
+	 */
+	public Set<ReserveHotelDate> getReserveHotel() {
+		return reserveHotel;
+	}
+
+	/**
+	 * Sets the reserve hotel.
+	 *
+	 * @param reserveHotel the new reserve hotel
+	 */
+	public void setReserveHotel(Set<ReserveHotelDate> reserveHotel) {
+		this.reserveHotel = reserveHotel;
+	}
+
+
+	/**
+	 * Checks for hotel.
+	 *
+	 * @param p the person
+	 * @return true, if successful
+	 */
+	public boolean hasHotel(Person p) {
+
+		if (p.getReserveHotel() == null || p.getReserveHotel().size() == 0) {
+			return false;
+		}else {
+			return true;
+		}
 	}
 
 }

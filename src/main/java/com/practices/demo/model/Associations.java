@@ -1,8 +1,15 @@
 package com.practices.demo.model;
 
+/**
+ * The Class Associations.
+ */
 public class Associations {
 
+	/**
+	 * The Class ReserveHotel.
+	 */
 	public static class ReserveHotel {
+
 
 		/*
 		 * Method link person and hotel
@@ -12,12 +19,13 @@ public class Associations {
 		 * @param hotel
 		 *
 		 */
-		public static void link(Person person, Hotel hotel) {
+		public static void link(ReserveHotelDate reserve, Hotel hotel) {
 
-			hotel._getPerson().add(person);
-			person._getHotel().add(hotel);
+			hotel.getReserveHotel().add(reserve);
+			reserve.setHotel(hotel);
 
 		}
+
 
 		/*
 		 * Method unlink person and hotel
@@ -27,15 +35,19 @@ public class Associations {
 		 * @param hotel
 		 *
 		 */
-		public static void unlink(Person person, Hotel hotel) {
+		public static void unlink(ReserveHotelDate reserve, Hotel hotel) {
 
-			person._getHotel().remove(hotel);
-			hotel._getPerson().remove(person);
+			hotel.getReserveHotel().remove(reserve);
+			reserve.setHotel(null);
 		}
 
 	}
 
+	/**
+	 * The Class ReserveCar.
+	 */
 	public static class ReserveCar {
+
 
 		/*
 		 * Method link person and car
@@ -51,6 +63,7 @@ public class Associations {
 			person._getCar().add(car);
 
 		}
+
 
 		/*
 		 * Method unlink person and car
