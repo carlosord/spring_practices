@@ -1,8 +1,10 @@
 package com.practices.demo.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotEmpty;
@@ -15,9 +17,9 @@ import javax.validation.constraints.NotEmpty;
 
 public class Car extends BaseEntity {
 
-	/** The person */
-	@ManyToOne
-	private Person person;
+	/** The dates. */
+	@OneToMany(mappedBy = "car")
+	Set<ReserveCarDate> reserveCarDates;
 
 	/** The car license. */
 	@NotEmpty
@@ -101,11 +103,21 @@ public class Car extends BaseEntity {
 		this.numberofcardoors = numberofcardoors;
 	}
 
+	/**
+	 * To string.
+	 *
+	 * @return the string
+	 */
 	@Override
 	public String toString() {
 		return "Car [license=" + license + ", colour=" + colour + ", numberOfCarDoors=" + numberofcardoors + "]";
 	}
 
+	/**
+	 * Hash code.
+	 *
+	 * @return the int
+	 */
 	/*
 	 * (non-Javadoc)
 	 *
@@ -119,6 +131,12 @@ public class Car extends BaseEntity {
 		return result;
 	}
 
+	/**
+	 * Equals.
+	 *
+	 * @param obj the obj
+	 * @return true, if successful
+	 */
 	/*
 	 * (non-Javadoc)
 	 *
@@ -142,21 +160,17 @@ public class Car extends BaseEntity {
 	}
 
 	/**
-	 * Gets the person.
-	 *
-	 * @return the person
+	 * @return the reserveCarDates
 	 */
-	public Person getPerson() {
-		return person;
+	public Set<ReserveCarDate> getReserveCarDates() {
+		return reserveCarDates;
 	}
 
 	/**
-	 * Sets the person.
-	 *
-	 * @param person the new person
+	 * @param reserveCarDates the reserveCarDates to set
 	 */
-	public void setPerson(Person p) {
-		this.person = p;
+	public void setReserveCarDates(Set<ReserveCarDate> reserveCarDates) {
+		this.reserveCarDates = reserveCarDates;
 	}
 
 }

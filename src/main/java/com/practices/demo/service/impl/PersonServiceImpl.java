@@ -156,11 +156,11 @@ public class PersonServiceImpl implements PersonService {
 		Car c = carRepository.findByLicense(car.getLicense());
 		Person p = personRepository.findByDni(car.getDni());
 
-		if (c.getPerson() != null) {
-			throw new BusinessException("car.license.asigned", "license");
-		}
+//		if (c.getPerson() != null) {
+//			throw new BusinessException("car.license.asigned", "license");
+//		}
 
-		Associations.ReserveCar.link(p, c);
+//		Associations.ReserveCar.link(p, c);
 
 		carRepository.save(c);
 		personRepository.save(p);

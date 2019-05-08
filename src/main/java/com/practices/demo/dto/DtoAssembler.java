@@ -59,6 +59,7 @@ public class DtoAssembler {
 					LocalDate.now()));
 		}
 		dto.setGender(entity.getGender());
+		dto.setHascar(entity.hasCar(entity));
 		dto.setHashotel(entity.hasHotel(entity));
 
 		return dto;
