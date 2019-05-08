@@ -10,7 +10,6 @@ public class Associations {
 	 */
 	public static class ReserveHotel {
 
-
 		/*
 		 * Method link person and hotel
 		 *
@@ -25,7 +24,6 @@ public class Associations {
 			reserve.setHotel(hotel);
 
 		}
-
 
 		/*
 		 * Method unlink person and hotel
@@ -48,7 +46,6 @@ public class Associations {
 	 */
 	public static class ReserveCar {
 
-
 		/*
 		 * Method link person and car
 		 *
@@ -57,13 +54,11 @@ public class Associations {
 		 * @param car
 		 *
 		 */
-		public static void link(Person person, Car car) {
+		public static void link(ReserveCarDate reserve, Car car) {
 
-			car.setPerson(person);
-			person._getCar().add(car);
-
+			car.getReserveCarDates().add(reserve);
+			reserve.setCar(car);
 		}
-
 
 		/*
 		 * Method unlink person and car
@@ -73,10 +68,11 @@ public class Associations {
 		 * @param car
 		 *
 		 */
-		public static void unlink(Person person, Car car) {
+		public static void unlink(ReserveCarDate reserve, Car car) {
 
-			person._getCar().remove(car);
-			car.setPerson(null);
+			car.getReserveCarDates().remove(reserve);
+			reserve.setCar(null);
+
 		}
 	}
 

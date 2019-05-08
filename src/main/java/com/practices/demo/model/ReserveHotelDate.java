@@ -42,7 +42,8 @@ public class ReserveHotelDate {
 	/**
 	 * Instantiates a new reserve hotel day.
 	 */
-	public ReserveHotelDate() {}
+	public ReserveHotelDate() {
+	}
 
 	/**
 	 * Gets the reserve.

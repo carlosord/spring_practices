@@ -1,7 +1,6 @@
 package com.practices.demo.model;
 
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -21,14 +20,13 @@ import com.practices.demo.model.types.Gender;
 @Table(name = "PEOPLE", uniqueConstraints = @UniqueConstraint(columnNames = { "dni" }))
 public class Person extends BaseEntity {
 
-
 	/** The reserve hotel. */
 	@OneToMany(mappedBy = "person")
 	Set<ReserveHotelDate> reserveHotel;
 
-	/** The car. */
+	/** The dates. */
 	@OneToMany(mappedBy = "person")
-	private Set<Car> car = new HashSet<>();
+	Set<ReserveCarDate> reserveCarDates;
 
 	/** The dni. */
 	@NotEmpty
@@ -219,38 +217,10 @@ public class Person extends BaseEntity {
 				+ ", gender=" + gender + "]";
 	}
 
-
-	/**
-	 * Gets the Car.
-	 *
-	 * @return the new car
-	 */
-	public Set<Car> getCar() {
-		return new HashSet<>(this.car);
-	}
-
-	/**
-	 * Gets the car.
-	 *
-	 * @return the car
-	 */
-	Set<Car> _getCar(){
-		return this.car;
-	}
-
-	/**
-	 * Sets the Car.
-	 *
-	 * @param car the new car
-	 */
-	public void setCar(Set<Car> car) {
-		this.car = car;
-	}
-
 	/**
 	 * Gets the reserve hotel.
 	 *
-	 * @return the reserve hotel
+	 * @return the reserveHotel
 	 */
 	public Set<ReserveHotelDate> getReserveHotel() {
 		return reserveHotel;
@@ -259,24 +229,56 @@ public class Person extends BaseEntity {
 	/**
 	 * Sets the reserve hotel.
 	 *
-	 * @param reserveHotel the new reserve hotel
+	 * @param reserveHotel the reserveHotel to set
 	 */
 	public void setReserveHotel(Set<ReserveHotelDate> reserveHotel) {
 		this.reserveHotel = reserveHotel;
 	}
 
+	/**
+	 * Gets the reserve car dates.
+	 *
+	 * @return the reserveCarDates
+	 */
+	public Set<ReserveCarDate> getReserveCarDates() {
+		return reserveCarDates;
+	}
+
+	/**
+	 * Sets the reserve car dates.
+	 *
+	 * @param reserveCarDates the reserveCarDates to set
+	 */
+	public void setReserveCarDates(Set<ReserveCarDate> reserveCarDates) {
+		this.reserveCarDates = reserveCarDates;
+	}
+
+	/**
+	 * Checks for car.
+	 *
+	 * @param p the p
+	 * @return true, if successful
+	 */
+	public boolean hasCar(Person p) {
+
+		if (p.getReserveCarDates() == null || p.getReserveCarDates().size() == 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 
 	/**
 	 * Checks for hotel.
 	 *
-	 * @param p the person
+	 * @param p the p
 	 * @return true, if successful
 	 */
 	public boolean hasHotel(Person p) {
 
 		if (p.getReserveHotel() == null || p.getReserveHotel().size() == 0) {
 			return false;
-		}else {
+		} else {
 			return true;
 		}
 	}
