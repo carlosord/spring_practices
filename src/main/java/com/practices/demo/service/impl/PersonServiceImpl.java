@@ -159,7 +159,7 @@ public class PersonServiceImpl implements PersonService {
 //			throw new BusinessException("car.license.asigned", "license");
 //		}
 
-		Associations.ReserveCar.link(p, c);
+//		Associations.ReserveCar.link(p, c);
 
 		carRepository.save(c);
 		personRepository.save(p);

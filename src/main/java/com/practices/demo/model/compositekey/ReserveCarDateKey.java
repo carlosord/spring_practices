@@ -16,46 +16,46 @@ public class ReserveCarDateKey implements Serializable {
 
 	/** The dni. */
 	@Column(name = "person_id")
-	String dni;
+	Long personId;
 
 	/** The license. */
 	@Column(name = "car_id")
-	String license;
+	Long carId;
 
 	/**
-	 * Gets the dni.
+	 * Gets the person id.
 	 *
-	 * @return the dni
+	 * @return the personId
 	 */
-	public String getDni() {
-		return dni;
+	public Long getPersonId() {
+		return personId;
 	}
 
 	/**
-	 * Sets the dni.
+	 * Sets the person id.
 	 *
-	 * @param dni the new dni
+	 * @param personId the personId to set
 	 */
-	public void setDni(String dni) {
-		this.dni = dni;
+	public void setPersonId(Long personId) {
+		this.personId = personId;
 	}
 
 	/**
-	 * Gets the license.
+	 * Gets the car id.
 	 *
-	 * @return the license
+	 * @return the carId
 	 */
-	public String getLicense() {
-		return license;
+	public Long getCarId() {
+		return carId;
 	}
 
 	/**
-	 * Sets the license.
+	 * Sets the car id.
 	 *
-	 * @param license the new license
+	 * @param carId the carId to set
 	 */
-	public void setLicense(String license) {
-		this.license = license;
+	public void setCarId(Long carId) {
+		this.carId = carId;
 	}
 
 	/**
@@ -67,8 +67,8 @@ public class ReserveCarDateKey implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((dni == null) ? 0 : dni.hashCode());
-		result = prime * result + ((license == null) ? 0 : license.hashCode());
+		result = prime * result + ((carId == null) ? 0 : carId.hashCode());
+		result = prime * result + ((personId == null) ? 0 : personId.hashCode());
 		return result;
 	}
 
@@ -87,15 +87,15 @@ public class ReserveCarDateKey implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		ReserveCarDateKey other = (ReserveCarDateKey) obj;
-		if (dni == null) {
-			if (other.dni != null)
+		if (carId == null) {
+			if (other.carId != null)
 				return false;
-		} else if (!dni.equals(other.dni))
+		} else if (!carId.equals(other.carId))
 			return false;
-		if (license == null) {
-			if (other.license != null)
+		if (personId == null) {
+			if (other.personId != null)
 				return false;
-		} else if (!license.equals(other.license))
+		} else if (!personId.equals(other.personId))
 			return false;
 		return true;
 	}

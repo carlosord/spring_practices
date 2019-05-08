@@ -45,10 +45,14 @@ public class Associations {
 		 * @param car
 		 *
 		 */
-		public static void link(Person person, Car car) {
+		public static void link(ReserveCarDate reserve, Car car) {
 
-			car._getPerson().add(person);
-			person._getCar().add(car);
+
+			car.getDates().add(reserve);
+            reserve.setCar(car);
+
+//			car._getPerson().add(person);
+//			person._getCar().add(car);
 
 		}
 
@@ -60,10 +64,14 @@ public class Associations {
 		 * @param car
 		 *
 		 */
-		public static void unlink(Person person, Car car) {
+		public static void unlink(ReserveCarDate reserve, Car car) {
 
-			person._getCar().remove(car);
-			car._getPerson().remove(person);
+
+			car.getDates().remove(reserve);
+            reserve.setCar(null);
+
+//			person._getCar().remove(car);
+//			car._getPerson().remove(person);
 		}
 	}
 

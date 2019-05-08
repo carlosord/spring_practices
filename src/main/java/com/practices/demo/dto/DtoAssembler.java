@@ -59,7 +59,8 @@ public class DtoAssembler {
 					LocalDate.now()));
 		}
 		dto.setGender(entity.getGender());
-		dto.setHascar(hasCar(entity));
+//		dto.setHascar(hasCar(entity));
+
 
 		if (entity.getHotel() == null || entity.getHotel().size() == 0) {
 
@@ -147,13 +148,13 @@ public class DtoAssembler {
 	 * @param entity the entity
 	 * @return true, if successful
 	 */
-	public static boolean hasCar(Person entity) {
-
-		if (entity.getCar() == null || entity.getCar().size() == 0) {
-			return false;
-		} else {
-			return true;
-		}
-	}
+//	public static boolean hasCar(Person entity) {
+//
+//		if (entity.getCar() == null || entity.getCar().size() == 0) {
+//			return false;
+//		} else {
+//			return true;
+//		}
+//	}
 
 }

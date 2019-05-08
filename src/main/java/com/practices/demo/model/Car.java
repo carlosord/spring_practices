@@ -2,18 +2,12 @@ package com.practices.demo.model;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotEmpty;
-
-import com.practices.demo.model.compositekey.ReserveCarDate;
 
 /**
  * The Class Person.
@@ -22,11 +16,6 @@ import com.practices.demo.model.compositekey.ReserveCarDate;
 @Table(name = "CAR", uniqueConstraints = @UniqueConstraint(columnNames = { "license" }))
 
 public class Car extends BaseEntity {
-
-	/** The foreign key. */
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "person_car", joinColumns = @JoinColumn(name = "car_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "person_id", referencedColumnName = "id"))
-	private Set<Person> person;
 
 	/** The dates. */
 	@OneToMany(mappedBy = "car")
@@ -171,30 +160,32 @@ public class Car extends BaseEntity {
 	}
 
 	/**
-	 * Gets the person.
-	 *
-	 * @return the person
+	 * @return the dates
 	 */
-	public Set<Person> getPerson() {
-		return person;
+	public Set<ReserveCarDate> getDates() {
+		return dates;
 	}
 
 	/**
-	 * Gets the person.
-	 *
-	 * @return the person
+	 * @param dates the dates to set
 	 */
-	Set<Person> _getPerson() {
-		return person;
+	public void setDates(Set<ReserveCarDate> dates) {
+		this.dates = dates;
 	}
 
 	/**
-	 * Sets the person.
+	 * Checks for hotel.
 	 *
-	 * @param p the new person
+	 * @param p the p
+	 * @return true, if successful
 	 */
-	public void setPerson(Set<Person> p) {
-		this.person = p;
+	public boolean hasHotel(Person p) {
+
+		if (p.getDates() == null || p.getDates().size() == 0) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 }

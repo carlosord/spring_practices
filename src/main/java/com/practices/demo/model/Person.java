@@ -13,7 +13,6 @@ import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-import com.practices.demo.model.compositekey.ReserveCarDate;
 import com.practices.demo.model.types.Gender;
 
 /**
@@ -22,10 +21,6 @@ import com.practices.demo.model.types.Gender;
 @Entity
 @Table(name = "PEOPLE", uniqueConstraints = @UniqueConstraint(columnNames = { "dni" }))
 public class Person extends BaseEntity {
-
-	/** The car. */
-	@ManyToMany(mappedBy = "person")
-	private Set<Car> car = new HashSet<>();
 
 	/** The hotel. */
 	@ManyToMany(mappedBy = "person")
@@ -252,30 +247,17 @@ public class Person extends BaseEntity {
 	}
 
 	/**
-	 * Gets the Car.
-	 *
-	 * @return the new car
+	 * @return the dates
 	 */
-	public Set<Car> getCar() {
-		return new HashSet<>(this.car);
+	public Set<ReserveCarDate> getDates() {
+		return dates;
 	}
 
 	/**
-	 * Gets the car.
-	 *
-	 * @return the car
+	 * @param dates the dates to set
 	 */
-	Set<Car> _getCar() {
-		return this.car;
-	}
-
-	/**
-	 * Sets the Car.
-	 *
-	 * @param car the new car
-	 */
-	public void setCar(Set<Car> car) {
-		this.car = car;
+	public void setDates(Set<ReserveCarDate> dates) {
+		this.dates = dates;
 	}
 
 }
