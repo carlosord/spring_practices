@@ -1,42 +1,51 @@
 package com.practices.demo.model;
 
+//import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.EmbeddedId;
+//import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+//import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
-
-import com.practices.demo.model.compositekey.ReserveCarDateKey;
+//import javax.persistence.MapsId;
+//
+//import com.practices.demo.model.compositekey.ReserveCarDateKey;
 
 /**
- * The Class ReserveCar.
+ * The Class ReserveCarDate.
  */
 @Entity
 public class ReserveCarDate {
 
 	/** The reserveid. */
-	@EmbeddedId
-	ReserveCarDateKey reserveid;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+//	@EmbeddedId
+//	ReserveCarDateKey id;
 
 	/** The person. */
 	@ManyToOne
-	@MapsId("person_id")
-	@JoinColumn(name = "person_id")
+//	@MapsId("person_id")
+//	@JoinColumn(name = "person_id")
 	Person person;
 
 	/** The car. */
 	@ManyToOne
-	@MapsId("car_id")
-	@JoinColumn(name = "car_id")
+//	@MapsId("car_id")
+//	@JoinColumn(name = "car_id")
 	Car car;
 
-	/** The startdatereserve. */
-	private Date startdatereserve;
+	/** The start car reserve. */
+	private Date startCarReserve;
 
-	/** The finaldatereserve. */
-	private Date finaldatereserve;
+	/** The finish car reserve. */
+	private Date finishCarReserve;
 
 	/**
 	 * Instantiates a new reserve car date.
@@ -44,23 +53,23 @@ public class ReserveCarDate {
 	public ReserveCarDate() {
 	}
 
-	/**
-	 * Gets the reserveid.
-	 *
-	 * @return the reserveid
-	 */
-	public ReserveCarDateKey getReserveid() {
-		return reserveid;
-	}
-
-	/**
-	 * Sets the reserveid.
-	 *
-	 * @param reserveid the new reserveid
-	 */
-	public void setReserveid(ReserveCarDateKey reserveid) {
-		this.reserveid = reserveid;
-	}
+//	/**
+//	 * Gets the reserveid.
+//	 *
+//	 * @return the reserveid
+//	 */
+//	public ReserveCarDateKey getReserveid() {
+//		return id;
+//	}
+//
+//	/**
+//	 * Sets the reserveid.
+//	 *
+//	 * @param reserveid the new reserveid
+//	 */
+//	public void setReserveid(ReserveCarDateKey reserveid) {
+//		this.id = reserveid;
+//	}
 
 	/**
 	 * Gets the person.
@@ -99,39 +108,57 @@ public class ReserveCarDate {
 	}
 
 	/**
-	 * Gets the startdatereserve.
+	 * Gets the start car reserve.
 	 *
-	 * @return the startdatereserve
+	 * @return the startCarReserve
 	 */
-	public Date getStartdatereserve() {
-		return startdatereserve;
+	public Date getStartCarReserve() {
+		return startCarReserve;
 	}
 
 	/**
-	 * Sets the startdatereserve.
+	 * Sets the start car reserve.
 	 *
-	 * @param startdatereserve the new startdatereserve
+	 * @param startCarReserve the startCarReserve to set
 	 */
-	public void setStartdatereserve(Date startdatereserve) {
-		this.startdatereserve = startdatereserve;
+	public void setStartCarReserve(Date startCarReserve) {
+		this.startCarReserve = startCarReserve;
 	}
 
 	/**
-	 * Gets the finaldatereserve.
+	 * Gets the finish car reserve.
 	 *
-	 * @return the finaldatereserve
+	 * @return the finishCarReserve
 	 */
-	public Date getFinaldatereserve() {
-		return finaldatereserve;
+	public Date getFinishCarReserve() {
+		return finishCarReserve;
 	}
 
 	/**
-	 * Sets the finaldatereserve.
+	 * Sets the finish car reserve.
 	 *
-	 * @param finaldatereserve the new finaldatereserve
+	 * @param finishCarReserve the finishCarReserve to set
 	 */
-	public void setFinaldatereserve(Date finaldatereserve) {
-		this.finaldatereserve = finaldatereserve;
+	public void setFinishCarReserve(Date finishCarReserve) {
+		this.finishCarReserve = finishCarReserve;
+	}
+
+	/**
+	 * Gets the id.
+	 *
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
+
+	/**
+	 * Sets the id.
+	 *
+	 * @param id the new id
+	 */
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 }

@@ -11,7 +11,7 @@ import javax.persistence.MapsId;
 import com.practices.demo.model.compositekey.ReserveHotelKey;
 
 /**
- * The Class ReserveHotelDay.
+ * The Class ReserveHotelDate.
  */
 @Entity
 public class ReserveHotelDate {
@@ -32,12 +32,11 @@ public class ReserveHotelDate {
 	@JoinColumn(name = "hotel_id")
 	private Hotel hotel;
 
-	/** The start reserve. */
-	private Date startReserve;
+	/** The start hotel reserve. */
+	private Date startHotelReserve;
 
-	/** The finish reserve. */
-	private Date finishReserve;
-
+	/** The finish hotel reserve. */
+	private Date finishHotelReserve;
 
 	/**
 	 * Instantiates a new reserve hotel day.
@@ -104,17 +103,17 @@ public class ReserveHotelDate {
 	 *
 	 * @return the start reserve
 	 */
-	public Date getStartReserve() {
-		return startReserve;
+	public Date getStartHotelReserve() {
+		return startHotelReserve;
 	}
 
 	/**
 	 * Sets the start reserve.
 	 *
-	 * @param startReserve the new start reserve
+	 * @param startHotelReserve the new start reserve
 	 */
-	public void setStartReserve(Date startReserve) {
-		this.startReserve = startReserve;
+	public void setStartReserve(Date startHotelReserve) {
+		this.startHotelReserve = startHotelReserve;
 	}
 
 	/**
@@ -122,16 +121,16 @@ public class ReserveHotelDate {
 	 *
 	 * @return the finish reserve
 	 */
-	public Date getFinishReserve() {
-		return finishReserve;
+	public Date getFinishHotelReserve() {
+		return finishHotelReserve;
 	}
 
 	/**
 	 * Sets the finish reserve.
 	 *
-	 * @param finishReserve the new finish reserve
+	 * @param finishHotelReserve the new finish hotel reserve
 	 */
-	public void setFinishReserve(Date finishReserve) {
-		this.finishReserve = finishReserve;
+	public void setFinishHotelReserve(Date finishHotelReserve) {
+		this.finishHotelReserve = finishHotelReserve;
 	}
 }

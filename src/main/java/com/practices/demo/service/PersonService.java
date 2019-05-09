@@ -2,7 +2,6 @@ package com.practices.demo.service;
 
 import java.util.List;
 
-import com.practices.demo.dto.CarReserveDto;
 import com.practices.demo.dto.PersonDto;
 import com.practices.demo.dto.ReserveHotelDto;
 import com.practices.demo.service.exception.BusinessException;
@@ -68,10 +67,4 @@ public interface PersonService {
 	 */
 	public boolean addNewReserve(ReserveHotelDto reservehotel) throws BusinessException;
 
-	/**
-	 * Add car to Person.
-	 *
-	 * @param id the id
-	 */
-	public boolean addCar(CarReserveDto car) throws BusinessException;
 }

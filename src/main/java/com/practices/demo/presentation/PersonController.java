@@ -20,6 +20,7 @@ import com.practices.demo.presentation.validation.PersonValidator;
 import com.practices.demo.service.HotelService;
 import com.practices.demo.service.CarService;
 import com.practices.demo.service.PersonService;
+import com.practices.demo.service.ReserveCarService;
 import com.practices.demo.service.exception.BusinessException;
 
 /**
@@ -28,11 +29,11 @@ import com.practices.demo.service.exception.BusinessException;
 @Controller
 public class PersonController {
 
-	/** The person repository. */
+	/** The person service. */
 	@Autowired
 	private PersonService personService;
 
-	/** The hotel repository. */
+	/** The hotel service. */
 	@Autowired
 	private HotelService hotelService;
 
@@ -40,9 +41,13 @@ public class PersonController {
 	@Autowired
 	private PersonValidator personValidator;
 
-	/** The person repository. */
+	/** The car service. */
 	@Autowired
 	private CarService carService;
+
+	/** The reserve car service. */
+	@Autowired
+	private ReserveCarService reserveCarService;
 
 	/**
 	 * Show all.
@@ -183,6 +188,14 @@ public class PersonController {
 
 	}
 
+	/**
+	 * Adds the new reserve.
+	 *
+	 * @param model         the model
+	 * @param hotelForm     the hotel form
+	 * @param bindingResult the binding result
+	 * @return the string
+	 */
 	@PostMapping(Url.HOTEL_URL)
 	public String addNewReserve(ModelMap model, @Valid HotelForm hotelForm, BindingResult bindingResult) {
 
@@ -227,7 +240,7 @@ public class PersonController {
 		}
 
 		try {
-			personService.addCar(carForm.toCar());
+			reserveCarService.addCar(carForm.toCar());
 
 			return View.redirect(View.HOME_VIEW);
 
