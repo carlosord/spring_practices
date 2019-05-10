@@ -17,6 +17,7 @@ import com.practices.demo.presentation.form.PersonForm;
 import com.practices.demo.presentation.front.Url;
 import com.practices.demo.presentation.front.View;
 import com.practices.demo.presentation.validation.PersonValidator;
+import com.practices.demo.presentation.validation.ReserveCarDateValidator;
 import com.practices.demo.service.HotelService;
 import com.practices.demo.service.CarService;
 import com.practices.demo.service.PersonService;
@@ -40,6 +41,9 @@ public class PersonController {
 	/** The person validator. */
 	@Autowired
 	private PersonValidator personValidator;
+
+	@Autowired
+	private ReserveCarDateValidator reserveCarValidator;
 
 	/** The car service. */
 	@Autowired
@@ -235,7 +239,11 @@ public class PersonController {
 	@PostMapping(Url.CAR_URL)
 	public String addCar(ModelMap model, @Valid CarForm carForm, BindingResult bindingResult) {
 
+		reserveCarValidator.validate(carForm, bindingResult);
+
 		if (bindingResult.hasErrors()) {
+
+			model.addAttribute("allCars", carService.findAll());
 			return View.CAR_VIEW;
 		}
 

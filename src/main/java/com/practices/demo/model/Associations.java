@@ -56,7 +56,7 @@ public class Associations {
 	/**
 	 * The Class ReserveCar.
 	 */
-	public static class ReserveCar {
+	public static class BookCar {
 
 		/**
 		 * Link.
@@ -65,7 +65,7 @@ public class Associations {
 		 * @param car     the car
 		 * @param person  the person
 		 */
-		public static void link(ReserveCarDate reserve, Car car, Person person) {
+		public static void link(ReserveCar reserve, Car car, Person person) {
 
 			car.getReserveCarDates().add(reserve);
 			reserve.setCar(car);
@@ -81,7 +81,7 @@ public class Associations {
 		 * @param car     the car
 		 * @param person  the person
 		 */
-		public static void unlink(ReserveCarDate reserve, Car car, Person person) {
+		public static void unlink(ReserveCar reserve, Car car, Person person) {
 
 			car.getReserveCarDates().remove(reserve);
 			reserve.setCar(null);

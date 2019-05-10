@@ -2,23 +2,16 @@ package com.practices.demo.model;
 
 import java.util.Date;
 
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 
-import com.practices.demo.model.compositekey.ReserveHotelKey;
-
 /**
  * The Class ReserveHotelDate.
  */
 @Entity
-public class ReserveHotelDate {
-
-	/** The reserve. */
-	@EmbeddedId
-	private ReserveHotelKey reserve;
+public class ReserveHotelDate extends BaseEntity{
 
 	/** The person. */
 	@ManyToOne
@@ -42,24 +35,6 @@ public class ReserveHotelDate {
 	 * Instantiates a new reserve hotel day.
 	 */
 	public ReserveHotelDate() {
-	}
-
-	/**
-	 * Gets the reserve.
-	 *
-	 * @return the reserve
-	 */
-	public ReserveHotelKey getReserve() {
-		return reserve;
-	}
-
-	/**
-	 * Sets the reserve.
-	 *
-	 * @param reserve the new reserve
-	 */
-	public void setReserve(ReserveHotelKey reserve) {
-		this.reserve = reserve;
 	}
 
 	/**
