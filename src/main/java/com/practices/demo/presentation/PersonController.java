@@ -11,14 +11,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.practices.demo.dto.PersonDto;
-import com.practices.demo.presentation.form.HotelForm;
 import com.practices.demo.presentation.form.CarForm;
+import com.practices.demo.presentation.form.HotelForm;
 import com.practices.demo.presentation.form.PersonForm;
 import com.practices.demo.presentation.front.Url;
 import com.practices.demo.presentation.front.View;
+import com.practices.demo.presentation.validation.HotelValidator;
 import com.practices.demo.presentation.validation.PersonValidator;
-import com.practices.demo.service.HotelService;
 import com.practices.demo.service.CarService;
+import com.practices.demo.service.HotelReserveService;
+import com.practices.demo.service.HotelService;
 import com.practices.demo.service.PersonService;
 import com.practices.demo.service.exception.BusinessException;
 
@@ -28,11 +30,11 @@ import com.practices.demo.service.exception.BusinessException;
 @Controller
 public class PersonController {
 
-	/** The person repository. */
+	/** The person service. */
 	@Autowired
 	private PersonService personService;
 
-	/** The hotel repository. */
+	/** The hotel service. */
 	@Autowired
 	private HotelService hotelService;
 
@@ -40,9 +42,17 @@ public class PersonController {
 	@Autowired
 	private PersonValidator personValidator;
 
-	/** The person repository. */
+	/** The hotel validator. */
+	@Autowired
+	private HotelValidator hotelValidator;
+
+	/** The car service. */
 	@Autowired
 	private CarService carService;
+
+	/** The hotel reserve service. */
+	@Autowired
+	private HotelReserveService hotelReserveService;
 
 	/**
 	 * Show all.
@@ -183,17 +193,29 @@ public class PersonController {
 
 	}
 
+	/**
+	 * Adds the new reserve.
+	 *
+	 * @param model         the model
+	 * @param hotelForm     the hotel form
+	 * @param bindingResult the binding result
+	 * @return the string
+	 */
 	@PostMapping(Url.HOTEL_URL)
 	public String addNewReserve(ModelMap model, @Valid HotelForm hotelForm, BindingResult bindingResult) {
 
+		hotelValidator.validate(hotelForm, bindingResult);
+
 		if (bindingResult.hasErrors()) {
+
+			model.addAttribute("allHotels", hotelService.findAll());
 			return View.HOTEL_VIEW;
 		}
 
 		try {
 
 			// Add new reserve to db
-			personService.addNewReserve(hotelForm.toHotel());
+			hotelReserveService.addNewReserve(hotelForm.toHotel());
 
 			// Return new reserve view
 			return View.redirect(View.HOME_VIEW);

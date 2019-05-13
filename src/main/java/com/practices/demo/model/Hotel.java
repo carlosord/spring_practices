@@ -9,7 +9,6 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotEmpty;
 
-
 /**
  * The class Hotel.
  *
@@ -20,7 +19,7 @@ public class Hotel extends BaseEntity {
 
 	/** The reserve hotel. */
 	@OneToMany(mappedBy = "hotel")
-	Set<ReserveHotelDate> reserveHotel;
+	Set<ReserveHotel> reserveHotel;
 
 	/** The code. */
 	@NotEmpty
@@ -217,7 +216,7 @@ public class Hotel extends BaseEntity {
 	 *
 	 * @return the reserve hotel
 	 */
-	public Set<ReserveHotelDate> getReserveHotel() {
+	public Set<ReserveHotel> getReserveHotel() {
 		return reserveHotel;
 	}
 
@@ -226,11 +225,9 @@ public class Hotel extends BaseEntity {
 	 *
 	 * @param reserveHotel the new reserve hotel
 	 */
-	public void setReserveHotel(Set<ReserveHotelDate> reserveHotel) {
+	public void setReserveHotel(Set<ReserveHotel> reserveHotel) {
 		this.reserveHotel = reserveHotel;
 	}
-
-
 
 
 
