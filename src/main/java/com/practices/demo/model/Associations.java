@@ -14,8 +14,8 @@ public class Associations {
 		 * Link.
 		 *
 		 * @param reserveHotel the reserve
-		 * @param hotel the hotel
-		 * @param person the person
+		 * @param hotel        the hotel
+		 * @param person       the person
 		 */
 		/*
 		 * Method link person and hotel
@@ -40,8 +40,8 @@ public class Associations {
 		 * Unlink.
 		 *
 		 * @param reserve the reserve
-		 * @param hotel the hotel
-		 * @param person the person
+		 * @param hotel   the hotel
+		 * @param person  the person
 		 */
 		/*
 		 * Method unlink person and hotel
@@ -62,7 +62,7 @@ public class Associations {
 	}
 
 	/**
-	 * The Class ReserveCar.
+	 * The Class BookCar.
 	 */
 	public static class BookCar {
 
@@ -70,40 +70,32 @@ public class Associations {
 		 * Link.
 		 *
 		 * @param reserve the reserve
-		 * @param car the car
+		 * @param car     the car
+		 * @param person  the person
 		 */
-		/*
-		 * Method link person and car
-		 *
-		 * @param person
-		 *
-		 * @param car
-		 *
-		 */
-		public static void link(ReserveCarDate reserve, Car car) {
+		public static void link(ReserveCar reserve, Car car, Person person) {
 
 			car.getReserveCarDates().add(reserve);
 			reserve.setCar(car);
+
+			person.getReserveCarDates().add(reserve);
+			reserve.setPerson(person);
 		}
 
 		/**
 		 * Unlink.
 		 *
 		 * @param reserve the reserve
-		 * @param car the car
+		 * @param car     the car
+		 * @param person  the person
 		 */
-		/*
-		 * Method unlink person and car
-		 *
-		 * @param person
-		 *
-		 * @param car
-		 *
-		 */
-		public static void unlink(ReserveCarDate reserve, Car car) {
+		public static void unlink(ReserveCar reserve, Car car, Person person) {
 
 			car.getReserveCarDates().remove(reserve);
 			reserve.setCar(null);
+
+			person.getReserveCarDates().remove(reserve);
+			reserve.setPerson(null);
 
 		}
 	}

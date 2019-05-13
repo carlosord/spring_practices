@@ -25,6 +25,45 @@
 					<span class="text-danger" th:if="${#fields.hasErrors('license')}" th:errors="*{license}"></span>
 			</div>
 
+
+			<div class="form-group">
+			<label for="startreserveday" th:text="#{car.startdatereserve}"></label>
+			<div class="form-row">
+				<div class="col-1">
+					<input type="number" class="form-control" th:field="*{startreserveday}" id="startreserveday"
+						th:placeholder="#{car.startreserveday.placeholder}" required="required" min="1" max="31" >
+				</div>
+				<div class="col-1">
+					<input type="number" class="form-control" th:field="*{startreservemonth}" id="startreservemonth"
+						th:placeholder="#{car.startreservemonth.placeholder}" required="required" min="1" max="12" >
+				</div>
+				<div class="col-2">
+					<input type="number" class="form-control" th:field="*{startreserveyear}" id="startreserveyear"
+						th:placeholder="#{car.startreserveyear.placeholder}" required="required" min="1900" max="3000">
+				</div>
+			</div>
+			<span class="text-danger" th:if="${#fields.hasErrors('startreserveday')}" th:errors="*{startreserveday}"></span>
+		</div>
+
+		<div class="form-group">
+			<label for="finishreserveday" th:text="#{car.finishdatereserve}"></label>
+			<div class="form-row">
+				<div class="col-1">
+					<input type="number" class="form-control" th:field="*{finishreserveday}" id="finishreserveday"
+						th:placeholder="#{car.finishreserveday.placeholder}" required="required" min="1" max="31" >
+				</div>
+				<div class="col-1">
+					<input type="number" class="form-control" th:field="*{finishreservemonth}" id="finishreservemonth"
+						th:placeholder="#{car.finishreservemonth.placeholder}" required="required" min="1" max="12" >
+				</div>
+				<div class="col-2">
+					<input type="number" class="form-control" th:field="*{finishreserveyear}" id="finishreserveyear"
+						th:placeholder="#{car.finishreserveyear.placeholder}" required="required" min="1900" max="3000">
+				</div>
+			</div>
+			<span class="text-danger" th:if="${#fields.hasErrors('finishreserveday')}" th:errors="*{finishreserveday}"></span>
+		</div>
+
 			<button type="submit" class="btn btn-primary" th:text="#{btn.confirm}"></button>
 				<a th:href="${T(com.practices.demo.presentation.front.Url).HOME_URL}" class="btn btn-danger" th:text="#{btn.cancel}"></a>
 

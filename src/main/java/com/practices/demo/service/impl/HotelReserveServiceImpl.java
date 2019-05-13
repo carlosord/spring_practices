@@ -65,7 +65,7 @@ public class HotelReserveServiceImpl implements HotelReserveService {
 
 			for (ReserveHotel r : hr) {
 
-				DateUtils.checkDate(r.getStartReserve(), startDto, r.getFinishReserve(), finishDto);
+				DateUtils.checkDateHotel(r.getStartReserve(), startDto, r.getFinishReserve(), finishDto);
 
 			}
 

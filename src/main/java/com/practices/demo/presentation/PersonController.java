@@ -11,17 +11,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.practices.demo.dto.PersonDto;
-import com.practices.demo.presentation.form.CarForm;
 import com.practices.demo.presentation.form.HotelForm;
+import com.practices.demo.presentation.form.CarForm;
 import com.practices.demo.presentation.form.PersonForm;
 import com.practices.demo.presentation.front.Url;
 import com.practices.demo.presentation.front.View;
 import com.practices.demo.presentation.validation.HotelValidator;
 import com.practices.demo.presentation.validation.PersonValidator;
+import com.practices.demo.presentation.validation.ReserveCarDateValidator;
 import com.practices.demo.service.CarService;
 import com.practices.demo.service.HotelReserveService;
 import com.practices.demo.service.HotelService;
 import com.practices.demo.service.PersonService;
+import com.practices.demo.service.ReserveCarService;
 import com.practices.demo.service.exception.BusinessException;
 
 /**
@@ -42,6 +44,10 @@ public class PersonController {
 	@Autowired
 	private PersonValidator personValidator;
 
+	/** The reserve car validator. */
+	@Autowired
+	private ReserveCarDateValidator reserveCarValidator;
+
 	/** The hotel validator. */
 	@Autowired
 	private HotelValidator hotelValidator;
@@ -49,6 +55,10 @@ public class PersonController {
 	/** The car service. */
 	@Autowired
 	private CarService carService;
+
+	/** The reserve car service. */
+	@Autowired
+	private ReserveCarService reserveCarService;
 
 	/** The hotel reserve service. */
 	@Autowired
@@ -207,8 +217,6 @@ public class PersonController {
 		hotelValidator.validate(hotelForm, bindingResult);
 
 		if (bindingResult.hasErrors()) {
-
-			model.addAttribute("allHotels", hotelService.findAll());
 			return View.HOTEL_VIEW;
 		}
 
@@ -244,12 +252,16 @@ public class PersonController {
 	@PostMapping(Url.CAR_URL)
 	public String addCar(ModelMap model, @Valid CarForm carForm, BindingResult bindingResult) {
 
+		reserveCarValidator.validate(carForm, bindingResult);
+
 		if (bindingResult.hasErrors()) {
+
+			model.addAttribute("allCars", carService.findAll());
 			return View.CAR_VIEW;
 		}
 
 		try {
-			personService.addCar(carForm.toCar());
+			reserveCarService.addCar(carForm.toCar());
 
 			return View.redirect(View.HOME_VIEW);
 

@@ -9,12 +9,8 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.practices.demo.dto.CarReserveDto;
 import com.practices.demo.dto.DtoAssembler;
 import com.practices.demo.dto.PersonDto;
-import com.practices.demo.model.Car;
-import com.practices.demo.model.Person;
-import com.practices.demo.repositories.CarRepository;
 import com.practices.demo.repositories.PersonRepository;
 import com.practices.demo.service.PersonService;
 import com.practices.demo.service.exception.BusinessException;
@@ -30,16 +26,6 @@ public class PersonServiceImpl implements PersonService {
 	@Autowired
 	private PersonRepository personRepository;
 
-	/** The person repository. */
-	@Autowired
-	private CarRepository carRepository;
-
-	/**
-	 * Find person by id.
-	 *
-	 * @param id the id
-	 * @return the person dto
-	 */
 	/*
 	 * (non-Javadoc)
 	 *
@@ -49,11 +35,6 @@ public class PersonServiceImpl implements PersonService {
 		return DtoAssembler.fromEntity(personRepository.findById(id).orElseThrow(NoSuchElementException::new));
 	}
 
-	/**
-	 * Find all.
-	 *
-	 * @return the list
-	 */
 	/*
 	 * (non-Javadoc)
 	 *
@@ -63,12 +44,6 @@ public class PersonServiceImpl implements PersonService {
 		return personRepository.findAll().stream().map(DtoAssembler::fromEntity).collect(Collectors.toList());
 	}
 
-	/**
-	 * Find person by dni.
-	 *
-	 * @param dni the dni
-	 * @return the person dto
-	 */
 	/*
 	 * (non-Javadoc)
 	 *
@@ -81,13 +56,6 @@ public class PersonServiceImpl implements PersonService {
 
 	}
 
-	/**
-	 * Adds the new person.
-	 *
-	 * @param person the person
-	 * @return the person dto
-	 * @throws BusinessException the business exception
-	 */
 	/*
 	 * (non-Javadoc)
 	 *
@@ -114,12 +82,6 @@ public class PersonServiceImpl implements PersonService {
 
 	}
 
-	/**
-	 * Update person.
-	 *
-	 * @param person the person
-	 * @return the person dto
-	 */
 	/*
 	 * (non-Javadoc)
 	 *
@@ -133,11 +95,6 @@ public class PersonServiceImpl implements PersonService {
 		return DtoAssembler.fromEntity(personRepository.save(DtoAssembler.toEntity(person)));
 	}
 
-	/**
-	 * Delete person form.
-	 *
-	 * @param id the id
-	 */
 	/*
 	 * (non-Javadoc)
 	 *
@@ -148,39 +105,6 @@ public class PersonServiceImpl implements PersonService {
 
 		// Delete the person
 		personRepository.deleteById(id);
-	}
-
-	/**
-	 * Adds the car.
-	 *
-	 * @param car the car
-	 * @return true, if successful
-	 * @throws BusinessException the business exception
-	 */
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * com.practices.demo.service.PersonService#addNewCar(com.practices.demo.dto.
-	 * PersonDto)
-	 */
-	@Override
-	public boolean addCar(CarReserveDto car) throws BusinessException {
-
-		Car c = carRepository.findByLicense(car.getLicense());
-		Person p = personRepository.findByDni(car.getDni());
-
-//		if (c.getPerson() != null) {
-//			throw new BusinessException("car.license.asigned", "license");
-//		}
-
-//		Associations.ReserveCar.link(p, c);
-
-		carRepository.save(c);
-		personRepository.save(p);
-
-		return true;
-
 	}
 
 }

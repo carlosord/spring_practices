@@ -10,6 +10,7 @@ import java.time.temporal.ChronoUnit;
 import com.practices.demo.model.Hotel;
 import com.practices.demo.model.Car;
 import com.practices.demo.model.Person;
+import com.practices.demo.model.ReserveCar;
 import com.practices.demo.model.ReserveHotel;
 
 /**
@@ -134,6 +135,38 @@ public class DtoAssembler {
 		dto.setNumberofcadoors(entity.getNumberofcardoors());
 		return dto;
 	}
+
+	/**
+	 * To entity.
+	 *
+	 * @param dto the dto
+	 * @return the reserve car
+	 */
+	public static ReserveCar toEntity(CarReserveDto dto) {
+		ReserveCar entity = new ReserveCar();
+
+		Person p = new Person();
+		p.setDni(dto.getDni());
+		entity.setPerson(p);
+
+		Car c = new Car();
+		c.setLicense(dto.getLicense());
+		entity.setCar(c);
+
+		try {
+			entity.setStartReserve(format.parse(dto.getStartCarReserve()));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		try {
+			entity.setFinishReserve(format.parse(dto.getFinishCarReserve()));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		return entity;
+	}
+
 
 	/**
 	 * To entity.

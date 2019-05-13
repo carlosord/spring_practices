@@ -32,13 +32,14 @@ public class DateUtils {
 	 * @return true, if successful
 	 * @throws BusinessException the business exception
 	 */
+
 	public static boolean range(Date startDto, Date finishDto, Date checkStart, Date checkFinish)
 			throws BusinessException {
 		return checkStart.before(startDto) && checkFinish.after(finishDto);
 	}
 
 	/**
-	 * Check date.
+	 * Check date car.
 	 *
 	 * @param start     the start
 	 * @param startDto  the start dto
@@ -46,7 +47,31 @@ public class DateUtils {
 	 * @param finishDto the finish dto
 	 * @throws BusinessException the business exception
 	 */
-	public static void checkDate(Date start, Date startDto, Date finish, Date finishDto) throws BusinessException {
+	public static void checkDateCar(Date start, Date startDto, Date finish, Date finishDto) throws BusinessException {
+
+		if (start.compareTo(startDto) == 0 || between(start, finish, startDto)) {
+			throw new BusinessException("car.date.error", "startreserveday");
+		}
+
+		if (finish.compareTo(finishDto) == 0 || between(start, finish, finishDto)) {
+			throw new BusinessException("car.date.error", "finishreserveday");
+		}
+
+		if (range(start, finish, startDto, finishDto)) {
+			throw new BusinessException("car.date.error", "startreserveday");
+		}
+	}
+
+	/**
+	 * Check date hotel.
+	 *
+	 * @param start     the start
+	 * @param startDto  the start dto
+	 * @param finish    the finish
+	 * @param finishDto the finish dto
+	 * @throws BusinessException the business exception
+	 */
+	public static void checkDateHotel(Date start, Date startDto, Date finish, Date finishDto) throws BusinessException {
 
 		if (start.compareTo(startDto) == 0 || between(start, finish, startDto)) {
 			throw new BusinessException("hotel.date.error.invalid", "starthotelday");

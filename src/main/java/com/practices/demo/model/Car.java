@@ -19,7 +19,7 @@ public class Car extends BaseEntity {
 
 	/** The dates. */
 	@OneToMany(mappedBy = "car")
-	Set<ReserveCarDate> reserveCarDates;
+	Set<ReserveCar> reserveCars;
 
 	/** The car license. */
 	@NotEmpty
@@ -162,15 +162,15 @@ public class Car extends BaseEntity {
 	/**
 	 * @return the reserveCarDates
 	 */
-	public Set<ReserveCarDate> getReserveCarDates() {
-		return reserveCarDates;
+	public Set<ReserveCar> getReserveCarDates() {
+		return reserveCars;
 	}
 
 	/**
-	 * @param reserveCarDates the reserveCarDates to set
+	 * @param reserveCars the reserveCarDates to set
 	 */
-	public void setReserveCarDates(Set<ReserveCarDate> reserveCarDates) {
-		this.reserveCarDates = reserveCarDates;
+	public void setReserveCarDates(Set<ReserveCar> reserveCars) {
+		this.reserveCars = reserveCars;
 	}
 
 }
