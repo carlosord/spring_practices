@@ -8,7 +8,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 /**
- * The Class ReserveHotelDay.
+ * The Class ReserveHotel.
  */
 @Entity
 @Table(name = "RESERVEHOTEL", uniqueConstraints = @UniqueConstraint(columnNames = { "person_id", "hotel_id",

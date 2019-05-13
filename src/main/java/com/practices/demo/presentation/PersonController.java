@@ -50,7 +50,7 @@ public class PersonController {
 	@Autowired
 	private CarService carService;
 
-	/** The reserve service. */
+	/** The hotel reserve service. */
 	@Autowired
 	private HotelReserveService hotelReserveService;
 

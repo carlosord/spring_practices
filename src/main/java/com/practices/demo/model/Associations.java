@@ -6,7 +6,7 @@ package com.practices.demo.model;
 public class Associations {
 
 	/**
-	 * The Class ReserveHotel.
+	 * The Class BookHotel.
 	 */
 	public static class BookHotel {
 

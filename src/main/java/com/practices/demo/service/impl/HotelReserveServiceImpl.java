@@ -40,7 +40,7 @@ public class HotelReserveServiceImpl implements HotelReserveService {
 	private HotelReserveRepository hotelReserveRepository;
 
 	/**
-	 * Adds the new reserve.
+	 * Adds the new hotel reserve.
 	 *
 	 * @param reservehotel the reservehotel
 	 * @return true, if successful

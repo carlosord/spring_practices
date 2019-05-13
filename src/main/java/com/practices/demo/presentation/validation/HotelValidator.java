@@ -8,7 +8,6 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import com.practices.demo.presentation.form.HotelForm;
-import com.practices.demo.service.utils.DateUtils;
 
 /**
  * The Class HotelValidator.
@@ -41,8 +40,6 @@ public class HotelValidator implements Validator {
 		if (!reserveStartDateIsValid(hotelForm.getStarthotelday() + "/" + hotelForm.getStarthotelmonth() + "/"
 				+ hotelForm.getStarthotelyear())) {
 			errors.rejectValue("starthotelday", "hotel.date.error.invalid");
-			errors.rejectValue("starthotelmonth", "hotel.date.error.invalid");
-			errors.rejectValue("starthotelyear", "hotel.date.error.invalid");
 
 		}
 
@@ -52,8 +49,6 @@ public class HotelValidator implements Validator {
 				hotelForm.getFinishhotelday() + "/" + hotelForm.getFinishhotelmonth() + "/"
 						+ hotelForm.getFinishhotelyear())) {
 			errors.rejectValue("finishhotelday", "hotel.date.error.invalid");
-			errors.rejectValue("finishhotelmonth", "hotel.date.error.invalid");
-			errors.rejectValue("finishhotelyear", "hotel.date.error.invalid");
 
 		}
 

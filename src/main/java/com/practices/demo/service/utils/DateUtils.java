@@ -57,7 +57,7 @@ public class DateUtils {
 		}
 
 		if (range(start, finish, startDto, finishDto)) {
-			throw new BusinessException("hotel.date.error.invalid", "starthotelmonth");
+			throw new BusinessException("hotel.date.error.invalid", "starthotelday");
 		}
 	}
 
