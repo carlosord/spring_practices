@@ -19,10 +19,6 @@ public class Associations {
 		/*
 		 * Method link person and hotel
 		 *
-		 * @param person
-		 *
-		 * @param hotel
-		 *
 		 */
 		public static void link(ReserveHotelDate reserve, Hotel hotel) {
 
@@ -40,10 +36,6 @@ public class Associations {
 		/*
 		 * Method unlink person and hotel
 		 *
-		 * @param person
-		 *
-		 * @param hotel
-		 *
 		 */
 		public static void unlink(ReserveHotelDate reserve, Hotel hotel) {
 
@@ -53,8 +45,9 @@ public class Associations {
 
 	}
 
+
 	/**
-	 * The Class ReserveCar.
+	 * The Class BookCar.
 	 */
 	public static class BookCar {
 

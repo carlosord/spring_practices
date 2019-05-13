@@ -6,8 +6,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+
 /**
- * The Class ReserveCarDate.
+ * The Class ReserveCar.
  */
 @Entity
 @Table(name = "RESERVECARDATE", uniqueConstraints = @UniqueConstraint(columnNames = { "person_id", "car_id",

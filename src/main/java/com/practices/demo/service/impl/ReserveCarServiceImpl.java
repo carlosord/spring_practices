@@ -18,6 +18,7 @@ import com.practices.demo.repositories.PersonRepository;
 import com.practices.demo.repositories.ReserveCarRepository;
 import com.practices.demo.service.ReserveCarService;
 import com.practices.demo.service.exception.BusinessException;
+import com.practices.demo.service.utils.DateUtils;
 
 /**
  * The Class ReserveCarServiceImpl.
@@ -53,23 +54,20 @@ public class ReserveCarServiceImpl implements ReserveCarService {
 
 		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
-		List<ReserveCar> cr = reserveCarRepository.findReserveByPerson(p);
+		List<ReserveCar> cr = reserveCarRepository.findReserveByCar(c);
 
 		try {
 
-			Date start = format.parse(reservecar.getStartCarReserve());
-			Date finish = format.parse(reservecar.getFinishCarReserve());
+			Date startDto = format.parse(reservecar.getStartCarReserve());
+			Date finishDto = format.parse(reservecar.getFinishCarReserve());
 
 			for (ReserveCar r : cr) {
 
-				if ((start.after(r.getStartReserve()) && start.before(r.getFinishReserve()))
-						|| (finish.after(r.getStartReserve()) && finish.before(r.getFinishReserve()))) {
+				DateUtils.checkDate(r.getStartReserve(), startDto, r.getFinishReserve(), finishDto);
 
-					throw new BusinessException("car.license.asigned", "license");
-				}
 			}
 
-			reserveCarRepository.save(new ReserveCar(p, c, start, finish));
+			reserveCarRepository.save(new ReserveCar(p, c, startDto, finishDto));
 
 		} catch (ParseException e) {
 			e.printStackTrace();
