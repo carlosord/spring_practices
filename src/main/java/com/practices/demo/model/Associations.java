@@ -6,24 +6,33 @@ package com.practices.demo.model;
 public class Associations {
 
 	/**
-	 * The Class ReserveHotel.
+	 * The Class BookHotel.
 	 */
-	public static class ReserveHotel {
+	public static class BookHotel {
 
 		/**
 		 * Link.
 		 *
-		 * @param reserve the reserve
-		 * @param hotel   the hotel
+		 * @param reserveHotel the reserve
+		 * @param hotel        the hotel
+		 * @param person       the person
 		 */
 		/*
 		 * Method link person and hotel
 		 *
+		 * @param person
+		 *
+		 * @param hotel
+		 *
 		 */
-		public static void link(ReserveHotelDate reserve, Hotel hotel) {
+		public static void link(com.practices.demo.model.ReserveHotel reserveHotel, Hotel hotel, Person person) {
 
-			hotel.getReserveHotel().add(reserve);
-			reserve.setHotel(hotel);
+			hotel.getReserveHotel().add(reserveHotel);
+
+			person.getReserveHotel().add(reserveHotel);
+
+			reserveHotel.setHotel(hotel);
+			reserveHotel.setPerson(person);
 
 		}
 
@@ -32,19 +41,25 @@ public class Associations {
 		 *
 		 * @param reserve the reserve
 		 * @param hotel   the hotel
+		 * @param person  the person
 		 */
 		/*
 		 * Method unlink person and hotel
 		 *
+		 * @param person
+		 *
+		 * @param hotel
+		 *
 		 */
-		public static void unlink(ReserveHotelDate reserve, Hotel hotel) {
+		public static void unlink(ReserveHotel reserve, Hotel hotel, Person person) {
 
+			person.getReserveHotel().remove(reserve);
 			hotel.getReserveHotel().remove(reserve);
 			reserve.setHotel(null);
+			reserve.setPerson(null);
 		}
 
 	}
-
 
 	/**
 	 * The Class BookCar.

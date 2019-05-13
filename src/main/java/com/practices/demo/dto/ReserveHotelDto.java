@@ -11,6 +11,12 @@ public class ReserveHotelDto {
 	/** The code. */
 	private String code;
 
+	/** The start hotel reserve. */
+	private String startHotelReserve;
+
+	/** The finish hotel reserve. */
+	private String finishHotelReserve;
+
 	/**
 	 * Gets the dni.
 	 *
@@ -46,5 +52,43 @@ public class ReserveHotelDto {
 	public void setCode(String code) {
 		this.code = code;
 	}
+
+	/**
+	 * Gets the start hotel reserve.
+	 *
+	 * @return the start hotel reserve
+	 */
+	public String getStartHotelReserve() {
+		return startHotelReserve;
+	}
+
+	/**
+	 * Sets the start hotel reserve.
+	 *
+	 * @param startHotelReserve the new start hotel reserve
+	 */
+	public void setStartHotelReserve(String startHotelReserve) {
+		this.startHotelReserve = startHotelReserve;
+	}
+
+	/**
+	 * Gets the finish hotel reserve.
+	 *
+	 * @return the finish hotel reserve
+	 */
+	public String getFinishHotelReserve() {
+		return finishHotelReserve;
+	}
+
+	/**
+	 * Sets the finish hotel reserve.
+	 *
+	 * @param finishHotelReserve the new finish hotel reserve
+	 */
+	public void setFinishHotelReserve(String finishHotelReserve) {
+		this.finishHotelReserve = finishHotelReserve;
+	}
+
+
 
 }

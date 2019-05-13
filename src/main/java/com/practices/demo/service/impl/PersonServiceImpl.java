@@ -11,10 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.practices.demo.dto.DtoAssembler;
 import com.practices.demo.dto.PersonDto;
-import com.practices.demo.dto.ReserveHotelDto;
-import com.practices.demo.model.Hotel;
-import com.practices.demo.model.Person;
-import com.practices.demo.repositories.HotelRepository;
 import com.practices.demo.repositories.PersonRepository;
 import com.practices.demo.service.PersonService;
 import com.practices.demo.service.exception.BusinessException;
@@ -29,10 +25,6 @@ public class PersonServiceImpl implements PersonService {
 	/** The person repository. */
 	@Autowired
 	private PersonRepository personRepository;
-
-	/** The hotel repository. */
-	@Autowired
-	private HotelRepository hotelRepository;
 
 	/*
 	 * (non-Javadoc)
@@ -115,23 +107,4 @@ public class PersonServiceImpl implements PersonService {
 		personRepository.deleteById(id);
 	}
 
-	public boolean addNewReserve(ReserveHotelDto reservehotel) throws BusinessException {
-
-		Person p = personRepository.findByDni(reservehotel.getDni());
-		Hotel h = hotelRepository.findByCode(reservehotel.getCode());
-
-		if (h.getOccupiedbedrooms() == h.getTotalbedrooms())
-			throw new BusinessException("hotel.code.error", "code");
-
-		h.setOccupiedbedrooms(h.getOccupiedbedrooms() + 1);
-
-//		REVISAR: Para que este método funcione hay que crear el repositorio y la tarea asignada no manda crearlo
-//		Associations.ReserveHotel.link(p, h);
-
-		personRepository.save(p);
-		hotelRepository.save(h);
-
-		return true;
-
-	}
 }

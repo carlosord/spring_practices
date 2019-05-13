@@ -63,7 +63,7 @@ public class ReserveCarServiceImpl implements ReserveCarService {
 
 			for (ReserveCar r : cr) {
 
-				DateUtils.checkDate(r.getStartReserve(), startDto, r.getFinishReserve(), finishDto);
+				DateUtils.checkDateCar(r.getStartReserve(), startDto, r.getFinishReserve(), finishDto);
 
 			}
 

@@ -22,7 +22,7 @@ public class Person extends BaseEntity {
 
 	/** The reserve hotel. */
 	@OneToMany(mappedBy = "person")
-	Set<ReserveHotelDate> reserveHotel;
+	Set<ReserveHotel> reserveHotel;
 
 	/** The dates. */
 	@OneToMany(mappedBy = "person")
@@ -222,7 +222,7 @@ public class Person extends BaseEntity {
 	 *
 	 * @return the reserveHotel
 	 */
-	public Set<ReserveHotelDate> getReserveHotel() {
+	public Set<ReserveHotel> getReserveHotel() {
 		return reserveHotel;
 	}
 
@@ -231,7 +231,7 @@ public class Person extends BaseEntity {
 	 *
 	 * @param reserveHotel the reserveHotel to set
 	 */
-	public void setReserveHotel(Set<ReserveHotelDate> reserveHotel) {
+	public void setReserveHotel(Set<ReserveHotel> reserveHotel) {
 		this.reserveHotel = reserveHotel;
 	}
 
