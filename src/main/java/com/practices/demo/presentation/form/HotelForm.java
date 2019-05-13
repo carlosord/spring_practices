@@ -1,5 +1,7 @@
 package com.practices.demo.presentation.form;
 
+import javax.validation.constraints.NotBlank;
+
 import com.practices.demo.dto.ReserveHotelDto;
 
 /**
@@ -7,11 +9,35 @@ import com.practices.demo.dto.ReserveHotelDto;
  */
 public class HotelForm {
 
-	/** The dni */
+	/** The dni. */
 	private String dni;
 
 	/** The code of hotel. */
 	private String code;
+
+	/** The starthotelday. */
+	@NotBlank(message = "{reserve.hotel.error.required}")
+	private String starthotelday;
+
+	/** The starthotelmonth. */
+	@NotBlank(message = "{reserve.hotel.error.required}")
+	private String starthotelmonth;
+
+	/** The starthotelyear. */
+	@NotBlank(message = "{reserve.hotel.error.required}")
+	private String starthotelyear;
+
+	/** The finishhotelday. */
+	@NotBlank(message = "{reserve.hotel.error.required}")
+	private String finishhotelday;
+
+	/** The finishhotelmonth. */
+	@NotBlank(message = "{reserve.hotel.error.required}")
+	private String finishhotelmonth;
+
+	/** The finishhotelyear. */
+	@NotBlank(message = "{reserve.hotel.error.required}")
+	private String finishhotelyear;
 
 	/**
 	 * To hotel.
@@ -20,12 +46,14 @@ public class HotelForm {
 	 */
 	public ReserveHotelDto toHotel() {
 
-		ReserveHotelDto p = new ReserveHotelDto();
+		ReserveHotelDto r = new ReserveHotelDto();
 
-		p.setDni(dni);
-		p.setCode(code);
+		r.setDni(dni);
+		r.setCode(code);
+		r.setStartHotelReserve(String.join("/", starthotelday, starthotelmonth, starthotelyear));
+		r.setFinishHotelReserve(String.join("/", finishhotelday, finishhotelmonth, finishhotelyear));
 
-		return p;
+		return r;
 	}
 
 	/**
@@ -63,6 +91,114 @@ public class HotelForm {
 	 */
 	public void setCode(String code) {
 		this.code = code;
+	}
+
+	/**
+	 * Gets the starthotelday.
+	 *
+	 * @return the starthotelday
+	 */
+	public String getStarthotelday() {
+		return starthotelday;
+	}
+
+	/**
+	 * Sets the starthotelday.
+	 *
+	 * @param starthotelday the new starthotelday
+	 */
+	public void setStarthotelday(String starthotelday) {
+		this.starthotelday = starthotelday;
+	}
+
+	/**
+	 * Gets the starthotelmonth.
+	 *
+	 * @return the starthotelmonth
+	 */
+	public String getStarthotelmonth() {
+		return starthotelmonth;
+	}
+
+	/**
+	 * Sets the starthotelmonth.
+	 *
+	 * @param starthotelmonth the new starthotelmonth
+	 */
+	public void setStarthotelmonth(String starthotelmonth) {
+		this.starthotelmonth = starthotelmonth;
+	}
+
+	/**
+	 * Gets the starthotelyear.
+	 *
+	 * @return the starthotelyear
+	 */
+	public String getStarthotelyear() {
+		return starthotelyear;
+	}
+
+	/**
+	 * Sets the starthotelyear.
+	 *
+	 * @param starthotelyear the new starthotelyear
+	 */
+	public void setStarthotelyear(String starthotelyear) {
+		this.starthotelyear = starthotelyear;
+	}
+
+	/**
+	 * Gets the finishhotelday.
+	 *
+	 * @return the finishhotelday
+	 */
+	public String getFinishhotelday() {
+		return finishhotelday;
+	}
+
+	/**
+	 * Sets the finishhotelday.
+	 *
+	 * @param finishhotelday the new finishhotelday
+	 */
+	public void setFinishhotelday(String finishhotelday) {
+		this.finishhotelday = finishhotelday;
+	}
+
+	/**
+	 * Gets the finishhotelmonth.
+	 *
+	 * @return the finishhotelmonth
+	 */
+	public String getFinishhotelmonth() {
+		return finishhotelmonth;
+	}
+
+	/**
+	 * Sets the finishhotelmonth.
+	 *
+	 * @param finishhotelmonth the new finishhotelmonth
+	 */
+	public void setFinishhotelmonth(String finishhotelmonth) {
+		this.finishhotelmonth = finishhotelmonth;
+	}
+
+	/**
+	 * Gets the finishhotelyear.
+	 *
+	 * @return the finishhotelyear
+	 */
+	public String getFinishhotelyear() {
+		return finishhotelyear;
+	}
+
+	/**
+	 * Sets the finishhotelyear.
+	 *
+	 * @param finishhotelyear the new finishhotelyear
+	 */
+	public void setFinishhotelyear(String finishhotelyear) {
+		this.finishhotelyear = finishhotelyear;
 	}
 
 }

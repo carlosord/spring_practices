@@ -10,6 +10,7 @@ import java.time.temporal.ChronoUnit;
 import com.practices.demo.model.Hotel;
 import com.practices.demo.model.Car;
 import com.practices.demo.model.Person;
+import com.practices.demo.model.ReserveHotel;
 
 /**
  * The Class DtoAssembler.
@@ -133,4 +134,36 @@ public class DtoAssembler {
 		dto.setNumberofcadoors(entity.getNumberofcardoors());
 		return dto;
 	}
+
+	/**
+	 * To entity.
+	 *
+	 * @param dto the dto
+	 * @return the reserve hotel
+	 */
+	public static ReserveHotel toEntity(ReserveHotelDto dto) {
+		ReserveHotel entity = new ReserveHotel();
+
+		Person p = new Person();
+		p.setDni(dto.getDni());
+		entity.setPerson(p);
+
+		Hotel h = new Hotel();
+		h.setCode(dto.getCode());
+		entity.setHotel(h);
+
+		try {
+			entity.setStartReserve(format.parse(dto.getStartHotelReserve()));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		try {
+			entity.setFinishReserve(format.parse(dto.getFinishHotelReserve()));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		return entity;
+	}
+
 }

@@ -30,37 +30,45 @@
             	<div class="form-row">
             		<div class="col-1">
             			<input type="number" class="form-control" th:field="*{starthotelday}" id="starthotelday"
-            			th:placeholder="#{hotel.day.placeholder}" required="required"min="1" max="31">
-            		</div>
+            			th:placeholder="#{hotel.day.placeholder}" required="required"min="1" max="31" >
+            			</div>
+            		<span class="text-danger" th:if="${#fields.hasErrors('starthotelday')}" th:errors="*{starthotelday}"></span>
+
             		<div class="col-1">
 						<input type="number" class="form-control" th:field="*{starthotelmonth}" id="starthotelmonth"
 						th:placeholder="#{hotel.month.placeholder}" required="required" min="1" max="12" >
-				</div>
+						</div>
+						<span class="text-danger" th:if="${#fields.hasErrors('starthotelmonth')}" th:errors="*{starthotelmonth}"></span>
+
 					<div class="col-2">
 						<input type="number" class="form-control" th:field="*{starthotelyear}" id="starthotelyear"
-						th:placeholder="#{hotel.month.placeholder}" required="required" min="1900" max="3000">
-					</div>
+						th:placeholder="#{hotel.year.placeholder}" required="required" min="1900" max="3000">
+						</div>
+						<span class="text-danger" th:if="${#fields.hasErrors('starthotelyear')}" th:errors="*{starthotelyear}"></span>
             	</div>
-            <!-- Aqui va el span -->
             </div>
 
             <div class="form-group">
             	<label for="finishotel" th:text="#{hotel.finish.reserve}"></label>
             	<div class="form-row">
             		<div class="col-1">
-            			<input type="number" class="form-control" th:field="*{finishhotelday}" id="endhotelday"
+            			<input type="number" class="form-control" th:field="*{finishhotelday}" id="finishhotelday"
             			th:placeholder="#{hotel.day.placeholder}" required="required"min="1" max="31">
             		</div>
+            		<span class="text-danger" th:if="${#fields.hasErrors('finishhotelday')}" th:errors="*{finishhotelday}"></span>
+
             		<div class="col-1">
-						<input type="number" class="form-control" th:field="*{finishhotelmonth}" id="endhotelmonth"
-						th:placeholder="#{hotel.month.placeholder}" required="required" min="1" max="12" >
-				</div>
-					<div class="col-2">
-						<input type="number" class="form-control" th:field="*{finishhotelyear}" id="endhotelyear"
-						th:placeholder="#{hotel.month.placeholder}" required="required" min="1900" max="3000">
+						<input type="number" class="form-control" th:field="*{finishhotelmonth}" id="finishhotelmonth"
+						th:placeholder="#{hotel.month.placeholder}" required="required" min="1" max="12">
 					</div>
+					<span class="text-danger" th:if="${#fields.hasErrors('finishhotelmonth')}" th:errors="*{finishhotelmonth}"></span>
+
+					<div class="col-2">
+						<input type="number" class="form-control" th:field="*{finishhotelyear}" id="finishhotelyear"
+						th:placeholder="#{hotel.year.placeholder}" required="required" min="1900" max="3000">
+					</div>
+					<span class="text-danger" th:if="${#fields.hasErrors('finishhotelyear')}" th:errors="*{finishhotelyear}"></span>
             	</div>
-            <!-- Aqui va el span -->
             </div>
 
             <button type="submit" class="btn btn-primary" th:text="#{btn.confirm}"></button>

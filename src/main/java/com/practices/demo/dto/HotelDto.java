@@ -1,5 +1,8 @@
 package com.practices.demo.dto;
 
+/**
+ * The Class HotelDto.
+ */
 public class HotelDto {
 
 	/** The id. */

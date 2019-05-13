@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.practices.demo.dto.CarReserveDto;
 import com.practices.demo.dto.PersonDto;
-import com.practices.demo.dto.ReserveHotelDto;
 import com.practices.demo.service.exception.BusinessException;
 
 /**
@@ -60,18 +59,11 @@ public interface PersonService {
 	public void deletePersonForm(Long id);
 
 	/**
-	 * Adds the new reserve.
-	 *
-	 * @param reservehotel the reservehotel
-	 * @return true, if successful
-	 * @throws BusinessException the business exception
-	 */
-	public boolean addNewReserve(ReserveHotelDto reservehotel) throws BusinessException;
-
-	/**
 	 * Add car to Person.
 	 *
-	 * @param id the id
+	 * @param car the car
+	 * @return true, if successful
+	 * @throws BusinessException the business exception
 	 */
 	public boolean addCar(CarReserveDto car) throws BusinessException;
 }
