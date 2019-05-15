@@ -4,11 +4,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.practices.demo.dto.DtoAssembler;
+import com.practices.demo.dto.PersonDto;
 import com.practices.demo.dto.ReserveHotelDto;
 import com.practices.demo.model.Hotel;
 import com.practices.demo.model.Person;
@@ -80,5 +83,17 @@ public class HotelReserveServiceImpl implements HotelReserveService {
 		return true;
 
 	}
+
+	/**
+	 * Find all.
+	 *
+	 * @return the list
+	 */
+	@Override
+	public List<ReserveHotelDto> findHotelReserveByPerson(PersonDto p) {
+		return hotelReserveRepository.findReserveByPerson(DtoAssembler.toEntity(p)).stream().map(DtoAssembler::fromEntity).collect(Collectors.toList());
+	}
+
+
 
 }

@@ -20,6 +20,7 @@
 					<th scope="col"></th>
 					<th scope="col"></th>
 					<th scope="col"></th>
+					<th scope="col"></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -50,9 +51,10 @@
 					<td>
 						<a th:href="@{/car/{dni}(dni=${p.dni})}" class="fas fa-car"></a>
 					</td>
-					
-					
-					
+					<td>
+						<a th:href="@{/modal/{id}(id=${p.id})}" onClick="sendTheModal(this)" id ="btnModal${p.id}" class="fas fa-user" data-toggle="modal" data-target="#modalPerson"></a>
+					</td>
+
 				</tr>
 			</tbody>
 		</table>
@@ -61,7 +63,7 @@
 			<a th:href="${T(com.practices.demo.presentation.front.Url).NEW_PERSON_URL}"
 				class="btn btn-lg btn-success" th:text=#{form.person.create}></a>
 		</div>
-
+		<div th:include="modal :: modal_person"></div>
 	</div>
 </body>
 </html>

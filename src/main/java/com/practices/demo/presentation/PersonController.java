@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.practices.demo.dto.PersonDto;
-import com.practices.demo.presentation.form.HotelForm;
 import com.practices.demo.presentation.form.CarForm;
+import com.practices.demo.presentation.form.HotelForm;
 import com.practices.demo.presentation.form.PersonForm;
 import com.practices.demo.presentation.front.Url;
 import com.practices.demo.presentation.front.View;
@@ -273,6 +273,20 @@ public class PersonController {
 			return View.CAR_VIEW;
 
 		}
+	}
+
+	@GetMapping(Url.MODEL_URL + "/{id}")
+	public String showModel(@PathVariable("id") Long id, ModelMap model) {
+
+		PersonDto person = personService.findPersonById(id);
+
+
+		model.addAttribute("people", person);
+		model.addAttribute("reserveHotel",hotelReserveService.findHotelReserveByPerson(person));
+		model.addAttribute("reserveCar",reserveCarService.findCarReserveByPerson(person));
+
+
+		return View.MODAL_VIEW;
 	}
 
 }

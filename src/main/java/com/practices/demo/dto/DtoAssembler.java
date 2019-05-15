@@ -167,6 +167,21 @@ public class DtoAssembler {
 		return entity;
 	}
 
+	/**
+	 * From entity.
+	 *
+	 * @param entity the entity
+	 * @return the car reserve dto
+	 */
+	public static CarReserveDto fromEntity(ReserveCar entity) {
+		CarReserveDto dto = new CarReserveDto();
+
+		dto.setStartCarReserve(format.format(entity.getStartReserve()));
+		dto.setFinishCarReserve(format.format(entity.getFinishReserve()));
+
+		return dto;
+	}
+
 
 	/**
 	 * To entity.
@@ -197,6 +212,22 @@ public class DtoAssembler {
 		}
 
 		return entity;
+	}
+
+	/**
+	 * From entity.
+	 *
+	 * @param entity the entity
+	 * @return the reserve hotel dto
+	 */
+	public static ReserveHotelDto fromEntity(ReserveHotel entity) {
+		ReserveHotelDto dto = new ReserveHotelDto();
+
+		dto.setStartHotelReserve(format.format(entity.getStartReserve()));
+		dto.setFinishHotelReserve(format.format(entity.getFinishReserve()));
+
+
+		return dto;
 	}
 
 }

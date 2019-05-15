@@ -1,0 +1,60 @@
+<div th:fragment="modal_person">
+<!-- MODAL -->
+<div class="modal fade text-center in" id="modalPerson" tabindex="-1" role="dialog" aria-labelledby="modalDataPersonTitle" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	<!-- CONTENT -->
+		<div class="modal-content">
+		<!-- HEAD -->
+			<div class="modal-header">
+				<h4 class="modal-title text-center" id="modalDataPersonTitle"  th:text="#{title.data.person}"></h4>
+			</div>
+			<!-- BODY -->
+				<div class="modal-body">
+					<!-- TABLE PERSON DATA -->
+					<div id="ajax-content">
+						<div class="row">
+
+							<div class="text-right col-xs-3" th:text="#{person.dni}"></div>
+            				<div class="text-left col-xs-4" th:text="*{dni}"></div>
+
+            				<div class="text-right col-xs-3" th:text="#{person.name}"></div>
+            				<div class="text-left col-xs-4" th:text="*{name}"></div>
+
+						</div>
+
+						<div class="row">
+
+            				<div class="text-right col-xs-3" th:text="#{person.age}"></div>
+            				<div class="text-left col-xs-4" th:text="*{age}"></div>
+
+           					<div class="text-right col-xs-3" th:text="#{person.lastname}"></div>
+            				<div class="text-left col-xs-4" th:text="*{lastname}"></div>
+
+          				</div>
+
+          				<div class="row">
+
+            				<div class="text-right col-xs-3" th:text="#{person.gender}"></div>
+            				<div class="text-left col-xs-4" th:text="*{gender}"></div>
+
+           					<div class="text-right col-xs-3" th:text="#{person.birthday}"></div>
+            				<div class="text-left col-xs-4" th:text="*{birthday}"></div>
+
+          				</div>
+					<!-- RESERVE CAR DATA -->
+						<h5 th:text="#{title.reserve.car}"></h5>
+
+					<!-- RESERVE HOTEL DATA -->
+						<h5 th:text="#{title.reserve.hotel}"></h5>
+
+				<!-- FOOTER -->
+					<div class="row justify-content-md-center">
+						<a th:href="${T(com.practices.demo.presentation.front.Url).HOME_URL}" class="btn btn-danger" data-dismiss="modal" th:text="#{btn.close}"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script th:src="@{/js/forms/modal.js}"></script>
+</div>

@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.practices.demo.model.Car;
+import com.practices.demo.model.Person;
 import com.practices.demo.model.ReserveCar;
 
 /**
@@ -15,5 +16,7 @@ import com.practices.demo.model.ReserveCar;
 public interface ReserveCarRepository extends JpaRepository<ReserveCar, Long> {
 
 	List<ReserveCar> findReserveByCar(Car c);
+
+	List<ReserveCar> findReserveByPerson(Person p);
 
 }
