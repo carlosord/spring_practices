@@ -3,6 +3,8 @@ package com.practices.demo.presentation;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.practices.demo.dto.InfoPersonDto;
 import com.practices.demo.dto.PersonDto;
 import com.practices.demo.presentation.form.CarForm;
 import com.practices.demo.presentation.form.HotelForm;
@@ -276,17 +279,16 @@ public class PersonController {
 	}
 
 	@GetMapping(Url.MODEL_URL + "/{id}")
-	public String showModel(@PathVariable("id") Long id, ModelMap model) {
+	public ResponseEntity showModel(@PathVariable("id") Long id) {
 
 		PersonDto person = personService.findPersonById(id);
+		InfoPersonDto infoPerson = new InfoPersonDto();
 
+		infoPerson.setPerson(person);
+		infoPerson.setHotelList(hotelReserveService.findHotelReserveByPerson(person));
+		infoPerson.setCarList(reserveCarService.findCarReserveByPerson(person));
 
-		model.addAttribute("people", person);
-		model.addAttribute("reserveHotel",hotelReserveService.findHotelReserveByPerson(person));
-		model.addAttribute("reserveCar",reserveCarService.findCarReserveByPerson(person));
-
-
-		return View.MODAL_VIEW;
+		return new ResponseEntity(infoPerson, HttpStatus.OK);
 	}
 
 }
