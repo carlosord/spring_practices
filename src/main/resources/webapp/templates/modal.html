@@ -6,7 +6,7 @@
 		<div class="modal-content">
 		<!-- HEAD -->
 			<div class="modal-header">
-				<h4 class="modal-title text-center" id="modalDataPersonTitle"  th:text="#{title.data.person}"></h4>
+				<h1 class="modal-title text-center" id="modalDataPersonTitle"  th:text="#{title.data.person}"></h1>
 			</div>
 			<!-- BODY -->
 				<div class="modal-body">
@@ -42,9 +42,9 @@
 
           				</div>
 					<!-- RESERVE CAR DATA -->
-						<h5 th:text="#{title.reserve.car}"></h5>
+						<h3 th:text="#{title.reserve.car}"></h3>
 
-							<table class="table table-striped text-center">
+							<table class="table table-striped text-center" id="tableCar">
 								<thead class="thead-dark">
 									<tr>
 										<th scope="col" th:text="#{car.license}"></th>
@@ -54,13 +54,14 @@
 									</tr>
 								</thead>
 									<tbody>
+
 									</tbody>
 							</table>
 
 					<!-- RESERVE HOTEL DATA -->
-						<h5 th:text="#{title.reserve.hotel}"></h5>
+						<h3 th:text="#{title.reserve.hotel}"></h3>
 
-						<table class="table table-striped text-center">
+						<table class="table table-striped text-center" id="tableHotel">
 								<thead class="thead-dark">
 									<tr>
 										<th scope="col" th:text="#{hotel.name}"></th>

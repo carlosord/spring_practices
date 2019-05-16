@@ -2,6 +2,7 @@ package com.practices.demo.service;
 
 import java.util.List;
 
+import com.practices.demo.dto.ListHotelDto;
 import com.practices.demo.dto.PersonDto;
 import com.practices.demo.dto.ReserveHotelDto;
 import com.practices.demo.service.exception.BusinessException;
@@ -20,6 +21,6 @@ public interface HotelReserveService {
 	 */
 	public boolean addNewReserve(ReserveHotelDto reservehotel) throws BusinessException;
 
-	public List<ReserveHotelDto> findHotelReserveByPerson(PersonDto p);
+	public List<ListHotelDto> findHotelReserveByPerson(PersonDto p);
 
 }

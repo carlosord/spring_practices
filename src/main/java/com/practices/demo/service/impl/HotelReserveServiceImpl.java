@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.practices.demo.dto.DtoAssembler;
+import com.practices.demo.dto.ListHotelDto;
 import com.practices.demo.dto.PersonDto;
 import com.practices.demo.dto.ReserveHotelDto;
 import com.practices.demo.model.Hotel;
@@ -90,8 +91,8 @@ public class HotelReserveServiceImpl implements HotelReserveService {
 	 * @return the list
 	 */
 	@Override
-	public List<ReserveHotelDto> findHotelReserveByPerson(PersonDto p) {
-		return hotelReserveRepository.findReserveByPerson(DtoAssembler.toEntity(p)).stream().map(DtoAssembler::fromEntity).collect(Collectors.toList());
+	public List<ListHotelDto> findHotelReserveByPerson(PersonDto p) {
+		return hotelReserveRepository.findReserveByPerson(DtoAssembler.toEntity(p)).stream().map(DtoAssembler::fromListEntity).collect(Collectors.toList());
 	}
 
 

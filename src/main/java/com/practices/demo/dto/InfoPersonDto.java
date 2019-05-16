@@ -11,10 +11,10 @@ public class InfoPersonDto {
 	private PersonDto person;
 
 	/** The hotel list. */
-	private List<ReserveHotelDto> hotelList;
+	private List<ListHotelDto> hotelList;
 
 	/** The car list. */
-	private List<CarReserveDto> carList;
+	private List<ListCarDto> carList;
 
 	/**
 	 * Gets the person.
@@ -39,7 +39,7 @@ public class InfoPersonDto {
 	 *
 	 * @return the hotel list
 	 */
-	public List<ReserveHotelDto> getHotelList() {
+	public List<ListHotelDto> getHotelList() {
 		return hotelList;
 	}
 
@@ -48,7 +48,7 @@ public class InfoPersonDto {
 	 *
 	 * @param hotelList the new hotel list
 	 */
-	public void setHotelList(List<ReserveHotelDto> hotelList) {
+	public void setHotelList(List<ListHotelDto> hotelList) {
 		this.hotelList = hotelList;
 	}
 
@@ -57,7 +57,7 @@ public class InfoPersonDto {
 	 *
 	 * @return the car list
 	 */
-	public List<CarReserveDto> getCarList() {
+	public List<ListCarDto> getCarList() {
 		return carList;
 	}
 
@@ -66,7 +66,7 @@ public class InfoPersonDto {
 	 *
 	 * @param carList the new car list
 	 */
-	public void setCarList(List<CarReserveDto> carList) {
+	public void setCarList(List<ListCarDto> carList) {
 		this.carList = carList;
 	}
 

@@ -230,4 +230,27 @@ public class DtoAssembler {
 		return dto;
 	}
 
+
+	public static ListHotelDto fromListEntity(ReserveHotel entity) {
+		ListHotelDto dto = new ListHotelDto();
+
+		dto.setName(entity.getHotel().getName());
+		dto.setLocation(entity.getHotel().getLocation());
+		dto.setStartHotelReserve(format.format(entity.getStartReserve()));
+		dto.setFinishHotelReserve(format.format(entity.getFinishReserve()));
+
+		return dto;
+	}
+
+	public static ListCarDto fromListEntity(ReserveCar entity) {
+		ListCarDto dto = new ListCarDto();
+
+		dto.setLicense(entity.getCar().getLicense());
+		dto.setColour(entity.getCar().getColour());
+		dto.setStartCarReserve(format.format(entity.getStartReserve()));
+		dto.setFinishCarReserve(format.format(entity.getFinishReserve()));
+
+		return dto;
+	}
+
 }
