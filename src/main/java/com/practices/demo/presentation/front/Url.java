@@ -25,7 +25,7 @@ public class Url {
 	public static final String CAR_URL = "/car";
 
 	/** The Constant MODEL_URL. */
-	public static final String MODEL_URL = "/modal";
+	public static final String INFOPERSON_URL = "/infoperson";
 
 	/**
 	 * Private constructor.

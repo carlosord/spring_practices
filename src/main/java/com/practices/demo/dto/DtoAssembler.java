@@ -231,6 +231,12 @@ public class DtoAssembler {
 	}
 
 
+	/**
+	 * From list entity.
+	 *
+	 * @param entity the entity
+	 * @return the list hotel dto
+	 */
 	public static ListHotelDto fromListEntity(ReserveHotel entity) {
 		ListHotelDto dto = new ListHotelDto();
 
@@ -242,6 +248,12 @@ public class DtoAssembler {
 		return dto;
 	}
 
+	/**
+	 * From list entity.
+	 *
+	 * @param entity the entity
+	 * @return the list car dto
+	 */
 	public static ListCarDto fromListEntity(ReserveCar entity) {
 		ListCarDto dto = new ListCarDto();
 

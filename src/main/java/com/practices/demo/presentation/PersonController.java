@@ -278,8 +278,8 @@ public class PersonController {
 		}
 	}
 
-	@GetMapping(Url.MODEL_URL + "/{id}")
-	public ResponseEntity showModel(@PathVariable("id") Long id) {
+	@GetMapping(Url.INFOPERSON_URL + "/{id}")
+	public ResponseEntity<InfoPersonDto> showModel(@PathVariable("id") Long id) {
 
 		PersonDto person = personService.findPersonById(id);
 		InfoPersonDto infoPerson = new InfoPersonDto();
@@ -288,7 +288,7 @@ public class PersonController {
 		infoPerson.setHotelList(hotelReserveService.findHotelReserveByPerson(person));
 		infoPerson.setCarList(reserveCarService.findCarReserveByPerson(person));
 
-		return new ResponseEntity(infoPerson, HttpStatus.OK);
+		return new ResponseEntity<>(infoPerson, HttpStatus.OK);
 	}
 
 }

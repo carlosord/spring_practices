@@ -24,9 +24,6 @@ public class View {
 	/** The Constant NEW_CAR_VIEW. */
 	public static final String CAR_VIEW = "car";
 
-	/** The Constant MODAL_VIEW. */
-	public static final String MODAL_VIEW = "modal";
-
 
 	/**
 	 * Private constructor.
