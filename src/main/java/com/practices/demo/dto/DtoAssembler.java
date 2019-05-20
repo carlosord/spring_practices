@@ -167,6 +167,21 @@ public class DtoAssembler {
 		return entity;
 	}
 
+	/**
+	 * From entity.
+	 *
+	 * @param entity the entity
+	 * @return the car reserve dto
+	 */
+	public static CarReserveDto fromEntity(ReserveCar entity) {
+		CarReserveDto dto = new CarReserveDto();
+
+		dto.setStartCarReserve(format.format(entity.getStartReserve()));
+		dto.setFinishCarReserve(format.format(entity.getFinishReserve()));
+
+		return dto;
+	}
+
 
 	/**
 	 * To entity.
@@ -197,6 +212,57 @@ public class DtoAssembler {
 		}
 
 		return entity;
+	}
+
+	/**
+	 * From entity.
+	 *
+	 * @param entity the entity
+	 * @return the reserve hotel dto
+	 */
+	public static ReserveHotelDto fromEntity(ReserveHotel entity) {
+		ReserveHotelDto dto = new ReserveHotelDto();
+
+		dto.setStartHotelReserve(format.format(entity.getStartReserve()));
+		dto.setFinishHotelReserve(format.format(entity.getFinishReserve()));
+
+
+		return dto;
+	}
+
+
+	/**
+	 * From list entity.
+	 *
+	 * @param entity the entity
+	 * @return the list hotel dto
+	 */
+	public static ListHotelDto fromListEntity(ReserveHotel entity) {
+		ListHotelDto dto = new ListHotelDto();
+
+		dto.setName(entity.getHotel().getName());
+		dto.setLocation(entity.getHotel().getLocation());
+		dto.setStartHotelReserve(format.format(entity.getStartReserve()));
+		dto.setFinishHotelReserve(format.format(entity.getFinishReserve()));
+
+		return dto;
+	}
+
+	/**
+	 * From list entity.
+	 *
+	 * @param entity the entity
+	 * @return the list car dto
+	 */
+	public static ListCarDto fromListEntity(ReserveCar entity) {
+		ListCarDto dto = new ListCarDto();
+
+		dto.setLicense(entity.getCar().getLicense());
+		dto.setColour(entity.getCar().getColour());
+		dto.setStartCarReserve(format.format(entity.getStartReserve()));
+		dto.setFinishCarReserve(format.format(entity.getFinishReserve()));
+
+		return dto;
 	}
 
 }

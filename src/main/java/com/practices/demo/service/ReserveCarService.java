@@ -1,6 +1,9 @@
 package com.practices.demo.service;
 
+import java.util.List;
+
 import com.practices.demo.dto.CarReserveDto;
+import com.practices.demo.dto.ListCarDto;
 import com.practices.demo.service.exception.BusinessException;
 
 /**
@@ -11,8 +14,18 @@ public interface ReserveCarService {
 	/**
 	 * Add car to Person.
 	 *
-	 * @param id the id
+	 * @param car the car
+	 * @return true, if successful
+	 * @throws BusinessException the business exception
 	 */
 	public boolean addCar(CarReserveDto car) throws BusinessException;
+
+	/**
+	 * Find car reserve by person.
+	 *
+	 * @param p the p
+	 * @return the list
+	 */
+	public List<ListCarDto> findCarReserveByPersonDni(String dni);
 
 }

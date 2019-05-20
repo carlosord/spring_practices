@@ -1,0 +1,87 @@
+<div th:fragment="info_person">
+<!-- MODAL -->
+<div class="modal fade text-center in" id="infoPerson" tabindex="-1" role="dialog" aria-labelledby="modalDataPersonTitle" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	<!-- CONTENT -->
+		<div class="modal-content">
+		<!-- HEAD -->
+			<div class="modal-header">
+				<h1 class="modal-title text-center" id="modalDataPersonTitle"  th:text="#{title.data.person}"></h1>
+			</div>
+			<!-- BODY -->
+				<div class="modal-body">
+					<!-- TABLE PERSON DATA -->
+					<div id="ajax-content">
+						<div class="row">
+
+							<div class="col-2 font-weight-bold" th:text="#{person.dni}"></div>
+            				<div class="col-3" id="modalDni"></div>
+
+            				<div class="col-2 font-weight-bold" th:text="#{person.name}"></div>
+            				<div class="col-3" id="modalName"></div>
+
+						</div>
+
+						<div class="row">
+
+            				<div class="col-2 font-weight-bold" th:text="#{person.age}"></div>
+            				<div class="col-3" id="modalAge"></div>
+
+           					<div class="col-2 font-weight-bold" th:text="#{person.lastname}"></div>
+            				<div class="col-3" id="modalLastName"></div>
+
+          				</div>
+
+          				<div class="row">
+
+            				<div class="col-2 font-weight-bold" th:text="#{person.gender}"></div>
+            				<div class="col-3" id="modalGender"></div>
+
+           					<div class="col-2 font-weight-bold" th:text="#{person.birthday}"></div>
+            				<div class="col-3" id="modalBirthday"></div>
+
+          				</div>
+					<!-- RESERVE CAR DATA -->
+						<h3 th:text="#{title.reserve.car}"></h3>
+
+							<table class="table table-striped text-center" id="tableCar">
+								<thead class="thead-dark">
+									<tr>
+										<th scope="col" th:text="#{car.license}"></th>
+										<th scope="col" th:text="#{car.colour}"></th>
+										<th scope="col" th:text="#{modal.start.reserve}"></th>
+										<th scope="col" th:text="#{modal.finish.reserve}"></th>
+									</tr>
+								</thead>
+									<tbody>
+
+									</tbody>
+							</table>
+
+					<!-- RESERVE HOTEL DATA -->
+						<h3 th:text="#{title.reserve.hotel}"></h3>
+
+						<table class="table table-striped text-center" id="tableHotel">
+								<thead class="thead-dark">
+									<tr>
+										<th scope="col" th:text="#{hotel.name}"></th>
+										<th scope="col" th:text="#{hotel.location}"></th>
+										<th scope="col" th:text="#{modal.start.reserve}"></th>
+										<th scope="col" th:text="#{modal.finish.reserve}"></th>
+									</tr>
+								</thead>
+									<tbody>
+									</tbody>
+							</table>
+
+				<!-- FOOTER -->
+					<div class="row justify-content-md-center">
+						<a th:href="${T(com.practices.demo.presentation.front.Url).HOME_URL}" class="btn btn-danger" data-dismiss="modal" th:text="#{btn.close}"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script th:src="@{/js/forms/modal.js}"></script>
+</div>

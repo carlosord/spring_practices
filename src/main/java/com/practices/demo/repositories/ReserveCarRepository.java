@@ -16,4 +16,6 @@ public interface ReserveCarRepository extends JpaRepository<ReserveCar, Long> {
 
 	List<ReserveCar> findReserveByCar(Car c);
 
+	List<ReserveCar> findByPersonDni(String dni);
+
 }

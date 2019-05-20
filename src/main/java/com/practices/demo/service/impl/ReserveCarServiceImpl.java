@@ -4,12 +4,15 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.practices.demo.dto.CarReserveDto;
+import com.practices.demo.dto.DtoAssembler;
+import com.practices.demo.dto.ListCarDto;
 import com.practices.demo.model.Car;
 import com.practices.demo.model.Person;
 import com.practices.demo.model.ReserveCar;
@@ -76,6 +79,17 @@ public class ReserveCarServiceImpl implements ReserveCarService {
 
 		return true;
 
+	}
+
+	/**
+	 * Find all.
+	 *
+	 * @return the list
+	 */
+	@Override
+	public List<ListCarDto> findCarReserveByPersonDni(String dni) {
+		return reserveCarRepository.findByPersonDni(dni).stream()
+				.map(DtoAssembler::fromListEntity).collect(Collectors.toList());
 	}
 
 }

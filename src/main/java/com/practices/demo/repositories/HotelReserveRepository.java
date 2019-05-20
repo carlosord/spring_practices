@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.practices.demo.model.Person;
 import com.practices.demo.model.ReserveHotel;
 
 /**
@@ -20,6 +19,6 @@ public interface HotelReserveRepository extends JpaRepository<ReserveHotel, Long
 	 * @param p the p
 	 * @return the list
 	 */
-	List<ReserveHotel> findReserveByPerson(Person p);
+	List<ReserveHotel> findByPersonDni(String dni);
 
 }

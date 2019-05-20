@@ -3,6 +3,8 @@ package com.practices.demo.presentation;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -10,9 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.practices.demo.dto.InfoPersonDto;
 import com.practices.demo.dto.PersonDto;
-import com.practices.demo.presentation.form.HotelForm;
 import com.practices.demo.presentation.form.CarForm;
+import com.practices.demo.presentation.form.HotelForm;
 import com.practices.demo.presentation.form.PersonForm;
 import com.practices.demo.presentation.front.Url;
 import com.practices.demo.presentation.front.View;
@@ -230,12 +233,9 @@ public class PersonController {
 
 		} catch (BusinessException b) {
 
-			// TODO: Revisar
 			model.addAttribute("allHotels", hotelService.findAll());
 			bindingResult.rejectValue(b.getField(), b.getMessage());
 
-			// Go back form
-			// return View.redirect(View.HOTEL_VIEW + "/" + hotelForm.getDni());
 			return View.HOTEL_VIEW;
 		}
 
@@ -273,6 +273,19 @@ public class PersonController {
 			return View.CAR_VIEW;
 
 		}
+	}
+
+	@GetMapping(Url.INFOPERSON_URL + "/{id}")
+	public ResponseEntity<InfoPersonDto> showModel(@PathVariable("id") Long id) {
+
+		PersonDto person = personService.findPersonById(id);
+		InfoPersonDto infoPerson = new InfoPersonDto();
+
+		infoPerson.setPerson(person);
+		infoPerson.setHotelList(hotelReserveService.findHotelReserveByPersonDni(person.getDni()));
+		infoPerson.setCarList(reserveCarService.findCarReserveByPersonDni(person.getDni()));
+
+		return new ResponseEntity<>(infoPerson, HttpStatus.OK);
 	}
 
 }

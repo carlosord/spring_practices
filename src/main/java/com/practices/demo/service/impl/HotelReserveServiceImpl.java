@@ -4,11 +4,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.practices.demo.dto.DtoAssembler;
+import com.practices.demo.dto.ListHotelDto;
 import com.practices.demo.dto.ReserveHotelDto;
 import com.practices.demo.model.Hotel;
 import com.practices.demo.model.Person;
@@ -53,7 +56,7 @@ public class HotelReserveServiceImpl implements HotelReserveService {
 
 		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
-		List<ReserveHotel> hr = hotelReserveRepository.findReserveByPerson(p);
+		List<ReserveHotel> hr = hotelReserveRepository.findByPersonDni(p.getDni());
 
 		try {
 
@@ -80,5 +83,19 @@ public class HotelReserveServiceImpl implements HotelReserveService {
 		return true;
 
 	}
+
+	/**
+	 * Find all.
+	 *
+	 * @return the list
+	 */
+	@Override
+	public List<ListHotelDto> findHotelReserveByPersonDni(String dni) {
+
+		return hotelReserveRepository.findByPersonDni(dni)
+				.stream().map(DtoAssembler::fromListEntity).collect(Collectors.toList());
+	}
+
+
 
 }
