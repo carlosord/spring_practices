@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.practices.demo.dto.DtoAssembler;
 import com.practices.demo.dto.ListHotelDto;
-import com.practices.demo.dto.PersonDto;
 import com.practices.demo.dto.ReserveHotelDto;
 import com.practices.demo.model.Hotel;
 import com.practices.demo.model.Person;
@@ -57,7 +56,7 @@ public class HotelReserveServiceImpl implements HotelReserveService {
 
 		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
-		List<ReserveHotel> hr = hotelReserveRepository.findReserveByPerson(p);
+		List<ReserveHotel> hr = hotelReserveRepository.findReserveByPersonDni(p.getDni());
 
 		try {
 
@@ -91,8 +90,10 @@ public class HotelReserveServiceImpl implements HotelReserveService {
 	 * @return the list
 	 */
 	@Override
-	public List<ListHotelDto> findHotelReserveByPerson(PersonDto p) {
-		return hotelReserveRepository.findReserveByPerson(DtoAssembler.toEntity(p)).stream().map(DtoAssembler::fromListEntity).collect(Collectors.toList());
+	public List<ListHotelDto> findHotelReserveByPersonDni(String dni) {
+
+		return hotelReserveRepository.findReserveByPersonDni(dni)
+				.stream().map(DtoAssembler::fromListEntity).collect(Collectors.toList());
 	}
 
 

@@ -52,7 +52,7 @@
 						<a th:href="@{/car/{dni}(dni=${p.dni})}" class="fas fa-car"></a>
 					</td>
 					<td>
-						<a th:href="@{/infoperson/{id}(id=${p.id})}" onClick="sendTheModal(this)" id ="btnModal${p.id}" class="fas fa-user" data-toggle="modal" data-target="#infoPerson"></a>
+						<a th:href="@{/infoperson/{id}(id=${p.id})}" th:id="@{infoModal{id}(id=${p.id})}" class="fas fa-user" data-toggle="modal" data-target="#infoPerson"></a>
 					</td>
 
 				</tr>
@@ -66,4 +66,5 @@
 		<div th:include="infoperson :: info_person"></div>
 	</div>
 </body>
+<script type="text/javascript" src="modal.js"></script>
 </html>

@@ -233,12 +233,9 @@ public class PersonController {
 
 		} catch (BusinessException b) {
 
-			// TODO: Revisar
 			model.addAttribute("allHotels", hotelService.findAll());
 			bindingResult.rejectValue(b.getField(), b.getMessage());
 
-			// Go back form
-			// return View.redirect(View.HOTEL_VIEW + "/" + hotelForm.getDni());
 			return View.HOTEL_VIEW;
 		}
 
@@ -285,8 +282,8 @@ public class PersonController {
 		InfoPersonDto infoPerson = new InfoPersonDto();
 
 		infoPerson.setPerson(person);
-		infoPerson.setHotelList(hotelReserveService.findHotelReserveByPerson(person));
-		infoPerson.setCarList(reserveCarService.findCarReserveByPerson(person));
+		infoPerson.setHotelList(hotelReserveService.findHotelReserveByPersonDni(person.getDni()));
+		infoPerson.setCarList(reserveCarService.findCarReserveByPersonDni(person.getDni()));
 
 		return new ResponseEntity<>(infoPerson, HttpStatus.OK);
 	}

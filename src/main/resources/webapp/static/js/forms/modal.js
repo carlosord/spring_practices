@@ -1,42 +1,31 @@
-var myRequest = new XMLHttpRequest();
+$(document).ready(function() {
+	 $("#tableCar").DataTable({searching: false, paging: false, info: false});
+	 $("#tableHotel").DataTable({searching: false, paging: false, info: false});
+});
 
-myRequest.onreadystatechange = function () {
-    if (myRequest.readyState === 4) {
+$( "a[id^='infoModal']").click(function(){
+	var url = this.href;
+	$.ajax(
+		url
+	).done(function(data){
 
-    	var data = myRequest.responseText;
-    	var content = JSON.parse(data);
+			var content = jQuery.parseJSON(JSON.stringify(data));
 
-        document.getElementById('modalDni').innerHTML = content.person.dni;
-        document.getElementById('modalName').innerHTML = content.person.name;
-        document.getElementById('modalAge').innerHTML = content.person.age;
-        document.getElementById('modalLastName').innerHTML = content.person.lastname;
-        document.getElementById('modalGender').innerHTML = content.person.gender;
-        document.getElementById('modalBirthday').innerHTML = content.person.birthday;
-
-        carDataTable(content.carList);
-        hotelDataTable(content.hotelList);
-
-        };
-};
-
-function sendTheModal(o){
-
-	myRequest.open('GET', o);
-
-	myRequest.send();
-}
+			$('#modalDni').html(content.person.dni);
+			$('#modalName').html(content.person.name);
+			$('#modalAge').html(content.person.age);
+			$('#modalLastName').html(content.person.lastname);
+			$('#modalGender').html(content.person.gender);
+			$('#modalBirthday').html(content.person.birthday);
+			$('#carDataTable').html(content.carList);
+			$('#hotelDataTable').html(content.hotelList);
+	}).fail(function(e){
+	});
+});
 
 function carDataTable(data) {
 
-	var dt;
-	if ( $.fn.dataTable.isDataTable( '#tableCar' ) ) {
-		dt = $("#tableCar").DataTable();
-	}
-	else{
-		dt = $("#tableCar").DataTable({searching: false, paging: false, info: false});
-	}
-
-    dt.clear();
+	$("#tableCar").DataTable().clear();
     var length = Object.keys(data).length;
     for(var i = 0; i < length; i++) {
       var car = data[i];
@@ -53,14 +42,7 @@ function carDataTable(data) {
 
 function hotelDataTable(data) {
 
-	var dt;
-	if ( $.fn.dataTable.isDataTable( '#tableHotel' ) ) {
-		dt = $("#tableHotel").DataTable();
-	}
-	else{
-		dt = $("#tableHotel").DataTable({searching: false, paging: false, info: false});
-	}
-    dt.clear();
+	$("#tableHotel").DataTable().clear();
     var length = Object.keys(data).length;
     for(var i = 0; i < length; i++) {
       var hotel = data[i];

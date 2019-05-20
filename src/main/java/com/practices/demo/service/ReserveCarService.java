@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.practices.demo.dto.CarReserveDto;
 import com.practices.demo.dto.ListCarDto;
-import com.practices.demo.dto.PersonDto;
 import com.practices.demo.service.exception.BusinessException;
 
 /**
@@ -27,6 +26,6 @@ public interface ReserveCarService {
 	 * @param p the p
 	 * @return the list
 	 */
-	public List<ListCarDto> findCarReserveByPerson(PersonDto p);
+	public List<ListCarDto> findCarReserveByPersonDni(String dni);
 
 }

@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.practices.demo.dto.CarReserveDto;
 import com.practices.demo.dto.DtoAssembler;
 import com.practices.demo.dto.ListCarDto;
-import com.practices.demo.dto.PersonDto;
 import com.practices.demo.model.Car;
 import com.practices.demo.model.Person;
 import com.practices.demo.model.ReserveCar;
@@ -88,8 +87,9 @@ public class ReserveCarServiceImpl implements ReserveCarService {
 	 * @return the list
 	 */
 	@Override
-	public List<ListCarDto> findCarReserveByPerson(PersonDto p) {
-		return reserveCarRepository.findReserveByPerson(DtoAssembler.toEntity(p)).stream().map(DtoAssembler::fromListEntity).collect(Collectors.toList());
+	public List<ListCarDto> findCarReserveByPersonDni(String dni) {
+		return reserveCarRepository.findReserveByPersonDni(dni).stream()
+				.map(DtoAssembler::fromListEntity).collect(Collectors.toList());
 	}
 
 }
