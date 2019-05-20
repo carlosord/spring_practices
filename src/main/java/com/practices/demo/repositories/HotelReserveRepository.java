@@ -19,6 +19,6 @@ public interface HotelReserveRepository extends JpaRepository<ReserveHotel, Long
 	 * @param p the p
 	 * @return the list
 	 */
-	List<ReserveHotel> findReserveByPersonDni(String dni);
+	List<ReserveHotel> findByPersonDni(String dni);
 
 }

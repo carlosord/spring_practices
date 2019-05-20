@@ -88,7 +88,7 @@ public class ReserveCarServiceImpl implements ReserveCarService {
 	 */
 	@Override
 	public List<ListCarDto> findCarReserveByPersonDni(String dni) {
-		return reserveCarRepository.findReserveByPersonDni(dni).stream()
+		return reserveCarRepository.findByPersonDni(dni).stream()
 				.map(DtoAssembler::fromListEntity).collect(Collectors.toList());
 	}
 

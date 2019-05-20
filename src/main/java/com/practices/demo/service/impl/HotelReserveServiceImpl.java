@@ -56,7 +56,7 @@ public class HotelReserveServiceImpl implements HotelReserveService {
 
 		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
-		List<ReserveHotel> hr = hotelReserveRepository.findReserveByPersonDni(p.getDni());
+		List<ReserveHotel> hr = hotelReserveRepository.findByPersonDni(p.getDni());
 
 		try {
 
@@ -92,7 +92,7 @@ public class HotelReserveServiceImpl implements HotelReserveService {
 	@Override
 	public List<ListHotelDto> findHotelReserveByPersonDni(String dni) {
 
-		return hotelReserveRepository.findReserveByPersonDni(dni)
+		return hotelReserveRepository.findByPersonDni(dni)
 				.stream().map(DtoAssembler::fromListEntity).collect(Collectors.toList());
 	}
 
