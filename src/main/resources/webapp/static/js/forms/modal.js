@@ -17,8 +17,10 @@ $( "a[id^='infoModal']").click(function(){
 			$('#modalLastName').html(content.person.lastname);
 			$('#modalGender').html(content.person.gender);
 			$('#modalBirthday').html(content.person.birthday);
-			$('#carDataTable').html(content.carList);
-			$('#hotelDataTable').html(content.hotelList);
+
+			carDataTable(content.carList);
+			hotelDataTable(content.hotelList);
+
 	}).fail(function(e){
 	});
 });
