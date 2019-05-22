@@ -25,6 +25,7 @@ import com.practices.demo.presentation.validation.ReserveCarDateValidator;
 import com.practices.demo.service.CarService;
 import com.practices.demo.service.HotelReserveService;
 import com.practices.demo.service.HotelService;
+import com.practices.demo.service.MailService;
 import com.practices.demo.service.PersonService;
 import com.practices.demo.service.ReserveCarService;
 import com.practices.demo.service.exception.BusinessException;
@@ -66,6 +67,10 @@ public class PersonController {
 	/** The hotel reserve service. */
 	@Autowired
 	private HotelReserveService hotelReserveService;
+
+	/** The mail service. */
+	@Autowired
+	private MailService mailService;
 
 	/**
 	 * Show all.
@@ -227,7 +232,8 @@ public class PersonController {
 
 			// Add new reserve to db
 			hotelReserveService.addNewReserve(hotelForm.toHotel());
-
+			PersonDto person = personService.findPersonByDni(hotelForm.getDni());
+			mailService.sendEmail(person);
 			// Return new reserve view
 			return View.redirect(View.HOME_VIEW);
 
@@ -235,10 +241,9 @@ public class PersonController {
 
 			model.addAttribute("allHotels", hotelService.findAll());
 			bindingResult.rejectValue(b.getField(), b.getMessage());
-
-			return View.HOTEL_VIEW;
 		}
 
+		return View.HOTEL_VIEW;
 	}
 
 	/**
@@ -262,6 +267,8 @@ public class PersonController {
 
 		try {
 			reserveCarService.addCar(carForm.toCar());
+			PersonDto person = personService.findPersonByDni(carForm.getDni());
+			mailService.sendEmail(person);
 
 			return View.redirect(View.HOME_VIEW);
 
@@ -275,6 +282,12 @@ public class PersonController {
 		}
 	}
 
+	/**
+	 * Show model.
+	 *
+	 * @param id the id
+	 * @return the response entity
+	 */
 	@GetMapping(Url.INFOPERSON_URL + "/{id}")
 	public ResponseEntity<InfoPersonDto> showModel(@PathVariable("id") Long id) {
 
