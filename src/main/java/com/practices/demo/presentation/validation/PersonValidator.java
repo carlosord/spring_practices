@@ -119,8 +119,8 @@ public class PersonValidator implements Validator {
 	 */
 	public static boolean emailIsValid(String email) {
 		if (email != null) {
-			Pattern p = Pattern.compile("^[A-Za-z0-9+_.-]+@gmail\\.com$");
-			Pattern p2 = Pattern.compile("^[A-Za-z0-9+_.-]+@ricoh\\.es$");
+			Pattern p = Pattern.compile("^[A-Za-z0-9_.-]+@gmail\\.com$");
+			Pattern p2 = Pattern.compile("^[A-Za-z0-9_.-]+@ricoh\\.es$");
 			Matcher m = p.matcher(email);
 			Matcher m2 = p2.matcher(email);
 			return m.find() || m2.find();
