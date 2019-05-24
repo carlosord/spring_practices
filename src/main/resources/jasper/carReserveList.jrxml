@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="carReserveList" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="95154f03-95bf-4bf7-a475-a16fc472492d">
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="license" class="java.lang.String"/>
+	<field name="startCarReserve" class="java.lang.String"/>
+	<field name="finishCarReserve" class="java.lang.String"/>
+	<field name="colour" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="50">
+			<textField>
+				<reportElement x="132" y="5" width="300" height="45" uuid="b58cda11-9b1d-4850-aba2-73b0c6ffe47a"/>
+				<box>
+					<pen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{jasper.invoice.title.reserve.car}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="41" splitType="Stretch">
+			<textField>
+				<reportElement x="20" y="10" width="100" height="30" uuid="614d2ecf-8723-4a47-9f4c-d9e7d00c1d90"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{jasper.invoice.car.license}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="10" width="100" height="30" uuid="30d29c17-a4ab-4ecd-8f4d-3b6cf0d0a52d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{jasper.invoice.car.colour}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="10" width="100" height="30" uuid="fb1c5efe-7c51-48d8-9f47-c78629a2758e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{jasper.invoice.car.reserve.start}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="440" y="10" width="100" height="30" uuid="bc889d25-fe5a-490e-81cb-c981450a9d8a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{jasper.invoice.car.reserve.finish}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="46" splitType="Stretch">
+			<textField>
+				<reportElement x="20" y="10" width="100" height="30" uuid="6cb6539d-f311-45e5-9fe0-af333e832111">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3a543957-dd67-4f5f-8abf-ca3c84137b9f"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{license}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="10" width="100" height="30" uuid="89388718-1d5d-4bdd-b1a9-a4975507bd00">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0daf1ac8-f6d4-4791-87b8-fd4e6f38164d"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{startCarReserve}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="444" y="10" width="100" height="30" uuid="e16d3190-4a9b-4c88-8e1e-0a03579419bb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="82c55a23-c72a-49f3-95e6-7dfc14250ed4"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{finishCarReserve}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="10" width="100" height="30" uuid="2bdf1813-dacc-40da-9d5a-b55019afd75e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bd0858bb-f711-4ec8-9b5d-648d42aeffd5"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{colour}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

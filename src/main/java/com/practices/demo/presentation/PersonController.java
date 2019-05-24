@@ -1,5 +1,8 @@
 package com.practices.demo.presentation;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +31,9 @@ import com.practices.demo.service.HotelService;
 import com.practices.demo.service.PersonService;
 import com.practices.demo.service.ReserveCarService;
 import com.practices.demo.service.exception.BusinessException;
+import com.practices.demo.service.impl.TicketServiceImpl;
+
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 /**
  * The Class PersonController.
@@ -66,6 +72,10 @@ public class PersonController {
 	/** The hotel reserve service. */
 	@Autowired
 	private HotelReserveService hotelReserveService;
+
+	/** The ticket service. */
+	@Autowired
+	private TicketServiceImpl ticketService;
 
 	/**
 	 * Show all.
@@ -275,6 +285,12 @@ public class PersonController {
 		}
 	}
 
+	/**
+	 * Show model.
+	 *
+	 * @param id the id
+	 * @return the response entity
+	 */
 	@GetMapping(Url.INFOPERSON_URL + "/{id}")
 	public ResponseEntity<InfoPersonDto> showModel(@PathVariable("id") Long id) {
 
@@ -286,6 +302,42 @@ public class PersonController {
 		infoPerson.setCarList(reserveCarService.findCarReserveByPersonDni(person.getDni()));
 
 		return new ResponseEntity<>(infoPerson, HttpStatus.OK);
+	}
+
+	/**
+	 * Report.
+	 *
+	 * @param id the id
+	 * @return the response entity
+	 */
+	@GetMapping("/pdf" + "/{id}")
+	public ResponseEntity<byte[]> report(@PathVariable("id") Long id) {
+		Map<String, Object> params = new HashMap<>();
+		PersonDto person = personService.findPersonById(id);
+		InfoPersonDto infoPerson = new InfoPersonDto();
+
+		infoPerson.setPerson(person);
+		infoPerson.setHotelList(hotelReserveService.findHotelReserveByPersonDni(person.getDni()));
+		infoPerson.setCarList(reserveCarService.findCarReserveByPersonDni(person.getDni()));
+
+		JRBeanCollectionDataSource carCollectionList = new JRBeanCollectionDataSource(infoPerson.getCarList());
+		JRBeanCollectionDataSource hotelCollectionList = new JRBeanCollectionDataSource(infoPerson.getHotelList());
+
+		params.put("dni", infoPerson.getPerson().getDni());
+		params.put("name", infoPerson.getPerson().getName());
+		params.put("lastname", infoPerson.getPerson().getLastname());
+		params.put("age", infoPerson.getPerson().getAge());
+		params.put("gender", infoPerson.getPerson().getGender().name());
+		params.put("birthday", infoPerson.getPerson().getBirthday());
+
+		params.put("carReserveList", carCollectionList);
+		params.put("hotelReserveList", hotelCollectionList);
+
+		byte[] bytes = ticketService.generatePDFReport("ticket", params);
+		return ResponseEntity.ok().header("Content-Type", "application/pdf; charset=UTF-8")
+				.header("Content-Disposition", "inline; filename=\"" + infoPerson.getPerson().getName() + "_" + infoPerson.getPerson().getLastname()
+						+ "_Ticket_Reserve" + ".pdf\"")
+				.body(bytes);
 	}
 
 }

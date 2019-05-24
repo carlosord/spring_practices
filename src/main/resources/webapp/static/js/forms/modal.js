@@ -21,6 +21,8 @@ $( "a[id^='infoModal']").click(function(){
 			carDataTable(content.carList);
 			hotelDataTable(content.hotelList);
 
+			$('#btnDownload').attr("href", "/pdf/" + content.person.id);
+
 	}).fail(function(e){
 	});
 });
