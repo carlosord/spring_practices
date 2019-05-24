@@ -11,7 +11,7 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
  */
 @Configuration
 public class MessageSourceConfig {
-	
+
 	/**
 	 * Message source.
 	 *
@@ -36,5 +36,5 @@ public class MessageSourceConfig {
 		bean.setValidationMessageSource(messageSource());
 		return bean;
 	}
-	
+
 }

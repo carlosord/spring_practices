@@ -26,3 +26,7 @@ function loadAge(){
     var ageDate = new Date(ageDifMs);
 	$('#age').val(Math.abs(ageDate.getUTCFullYear() - 1970));
 }
+
+$('#email').change(function(){
+	loadEmail();
+});

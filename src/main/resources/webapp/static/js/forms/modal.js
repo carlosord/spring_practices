@@ -17,6 +17,7 @@ $( "a[id^='infoModal']").click(function(){
 			$('#modalLastName').html(content.person.lastname);
 			$('#modalGender').html(content.person.gender);
 			$('#modalBirthday').html(content.person.birthday);
+			$('#modalEmail').html(content.person.email);
 
 			carDataTable(content.carList);
 			hotelDataTable(content.hotelList);
