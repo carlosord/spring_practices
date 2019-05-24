@@ -50,6 +50,10 @@ public class Person extends BaseEntity {
 	@Column(name = "gender", nullable = true)
 	private Gender gender;
 
+	/** The email. */
+	@Column(name = "email", nullable = true)
+	private String email;
+
 	/**
 	 * Instantiates a new person.
 	 */
@@ -281,6 +285,24 @@ public class Person extends BaseEntity {
 		} else {
 			return true;
 		}
+	}
+
+	/**
+	 * Gets the email.
+	 *
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * Sets the email.
+	 *
+	 * @param email the new email
+	 */
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }

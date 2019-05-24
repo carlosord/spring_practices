@@ -8,40 +8,42 @@ import java.util.Map;
  */
 public enum Gender {
 
-	 /** The m. */
- 	M("MALE"), /** The f. */
- F("FEMALE");
+	/** The m. */
+	M("MALE"),
 
-    /** The value. */
-    private final String value;
+	/** The f. */
+	F("FEMALE");
 
-    /** The Constant values. */
-    private static final Map<String, Gender> values = new HashMap<String, Gender>();
-    static {
-        for (Gender g : Gender.values()) {
-            if (values.put(g.value, g) != null) {
-                  throw new IllegalArgumentException("duplicate value: " + g.value);
-            }
-        }
-    }
+	/** The value. */
+	private final String value;
 
-    /**
-     * Instantiates a new gender.
-     *
-     * @param option the option
-     */
-    private Gender(String option) {
-          value = option;
-    }
+	/** The Constant values. */
+	private static final Map<String, Gender> values = new HashMap<String, Gender>();
+	static {
+		for (Gender g : Gender.values()) {
+			if (values.put(g.value, g) != null) {
+				throw new IllegalArgumentException("duplicate value: " + g.value);
+			}
+		}
+	}
 
-    /**
-     * From string.
-     *
-     * @param option the option
-     * @return the gender
-     */
-    public static Gender fromString(String option) {
-        return values.get(option);
-    }
+	/**
+	 * Instantiates a new gender.
+	 *
+	 * @param option the option
+	 */
+	private Gender(String option) {
+		value = option;
+	}
+
+	/**
+	 * From string.
+	 *
+	 * @param option the option
+	 * @return the gender
+	 */
+	public static Gender fromString(String option) {
+		return values.get(option);
+	}
 
 }

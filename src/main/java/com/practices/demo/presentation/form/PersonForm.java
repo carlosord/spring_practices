@@ -1,5 +1,6 @@
 package com.practices.demo.presentation.form;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -32,12 +33,18 @@ public class PersonForm {
 	@Length(min = 3, max = 15, message = "{person.lastname.error.notlength}")
 	private String lastname;
 
+	/** The fullname. */
 	private String fullname;
 
+	/** The birthdayday. */
 	@NotBlank(message = "{person.birthday.error.required}")
 	private String birthdayday;
+
+	/** The birthdaymonth. */
 	@NotBlank(message = "{person.birthday.error.required}")
 	private String birthdaymonth;
+
+	/** The birthdayyear. */
 	@NotBlank(message = "{person.birthday.error.required}")
 	private String birthdayyear;
 
@@ -47,6 +54,11 @@ public class PersonForm {
 	/** The gender. */
 	@NotNull(message = "{person.gender.error.required}")
 	private Gender gender;
+
+	/** The email. */
+	@Email
+	@NotBlank(message = "{person.email.error.required}")
+	private String email;
 
 	/** The hascar. */
 	private Boolean hascar;
@@ -67,6 +79,7 @@ public class PersonForm {
 		p.setBirthday(String.join("/", birthdayday, birthdaymonth, birthdayyear));
 		p.setGender(gender);
 		p.setHascar(hascar);
+		p.setEmail(email);
 
 		return p;
 
@@ -96,6 +109,7 @@ public class PersonForm {
 		this.setAge(person.getAge());
 		this.setGender(person.getGender());
 		this.setHascar(person.getHascar());
+		this.setEmail(person.getEmail());
 
 	}
 
@@ -225,36 +239,94 @@ public class PersonForm {
 		this.hascar = hascar;
 	}
 
+	/**
+	 * Gets the birthdayday.
+	 *
+	 * @return the birthdayday
+	 */
 	public String getBirthdayday() {
 		return birthdayday;
 	}
 
+	/**
+	 * Sets the birthdayday.
+	 *
+	 * @param birthdayday the new birthdayday
+	 */
 	public void setBirthdayday(String birthdayday) {
 		this.birthdayday = birthdayday;
 	}
 
+	/**
+	 * Gets the birthdaymonth.
+	 *
+	 * @return the birthdaymonth
+	 */
 	public String getBirthdaymonth() {
 		return birthdaymonth;
 	}
 
+	/**
+	 * Sets the birthdaymonth.
+	 *
+	 * @param birthdaymonth the new birthdaymonth
+	 */
 	public void setBirthdaymonth(String birthdaymonth) {
 		this.birthdaymonth = birthdaymonth;
 	}
 
+	/**
+	 * Gets the birthdayyear.
+	 *
+	 * @return the birthdayyear
+	 */
 	public String getBirthdayyear() {
 		return birthdayyear;
 	}
 
+	/**
+	 * Sets the birthdayyear.
+	 *
+	 * @param birthdayyear the new birthdayyear
+	 */
 	public void setBirthdayyear(String birthdayyear) {
 		this.birthdayyear = birthdayyear;
 	}
 
+	/**
+	 * Gets the fullname.
+	 *
+	 * @return the fullname
+	 */
 	public String getFullname() {
 		return fullname;
 	}
 
+	/**
+	 * Sets the fullname.
+	 *
+	 * @param fullname the new fullname
+	 */
 	public void setFullname(String fullname) {
 		this.fullname = fullname;
+	}
+
+	/**
+	 * Gets the email.
+	 *
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * Sets the email.
+	 *
+	 * @param email the new email
+	 */
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }

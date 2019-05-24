@@ -19,6 +19,7 @@ import com.practices.demo.model.ReserveCar;
 import com.practices.demo.repositories.CarRepository;
 import com.practices.demo.repositories.PersonRepository;
 import com.practices.demo.repositories.ReserveCarRepository;
+import com.practices.demo.service.MailService;
 import com.practices.demo.service.ReserveCarService;
 import com.practices.demo.service.exception.BusinessException;
 import com.practices.demo.service.utils.DateUtils;
@@ -41,6 +42,10 @@ public class ReserveCarServiceImpl implements ReserveCarService {
 	/** The reserve car repository. */
 	@Autowired
 	private ReserveCarRepository reserveCarRepository;
+
+	/** The mail service. */
+	@Autowired
+	private MailService mailService;
 
 	/**
 	 * Adds the car.
@@ -72,13 +77,14 @@ public class ReserveCarServiceImpl implements ReserveCarService {
 
 			reserveCarRepository.save(new ReserveCar(p, c, startDto, finishDto));
 
+			mailService.sendEmail(p);
+
 		} catch (ParseException e) {
 			e.printStackTrace();
 
 		}
 
 		return true;
-
 	}
 
 	/**
@@ -88,8 +94,8 @@ public class ReserveCarServiceImpl implements ReserveCarService {
 	 */
 	@Override
 	public List<ListCarDto> findCarReserveByPersonDni(String dni) {
-		return reserveCarRepository.findByPersonDni(dni).stream()
-				.map(DtoAssembler::fromListEntity).collect(Collectors.toList());
+		return reserveCarRepository.findByPersonDni(dni).stream().map(DtoAssembler::fromListEntity)
+				.collect(Collectors.toList());
 	}
 
 }

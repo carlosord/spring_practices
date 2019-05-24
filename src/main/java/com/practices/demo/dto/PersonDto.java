@@ -28,6 +28,9 @@ public class PersonDto {
 	/** The gender. */
 	private Gender gender;
 
+	/** The email. */
+	private String email;
+
 	/** The hascar. */
 	private Boolean hascar;
 
@@ -194,6 +197,24 @@ public class PersonDto {
 	 */
 	public void setBirthday(String birthday) {
 		this.birthday = birthday;
+	}
+
+	/**
+	 * Gets the email.
+	 *
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * Sets the email.
+	 *
+	 * @param email the new email
+	 */
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }

@@ -39,6 +39,7 @@ public class DtoAssembler {
 			e.printStackTrace();
 		}
 		entity.setGender(dto.getGender());
+		entity.setEmail(dto.getEmail());
 		return entity;
 	}
 
@@ -61,6 +62,7 @@ public class DtoAssembler {
 					LocalDate.now()));
 		}
 		dto.setGender(entity.getGender());
+		dto.setEmail(entity.getEmail());
 		dto.setHascar(entity.hasCar(entity));
 		dto.setHashotel(entity.hasHotel(entity));
 

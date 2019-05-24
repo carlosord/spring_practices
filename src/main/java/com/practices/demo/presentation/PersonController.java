@@ -237,7 +237,6 @@ public class PersonController {
 
 			// Add new reserve to db
 			hotelReserveService.addNewReserve(hotelForm.toHotel());
-
 			// Return new reserve view
 			return View.redirect(View.HOME_VIEW);
 
@@ -245,10 +244,9 @@ public class PersonController {
 
 			model.addAttribute("allHotels", hotelService.findAll());
 			bindingResult.rejectValue(b.getField(), b.getMessage());
-
-			return View.HOTEL_VIEW;
 		}
 
+		return View.HOTEL_VIEW;
 	}
 
 	/**
