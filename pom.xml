@@ -72,6 +72,9 @@
 
 		<resources>
 			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
 				<directory>src/main/resources/jasper/localization</directory>
 			</resource>
 		</resources>
