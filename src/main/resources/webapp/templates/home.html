@@ -31,7 +31,7 @@
 					<td th:text="${p.lastname}" />
 					<td th:text="${p.age}" />
 					<td>
-						<span class="fas" th:classappend="${#strings.equals(p.gender,'FEMALE')} ? fa-female : fa-male"></span>
+						<span class="fas" th:classappend="${#strings.equals(p.gender,'F')} ? fa-female : fa-male"></span>
 					</td>
 					<td>
 						<span class="fas" th:classappend="${p.hascar} ? fa-check : fa-times"></span>
