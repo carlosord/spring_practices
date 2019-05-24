@@ -20,6 +20,7 @@ import com.practices.demo.repositories.HotelRepository;
 import com.practices.demo.repositories.HotelReserveRepository;
 import com.practices.demo.repositories.PersonRepository;
 import com.practices.demo.service.HotelReserveService;
+import com.practices.demo.service.MailService;
 import com.practices.demo.service.exception.BusinessException;
 import com.practices.demo.service.utils.DateUtils;
 
@@ -41,6 +42,10 @@ public class HotelReserveServiceImpl implements HotelReserveService {
 	/** The reserve repository. */
 	@Autowired
 	private HotelReserveRepository hotelReserveRepository;
+
+	/** The mail service. */
+	@Autowired
+	private MailService mailService;
 
 	/**
 	 * Adds the new hotel reserve.
@@ -76,6 +81,8 @@ public class HotelReserveServiceImpl implements HotelReserveService {
 
 			hotelReserveRepository.save(new ReserveHotel(p, h, startDto, finishDto));
 
+			mailService.sendEmail(p);
+
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -92,10 +99,8 @@ public class HotelReserveServiceImpl implements HotelReserveService {
 	@Override
 	public List<ListHotelDto> findHotelReserveByPersonDni(String dni) {
 
-		return hotelReserveRepository.findByPersonDni(dni)
-				.stream().map(DtoAssembler::fromListEntity).collect(Collectors.toList());
+		return hotelReserveRepository.findByPersonDni(dni).stream().map(DtoAssembler::fromListEntity)
+				.collect(Collectors.toList());
 	}
-
-
 
 }

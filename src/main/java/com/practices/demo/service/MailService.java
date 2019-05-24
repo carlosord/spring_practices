@@ -1,6 +1,6 @@
 package com.practices.demo.service;
 
-import com.practices.demo.dto.PersonDto;
+import com.practices.demo.model.Person;
 
 /**
  * The Interface MailService.
@@ -10,8 +10,8 @@ public interface MailService {
 	/**
 	 * Send email.
 	 *
-	 * @param person the person
+	 * @param p the person
 	 */
-	public void sendEmail(PersonDto person);
+	public void sendEmail(Person p);
 
 }

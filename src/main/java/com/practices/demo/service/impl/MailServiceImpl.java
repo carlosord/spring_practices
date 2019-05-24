@@ -6,7 +6,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
-import com.practices.demo.dto.PersonDto;
+import com.practices.demo.model.Person;
 import com.practices.demo.service.MailService;
 
 /**
@@ -25,7 +25,7 @@ public class MailServiceImpl implements MailService {
 	 * @param person the person
 	 * @throws MailException the mail exception
 	 */
-	public void sendEmail(PersonDto person) throws MailException {
+	public void sendEmail(Person person) throws MailException {
 
 		SimpleMailMessage mail = new SimpleMailMessage();
 
@@ -36,4 +36,5 @@ public class MailServiceImpl implements MailService {
 		javaMailSender.send(mail);
 
 	}
+
 }

@@ -20,6 +20,12 @@ public interface HotelReserveService {
 	 */
 	public boolean addNewReserve(ReserveHotelDto reservehotel) throws BusinessException;
 
+	/**
+	 * Find hotel reserve by person dni.
+	 *
+	 * @param dni the dni
+	 * @return the list
+	 */
 	public List<ListHotelDto> findHotelReserveByPersonDni(String dni);
 
 }
