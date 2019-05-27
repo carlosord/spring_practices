@@ -17,13 +17,14 @@ import com.practices.demo.service.HotelService;
 @Controller
 public class HotelController {
 
-	/** The hotel repository. */
+	/** The hotel service. */
 	@Autowired
 	private HotelService hotelService;
 
 	/**
 	 * Show all.
 	 *
+	 * @param dni   the dni
 	 * @param model the model
 	 * @return the string
 	 */

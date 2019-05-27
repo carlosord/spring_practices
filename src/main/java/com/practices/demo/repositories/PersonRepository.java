@@ -10,6 +10,12 @@ import com.practices.demo.model.Person;
 @Repository
 public interface PersonRepository extends JpaRepository<Person, Long> {
 
+	/**
+	 * Find by dni.
+	 *
+	 * @param dni the dni
+	 * @return the person
+	 */
 	Person findByDni(String dni);
 
 }

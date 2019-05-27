@@ -24,14 +24,14 @@ import com.practices.demo.presentation.front.Url;
 import com.practices.demo.presentation.front.View;
 import com.practices.demo.presentation.validation.HotelValidator;
 import com.practices.demo.presentation.validation.PersonValidator;
-import com.practices.demo.presentation.validation.ReserveCarDateValidator;
+import com.practices.demo.presentation.validation.ReserveCarValidator;
 import com.practices.demo.service.CarService;
 import com.practices.demo.service.HotelReserveService;
 import com.practices.demo.service.HotelService;
 import com.practices.demo.service.PersonService;
 import com.practices.demo.service.ReserveCarService;
+import com.practices.demo.service.TicketService;
 import com.practices.demo.service.exception.BusinessException;
-import com.practices.demo.service.impl.TicketServiceImpl;
 
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
@@ -55,7 +55,7 @@ public class PersonController {
 
 	/** The reserve car validator. */
 	@Autowired
-	private ReserveCarDateValidator reserveCarValidator;
+	private ReserveCarValidator reserveCarValidator;
 
 	/** The hotel validator. */
 	@Autowired
@@ -75,7 +75,7 @@ public class PersonController {
 
 	/** The ticket service. */
 	@Autowired
-	private TicketServiceImpl ticketService;
+	private TicketService ticketService;
 
 	/**
 	 * Show all.
@@ -308,7 +308,7 @@ public class PersonController {
 	 * @param id the id
 	 * @return the response entity
 	 */
-	@GetMapping("/pdf" + "/{id}")
+	@GetMapping(Url.PDF_URL + "/{id}")
 	public ResponseEntity<byte[]> report(@PathVariable("id") Long id) {
 		Map<String, Object> params = new HashMap<>();
 		PersonDto person = personService.findPersonById(id);
@@ -333,8 +333,8 @@ public class PersonController {
 
 		byte[] bytes = ticketService.generatePDFReport("ticket", params);
 		return ResponseEntity.ok().header("Content-Type", "application/pdf; charset=UTF-8")
-				.header("Content-Disposition", "inline; filename=\"" + infoPerson.getPerson().getName() + "_" + infoPerson.getPerson().getLastname()
-						+ "_Ticket_Reserve" + ".pdf\"")
+				.header("Content-Disposition", "inline; filename=\"" + infoPerson.getPerson().getName() + "_"
+						+ infoPerson.getPerson().getLastname() + "_Ticket_Reserve" + ".pdf\"")
 				.body(bytes);
 	}
 

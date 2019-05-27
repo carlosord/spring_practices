@@ -21,9 +21,9 @@ public interface ReserveCarService {
 	public boolean addCar(CarReserveDto car) throws BusinessException;
 
 	/**
-	 * Find car reserve by person.
+	 * Find car reserve by person dni.
 	 *
-	 * @param p the p
+	 * @param dni the dni
 	 * @return the list
 	 */
 	public List<ListCarDto> findCarReserveByPersonDni(String dni);

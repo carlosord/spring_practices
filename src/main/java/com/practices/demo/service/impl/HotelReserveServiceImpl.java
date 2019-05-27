@@ -39,7 +39,7 @@ public class HotelReserveServiceImpl implements HotelReserveService {
 	@Autowired
 	private PersonRepository personRepository;
 
-	/** The reserve repository. */
+	/** The hotel reserve repository. */
 	@Autowired
 	private HotelReserveRepository hotelReserveRepository;
 
@@ -94,6 +94,7 @@ public class HotelReserveServiceImpl implements HotelReserveService {
 	/**
 	 * Find all.
 	 *
+	 * @param dni the dni
 	 * @return the list
 	 */
 	@Override
