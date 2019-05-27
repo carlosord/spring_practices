@@ -13,7 +13,7 @@ import com.practices.demo.presentation.form.CarForm;
  * The Class ReserveCarValidator.
  */
 @Component
-public class ReserveCarValidator implements Validator {
+public class CarValidator implements Validator {
 
 	/**
 	 * Supports.
@@ -49,6 +49,16 @@ public class ReserveCarValidator implements Validator {
 						+ carForm.getFinishreserveyear())) {
 			errors.rejectValue("finishreserveday", "car.finishdate.error.invalid");
 
+		}
+
+		if (!reserveDateIsValid(carForm.getFinishreserveday(), carForm.getFinishreservemonth(),
+				carForm.getFinishreserveday())) {
+			errors.rejectValue("startreserveday", "car.startdate.error.invalid");
+		}
+
+		if (!reserveDateIsValid(carForm.getStartreserveday(), carForm.getStartreservemonth(),
+				carForm.getStartreserveyear())) {
+			errors.rejectValue("startreserveday", "car.startdate.error.invalid");
 		}
 
 	}
@@ -101,6 +111,25 @@ public class ReserveCarValidator implements Validator {
 			}
 
 		} catch (IllegalArgumentException e) {
+			return false;
+		}
+
+	}
+
+	/**
+	 * Reserve date is valid.
+	 *
+	 * @param reserveDay   the reserve day
+	 * @param reserveMonth the reserve month
+	 * @param reserveYear  the reserve year
+	 * @return true, if successful
+	 */
+	private boolean reserveDateIsValid(String reserveDay, String reserveMonth, String reserveYear) {
+
+		try {
+			return LocalDate.of(Integer.parseInt(reserveYear), Integer.parseInt(reserveMonth),
+					Integer.parseInt(reserveDay)) != null;
+		} catch (Exception e) {
 			return false;
 		}
 

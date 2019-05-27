@@ -37,19 +37,29 @@ public class HotelValidator implements Validator {
 
 		HotelForm hotelForm = (HotelForm) target;
 
-		if (!reserveStartDateIsValid(hotelForm.getStarthotelday() + "/" + hotelForm.getStarthotelmonth() + "/"
+		if (!reserveStartDateIsFormatValid(hotelForm.getStarthotelday() + "/" + hotelForm.getStarthotelmonth() + "/"
 				+ hotelForm.getStarthotelyear())) {
 			errors.rejectValue("starthotelday", "hotel.date.error.invalid");
 
 		}
 
-		if (!reserveFinishDateIsValid(
+		if (!reserveFinishDateIsAfterValid(
 				hotelForm.getStarthotelday() + "/" + hotelForm.getStarthotelmonth() + "/"
 						+ hotelForm.getStarthotelyear(),
 				hotelForm.getFinishhotelday() + "/" + hotelForm.getFinishhotelmonth() + "/"
 						+ hotelForm.getFinishhotelyear())) {
 			errors.rejectValue("finishhotelday", "hotel.date.error.invalid");
 
+		}
+
+		if (!reserveDateIsValid(hotelForm.getFinishhotelday(), hotelForm.getFinishhotelmonth(),
+				hotelForm.getFinishhotelyear())) {
+			errors.rejectValue("starthotelday", "hotel.date.error.invalid");
+		}
+
+		if (!reserveDateIsValid(hotelForm.getStarthotelday(), hotelForm.getStarthotelmonth(),
+				hotelForm.getStarthotelyear())) {
+			errors.rejectValue("starthotelday", "hotel.date.error.invalid");
 		}
 
 	}
@@ -60,7 +70,7 @@ public class HotelValidator implements Validator {
 	 * @param startDate the start date
 	 * @return true, if successful
 	 */
-	public boolean reserveStartDateIsValid(String startDate) {
+	public boolean reserveStartDateIsFormatValid(String startDate) {
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		LocalDate dateToday = LocalDate.now();
 
@@ -86,7 +96,7 @@ public class HotelValidator implements Validator {
 	 * @param finishDate the finish date
 	 * @return true, if successful
 	 */
-	public boolean reserveFinishDateIsValid(String startDate, String finishDate) {
+	public boolean reserveFinishDateIsAfterValid(String startDate, String finishDate) {
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 		try {
@@ -101,6 +111,25 @@ public class HotelValidator implements Validator {
 				return true;
 			}
 		} catch (IllegalArgumentException e) {
+			return false;
+		}
+
+	}
+
+	/**
+	 * Reserve date is valid.
+	 *
+	 * @param reserveDay   the reserve day
+	 * @param reserveMonth the reserve month
+	 * @param reserveYear  the reserve year
+	 * @return true, if successful
+	 */
+	private boolean reserveDateIsValid(String reserveDay, String reserveMonth, String reserveYear) {
+
+		try {
+			return LocalDate.of(Integer.parseInt(reserveYear), Integer.parseInt(reserveMonth),
+					Integer.parseInt(reserveDay)) != null;
+		} catch (Exception e) {
 			return false;
 		}
 

@@ -24,7 +24,7 @@ import com.practices.demo.presentation.front.Url;
 import com.practices.demo.presentation.front.View;
 import com.practices.demo.presentation.validation.HotelValidator;
 import com.practices.demo.presentation.validation.PersonValidator;
-import com.practices.demo.presentation.validation.ReserveCarValidator;
+import com.practices.demo.presentation.validation.CarValidator;
 import com.practices.demo.service.CarService;
 import com.practices.demo.service.HotelReserveService;
 import com.practices.demo.service.HotelService;
@@ -55,7 +55,7 @@ public class PersonController {
 
 	/** The reserve car validator. */
 	@Autowired
-	private ReserveCarValidator reserveCarValidator;
+	private CarValidator reserveCarValidator;
 
 	/** The hotel validator. */
 	@Autowired
@@ -230,6 +230,7 @@ public class PersonController {
 		hotelValidator.validate(hotelForm, bindingResult);
 
 		if (bindingResult.hasErrors()) {
+			model.addAttribute("allHotels", hotelService.findAll());
 			return View.HOTEL_VIEW;
 		}
 
