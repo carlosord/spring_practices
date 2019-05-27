@@ -5,12 +5,12 @@ import java.util.List;
 import com.practices.demo.dto.CarDto;
 
 /**
- * The Class PersonService.
+ * The Interface CarService.
  */
 public interface CarService {
 
 	/**
-	 * Find person by id.
+	 * Find car by id.
 	 *
 	 * @param id the id
 	 * @return the car dto
@@ -25,7 +25,7 @@ public interface CarService {
 	public List<CarDto> findAll();
 
 	/**
-	 * Find person by license.
+	 * Find by license.
 	 *
 	 * @param license the license
 	 * @return the car dto

@@ -10,10 +10,10 @@ import org.springframework.validation.Validator;
 import com.practices.demo.presentation.form.CarForm;
 
 /**
- * The Class ReserveCarDateValidator.
+ * The Class ReserveCarValidator.
  */
 @Component
-public class ReserveCarDateValidator implements Validator {
+public class ReserveCarValidator implements Validator {
 
 	/**
 	 * Supports.
@@ -53,7 +53,6 @@ public class ReserveCarDateValidator implements Validator {
 
 	}
 
-
 	/**
 	 * Reserve start date is valid.
 	 *
@@ -80,11 +79,10 @@ public class ReserveCarDateValidator implements Validator {
 
 	}
 
-
 	/**
 	 * Reserve finish date after start date.
 	 *
-	 * @param startReserveDate the start reserve date
+	 * @param startReserveDate  the start reserve date
 	 * @param finishReserveDate the finish reserve date
 	 * @return true, if successful
 	 */

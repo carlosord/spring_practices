@@ -11,7 +11,7 @@ import javax.persistence.UniqueConstraint;
  * The Class ReserveCar.
  */
 @Entity
-@Table(name = "RESERVECARDATE", uniqueConstraints = @UniqueConstraint(columnNames = { "person_id", "car_id",
+@Table(name = "RESERVECAR", uniqueConstraints = @UniqueConstraint(columnNames = { "person_id", "car_id",
 		"startReserve", "finishReserve" }))
 public class ReserveCar extends BaseEntity {
 

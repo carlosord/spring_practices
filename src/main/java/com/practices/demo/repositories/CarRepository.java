@@ -6,12 +6,18 @@ import org.springframework.stereotype.Repository;
 import com.practices.demo.model.Car;
 
 /**
- * The repository of car
+ * The repository of car.
  */
 
 @Repository
 public interface CarRepository extends JpaRepository<Car, Long> {
 
+	/**
+	 * Find by license.
+	 *
+	 * @param license the license
+	 * @return the car
+	 */
 	Car findByLicense(String license);
 
 }

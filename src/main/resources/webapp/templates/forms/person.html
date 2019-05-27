@@ -61,8 +61,8 @@
 		<div class="form-group">
 			<label for="gender" th:text="#{person.gender}"></label>
 			<select class="form-control" th:field="*{gender}" id="gender" required="required">
-				<option value="MALE" th:text="#{person.gender.male}"></option>
-				<option value="FEMALE" th:text="#{person.gender.female}"></option>
+				<option value="M" th:text="#{person.gender.male}"></option>
+				<option value="F" th:text="#{person.gender.female}"></option>
 			</select>
 			<span style="color:red" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></span>
 		</div>

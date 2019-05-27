@@ -14,9 +14,9 @@ import com.practices.demo.model.ReserveHotel;
 public interface HotelReserveRepository extends JpaRepository<ReserveHotel, Long> {
 
 	/**
-	 * Find reserve by person.
+	 * Find by person dni.
 	 *
-	 * @param p the p
+	 * @param dni the dni
 	 * @return the list
 	 */
 	List<ReserveHotel> findByPersonDni(String dni);

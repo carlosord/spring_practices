@@ -17,7 +17,7 @@ import com.practices.demo.service.CarService;
 @Controller
 public class CarController {
 
-	/** The person repository. */
+	/** The car service. */
 	@Autowired
 	private CarService carService;
 

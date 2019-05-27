@@ -14,8 +14,20 @@ import com.practices.demo.model.ReserveCar;
 @Repository
 public interface ReserveCarRepository extends JpaRepository<ReserveCar, Long> {
 
+	/**
+	 * Find reserve by car.
+	 *
+	 * @param c the c
+	 * @return the list
+	 */
 	List<ReserveCar> findReserveByCar(Car c);
 
+	/**
+	 * Find by person dni.
+	 *
+	 * @param dni the dni
+	 * @return the list
+	 */
 	List<ReserveCar> findByPersonDni(String dni);
 
 }
