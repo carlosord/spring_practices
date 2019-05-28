@@ -3,14 +3,14 @@ package com.practices.demo.service.impl;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.core.env.Environment;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -30,6 +30,12 @@ public class MailServiceImpl implements MailService {
 	@Autowired
 	private JavaMailSender javaMailSender;
 
+	 @Autowired
+	  private MessageSource messageSource;
+
+	 @Autowired
+	 Environment env;
+
 
 	/**
 	 * Send email.
@@ -40,10 +46,11 @@ public class MailServiceImpl implements MailService {
 	public void sendEmail(Person person) throws MailException {
 
 		SimpleMailMessage mail = new SimpleMailMessage();
+		String[] p = new String[] {person.getName()};
 
 		mail.setTo("pepepaquetemetes123@gmail.com");
-		mail.setSubject(("mail.subject.reserve"));//CAMBIAR
-		mail.setText(person.getName() + ", your reservation has been made successfully");
+		mail.setSubject(messageSource.getMessage("mail.reserve.subject", null, LocaleContextHolder.getLocale()));
+		mail.setText(messageSource.getMessage("mail.reserve.text",p , LocaleContextHolder.getLocale()));
 
 		javaMailSender.send(mail);
 
@@ -58,8 +65,8 @@ public class MailServiceImpl implements MailService {
 			MimeMessage message = javaMailSender.createMimeMessage();
 			MimeMessageHelper helper = new MimeMessageHelper(message, true);
 			helper.setTo("pepepaquetemetes123@gmail.com");
-			helper.setSubject(("mail.subject.day"));//CAMBIAR
-			helper.setText("Testing messages");
+			helper.setSubject(messageSource.getMessage("mail.day.subject", null, LocaleContextHolder.getLocale()));
+			helper.setText(messageSource.getMessage("mail.day.text", null, LocaleContextHolder.getLocale()));
 			// helper.addAttachment("MyPdf.pdf", new FileSystemResource("F:\\Doc\\index.pdf"));
 
 			this.javaMailSender.send(message);
