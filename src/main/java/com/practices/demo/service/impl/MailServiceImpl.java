@@ -67,7 +67,7 @@ public class MailServiceImpl implements MailService {
 			helper.setTo("pepepaquetemetes123@gmail.com");
 			helper.setSubject(messageSource.getMessage("mail.day.subject", null, LocaleContextHolder.getLocale()));
 			helper.setText(messageSource.getMessage("mail.day.text", null, LocaleContextHolder.getLocale()));
-			// helper.addAttachment("MyPdf.pdf", new FileSystemResource("F:\\Doc\\index.pdf"));
+			//helper.addAttachment("MyPdf.pdf", new FileSystemResource("F:\\Doc\\index.pdf"));
 
 			this.javaMailSender.send(message);
 
