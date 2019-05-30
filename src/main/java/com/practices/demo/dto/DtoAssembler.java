@@ -270,7 +270,7 @@ public class DtoAssembler {
 	 * @param entity the entity
 	 * @return the details reserve hotel dto
 	 */
-	public static DetailsReserveHotelDto fromListHotelDateEntity(ReserveHotel entity) {
+	public static DetailsReserveHotelDto fromHotelDateEntity(ReserveHotel entity) {
 		DetailsReserveHotelDto dto = new DetailsReserveHotelDto();
 
 		dto.setDni(entity.getPerson().getDni());
@@ -288,7 +288,7 @@ public class DtoAssembler {
 	 * @param entity the entity
 	 * @return the details reserve car dto
 	 */
-	public static DetailsReserveCarDto fromListCarDateEntity(ReserveCar entity) {
+	public static DetailsReserveCarDto fromCarDateEntity(ReserveCar entity) {
 		DetailsReserveCarDto dto = new DetailsReserveCarDto();
 
 		dto.setDni(entity.getPerson().getDni());

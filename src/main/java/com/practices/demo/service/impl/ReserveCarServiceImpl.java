@@ -112,7 +112,7 @@ public class ReserveCarServiceImpl implements ReserveCarService {
 	@Override
 	public List<DetailsReserveCarDto> findCarReserveByPeriod(Date start, Date finish) {
 
-		return reserveCarRepository.findByPeriod(start, finish).stream().map(DtoAssembler::fromListCarDateEntity)
+		return reserveCarRepository.findByPeriod(start, finish).stream().map(DtoAssembler::fromCarDateEntity)
 				.collect(Collectors.toList());
 	}
 

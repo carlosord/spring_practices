@@ -117,7 +117,7 @@ public class HotelReserveServiceImpl implements HotelReserveService {
 	@Override
 	public List<DetailsReserveHotelDto> findHotelReserveByPeriod(Date start, Date finish) {
 
-		return hotelReserveRepository.findByPeriod(start, finish).stream().map(DtoAssembler::fromListHotelDateEntity)
+		return hotelReserveRepository.findByPeriod(start, finish).stream().map(DtoAssembler::fromHotelDateEntity)
 				.collect(Collectors.toList());
 	}
 
