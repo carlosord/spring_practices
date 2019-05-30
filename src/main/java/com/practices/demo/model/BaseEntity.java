@@ -15,11 +15,12 @@ public class BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	/**
 	 * Instantiates a new base entity.
 	 */
-	protected BaseEntity() {}
+	protected BaseEntity() {
+	}
 
 	/**
 	 * Gets the id.
@@ -38,5 +39,5 @@ public class BaseEntity {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 }

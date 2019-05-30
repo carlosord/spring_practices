@@ -14,8 +14,8 @@ public interface TicketService {
 	 * Generate PDF report.
 	 *
 	 * @param inputFileName the input file name
-	 * @param params the params
-	 * @param dataSource the data source
+	 * @param params        the params
+	 * @param dataSource    the data source
 	 * @return the byte[]
 	 */
 	public byte[] generatePDFReport(String inputFileName, Map<String, Object> params, JRDataSource dataSource);
@@ -24,7 +24,7 @@ public interface TicketService {
 	 * Generate PDF report.
 	 *
 	 * @param inputFileName the input file name
-	 * @param params the params
+	 * @param params        the params
 	 * @return the byte[]
 	 */
 	public byte[] generatePDFReport(String inputFileName, Map<String, Object> params);

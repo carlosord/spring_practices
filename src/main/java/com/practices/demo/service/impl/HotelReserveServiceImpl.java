@@ -110,7 +110,7 @@ public class HotelReserveServiceImpl implements HotelReserveService {
 	/**
 	 * Find hotel reserve by period.
 	 *
-	 * @param start the start
+	 * @param start  the start
 	 * @param finish the finish
 	 * @return the list
 	 */
@@ -135,9 +135,7 @@ public class HotelReserveServiceImpl implements HotelReserveService {
 	}
 
 	private Date convertToDate(LocalDate dateToConvert) {
-	    return java.util.Date.from(dateToConvert.atStartOfDay()
-	      .atZone(ZoneId.systemDefault())
-	      .toInstant());
+		return java.util.Date.from(dateToConvert.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
 	}
 
 }

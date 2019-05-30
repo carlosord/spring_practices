@@ -6,13 +6,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-
 /**
  * The Class ReserveCar.
  */
 @Entity
-@Table(name = "RESERVECAR", uniqueConstraints = @UniqueConstraint(columnNames = { "person_id", "car_id",
-		"startReserve", "finishReserve" }))
+@Table(name = "RESERVECAR", uniqueConstraints = @UniqueConstraint(columnNames = { "person_id", "car_id", "startReserve",
+		"finishReserve" }))
 public class ReserveCar extends BaseEntity {
 
 	/** The person. */

@@ -10,14 +10,28 @@ import org.springframework.context.annotation.Configuration;
 
 import com.practices.demo.service.impl.QuartzServiceImpl;
 
+/**
+ * The Class QuartzConfig.
+ */
 @Configuration
 public class QuartzConfig {
 
+	/**
+	 * Job email.
+	 *
+	 * @return the job detail
+	 */
 	@Bean
 	public JobDetail jobEmail() {
 		return JobBuilder.newJob(QuartzServiceImpl.class).withIdentity("sendEmailJob").storeDurably().build();
 	}
 
+	/**
+	 * Email trigger.
+	 *
+	 * @param jobADetails the job A details
+	 * @return the trigger
+	 */
 	@Bean
 	public Trigger emailTrigger(JobDetail jobADetails) {
 

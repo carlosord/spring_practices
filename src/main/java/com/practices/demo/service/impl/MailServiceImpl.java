@@ -34,15 +34,17 @@ public class MailServiceImpl implements MailService {
 	@Autowired
 	private JavaMailSender javaMailSender;
 
-	 @Autowired
-	  private MessageSource messageSource;
+	/** The message source. */
+	@Autowired
+	private MessageSource messageSource;
 
-	 @Autowired
-	 private TicketService ticketService;
+	/** The ticket service. */
+	@Autowired
+	private TicketService ticketService;
 
-	 @Autowired
-	 Environment env;
-
+	/** The env. */
+	@Autowired
+	Environment env;
 
 	/**
 	 * Send email.
@@ -53,11 +55,11 @@ public class MailServiceImpl implements MailService {
 	public void sendEmail(Person person) throws MailException {
 
 		SimpleMailMessage mail = new SimpleMailMessage();
-		String[] p = new String[] {person.getName()};
+		String[] p = new String[] { person.getName() };
 
 		mail.setTo("pepepaquetemetes123@gmail.com");
 		mail.setSubject(messageSource.getMessage("mail.reserve.subject", null, LocaleContextHolder.getLocale()));
-		mail.setText(messageSource.getMessage("mail.reserve.text",p , LocaleContextHolder.getLocale()));
+		mail.setText(messageSource.getMessage("mail.reserve.text", p, LocaleContextHolder.getLocale()));
 
 		javaMailSender.send(mail);
 
@@ -70,7 +72,8 @@ public class MailServiceImpl implements MailService {
 		hourNow();
 		try {
 
-			DataSource attachment = new ByteArrayDataSource(ticketService.generatePDFReserveReport(), "application/pdf");
+			DataSource attachment = new ByteArrayDataSource(ticketService.generatePDFReserveReport(),
+					"application/pdf");
 			MimeMessage message = javaMailSender.createMimeMessage();
 			MimeMessageHelper helper = new MimeMessageHelper(message, true);
 			helper.setTo("pepepaquetemetes123@gmail.com");
@@ -79,7 +82,6 @@ public class MailServiceImpl implements MailService {
 			helper.addAttachment("ticketReserve.pdf", attachment);
 
 			this.javaMailSender.send(message);
-
 
 		} catch (MessagingException ex) {
 			System.out.println(ex.getMessage());

@@ -12,7 +12,7 @@ import com.practices.demo.service.MailService;
  * The Class QuartzServiceImpl.
  */
 @Service
-public class QuartzServiceImpl implements Job{
+public class QuartzServiceImpl implements Job {
 
 	/** The mail service. */
 	@Autowired
@@ -29,6 +29,5 @@ public class QuartzServiceImpl implements Job{
 		mailService.sendDailyEmail();
 
 	}
-
 
 }
