@@ -37,8 +37,11 @@ public class QuartzConfig {
 
 		return TriggerBuilder.newTrigger().forJob(jobADetails)
 
-				.withIdentity("sendEmailTrigger").withSchedule(CronScheduleBuilder.cronSchedule("1 0/1 * 1/1 * ? *")).build();
-		//.withIdentity("sendEmailTrigger").withSchedule(CronScheduleBuilder.cronSchedule("0 0 20 * * ? *")).build(); TODOS LOS DIAS A LAS 20:00h
+				.withIdentity("sendEmailTrigger").withSchedule(CronScheduleBuilder.cronSchedule("0 0 20 * * ? *"))
+				.build();
+		// .withIdentity("sendEmailTrigger").withSchedule(CronScheduleBuilder.cronSchedule("1
+		// 0/1 * 1/1 * ? *")).build(); //CADA MINUTO
+
 	}
 
 }
