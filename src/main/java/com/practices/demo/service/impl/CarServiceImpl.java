@@ -18,12 +18,11 @@ import com.practices.demo.service.CarService;
  */
 @Service
 @Transactional
-public class CarServiceImpl implements CarService{
+public class CarServiceImpl implements CarService {
 
 	/** The person repository. */
 	@Autowired
 	private CarRepository carRepository;
-
 
 	/*
 	 * (non-Javadoc)
@@ -48,8 +47,7 @@ public class CarServiceImpl implements CarService{
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see
-	 * com.practices.demo.service.CarService#findByLicense(java.lang.String)
+	 * @see com.practices.demo.service.CarService#findByLicense(java.lang.String)
 	 */
 	@Override
 	public CarDto findByLicense(String license) {

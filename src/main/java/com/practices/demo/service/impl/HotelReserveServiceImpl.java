@@ -2,6 +2,8 @@ package com.practices.demo.service.impl;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.practices.demo.dto.DetailsReserveHotelDto;
 import com.practices.demo.dto.DtoAssembler;
 import com.practices.demo.dto.ListHotelDto;
 import com.practices.demo.dto.ReserveHotelDto;
@@ -84,7 +87,7 @@ public class HotelReserveServiceImpl implements HotelReserveService {
 			mailService.sendEmail(p);
 
 		} catch (ParseException e) {
-			e.printStackTrace();
+
 		}
 
 		return true;
@@ -102,6 +105,37 @@ public class HotelReserveServiceImpl implements HotelReserveService {
 
 		return hotelReserveRepository.findByPersonDni(dni).stream().map(DtoAssembler::fromListEntity)
 				.collect(Collectors.toList());
+	}
+
+	/**
+	 * Find hotel reserve by period.
+	 *
+	 * @param start  the start
+	 * @param finish the finish
+	 * @return the list
+	 */
+	@Override
+	public List<DetailsReserveHotelDto> findHotelReserveByPeriod(Date start, Date finish) {
+
+		return hotelReserveRepository.findByPeriod(start, finish).stream().map(DtoAssembler::fromHotelDateEntity)
+				.collect(Collectors.toList());
+	}
+
+	/**
+	 * Find hotel reserve tomorrow.
+	 *
+	 * @return the list
+	 */
+	@Override
+	public List<DetailsReserveHotelDto> findHotelReserveTomorrow() {
+
+		Date tomorrowDate = convertToDate(LocalDate.now().plusDays(1));
+
+		return findHotelReserveByPeriod(tomorrowDate, tomorrowDate);
+	}
+
+	private Date convertToDate(LocalDate dateToConvert) {
+		return java.util.Date.from(dateToConvert.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
 	}
 
 }

@@ -206,10 +206,9 @@ public class Hotel extends BaseEntity {
 	 */
 	@Override
 	public String toString() {
-		return "Hotel [code=" + code + ", name=" + name + ", location=" + location
-				+ ", totalbedrooms=" + totalbedrooms + ", occupiedbedrooms=" + occupiedbedrooms + "]";
+		return "Hotel [code=" + code + ", name=" + name + ", location=" + location + ", totalbedrooms=" + totalbedrooms
+				+ ", occupiedbedrooms=" + occupiedbedrooms + "]";
 	}
-
 
 	/**
 	 * Gets the reserve hotel.
@@ -228,7 +227,5 @@ public class Hotel extends BaseEntity {
 	public void setReserveHotel(Set<ReserveHotel> reserveHotel) {
 		this.reserveHotel = reserveHotel;
 	}
-
-
 
 }

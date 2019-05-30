@@ -7,7 +7,7 @@ public class BusinessException extends Exception {
 
 	/** Serial version ID. */
 	private static final long serialVersionUID = -8294390050869924558L;
-	
+
 	/** The field. */
 	private final String field;
 
@@ -15,7 +15,7 @@ public class BusinessException extends Exception {
 	 * Instantiates a new business exception.
 	 *
 	 * @param message the message
-	 * @param field the field
+	 * @param field   the field
 	 */
 	public BusinessException(String message, String field) {
 		super(message);
@@ -30,5 +30,5 @@ public class BusinessException extends Exception {
 	public String getField() {
 		return field;
 	}
-	
+
 }

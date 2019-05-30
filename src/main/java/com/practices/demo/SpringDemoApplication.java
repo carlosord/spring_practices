@@ -6,10 +6,8 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 
 @SpringBootApplication
-@PropertySources({
-    @PropertySource("classpath:application.properties"),
-    @PropertySource("classpath:application_config_mail.properties")
-})
+@PropertySources({ @PropertySource("classpath:application.properties"),
+		@PropertySource("classpath:application_config_mail.properties") })
 public class SpringDemoApplication {
 
 	public static void main(String[] args) {

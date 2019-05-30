@@ -14,4 +14,9 @@ public interface MailService {
 	 */
 	public void sendEmail(Person p);
 
+	/**
+	 * Send daily email.
+	 */
+	public void sendDailyEmail();
+
 }
