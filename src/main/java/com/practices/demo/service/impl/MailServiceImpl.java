@@ -1,11 +1,14 @@
 package com.practices.demo.service.impl;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.activation.DataSource;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import javax.mail.util.ByteArrayDataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -19,6 +22,7 @@ import org.springframework.stereotype.Service;
 
 import com.practices.demo.model.Person;
 import com.practices.demo.service.MailService;
+import com.practices.demo.service.TicketService;
 
 /**
  * The Class MailServiceImpl.
@@ -32,6 +36,9 @@ public class MailServiceImpl implements MailService {
 
 	 @Autowired
 	  private MessageSource messageSource;
+
+	 @Autowired
+	 private TicketService ticketService;
 
 	 @Autowired
 	 Environment env;
@@ -62,18 +69,22 @@ public class MailServiceImpl implements MailService {
 	public void sendDailyEmail() {
 		hourNow();
 		try {
+
+			DataSource attachment = new ByteArrayDataSource(ticketService.generatePDFReserveReport(), "application/pdf");
 			MimeMessage message = javaMailSender.createMimeMessage();
 			MimeMessageHelper helper = new MimeMessageHelper(message, true);
 			helper.setTo("pepepaquetemetes123@gmail.com");
 			helper.setSubject(messageSource.getMessage("mail.day.subject", null, LocaleContextHolder.getLocale()));
 			helper.setText(messageSource.getMessage("mail.day.text", null, LocaleContextHolder.getLocale()));
-			//helper.addAttachment("MyPdf.pdf", new FileSystemResource("F:\\Doc\\index.pdf"));
+			helper.addAttachment("ticketReserve.pdf", attachment);
 
 			this.javaMailSender.send(message);
 
 
 		} catch (MessagingException ex) {
 			System.out.println(ex.getMessage());
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 
 	}

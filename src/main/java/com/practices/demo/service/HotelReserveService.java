@@ -1,7 +1,9 @@
 package com.practices.demo.service;
 
+import java.util.Date;
 import java.util.List;
 
+import com.practices.demo.dto.DetailsReserveHotelDto;
 import com.practices.demo.dto.ListHotelDto;
 import com.practices.demo.dto.ReserveHotelDto;
 import com.practices.demo.service.exception.BusinessException;
@@ -27,5 +29,21 @@ public interface HotelReserveService {
 	 * @return the list
 	 */
 	public List<ListHotelDto> findHotelReserveByPersonDni(String dni);
+
+	/**
+	 * Find hotel reserve by period.
+	 *
+	 * @param start the start
+	 * @param finish the finish
+	 * @return the list
+	 */
+	public List<DetailsReserveHotelDto> findHotelReserveByPeriod(Date start, Date finish);
+
+	/**
+	 * Find hotel reserve tomorrow.
+	 *
+	 * @return the list
+	 */
+	public List<DetailsReserveHotelDto> findHotelReserveTomorrow();
 
 }

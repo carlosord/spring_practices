@@ -1,5 +1,6 @@
 package com.practices.demo.service;
 
+import java.io.IOException;
 import java.util.Map;
 
 import net.sf.jasperreports.engine.JRDataSource;
@@ -27,5 +28,13 @@ public interface TicketService {
 	 * @return the byte[]
 	 */
 	public byte[] generatePDFReport(String inputFileName, Map<String, Object> params);
+
+	/**
+	 * Generate PDF reserve report.
+	 *
+	 * @return the byte[]
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	public byte[] generatePDFReserveReport() throws IOException;
 
 }

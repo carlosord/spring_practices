@@ -2,6 +2,8 @@ package com.practices.demo.service.impl;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.practices.demo.dto.CarReserveDto;
+import com.practices.demo.dto.DetailsReserveCarDto;
 import com.practices.demo.dto.DtoAssembler;
 import com.practices.demo.dto.ListCarDto;
 import com.practices.demo.model.Car;
@@ -90,6 +93,7 @@ public class ReserveCarServiceImpl implements ReserveCarService {
 	/**
 	 * Find all.
 	 *
+	 * @param dni the dni
 	 * @return the list
 	 */
 	@Override
@@ -98,4 +102,34 @@ public class ReserveCarServiceImpl implements ReserveCarService {
 				.collect(Collectors.toList());
 	}
 
+	/**
+	 * Find car reserve by period.
+	 *
+	 * @param start  the start
+	 * @param finish the finish
+	 * @return the list
+	 */
+	@Override
+	public List<DetailsReserveCarDto> findCarReserveByPeriod(Date start, Date finish) {
+
+		return reserveCarRepository.findByPeriod(start, finish).stream().map(DtoAssembler::fromListCarDateEntity)
+				.collect(Collectors.toList());
+	}
+
+	/**
+	 * Find car reserve tomorrow.
+	 *
+	 * @return the list
+	 */
+	@Override
+	public List<DetailsReserveCarDto> findCarReserveTomorrow() {
+
+		Date tomorrowDate = convertToDate(LocalDate.now().plusDays(1));
+
+		return findCarReserveByPeriod(tomorrowDate, tomorrowDate);
+	}
+
+	private Date convertToDate(LocalDate dateToConvert) {
+		return java.util.Date.from(dateToConvert.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+	}
 }
