@@ -1,8 +1,10 @@
 package com.practices.demo.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.practices.demo.dto.CarReserveDto;
+import com.practices.demo.dto.DetailsReserveCarDto;
 import com.practices.demo.dto.ListCarDto;
 import com.practices.demo.service.exception.BusinessException;
 
@@ -28,4 +30,19 @@ public interface ReserveCarService {
 	 */
 	public List<ListCarDto> findCarReserveByPersonDni(String dni);
 
+	/**
+	 * Find car reserve by period.
+	 *
+	 * @param start the start
+	 * @param finish the finish
+	 * @return the list
+	 */
+	public List<DetailsReserveCarDto> findCarReserveByPeriod(Date start, Date finish);
+
+	/**
+	 * Find car reserve tomorrow.
+	 *
+	 * @return the list
+	 */
+	public List<DetailsReserveCarDto> findCarReserveTomorrow();
 }

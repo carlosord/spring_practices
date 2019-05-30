@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.practices.demo.dto.CarReserveDto;
+import com.practices.demo.dto.DetailsReserveCarDto;
 import com.practices.demo.dto.DtoAssembler;
 import com.practices.demo.dto.ListCarDto;
 import com.practices.demo.model.Car;
@@ -90,12 +92,43 @@ public class ReserveCarServiceImpl implements ReserveCarService {
 	/**
 	 * Find all.
 	 *
+	 * @param dni the dni
 	 * @return the list
 	 */
 	@Override
 	public List<ListCarDto> findCarReserveByPersonDni(String dni) {
 		return reserveCarRepository.findByPersonDni(dni).stream().map(DtoAssembler::fromListEntity)
 				.collect(Collectors.toList());
+	}
+
+	/**
+	 * Find car reserve by period.
+	 *
+	 * @param start  the start
+	 * @param finish the finish
+	 * @return the list
+	 */
+	@Override
+	public List<DetailsReserveCarDto> findCarReserveByPeriod(Date start, Date finish) {
+
+		return reserveCarRepository.findByPeriod(start, finish).stream().map(DtoAssembler::fromListCarDateEntity)
+				.collect(Collectors.toList());
+	}
+
+	/**
+	 * Find car reserve tomorrow.
+	 *
+	 * @return the list
+	 */
+	@Override
+	public List<DetailsReserveCarDto> findCarReserveTomorrow() {
+
+		Date today = new Date();
+		// Date tomorrowDate= new Date(today.getTime() + (1000 * 60 * 60 * 24));
+		Date tomorrowDate = new Date(today.getTime() + TimeUnit.DAYS.toDays(1));
+
+		return findCarReserveByPeriod(today, tomorrowDate);
+
 	}
 
 }
