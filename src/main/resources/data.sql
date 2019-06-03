@@ -27,3 +27,12 @@ INSERT INTO hotel(code, name, location, totalbedrooms, occupiedbedrooms) VALUES 
 INSERT INTO hotel(code, name, location, totalbedrooms, occupiedbedrooms) VALUES ('HO-007','Catalonia Square','Estocolmo',400,390);
 INSERT INTO hotel(code, name, location, totalbedrooms, occupiedbedrooms) VALUES ('HO-008','Sixtytwo Hotel','Sevilla',200,199);
 INSERT INTO hotel(code, name, location, totalbedrooms, occupiedbedrooms) VALUES ('HO-009','Palace Hotel','Logroño',100,1);
+
+INSERT INTO reserveHotel(id,finish_reserve,start_reserve,hotel_id,person_id) VALUES (1,TO_DATE('01/06/2019', 'DD/MM/YYYY'),TO_DATE('29/05/2019', 'DD/MM/YYYY'),1,7);
+INSERT INTO reserveHotel(id,finish_reserve,start_reserve,hotel_id,person_id) VALUES (2,TO_DATE('10/06/2019', 'DD/MM/YYYY'),TO_DATE('02/06/2019', 'DD/MM/YYYY'),2,5);
+INSERT INTO reserveHotel(id,finish_reserve,start_reserve,hotel_id,person_id) VALUES (3,TO_DATE('02/06/2019', 'DD/MM/YYYY'),TO_DATE('27/05/2019', 'DD/MM/YYYY'),3,1);
+INSERT INTO reserveHotel(id,finish_reserve,start_reserve,hotel_id,person_id) VALUES (4,TO_DATE('04/06/2019', 'DD/MM/YYYY'),TO_DATE('28/05/2019', 'DD/MM/YYYY'),4,5);
+INSERT INTO reserveHotel(id,finish_reserve,start_reserve,hotel_id,person_id) VALUES (5,TO_DATE('05/06/2019', 'DD/MM/YYYY'),TO_DATE('30/05/2019', 'DD/MM/YYYY'),8,7);
+INSERT INTO reserveHotel(id,finish_reserve,start_reserve,hotel_id,person_id) VALUES (6,TO_DATE('10/06/2019', 'DD/MM/YYYY'),TO_DATE('31/05/2019', 'DD/MM/YYYY'),6,5);
+INSERT INTO reserveHotel(id,finish_reserve,start_reserve,hotel_id,person_id) VALUES (7,TO_DATE('10/06/2019', 'DD/MM/YYYY'),TO_DATE('03/06/2019', 'DD/MM/YYYY'),9,8);
+INSERT INTO reserveHotel(id,finish_reserve,start_reserve,hotel_id,person_id) VALUES (8,TO_DATE('26/05/2019', 'DD/MM/YYYY'),TO_DATE('22/05/2019', 'DD/MM/YYYY'),5,2);

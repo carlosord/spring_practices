@@ -29,6 +29,9 @@ public class Url {
 	/** The Constant PDF_URL. */
 	public static final String PDF_URL = "/pdf";
 
+	/** The Constant LASTWEEK_RESERVES_URL. */
+	public static final String LASTWEEK_RESERVES_URL = "/lastweekreserves";
+
 	/**
 	 * Private constructor.
 	 */

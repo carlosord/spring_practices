@@ -1,9 +1,6 @@
 package com.practices.demo.service.impl;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.activation.DataSource;
 import javax.mail.MessagingException;
@@ -47,12 +44,12 @@ public class MailServiceImpl implements MailService {
 	Environment env;
 
 	/**
-	 * Send email.
+	 * Send confirm reserve email.
 	 *
 	 * @param person the person
 	 * @throws MailException the mail exception
 	 */
-	public void sendEmail(Person person) throws MailException {
+	public void sendConfirmReserveEmail(Person person) throws MailException {
 
 		SimpleMailMessage mail = new SimpleMailMessage();
 		String[] p = new String[] { person.getName() };
@@ -66,10 +63,9 @@ public class MailServiceImpl implements MailService {
 	}
 
 	/**
-	 * Send daily email.
+	 * Send report daily reserves email.
 	 */
-	public void sendDailyEmail() {
-		hourNow();
+	public void sendReportDailyReservesEmail() {
 		try {
 
 			DataSource attachment = new ByteArrayDataSource(ticketService.generatePDFReserveReport(),
@@ -89,15 +85,6 @@ public class MailServiceImpl implements MailService {
 			e.printStackTrace();
 		}
 
-	}
-
-	/**
-	 * Hour now.
-	 */
-	private void hourNow() {
-		DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
-		Date date = new Date();
-		System.out.println("Email sent at " + dateFormat.format(date));
 	}
 
 }
