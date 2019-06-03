@@ -46,4 +46,11 @@ public interface HotelReserveService {
 	 */
 	public List<DetailsReserveHotelDto> findHotelReserveTomorrow();
 
+	/**
+	 * Find hotel reserve last week.
+	 *
+	 * @return the list
+	 */
+	public List<DetailsReserveHotelDto> findHotelReserveLastWeek();
+
 }

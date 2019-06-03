@@ -8,7 +8,7 @@ import org.quartz.TriggerBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.practices.demo.service.impl.QuartzServiceImpl;
+import com.practices.demo.service.impl.QuartzDaylyEmailServiceImpl;
 
 /**
  * The Class QuartzConfig.
@@ -23,7 +23,7 @@ public class QuartzConfig {
 	 */
 	@Bean
 	public JobDetail jobEmail() {
-		return JobBuilder.newJob(QuartzServiceImpl.class).withIdentity("sendEmailJob").storeDurably().build();
+		return JobBuilder.newJob(QuartzDaylyEmailServiceImpl.class).withIdentity("sendEmailJob").storeDurably().build();
 	}
 
 	/**

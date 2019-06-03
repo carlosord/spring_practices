@@ -80,7 +80,7 @@ public class ReserveCarServiceImpl implements ReserveCarService {
 
 			reserveCarRepository.save(new ReserveCar(p, c, startDto, finishDto));
 
-			mailService.sendEmail(p);
+			mailService.sendConfirmReserveEmail(p);
 
 		} catch (ParseException e) {
 			e.printStackTrace();

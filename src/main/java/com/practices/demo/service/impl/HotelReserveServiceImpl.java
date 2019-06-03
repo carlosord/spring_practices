@@ -84,7 +84,7 @@ public class HotelReserveServiceImpl implements HotelReserveService {
 
 			hotelReserveRepository.save(new ReserveHotel(p, h, startDto, finishDto));
 
-			mailService.sendEmail(p);
+			mailService.sendConfirmReserveEmail(p);
 
 		} catch (ParseException e) {
 
@@ -134,6 +134,26 @@ public class HotelReserveServiceImpl implements HotelReserveService {
 		return findHotelReserveByPeriod(tomorrowDate, tomorrowDate);
 	}
 
+	/**
+	 * Find hotel reserve last week.
+	 *
+	 * @return the list
+	 */
+	@Override
+	public List<DetailsReserveHotelDto> findHotelReserveLastWeek() {
+
+		Date yesterdayDate = convertToDate(LocalDate.now().minusDays(1));
+		Date weekAgoDate = convertToDate(LocalDate.now().minusDays(7));
+
+		return findHotelReserveByPeriod(weekAgoDate, yesterdayDate);
+	}
+
+	/**
+	 * Convert to date.
+	 *
+	 * @param dateToConvert the date to convert
+	 * @return the date
+	 */
 	private Date convertToDate(LocalDate dateToConvert) {
 		return java.util.Date.from(dateToConvert.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
 	}
