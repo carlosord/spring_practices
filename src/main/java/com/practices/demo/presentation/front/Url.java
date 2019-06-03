@@ -30,7 +30,10 @@ public class Url {
 	public static final String PDF_URL = "/pdf";
 
 	/** The Constant LASTWEEK_RESERVES_URL. */
-	public static final String LASTWEEK_RESERVES_URL = "/lastweekreserves";
+	public static final String LASTWEEK_RESERVES_HOTEL_URL = "/lastweekhotelreserves";
+
+	/** The Constant RESERVES_HOTEL_URL. */
+	public static final String RESERVES_HOTEL_URL = "/reservehotel";
 
 	/**
 	 * Private constructor.

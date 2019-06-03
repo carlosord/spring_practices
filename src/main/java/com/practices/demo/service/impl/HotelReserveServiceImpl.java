@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -146,6 +147,17 @@ public class HotelReserveServiceImpl implements HotelReserveService {
 		Date weekAgoDate = convertToDate(LocalDate.now().minusDays(7));
 
 		return findHotelReserveByPeriod(weekAgoDate, yesterdayDate);
+	}
+
+	/**
+	 * Find person by id.
+	 *
+	 * @param id the id
+	 * @return the details reserve hotel dto
+	 */
+	@Override
+	public DetailsReserveHotelDto findPersonById(Long id) {
+		return DtoAssembler.fromHotelDateEntity(hotelReserveRepository.findById(id).orElseThrow(NoSuchElementException::new));
 	}
 
 	/**
