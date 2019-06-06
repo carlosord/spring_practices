@@ -129,6 +129,12 @@ public class ReserveCarServiceImpl implements ReserveCarService {
 		return findCarReserveByPeriod(tomorrowDate, tomorrowDate);
 	}
 
+	/**
+	 * Convert to date.
+	 *
+	 * @param dateToConvert the date to convert
+	 * @return the date
+	 */
 	private Date convertToDate(LocalDate dateToConvert) {
 		return java.util.Date.from(dateToConvert.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
 	}

@@ -35,6 +35,12 @@ public class Url {
 	/** The Constant RESERVES_HOTEL_URL. */
 	public static final String RESERVES_HOTEL_URL = "/reservehotel";
 
+	/** The Constant LASTWEEK_RESERVES_CAR_URL. */
+	public static final String LASTWEEK_RESERVES_CAR_URL = "/lastweekreservescar";
+
+	/** The Constant RESERVES_PERSON_URL. */
+	public static final String RESERVES_PERSON_URL = "/reservesperson";
+
 	/**
 	 * Private constructor.
 	 */
