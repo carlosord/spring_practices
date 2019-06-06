@@ -15,7 +15,7 @@ import com.practices.demo.service.PersonService;
  * The Class WSRestController.
  */
 @RestController
-public class WSRestController {
+public class WSRestControllerTest {
 
 	/** The hotel reserve service. */
 	@Autowired
