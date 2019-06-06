@@ -2,6 +2,7 @@ package com.practices.demo.service;
 
 import java.util.List;
 
+import com.practices.demo.dto.InfoPersonDto;
 import com.practices.demo.dto.PersonDto;
 import com.practices.demo.service.exception.BusinessException;
 
@@ -57,5 +58,12 @@ public interface PersonService {
 	 */
 	public void deletePersonForm(Long id);
 
+	/**
+	 * Show reserves person.
+	 *
+	 * @param id the id
+	 * @return the info person dto
+	 */
+	public InfoPersonDto showReservesPerson(Long id);
 
 }

@@ -10,9 +10,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.practices.demo.dto.DtoAssembler;
+import com.practices.demo.dto.InfoPersonDto;
 import com.practices.demo.dto.PersonDto;
 import com.practices.demo.repositories.PersonRepository;
+import com.practices.demo.service.HotelReserveService;
 import com.practices.demo.service.PersonService;
+import com.practices.demo.service.ReserveCarService;
 import com.practices.demo.service.exception.BusinessException;
 
 /**
@@ -26,6 +29,20 @@ public class PersonServiceImpl implements PersonService {
 	@Autowired
 	private PersonRepository personRepository;
 
+	/** The reserve car service. */
+	@Autowired
+	private ReserveCarService reserveCarService;
+
+	/** The hotel reserve service. */
+	@Autowired
+	private HotelReserveService hotelReserveService;
+
+	/**
+	 * Find person by id.
+	 *
+	 * @param id the id
+	 * @return the person dto
+	 */
 	/*
 	 * (non-Javadoc)
 	 *
@@ -35,6 +52,11 @@ public class PersonServiceImpl implements PersonService {
 		return DtoAssembler.fromEntity(personRepository.findById(id).orElseThrow(NoSuchElementException::new));
 	}
 
+	/**
+	 * Find all.
+	 *
+	 * @return the list
+	 */
 	/*
 	 * (non-Javadoc)
 	 *
@@ -44,6 +66,12 @@ public class PersonServiceImpl implements PersonService {
 		return personRepository.findAll().stream().map(DtoAssembler::fromEntity).collect(Collectors.toList());
 	}
 
+	/**
+	 * Find person by dni.
+	 *
+	 * @param dni the dni
+	 * @return the person dto
+	 */
 	/*
 	 * (non-Javadoc)
 	 *
@@ -56,6 +84,13 @@ public class PersonServiceImpl implements PersonService {
 
 	}
 
+	/**
+	 * Adds the new person.
+	 *
+	 * @param person the person
+	 * @return the person dto
+	 * @throws BusinessException the business exception
+	 */
 	/*
 	 * (non-Javadoc)
 	 *
@@ -82,6 +117,12 @@ public class PersonServiceImpl implements PersonService {
 
 	}
 
+	/**
+	 * Update person.
+	 *
+	 * @param person the person
+	 * @return the person dto
+	 */
 	/*
 	 * (non-Javadoc)
 	 *
@@ -95,6 +136,11 @@ public class PersonServiceImpl implements PersonService {
 		return DtoAssembler.fromEntity(personRepository.save(DtoAssembler.toEntity(person)));
 	}
 
+	/**
+	 * Delete person form.
+	 *
+	 * @param id the id
+	 */
 	/*
 	 * (non-Javadoc)
 	 *
@@ -105,6 +151,24 @@ public class PersonServiceImpl implements PersonService {
 
 		// Delete the person
 		personRepository.deleteById(id);
+	}
+
+	/**
+	 * Show reserves person.
+	 *
+	 * @param id the id
+	 * @return the info person dto
+	 */
+	public InfoPersonDto showReservesPerson(Long id) {
+
+		PersonDto person = this.findPersonById(id);
+		InfoPersonDto infoPerson = new InfoPersonDto();
+
+		infoPerson.setPerson(person);
+		infoPerson.setHotelList(hotelReserveService.findHotelReserveByPersonDni(person.getDni()));
+		infoPerson.setCarList(reserveCarService.findCarReserveByPersonDni(person.getDni()));
+
+		return infoPerson;
 	}
 
 }
