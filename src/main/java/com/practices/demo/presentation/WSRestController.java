@@ -34,7 +34,6 @@ public class WSRestController {
 	public ResponseEntity<Object> lastWeekReserves() {
 		return new ResponseEntity<>(hotelReserveService.findHotelReserveLastWeek(), HttpStatus.OK);
 	}
-
 	/**
 	 * Show reserve hotel.
 	 *

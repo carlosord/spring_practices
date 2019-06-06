@@ -89,6 +89,4 @@ public class ReserveHotelDto {
 		this.finishHotelReserve = finishHotelReserve;
 	}
 
-
-
 }

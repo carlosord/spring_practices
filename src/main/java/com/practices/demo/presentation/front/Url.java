@@ -32,7 +32,7 @@ public class Url {
 	/** The Constant LASTWEEK_RESERVES_URL. */
 	public static final String LASTWEEK_RESERVES_HOTEL_URL = "/lastweekhotelreserves";
 
-	/** The Constant RESERVES_HOTEL_URL. */
+	/** The Constant LASTWEEK_RESERVES_URL. */
 	public static final String RESERVES_HOTEL_URL = "/reservehotel";
 
 	/** The Constant LASTWEEK_RESERVES_CAR_URL. */
