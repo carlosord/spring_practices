@@ -53,6 +53,12 @@ public interface HotelReserveService {
 	 */
 	public List<DetailsReserveHotelDto> findHotelReserveLastWeek();
 
+	/**
+	 * Find person by id.
+	 *
+	 * @param id the id
+	 * @return the details reserve hotel dto
+	 */
 	public DetailsReserveHotelDto findPersonById(Long id);
 
 }

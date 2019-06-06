@@ -159,7 +159,6 @@ public class TicketServiceImpl implements TicketService {
 		List<DetailsReserveCarDto> reserveCarList = carReserveService.findCarReserveTomorrow();
 
 		byte[] bytes = null;
-//		Date date = new Date();
 
 		Map<String, Object> params = new HashMap<>();
 
@@ -167,8 +166,6 @@ public class TicketServiceImpl implements TicketService {
 
 		JRBeanCollectionDataSource carReserveCollectionList = new JRBeanCollectionDataSource(reserveCarList);
 		JRBeanCollectionDataSource hotelReserveCollectionList = new JRBeanCollectionDataSource(reserveHotelList);
-
-		// params.put("date", ;
 
 		params.put("ticketReserveCar", carReserveCollectionList);
 		params.put("ticketReserveHotel", hotelReserveCollectionList);

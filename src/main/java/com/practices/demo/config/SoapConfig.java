@@ -13,10 +13,19 @@ import org.springframework.xml.xsd.SimpleXsdSchema;
 import org.springframework.xml.xsd.XsdSchema;
 
 
+/**
+ * The Class SoapConfig.
+ */
 @EnableWs
 @Configuration
 public class SoapConfig extends WsConfigurerAdapter {
 
+	/**
+	 * Message dispatcher servlet.
+	 *
+	 * @param applicationContext the application context
+	 * @return the servlet registration bean
+	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Bean
 	public ServletRegistrationBean messageDispatcherServlet(ApplicationContext applicationContext) {
@@ -26,6 +35,12 @@ public class SoapConfig extends WsConfigurerAdapter {
 	    return new ServletRegistrationBean(servlet, "/ws/*");
 	}
 
+	/**
+	 * Default wsdl 11 definition.
+	 *
+	 * @param infoPersonSchema the info person schema
+	 * @return the default wsdl 11 definition
+	 */
 	@Bean(name = "infoPersonWsdl")
 	public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema infoPersonSchema) {
 		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
@@ -36,6 +51,11 @@ public class SoapConfig extends WsConfigurerAdapter {
 		return wsdl11Definition;
 	}
 
+	/**
+	 * Info person schema.
+	 *
+	 * @return the xsd schema
+	 */
 	@Bean
 	public XsdSchema infoPersonSchema() {
 		return new SimpleXsdSchema(new ClassPathResource("/xsd/infoPerson.xsd"));

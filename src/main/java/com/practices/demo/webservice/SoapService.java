@@ -21,24 +21,39 @@ import com.practices.demo.repositories.HotelReserveRepository;
 import com.practices.demo.repositories.PersonRepository;
 import com.practices.demo.repositories.ReserveCarRepository;
 
+/**
+ * The Class SoapService.
+ */
 @Endpoint
 public class SoapService {
 
+	/** The person repository. */
 	@Autowired
 	private PersonRepository personRepository;
 
+	/** The hotel reserve repository. */
 	@Autowired
 	private HotelReserveRepository hotelReserveRepository;
 
+	/** The reserve car repository. */
 	@Autowired
 	private ReserveCarRepository reserveCarRepository;
 
+	/**
+	 * Instantiates a new soap service.
+	 */
 	@Autowired
 	public SoapService() {
 		System.err.println("CREANDO SERVICIO SOAP");
 	}
 
 
+	/**
+	 * Show all reservations.
+	 *
+	 * @param request the request
+	 * @return the info person response
+	 */
 	@SoapAction(value = "http://localhost.com/spring_practices/infoPersonRequest")
 	@PayloadRoot(namespace="http://localhost.com/spring_practices", localPart="infoPersonRequest")
 	@ResponsePayload
