@@ -1,8 +1,11 @@
 package com.practices.demo.dto;
 
+import javax.xml.bind.annotation.XmlType;
+
 /**
  * The Class ListHotelDto.
  */
+@XmlType(namespace = "http://www.example.org/listHotel")
 public class ListHotelDto {
 
 	/** The name. */

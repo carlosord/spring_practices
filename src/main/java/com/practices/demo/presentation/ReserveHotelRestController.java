@@ -4,18 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.practices.demo.presentation.front.Url;
 import com.practices.demo.service.HotelReserveService;
 
 
 /**
- * The Class WSRestController.
+ * The Class ReserveHotelRestController.
  */
 @RestController
-public class WSRestController {
+public class ReserveHotelRestController {
 
 	/** The hotel reserve service. */
 	@Autowired
@@ -26,15 +24,10 @@ public class WSRestController {
 	 *
 	 * @return the response entity
 	 */
-	@GetMapping(Url.LASTWEEK_RESERVES_HOTEL_URL)
+	@GetMapping("/lastweekreserves")
 	public ResponseEntity<Object> lastWeekReserves(){
 		return new ResponseEntity<> (hotelReserveService.findHotelReserveLastWeek(), HttpStatus.OK);
 	}
 
-	@GetMapping( Url.RESERVES_HOTEL_URL + "/{id}")
-	public ResponseEntity<Object> showReserveHotel(@PathVariable("id") Long id) {
-		return new ResponseEntity<> (hotelReserveService.findPersonById(id), HttpStatus.OK);
-
-	}
 
 }

@@ -2,9 +2,12 @@ package com.practices.demo.dto;
 
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlType;
+
 /**
  * The Class InfoPersonDto.
  */
+@XmlType(namespace = "http://www.example.org/infoPerson")
 public class InfoPersonDto {
 
 	/** The person. */

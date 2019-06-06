@@ -8,14 +8,14 @@ import com.practices.demo.model.Person;
 public interface MailService {
 
 	/**
-	 * Send confirm reserve email.
+	 * Send email.
 	 *
-	 * @param p the p
+	 * @param p the person
 	 */
 	public void sendConfirmReserveEmail(Person p);
 
 	/**
-	 * Send report daily reserves email.
+	 * Send daily email.
 	 */
 	public void sendReportDailyReservesEmail();
 
