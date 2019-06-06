@@ -3,6 +3,7 @@ package com.practices.demo.model;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -21,11 +22,11 @@ import com.practices.demo.model.types.Gender;
 public class Person extends BaseEntity {
 
 	/** The reserve hotel. */
-	@OneToMany(mappedBy = "person")
+	@OneToMany(mappedBy = "person", cascade = CascadeType.REMOVE)
 	Set<ReserveHotel> reserveHotel;
 
 	/** The dates. */
-	@OneToMany(mappedBy = "person")
+	@OneToMany(mappedBy = "person", cascade = CascadeType.REMOVE)
 	Set<ReserveCar> reserveCars;
 
 	/** The dni. */

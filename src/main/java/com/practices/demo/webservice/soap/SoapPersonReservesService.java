@@ -1,4 +1,4 @@
-package com.practices.demo.webservice;
+package com.practices.demo.webservice.soap;
 
 import java.util.Optional;
 
@@ -25,7 +25,7 @@ import com.practices.demo.repositories.ReserveCarRepository;
  * The Class SoapService.
  */
 @Endpoint
-public class SoapService {
+public class SoapPersonReservesService {
 
 	/** The person repository. */
 	@Autowired
@@ -43,7 +43,7 @@ public class SoapService {
 	 * Instantiates a new soap service.
 	 */
 	@Autowired
-	public SoapService() {
+	public SoapPersonReservesService() {
 		System.err.println("CREANDO SERVICIO SOAP");
 	}
 
