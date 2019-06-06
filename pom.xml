@@ -107,27 +107,6 @@
 				</executions>
 			</plugin>
 
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>jaxb2-maven-plugin</artifactId>
-				<version>2.3.1</version>
-				<executions>
-					<execution>
-						<id>xjc</id>
-						<goals>
-							<goal>xjc</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<sources>
-						<source>src/main/resources/xsd/infoPerson.xsd</source>
-					</sources>
-					<outputDirectory>${basedir}/src/main/java-gen</outputDirectory>
-					<clearOutputDir>true</clearOutputDir>
-				</configuration>
-			</plugin>
-
 			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>jaxb2-maven-plugin</artifactId>
 				<version>2.3.1</version> <executions> <execution> <id>schemagen</id> <goals>
 				<goal>schemagen</goal> </goals> </execution> </executions> <configuration>
