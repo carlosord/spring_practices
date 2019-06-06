@@ -44,7 +44,7 @@ public class MailServiceImpl implements MailService {
 	Environment env;
 
 	/**
-	 * Send confirm reserve email.
+	 * Send email.
 	 *
 	 * @param person the person
 	 * @throws MailException the mail exception
@@ -63,7 +63,7 @@ public class MailServiceImpl implements MailService {
 	}
 
 	/**
-	 * Send report daily reserves email.
+	 * Send daily email.
 	 */
 	public void sendReportDailyReservesEmail() {
 		try {

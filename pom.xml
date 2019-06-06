@@ -64,15 +64,80 @@
 			<artifactId>json-path</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web-services</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>wsdl4j</groupId>
+			<artifactId>wsdl4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+		</dependency>
 
 	</dependencies>
 
 	<build>
+
 		<plugins>
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>src/main/java-gen</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
+				<version>2.3.1</version>
+				<executions>
+					<execution>
+						<id>xjc</id>
+						<goals>
+							<goal>xjc</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<sources>
+						<source>src/main/resources/xsd/infoPerson.xsd</source>
+					</sources>
+					<outputDirectory>${basedir}/src/main/java-gen</outputDirectory>
+					<clearOutputDir>true</clearOutputDir>
+				</configuration>
+			</plugin>
+
+			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>jaxb2-maven-plugin</artifactId>
+				<version>2.3.1</version> <executions> <execution> <id>schemagen</id> <goals>
+				<goal>schemagen</goal> </goals> </execution> </executions> <configuration>
+				<sources> <source>src/main/java/jaxb/gen</source> <source>src/main/com/practices/demo/dto</source>
+				</sources> <outputDirectory>src/main/resources/xsd</outputDirectory> <clearOutputDir>false</clearOutputDir>
+				<transformSchemas> <transformSchema> <uri>/jaxb/gen</uri> <toPrefix>user</toPrefix>
+				<toFile>user-gen.xsd</toFile> </transformSchema> <transformSchema> <uri>/com/practices/demo/dto</uri>
+				<toPrefix>person</toPrefix> <toFile>person-gen.xsd</toFile> </transformSchema>
+				</transformSchemas> </configuration> </plugin> -->
+
 		</plugins>
 
 		<resources>

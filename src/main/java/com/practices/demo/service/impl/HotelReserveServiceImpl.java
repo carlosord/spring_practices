@@ -149,12 +149,6 @@ public class HotelReserveServiceImpl implements HotelReserveService {
 		return findHotelReserveByPeriod(weekAgoDate, yesterdayDate);
 	}
 
-	/**
-	 * Find person by id.
-	 *
-	 * @param id the id
-	 * @return the details reserve hotel dto
-	 */
 	@Override
 	public DetailsReserveHotelDto findPersonById(Long id) {
 		return DtoAssembler.fromHotelDateEntity(hotelReserveRepository.findById(id).orElseThrow(NoSuchElementException::new));

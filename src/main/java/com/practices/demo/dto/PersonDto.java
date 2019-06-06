@@ -1,10 +1,14 @@
 package com.practices.demo.dto;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlType;
+
 import com.practices.demo.model.types.Gender;
 
 /**
  * The Class PersonDto.
  */
+@XmlType(namespace = "http://www.example.org/person")
 public class PersonDto {
 
 	/** The id. */
@@ -42,6 +46,7 @@ public class PersonDto {
 	 *
 	 * @return the id
 	 */
+	@XmlAttribute
 	public Long getId() {
 		return id;
 	}

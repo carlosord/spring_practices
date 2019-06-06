@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:infoPerson="http://localhost.com/spring_practices" elementFormDefault="qualified"
+	targetNamespace="http://localhost.com/spring_practices" version="1.0">
+
+	<xs:element name="infoPersonRequest"
+		type="infoPerson:infoPersonRequest" />
+
+	<xs:element name="infoPersonResponse"
+		type="infoPerson:infoPersonResponse" />
+
+	<xs:complexType name="infoPersonRequest">
+		<xs:sequence>
+			<xs:element name="id" type="xs:long" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="infoPersonResponse">
+		<xs:sequence>
+			<xs:element name="person" type="infoPerson:personType" />
+			<xs:element name="listCar" type="infoPerson:listCarType" />
+			<xs:element name="listHotel"
+				type="infoPerson:listHotelType" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="personType">
+		<xs:sequence>
+			<xs:element name="dni" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="listHotelType">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" />
+			<xs:element name="location" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="listCarType">
+		<xs:sequence>
+			<xs:element name="license" type="xs:string" />
+			<xs:element name="colour" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

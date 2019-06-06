@@ -1,14 +1,20 @@
 package com.practices.demo.dto;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlType;
+
 /**
  * The Class ListCarDto.
  */
+@XmlType(namespace = "http://www.example.org/listCar")
 public class ListCarDto {
 
 	/** The license. */
+	@XmlAttribute
 	private String license;
 
 	/** The colour. */
+	@XmlAttribute
 	private String colour;
 
 	/** The start car reserve. */
