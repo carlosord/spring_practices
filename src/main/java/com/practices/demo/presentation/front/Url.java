@@ -41,6 +41,12 @@ public class Url {
 	/** The Constant RESERVES_PERSON_URL. */
 	public static final String RESERVES_PERSON_URL = "/reservesperson";
 
+	/** The Constant FIND_PERSON_REST_URL. */
+	public static final String FIND_PERSON_REST_URL = "/findPerson";
+
+	/** The Constant UPDATE_PERSON_REST_URL. */
+	public static final String UPDATE_PERSON_REST_URL = "/updatePerson";
+
 	/** The Constant SHOW_ALL_PERSON. */
 	public static final String SHOW_ALL_PERSON = "/showallperson";
 

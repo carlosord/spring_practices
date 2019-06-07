@@ -72,7 +72,7 @@ public class PersonValidator implements Validator {
 	 * @param dni the dni
 	 * @return true, if successful
 	 */
-	private boolean dniIsValid(String dni) {
+	public boolean dniIsValid(String dni) {
 
 		Boolean check = false;
 

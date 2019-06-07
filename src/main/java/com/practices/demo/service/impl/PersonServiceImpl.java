@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.practices.demo.dto.DtoAssembler;
 import com.practices.demo.dto.InfoPersonDto;
 import com.practices.demo.dto.PersonDto;
+import com.practices.demo.model.Person;
 import com.practices.demo.repositories.PersonRepository;
 import com.practices.demo.service.HotelReserveService;
 import com.practices.demo.service.PersonService;
@@ -80,7 +81,13 @@ public class PersonServiceImpl implements PersonService {
 	 */
 	public PersonDto findPersonByDni(String dni) {
 
-		return DtoAssembler.fromEntity(personRepository.findByDni(dni));
+		Person p = personRepository.findByDni(dni);
+
+		if (p == null) {
+			throw new RuntimeException("DNI must not null");
+		}
+
+		return DtoAssembler.fromEntity(p);
 
 	}
 

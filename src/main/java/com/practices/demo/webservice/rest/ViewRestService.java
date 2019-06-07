@@ -32,7 +32,7 @@ public class ViewRestService {
 	}
 
 	/**
-	 * Delete person.
+	 * Delete person by id.
 	 *
 	 * @param id the id
 	 */

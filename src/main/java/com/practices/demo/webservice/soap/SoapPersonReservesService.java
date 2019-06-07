@@ -40,15 +40,6 @@ public class SoapPersonReservesService {
 	private ReserveCarRepository reserveCarRepository;
 
 	/**
-	 * Instantiates a new soap service.
-	 */
-	@Autowired
-	public SoapPersonReservesService() {
-		System.err.println("CREANDO SERVICIO SOAP");
-	}
-
-
-	/**
 	 * Show all reservations.
 	 *
 	 * @param request the request
