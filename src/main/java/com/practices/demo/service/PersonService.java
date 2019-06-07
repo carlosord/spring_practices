@@ -52,7 +52,7 @@ public interface PersonService {
 	public PersonDto updatePerson(PersonDto person);
 
 	/**
-	 * Delete person form.
+	 * Delete person.
 	 *
 	 * @param id the id
 	 */

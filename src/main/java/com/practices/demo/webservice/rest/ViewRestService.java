@@ -37,7 +37,7 @@ public class ViewRestService {
 	 * @param id the id
 	 */
 	@DeleteMapping(Url.DELETE_PERSON + "/{id}")
-	public void deletePerson(@PathVariable("id") Long id) {
+	public void deletePersonById(@PathVariable("id") Long id) {
 		personService.deletePerson(id);
 	}
 }

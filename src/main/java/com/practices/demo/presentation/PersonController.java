@@ -206,7 +206,7 @@ public class PersonController {
 	 * @return the string
 	 */
 	@GetMapping(Url.DELETE_PERSON_URL + "/{id}")
-	public String deletePersonForm(@PathVariable("id") Long id, ModelMap model) {
+	public String deletePerson(@PathVariable("id") Long id, ModelMap model) {
 
 		// Delete the person
 		personService.deletePerson(id);
