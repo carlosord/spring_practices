@@ -38,7 +38,7 @@ public class OperationWSRestService {
 	public ResponseEntity<PersonDto> findPersonByDni(@PathVariable("dni") String dni) {
 
 		if (!personValidator.dniIsValid(dni)) {
-			return ResponseEntity.notFound().build();
+			throw new RuntimeException("DNI not valid");
 		}
 
 		if (personService.findPersonByDni(dni) == null) {
@@ -57,10 +57,15 @@ public class OperationWSRestService {
 	 * @param id the id
 	 * @return the response entity
 	 */
+	//TODO: Pendiente de revisión
 	@PutMapping(Url.UPDATE_PERSON_REST_URL + "/{dni}")
 	public ResponseEntity<PersonDto> updatePerson(@RequestBody PersonDto person, @PathVariable("dni") String dni) {
 
 		PersonDto dto = personService.findPersonByDni(dni);
+
+		if (!personValidator.dniIsValid(dni)) {
+			throw new RuntimeException("DNI not valid");
+		}
 
 		dto.setDni(dni);
 		PersonDto updated = personService.updatePerson(person);

@@ -144,17 +144,11 @@ public class PersonServiceImpl implements PersonService {
 	}
 
 	/**
-	 * Delete person form.
+	 * Delete person.
 	 *
 	 * @param id the id
 	 */
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * com.practices.demo.service.PersonService#deletePersonForm(java.lang.Long)
-	 */
-	public void deletePersonForm(Long id) {
+	public void deletePerson(Long id) {
 
 		// Delete the person
 		personRepository.deleteById(id);

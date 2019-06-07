@@ -52,11 +52,11 @@ public interface PersonService {
 	public PersonDto updatePerson(PersonDto person);
 
 	/**
-	 * Delete person form.
+	 * Delete person.
 	 *
 	 * @param id the id
 	 */
-	public void deletePersonForm(Long id);
+	public void deletePerson(Long id);
 
 	/**
 	 * Show reserves person.

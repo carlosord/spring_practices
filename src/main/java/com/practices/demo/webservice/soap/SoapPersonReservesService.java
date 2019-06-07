@@ -40,6 +40,18 @@ public class SoapPersonReservesService {
 	private ReserveCarRepository reserveCarRepository;
 
 	/**
+<<<<<<< HEAD:src/main/java/com/practices/demo/webservice/soap/SoapPersonReservesService.java
+=======
+	 * Instantiates a new soap service.
+	 */
+	@Autowired
+	public SoapPersonReservesService() {
+		System.err.println("CREANDO SERVICIO SOAP");
+	}
+
+
+	/**
+>>>>>>> develop-team:src/main/java/com/practices/demo/webservice/soap/SoapPersonReservesService.java
 	 * Show all reservations.
 	 *
 	 * @param request the request

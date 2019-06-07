@@ -47,6 +47,12 @@ public class Url {
 	/** The Constant UPDATE_PERSON_REST_URL. */
 	public static final String UPDATE_PERSON_REST_URL = "/updatePerson";
 
+	/** The Constant SHOW_ALL_PERSON. */
+	public static final String SHOW_ALL_PERSON = "/showallperson";
+
+	/** The Constant DELETE_PERSON. */
+	public static final String DELETE_PERSON = "/deleteperson";
+
 	/**
 	 * Private constructor.
 	 */
