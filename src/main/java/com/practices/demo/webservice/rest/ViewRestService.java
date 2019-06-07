@@ -38,6 +38,6 @@ public class ViewRestService {
 	 */
 	@DeleteMapping(Url.DELETE_PERSON + "/{id}")
 	public void deletePerson(@PathVariable("id") Long id) {
-		personService.deletePersonForm(id);
+		personService.deletePerson(id);
 	}
 }

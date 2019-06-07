@@ -209,7 +209,7 @@ public class PersonController {
 	public String deletePersonForm(@PathVariable("id") Long id, ModelMap model) {
 
 		// Delete the person
-		personService.deletePersonForm(id);
+		personService.deletePerson(id);
 
 		// Return home view
 		return View.redirect(View.HOME_VIEW);

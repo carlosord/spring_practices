@@ -147,7 +147,7 @@ public class PersonServiceImpl implements PersonService {
 	 * @see
 	 * com.practices.demo.service.PersonService#deletePersonForm(java.lang.Long)
 	 */
-	public void deletePersonForm(Long id) {
+	public void deletePerson(Long id) {
 
 		// Delete the person
 		personRepository.deleteById(id);
