@@ -57,7 +57,6 @@ public class OperationWSRestService {
 	 * @param dni the dni
 	 * @return the response entity
 	 */
-	//TODO: Pendiente de revisión
 	@PutMapping(Url.UPDATE_PERSON_REST_URL + "/{dni}")
 	public ResponseEntity<PersonDto> updatePerson(@RequestBody PersonDto person, @PathVariable("dni") String dni) {
 
