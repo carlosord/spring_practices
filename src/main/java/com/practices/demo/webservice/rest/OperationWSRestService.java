@@ -54,7 +54,7 @@ public class OperationWSRestService {
 	 * Update person.
 	 *
 	 * @param person the person
-	 * @param id the id
+	 * @param dni the dni
 	 * @return the response entity
 	 */
 	//TODO: Pendiente de revisión
